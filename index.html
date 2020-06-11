@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>xuetengfei</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/xtf-favicon-1558630625.ico"
+    />
+    <!-- <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/buble.css" /> -->
+    <link rel="stylesheet" href="./_set/vue.css" />
+    <link rel="stylesheet" href="./_set/xue.css" />
+    <script>
+      (function (doc, win) {
+        return;
+        var docEl = doc.documentElement,
+          resizeEvt =
+            'orientationchange' in window ? 'orientationchange' : 'resize',
+          recalc = function () {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            docEl.style.fontSize = 20 * (clientWidth / 750) + 'px';
+          };
+        recalc();
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+      })(document, window);
+    </script>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/React/react">React</a></li>
+        <li>
+          <a href="https://static-bookmarks.now.sh/" target="_blank"
+            >Bookmarks</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div id="app">Welcome to visit My Blog，Please wait...</div>
+    <script>
+      window.$docsify = {
+        name: '',
+        repo: 'https://github.com/xuetengfei/xuetengfei.github.io',
+        // loadNavbar: true,
+        loadSidebar: true,
+        subMaxLevel: 1,
+        auto2top: true,
+        autoHeader: true,
+        themeColor: '#439DD8',
+        mergeNavbar: true,
+        formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}',
+        pagination: {
+          previousText: '上一章节',
+          nextText: '下一章节',
+          crossChapter: true,
+        },
+        search: {
+          maxAge: 864000000, // 过期时间，单位毫秒，默认一天
+          paths: 'auto',
+          placeholder: {
+            '/': 'search',
+          },
+          noData: 'No Results!',
+          depth: 6,
+        },
+        plugins: [
+          function (hook) {
+            //  var footer = '<p class="docsify-updated">{docsify-updated}</p>';
+            var footer = '';
+            hook.beforeEach(function (content) {
+              return content + footer;
+            });
+          },
+        ],
+      };
+    </script>
+
+    <script src="./_set/docsify.min.js.js"></script>
+    <script src="./_set/docsify-pagination.min.js"></script>
+    <script src="./_set/zoom-image.min.js"></script>
+    <script src="./_set/prism-python.min.js"></script>
+    <script src="./_set/prism-sass.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
+    <script src="./_set/docsify-copy-code@2.js"></script>
+    <script>
+      window.onload = function () {
+        let BodyDom = document.getElementsByTagName('body')[0];
+        let BodyCss = BodyDom.classList;
+        let ContentDom = document.getElementById('main');
+        let SectionDom = document.getElementsByTagName('section')[0];
+        window.document.onkeydown = disableRefresh;
+        function disableRefresh(evt) {
+          evt = evt ? evt : window.event;
+          if (evt.keyCode) {
+            if (evt.keyCode == 76) {
+              // keyboard:l
+              if ([...BodyCss].includes('close')) {
+                const style = 'ready sticky';
+                BodyDom.className = style;
+                localStorage.setItem('menuStatus', style);
+              } else {
+                const style = 'ready sticky close';
+                BodyDom.className = style;
+                localStorage.setItem('menuStatus', style);
+              }
+            }
+            if (evt.keyCode == 79) {
+              // keyboard:l
+              window.scroll(0, 0);
+            }
+            if (evt.keyCode == 72) {
+              // keyboard:h go Home
+              window.location = '#';
+            }
+          }
+        }
+
+        const menuStatus = window.localStorage.getItem('menuStatus');
+        if (menuStatus) {
+          BodyDom.className = menuStatus;
+        } else {
+          localStorage.setItem('menuStatus', BodyDom.className);
+        }
+      };
+      // if (typeof navigator.serviceWorker !== 'undefined') {
+      // navigator.serviceWorker.register('./sw.js');
+      // }
+    </script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  </body>
+</html>

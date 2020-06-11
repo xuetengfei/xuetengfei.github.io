@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <base target="_blank" />
+    <!-- <meta http-equiv="refresh" content="10" /> -->
+    <title>link</title>
+    <link rel="stylesheet" href="./asset/style/normalize.min.css" />
+    <link rel="stylesheet" href="./asset/style/main.css" />
+    <script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+    <script src="./asset/link.js"></script>
+    <script src="./asset/format.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="article">
+        <h2>{{ this.currentArticle.title }}</h2>
+        <img :src="this.currentArticle.img" alt="" />
+        <section v-for="(x,i) in this.currentArticle.p" :key="i">
+          <p>{{ x }}</p>
+        </section>
+        <p></p>
+        <h6>{{ this.currentArticle.time }} {{ this.currentArticle.category }}</h6>
+      </div>
+      <div class="operation">
+        <div>
+          <span @click="select('movie')">Movie</span>
+          <span @click="select('novel')">Novel</span>
+        </div>
+        <div class="page">
+          <span @click="Page('Previous')">上一篇</span>
+          <span @click="Page('Next')">下一篇</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          AllArticle: Data,
+          category: 'all',
+          currentIndex: 0,
+        },
+        computed: {
+          currentArticle: function() {
+            return this.AllArticle[this.category][this.currentIndex];
+          },
+          maxlength: function() {
+            return this.AllArticle[this.category].length;
+          },
+        },
+        mounted() {
+          // console.log(this.maxlength);
+          // console.log(this.currentArticle["p"]);
+        },
+        methods: {
+          Page: function(para) {
+            para == 'Previous'
+              ? this.currentIndex == 0
+                ? this.currentIndex
+                : (this.currentIndex = this.currentIndex - 1)
+              : this.currentIndex == this.maxlength - 1
+              ? this.currentIndex
+              : (this.currentIndex = this.currentIndex + 1);
+          },
+          select: function(para) {
+            if (para == 'movie') {
+              this.category = this.category == 'movie' ? 'all' : para;
+            } else {
+              this.category = this.category == 'novel' ? 'all' : para;
+            }
+            this.currentIndex = 0;
+            console.log(this.category);
+          },
+        },
+      });
+
+      //  <!-- app.update(); -->
+      // <!-- window.setInterval(app.update, 1000); -->
+    </script>
+  </body>
+</html>

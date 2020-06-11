@@ -1,0 +1,22 @@
+/* 移动端页面设计稿宽度 */
+$design-width: 750;
+/* 移动端页面设计稿dpr基准值 */
+$design-dpr: 2;
+
+/*
+    vw与px对应关系，100vw为视窗宽度，$vw即为$px对应占多宽
+
+        $px                    $vw
+    -------------    ===    ------------
+    $design-width              100vw
+*/
+
+/* 单位px转化为vw */
+@function px2vw($px) {
+  @return ($px / $design-width) * 100vw;
+}
+
+/* 单位vw转化为px，可用于根据vw单位快速计算原px */
+@function vw2px($vw) {
+  @return #{($vw / 100) * $design-width}px;
+}

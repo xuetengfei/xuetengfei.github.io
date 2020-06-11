@@ -1,0 +1,24 @@
+// font-size:16 不可修改
+$font: 16;
+
+// 按住实际的设计图尺寸修改
+$screen: 750;
+
+@function px2rem($n) {
+  @return #{$n/($screen * $font/320)}rem;
+}
+
+// 不用修改
+html,
+body {
+  font-size: 1rem;
+}
+
+// 使用 px2rem
+.box {
+  font-size: 0;
+  img {
+    width: px2rem(200);
+    height: px2rem(200);
+  }
+}

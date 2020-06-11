@@ -1,0 +1,59 @@
+## layout-component
+
+```
+const Grid = (props) => (
+  <Box {...props}
+    display='inline-block'
+    verticalAlign='top'
+    px={2}/>
+);
+
+const Half = (props) => (
+  <Grid {...props}
+    width={1 / 2}/>
+);
+
+const Third = (props) => (
+  <Grid {...props}
+    width={1 / 3}/>
+);
+
+const Quarter = (props) => (
+  <Grid {...props}
+    width={1 / 4}/>
+);
+
+const Flex = (props) => (
+  <Box {...props}
+    display='flex'/>
+);
+
+const FlexAuto = (props) => (
+  <Box {...props}
+    flex='1 1 auto'/>
+);
+```
+
+## Useage
+
+```
+const Layout = () => (
+  <div>
+    <div>
+      <Half>Half width column</Half>
+      <Half>Half width column</Half>
+    </div>
+    <div>
+      <Third>Third width column</Third>
+      <Third>Third width column</Third>
+      <Third>Third width column</Third>
+    </div>
+    <div>
+      <Quarter>Quarter width column</Quarter>
+      <Quarter>Quarter width column</Quarter>
+      <Quarter>Quarter width column</Quarter>
+      <Quarter>Quarter width column</Quarter>
+    </div>
+  </div>
+);
+```

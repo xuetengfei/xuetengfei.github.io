@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .clearfix::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .all {
+        width: 100%;
+      }
+      .wrap {
+        background-color: green;
+        width: 50%;
+        float: left;
+      }
+      .point {
+        min-width: 50%;
+        width: calc((450px - 100%) * 450);
+        max-width: 100%;
+        height: 40px;
+        background-color: rgba(255, 0, 0, 0.342);
+        /* Change 25em to your breakpoint. */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all clearfix">
+      <div class="wrap"><div class="point">1</div></div>
+      <div class="wrap"><div class="point">2</div></div>
+    </div>
+  </body>
+</html>

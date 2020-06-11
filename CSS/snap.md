@@ -1,0 +1,6 @@
+0. [Snap.svg - Home](http://snapsvg.io/)
+1. [Solstice 2016](https://codepen.io/sandrasofia/pen/rWbJXY)
+1. [三看 SVG Web 动效 | Aotu.io「凹凸实验室」](https://aotu.io/notes/2016/11/22/SVG_Web_Animation/)
+1. [使用 Snap.svg 制作动画 | Aotu.io「凹凸实验室」](https://aotu.io/notes/2017/01/22/snapsvg/)
+1. [前端动效库汇总 ](https://juejin.im/post/5cc089eae51d456e7d189f9d)
+1. [一个例子上手 SVG 动画 | Aotu.io「凹凸实验室」](https://aotu.io/notes/2017/05/04/example-for-svg-animation/)

@@ -1,0 +1,9 @@
+.tooltip-toggle::before {
+  content: attr(aria-label);
+}
+
+#id {
+  width: calc(100% - 20vw);
+  height: 300px;
+  background-color: #eee;
+}

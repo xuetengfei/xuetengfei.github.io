@@ -1,0 +1,55 @@
+node_modules/
+bower_components
+tempcode/*
+yarn.lock
+docs/*.html
+!docs/index.html
+docs/IMG
+_image
+share.md
+1.json
+node_modules
+html/RESUME/sass
+html/RESUME/sass/*
+html/RESUME/package.json
+html/RESUME/package-lock.json
+html/LINK/asset/sass/*
+tempCode.md
+test.html
+interview.md
+source-code/python_syntax/Pipfile.lock
+0.md
+package.json
+*bak*
+
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# End of https://www.gitignore.io/api/macos
+1.js

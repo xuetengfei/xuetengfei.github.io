@@ -1,0 +1,105 @@
+@import '../../../common/family.scss';
+body {
+  background-color: #fcdc9e;
+  display: grid;
+  grid-template-columns: 1fr 600px 1fr;
+}
+#text {
+  user-select: none;
+  padding: 30px 30px 0 30px;
+  #result {
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+  }
+}
+
+.menu {
+  cursor: pointer;
+  user-select: none;
+  padding: 30px 30px 0 30px;
+  div {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid rgb(241, 189, 99);
+    margin-bottom: 30px;
+    display: none;
+  }
+}
+#root {
+  width: 600px;
+  height: 600px;
+  border: 1px solid #333;
+  border-style: solid;
+  border-color: #333;
+  border-width: 1px 0 0 1px;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(11, 60px);
+  grid-auto-rows: auto;
+  cursor: pointer;
+  div {
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    border-width: 0 1px 1px 0;
+    border-color: #333;
+    border-style: solid;
+    position: relative;
+    @include each(11) {
+      border-color: transparent;
+    }
+    @include last(11) {
+      border-color: transparent;
+    }
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      // background-color: rgba(216, 216, 216, 1);
+      transform: translate(-50%, -50%);
+      //   opacity: 0;
+      color: transparent;
+      // color: red;
+      user-select: none;
+    }
+    span.black {
+      opacity: 1;
+      background-color: #000;
+    }
+    span.white {
+      background-color: #fff;
+      opacity: 1;
+    }
+  }
+}
+.first1div {
+  div {
+    display: none;
+    @include first(1) {
+      display: block !important;
+    }
+  }
+}
+
+.first2div {
+  div {
+    display: none;
+    @include first(2) {
+      display: block !important;
+    }
+  }
+}
+.alldiv {
+  div {
+    display: block !important;
+  }
+}

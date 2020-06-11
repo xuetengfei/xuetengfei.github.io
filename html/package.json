@@ -1,0 +1,25 @@
+{
+  "name": "my_css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^4.10.0"
+  },
+  "dependencies": {
+    "gulp-plumber": "^1.2.1",
+    "merge-stream": "^1.0.1",
+    "normalize.css": "^8.0.1"
+  }
+}

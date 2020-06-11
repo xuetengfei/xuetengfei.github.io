@@ -1,0 +1,75 @@
+@charset "UTF-8";
+body {
+  background-color: #fef8f9;
+  padding-top: 40px;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+#app {
+  width: 70vw;
+  margin: 0 auto;
+  background-clip: content-box;
+  box-sizing: border-box;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: #2c2a52;
+}
+
+#app h2 {
+  text-align: center;
+}
+
+#app p {
+  text-indent: 2em;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+#app h6 {
+  text-align: right;
+  color: #2c2a52b4;
+}
+
+#app .article img {
+  display: block;
+  max-width: 700px;
+  margin: 0 auto;
+  height: auto;
+  box-shadow: 10px 10px 20px 0 rgba(94, 47, 59, 0.2);
+}
+
+#app .operation {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#app .operation .page {
+  margin-top: 20px;
+}
+
+.hhhhh {
+  font-size: 20px;
+  font-size: 1px;
+}

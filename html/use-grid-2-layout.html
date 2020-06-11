@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>grid-layout</title>
+    <link href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      .container {
+        display: grid;
+        height: 100%;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 50px auto 50px;
+        grid-gap: 5px;
+        grid-template-areas: 'h h h h h h h h h h h h' 'm m c c c c c c c c c c' 'f f f f f f f f f f f f';
+      }
+
+      .container .header {
+        grid-area: h;
+        background-color: #bcf0bd;
+      }
+
+      .container .menu {
+        grid-area: m;
+        background-color: #fce78c;
+      }
+
+      .container .content {
+        grid-area: c;
+        background-color: #8ffcf8;
+      }
+
+      .container .footer {
+        grid-area: f;
+        background-color: #debaf6;
+      }
+
+      @media screen and (max-width: 640px) {
+        .container {
+          grid-template-areas: 'h h h h h h m m m m m m ' 'c c c c c c c c c c c c' 'f f f f f f f f f f f f';
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">HEADER</div>
+      <div class="menu">MENU</div>
+      <div class="content">CONTENT</div>
+      <div class="footer">FOOTER</div>
+    </div>
+  </body>
+</html>

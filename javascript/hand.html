@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="handled">click</div>
+    <div id="unhandled">click</div>
+    <div id="report">click</div>
+    <script>
+      //   window.addEventListener('unhandledrejection', event => {
+      //     event.preventDefault();
+      //     console.log('Reason: ' + event.reason);
+      //   });
+      //   window.addEventListener('rejectionhandled', event => {
+      //     console.log('REJECTIONHANDLED');
+      //   });
+
+      //   function foo() {
+      //     return Promise.reject('abc');
+      //   }
+      //   var r = foo();
+      //   setTimeout(() => {
+      //     r.catch(e => {});
+      //   }, 0);
+
+      var unhandledRejections = new Map();
+      window.addEventListener('unhandledrejection', event => {
+        console.log('unhandledrejection fired: ' + event.reason);
+        unhandledRejections.set(event.promise, event.reason);
+      });
+
+      window.addEventListener('rejectionhandled', event => {
+        console.log('rejectionhandled fired: ' + event.reason);
+        unhandledRejections.delete(event.promise);
+      });
+
+      function generateRejectedPromise(isEventuallyHandled) {
+        var rejectedPromise = Promise.reject(
+          'Error at ' + new Date().toLocaleTimeString(),
+        );
+        if (isEventuallyHandled) {
+          setTimeout(() => {
+            rejectedPromise.catch(() => {});
+          }, 1);
+        }
+      }
+
+      function reportUnhandledRejections() {
+        console.log('[Unhandled Rejections]');
+        for (var reason of unhandledRejections.values()) {
+          console.log(' ', reason);
+        }
+        unhandledRejections.clear();
+      }
+
+      document.querySelector('#handled').addEventListener('click', () => {
+        generateRejectedPromise(true);
+      });
+
+      document.querySelector('#unhandled').addEventListener('click', () => {
+        generateRejectedPromise(false);
+      });
+
+      document.querySelector('#report').addEventListener('click', () => {
+        reportUnhandledRejections();
+      });
+    </script>
+  </body>
+</html>

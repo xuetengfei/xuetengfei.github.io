@@ -51,6 +51,34 @@ function Timer() {
 }
 ```
 
+## 记录上一轮渲染的数据
+
+```js
+import React, { useEffect, useState, useRef } from 'react';
+import ReactDOM from 'react-dom';
+
+function App() {
+  const t = useRef(0);
+  const [count, setCount] = useState(0);
+  const handleClick = () => setCount(c => c + 1);
+
+  useEffect(() => {
+    t.current = count;
+  });
+
+  const prevCount = t.current;
+  return (
+    <div>
+      <p>currnetCount:{count}</p>
+      <p>prevCount:{prevCount}</p>
+      <button onClick={handleClick}>click</button>
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
 ## 记录 react 渲染次数
 
 ```javascript

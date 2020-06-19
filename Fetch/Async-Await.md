@@ -1,17 +1,38 @@
-Promise 看起来有点复杂，所以 ES2017 引进了 `async` 和 `await`。是使 Promise 更加方便使用的语法糖，并且可以避免 `.then()`链式调用的问题。async 函数就是 Generator 函数的语法糖。Async/Await 应该是目前最简单的异步方案了。
+Promise 看起来有点复杂，所以 ES2017 引进了 `async` 和 `await`。async 函数就是 Generator 函数的语法糖。Async/Await 应该是目前最简单的异步方案了并且可以避免 `Promise.prototype.then`链式调用的问题。
+
+async 函数就是将 Generator 函数的星号`*` 替换成 `async`，将 `yield` 替换成 `await`
 
 ## Syntax
 
 ```javascript
-const fn = async function() {
+const getUser = () => {
+  return new Promise((resolve, reject) => {
+    return resolve({ id: 1, name: 'someuser' });
+  });
+};
+
+const fetchPosts = id => {
+  return new Promise((resolve, reject) => {
+    return resolve(id);
+  });
+};
+
+const fn = async function () {
   const user = await getUser();
   const posts = await fetchPosts(user.id);
   return { user, posts };
 };
+
 fn()
-  .then(res => console.log(res))
+  .then(res => console.log('res', res))
   .catch(err => console.error(err.stack));
+
+/* 
+  res { user: { id: 1, name: 'someuser' }, posts: 1 }
+*/
 ```
+
+<!-- async 函数就是将 Generator 函数的星号`*` 替换成 `async`，将 `yield` 替换成 `await` -->
 
 ### Compare Promise With Async
 
@@ -39,8 +60,7 @@ async function fetch() {
 }
 ```
 
-?> 正常情况下,`async` 函数返回一个 `Promise 对象`,那么执行 `async` 函数后,后面可以跟着 `then` `catch` 方法,来接收数据. 如果返回的不是 `promise` 对象而是一个字符串,数字等基本类型数据,如下面代码这样.那么这个返回的值,会成为 `then` 方法回调函数的参数.
-正常情况下，`await` 命令后面跟着的是 Promise ，如果不是的话，也会被转换成一个 立即 `resolve` 的 Promise
+`async` 函数返回一个 `Promise 对象`,可以用 `then` `catch` 方法指定下一步的操作。而 async 函数的 await 命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。
 
 ?> `await`只能在 async 中运行。`await` 表示在这里等待 `promise` 返回结果了，再继续执行。
 `await` 等待的虽然是 `promise` 对象，但不必写`.then(..)`，直接可以得到返回值`.catch(..)`也不用写，可以直接用标准的`try/catch`语法捕捉错误。`async` 函数返回的 `Promise` 对象，必须等到内部`所有`的 `await` 命令的 `Promise` 对象执行完，才会发生状态改变也就是说，只有当 `async` 函数内部的异步操作都执行完，才会执行 `then` 方法的回调。
@@ -76,7 +96,7 @@ async function fetch() {
 ```javascript
 const fetch = require('node-fetch');
 
-const fetchData = async function() {
+const fetchData = async function () {
   try {
     const r1 = await fetch('https://api.github.com/users/github');
     const json1 = await r1.json();

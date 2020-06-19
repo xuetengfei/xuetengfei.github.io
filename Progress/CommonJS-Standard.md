@@ -4,19 +4,19 @@ CommonJS 规范的主要内容有，一个单独的文件就是一个模块。�
 
 ```javascript
 // 模块定义 add.js
-module.eports.add = function(a, b) {
+module.eports.add = function (a, b) {
   return a + b;
 };
 
 // 模块定义 decrease.js
-module.exports.decrease = function(a, b) {
+module.exports.decrease = function (a, b) {
   return a - b;
 };
 
 // formula.js,模块使用，利用 require() 方法加载模块,require 导出的即是 module.exports 的内容
 const add = require('./add.js').add;
 const decrease = require('./decrease.js').decrease;
-module.exports.square_difference = function(a, b) {
+module.exports.square_difference = function (a, b) {
   return add(a, b) * decrease(a, b);
 };
 ```
@@ -27,7 +27,7 @@ exports 和 module.exports 是指向同一个东西的变量，即是 module.exp
 
 ```javascript
 //add.js
-exports.add = function(a, b) {
+exports.add = function (a, b) {
   return a + b;
 };
 ```
@@ -35,7 +35,7 @@ exports.add = function(a, b) {
 但是如果直接修改 exports 的指向是无效的，例如:
 
 ```javascript
-exports = function(a, b) {
+exports = function (a, b) {
   return a + b;
 };
 ```
@@ -62,7 +62,7 @@ CommonJS 还定义了模块 API 。因为在服务器应用程序中没有 HTML 
 // example.js
 
 var x = 5;
-var addX = function(value) {
+var addX = function (value) {
   return value + x;
 };
 ```
@@ -81,7 +81,7 @@ CommonJS 规范规定，每个模块内部，module 变量 代表当前模块。
 
 ```javascript
 var x = 5;
-var addX = function(value) {
+var addX = function (value) {
   return value + x;
 };
 module.exports.x = x;
@@ -92,7 +92,7 @@ module.exports.addX = addX;
 
 ```javascript
 var x = 5;
-var addX = function(value) {
+var addX = function (value) {
   return value + x;
 };
 exports.x = x;
@@ -152,7 +152,7 @@ console.log(typeof require); // function
 // a.js
 
 exports.message = 'hello world!';
-exports.hi = function() {
+exports.hi = function () {
   console.log('Nice to meet you!');
 };
 
@@ -199,11 +199,11 @@ module exports require global
 // webpack.config.js
 const path = require('path');
 const config = {
-entry: ['./index.js'],
-output: {
-path: path.resolve(\_\_dirname, 'dist'),
-filename: 'bundle.js',
-},
+  entry: ['./index.js'],
+  output: {
+    path: path.resolve(\_\_\_dirname, 'dist'),
+    filename: 'bundle.js',
+  },
 };
 // commonJS 模块化输出:module.exports = {}
 module.exports = config;
@@ -214,5 +214,3 @@ module.exports = config;
 ---
 
 1. [CommonJS 规范 -- JavaScript 标准参考教程（alpha）](http://javascript.ruanyifeng.com/nodejs/module.html)
-2. [CommonJS 概述 - 前端 - 掘金](https://juejin.im/entry/5976a47ef265da6c4f351215)
-3. [blog/Javascript 模块化详解.md at master · zhijs/blog](https://github.com/zhijs/blog/blob/master/2018-07/src/Javascript%E6%A8%A1%E5%9D%97%E5%8C%96%E8%AF%A6%E8%A7%A3.md)

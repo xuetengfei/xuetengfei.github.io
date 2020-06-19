@@ -13,16 +13,16 @@ Generator 函数的调用方法与普通函数一样，也是在函数名后面�
 
 ```javascript
 function* xue() {
-    yield console.log(1);
-    yield console.log(2);
-    yield console.log(3);
+  yield console.log(1);
+  yield console.log(2);
+  yield console.log(3);
 }
 let x = xue();
 let init = 1;
 
 document.getElementById('btn').addEventListener('click', () => {
-    console.log(x.next());
-    console.log(`第${init++}次点击,${new Date().toLocaleString()}`);
+  console.log(x.next());
+  console.log(`第${init++}次点击,${new Date().toLocaleString()}`);
 });
 ```
 
@@ -43,13 +43,13 @@ Generator 函数里面的每一个 yield 关键字代表暂停。遍历器对象
 
 ```javascript
 function* f() {
-    console.log('执行了！');
+  console.log('执行了！');
 }
 
 var generator = f();
 
-setTimeout(function() {
-    generator.next();
+setTimeout(function () {
+  generator.next();
 }, 2000);
 
 // 2s later -> 执行了！
@@ -61,9 +61,9 @@ yield 表达式本身没有返回值，或者说总是返回 undefined。next �
 
 ```javascript
 function* foo(x) {
-    var y = 2 * (yield x + 1);
-    var z = yield y / 3;
-    return x + y + z;
+  var y = 2 * (yield x + 1);
+  var z = yield y / 3;
+  return x + y + z;
 }
 
 var a = foo(5);
@@ -83,23 +83,23 @@ Generator 是实现状态机的最佳结构。比如，下面的 clock 函数就
 
 ```javascript
 var ticking = true;
-var clock = function() {
-    if (ticking) console.log('Tick!');
-    else console.log('Tock!');
-    ticking = !ticking;
+var clock = function () {
+  if (ticking) console.log('Tick!');
+  else console.log('Tock!');
+  ticking = !ticking;
 };
 ```
 
 上面代码的 clock 函数一共有两种状态（Tick 和 Tock），每运行一次，就改变一次状态。这个函数如果用 Generator 实现，就是下面这样。
 
 ```javascript
-var clock = function*() {
-    while (true) {
-        console.log('Tick!');
-        yield;
-        console.log('Tock!');
-        yield;
-    }
+var clock = function* () {
+  while (true) {
+    console.log('Tick!');
+    yield;
+    console.log('Tock!');
+    yield;
+  }
 };
 ```
 
@@ -109,9 +109,9 @@ var clock = function*() {
 
 ```javascript
 function* loadUI() {
-    showLoadingScreen();
-    yield loadUIDataAsynchronously();
-    hideLoadingScreen();
+  showLoadingScreen();
+  yield loadUIDataAsynchronously();
+  hideLoadingScreen();
 }
 var loader = loadUI();
 // 加载UI
@@ -127,15 +127,15 @@ Ajax 是典型的异步操作，通过 Generator 函数部署 Ajax 操作，可�
 
 ```javascript
 function* main() {
-    var result = yield request('http://some.url');
-    var resp = JSON.parse(result);
-    console.log(resp.value);
+  var result = yield request('http://some.url');
+  var resp = JSON.parse(result);
+  console.log(resp.value);
 }
 
 function request(url) {
-    makeAjaxCall(url, function(response) {
-        it.next(response);
-    });
+  makeAjaxCall(url, function (response) {
+    it.next(response);
+  });
 }
 
 var it = main();
@@ -152,13 +152,13 @@ ES2017 标准引入了 async 函数，使得异步操作变得更加方便。
 
 ```javascript
 async function fetchJson(url) {
-    try {
-        let request = await fetch(url);
-        let text = await request.text();
-        return JSON.parse(text);
-    } catch (error) {
-        console.log(`ERROR: ${error.stack}`);
-    }
+  try {
+    let request = await fetch(url);
+    let text = await request.text();
+    return JSON.parse(text);
+  } catch (error) {
+    console.log(`ERROR: ${error.stack}`);
+  }
 }
 ```
 

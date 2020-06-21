@@ -1,3 +1,7 @@
+.dark-mode:not(img) {
+  color: #ffffff;
+}
+
 .markdown-section p {
   font-size: 16px;
   line-height: 2;

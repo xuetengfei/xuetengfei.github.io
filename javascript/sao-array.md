@@ -3,19 +3,22 @@
 ```javascript
 Array.from(Array(10).keys());
 // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 Array.from({ length: 4 }, (_, i) => i); // =>: [0, 1, 2, 3]
-Array.from({ length: 4 }, (_, i) => i + 1); // =>: [1, 2, 3, 4]
-
-[...Array(4).keys()]; // =>: [0, 1, 2, 3]
 [...Array(4).keys()].map(k => k + 1); // =>: [1, 2, 3, 4]
 
 Array(6).fill(8); //  [8, 8, 8, 8, 8, 8]
 
-const initializeArrayRange = (end, start = 0) =>
-  Array.apply(null, Array(end - start)).map((v, i) => i + start);
+const range = (start = 0, stop, step) =>
+  Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
 
-console.log(initializeArrayRange(5)); // [0,1,2,3,4]
+console.log('range(0, 5, 1): ', range(0, 5, 1));
+// range(0, 5, 1):  [ 0, 1, 2, 3, 4 ]
+
+const alphabet = range('A'.charCodeAt(0), 'Z'.charCodeAt(0) + 1, 1).map(x =>
+  String.fromCharCode(x),
+);
+console.log('alphabet : ', alphabet);
+// ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 ```
 
 ### 2.过滤空值
@@ -38,24 +41,26 @@ console.log(' r: ', r);
 //  r:  { a: 1, b: '2', c: 3, d: 0 }
 ```
 
-### uniq
+### Unique
 
 ```javascript
 var arr = [1, 2, 1, 4, 1, 3];
 
+// es6
 const r1 = [...new Set(arr)];
-
-const r2 = arr.filter((v, i) => arr.indexOf(v) === i);
-
+//  or
 const r3 = arr.reduce(
   (init, v) => (init.includes(v) ? init : [...init, v]),
   [],
 );
 
+// es5
+const r2 = arr.filter((v, i) => arr.indexOf(v) === i);
+
 console.log(r1, r2, r3);
 ```
 
-### 结构
+### 解构
 
 ```javascript
 const pair = a => b => [a, b];
@@ -73,20 +78,19 @@ const [first, ...rest] = [1, 2, 3, 4, 5];
 
 ### Chunk
 
+使用 Array.from() 创建一个新的数组，它的长度与将要生成的 chunk(块) 数量相匹配。 使用 Array.slice() 将新数组的每个元素映射到长度为 size 的 chunk 中。 如果原始数组不能均匀分割，最后的 chunk 将包含剩余的元素。
+
 ```javascript
-const chunk = (input, size) => {
-  return input.reduce((arr, item, idx) => {
-    return idx % size === 0
-      ? [...arr, [item]]
-      : [...arr.slice(0, -1), [...arr.slice(-1)[0], item]];
-  }, []);
+const chunk = (arr, size) => {
+  const _chunk = Array.from({ length: Math.ceil(arr.length / size) });
+  return _chunk.map((_each, i) => {
+    return arr.slice(i * size, i * size + size);
+  });
 };
+const end = chunk([1, 2, 3, 4, 5], 2);
 
-chunk(['a', 'b', 'c', 'd'], 2);
-// => [['a', 'b'], ['c', 'd']]
-
-chunk(['a', 'b', 'c', 'd'], 3);
-// => [['a', 'b', 'c'], ['d']]
+console.log('end: ', end);
+// end:  [ [ 1, 2 ], [ 3, 4 ], [ 5 ] ]
 ```
 
 ### difference

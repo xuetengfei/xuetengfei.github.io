@@ -10,7 +10,8 @@
 # RGB 转 hex
 
 ```javascript
-const rgbToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
+const rgbToHex = (r, g, b) =>
+  ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
 
 console.log(rgbToHex(105, 165, 234)); // 69a5ea
 ```
@@ -109,8 +110,8 @@ const isSymbol = val => typeof val === 'symbol';
 
 ```javascript
 // javascript设计模式和开发实践
-var isType = function(type) {
-  return function(obj) {
+var isType = function (type) {
+  return function (obj) {
     return Object.prototype.toString.call(obj) === '[object ' + type + ']';
   };
 };
@@ -127,7 +128,7 @@ console.log(isArray([1, 2, 3])); // true
 instanceof 主要的作用就是判断一个实例是否属于某种类型
 
 ```javascript
-let person = function() {};
+let person = function () {};
 let nicole = new person();
 nicole instanceof person; // true
 ```
@@ -205,7 +206,9 @@ const compact = arr => arr.filter(Boolean);
 ```
 
 ```javascript
-const a = [0, 1, false, 2, '', 3, null, 123, undefined, 'apple'].filter(Boolean);
+const a = [0, 1, false, 2, '', 3, null, 123, undefined, 'apple'].filter(
+  Boolean,
+);
 
 console.log('a is', a); // => [ 1, 2, 3, 123, 'apple' ]
 ```
@@ -460,9 +463,9 @@ console.log(validate(schema, { first: 'Bruce', last: 'Wayne' })); // true
 
 ```javascript
 // 1
-const uniqueId = (function() {
+const uniqueId = (function () {
   let count = 0;
-  return function() {
+  return function () {
     ++count;
     return `id_${count}`;
   };
@@ -475,9 +478,9 @@ console.log(uniqueId()); // "id_3"
 
 ```javascript
 // 2
-var Employee = (function() {
+var Employee = (function () {
   function Employee(name) {
-    this.getName = function() {
+    this.getName = function () {
       return name;
     };
   }
@@ -521,15 +524,15 @@ let close = () => {
 不管在外部作用域有什么值指定给$，在 IIFE 中，这些值都会被"屏蔽"，$参数一直指向 jQuery 方法。
 
 ```javascript
-(function($) {
+(function ($) {
   // ...
 })(jQuery);
 
-(function(global) {
+(function (global) {
   // ...
 })(this);
 
-(function(window, document, undefined) {
+(function (window, document, undefined) {
   // ...
 })(window, document);
 ```
@@ -566,11 +569,10 @@ console.log(1 && 2); // 2
 
 <!-- [全面解析 JavaScript 中“&&”和“||”操作符(总结篇)*javascript 技巧*脚本之家](https://www.jb51.net/article/88781.htm) -->
 
-
 # 日期格式化(不依赖第三方)
 
 ```javascript
-Date.prototype.format = function(fmt) {
+Date.prototype.format = function (fmt) {
   var o = {
     'M+': this.getMonth() + 1, //月份
     'd+': this.getDate(), //日
@@ -582,7 +584,10 @@ Date.prototype.format = function(fmt) {
   };
 
   if (/(y+)/.test(fmt)) {
-    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+    fmt = fmt.replace(
+      RegExp.$1,
+      (this.getFullYear() + '').substr(4 - RegExp.$1.length),
+    );
   }
 
   for (var k in o) {
@@ -601,8 +606,6 @@ const a = new Date().format('yyyy-M-d h:m:s');
 console.log('a is', a);
 // 17-10-14 22:18:17
 ```
-
-
 
 # 星级评价
 
@@ -674,7 +677,8 @@ const arrayMin = arr => Math.min(...arr);
 使用 Array.filter() 滤除掉非唯一值，使数组仅包含`唯一值`。
 
 ```javascript
-const filterNonUnique = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
+const filterNonUnique = arr =>
+  arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
 
 console.log(filterNonUnique([1, 2, 2, 3, 4, 4, 5])); // [1,3,5]
 ```
@@ -837,7 +841,11 @@ const gcd = (x, y) => (!y ? x : gcd(y, x % y));
 
 ```javascript
 const percentile = (arr, val) =>
-  (100 * arr.reduce((acc, v) => acc + (v < val ? 1 : 0) + (v === val ? 0.5 : 0), 0)) /
+  (100 *
+    arr.reduce(
+      (acc, v) => acc + (v < val ? 1 : 0) + (v === val ? 0.5 : 0),
+      0,
+    )) /
   arr.length;
 // percentile([1,2,3,4,5,6,7,8,9,10], 6) -> 55
 ```
@@ -848,7 +856,11 @@ const percentile = (arr, val) =>
 const percentile = (arr, val, length = 3) =>
   Number(
     String(
-      (100 * arr.reduce((acc, v) => acc + (v < val ? 1 : 0) + (v === val ? 0.5 : 0), 0)) /
+      (100 *
+        arr.reduce(
+          (acc, v) => acc + (v < val ? 1 : 0) + (v === val ? 0.5 : 0),
+          0,
+        )) /
         arr.length,
     ).substr(0, length + 1),
   );
@@ -954,18 +966,6 @@ const average = arr => arr.reduce((acc, val) => acc + val, 0) / arr.length;
 // average([1,2,3]) -> 2
 ```
 
-# 数组分块 Chunk
-
-使用 Array.from() 创建一个新的数组，它的长度与将要生成的 chunk(块) 数量相匹配。 使用 Array.slice() 将新数组的每个元素映射到长度为 size 的 chunk 中。 如果原始数组不能均匀分割，最后的 chunk 将包含剩余的元素。
-
-```javascript
-const chunk = (arr, size) =>
-  Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
-    arr.slice(i * size, i * size + size),
-  );
-// chunk([1,2,3,4,5], 2) -> [[1,2],[3,4],[5]]
-```
-
 # 计数数组中某个值的出现次数
 
 每次遇到数组中的指定值时，使用 Array.reduce() 来递增计数器
@@ -1057,7 +1057,7 @@ console.log(fibonacci(6)); // [ 1, 1, 2, 3, 5, 8 ]
 instanceof 主要的作用就是判断一个实例是否属于某种类型
 
 ```javascript
-let person = function() {};
+let person = function () {};
 let nicole = new person();
 nicole instanceof person; // true
 ```

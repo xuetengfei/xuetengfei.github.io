@@ -118,6 +118,7 @@ const isAtLeastOneQualified = scores.reduce(
 const isAllQualified = scores.reduce((t, v) => t && v.score >= 60, true); // false
 ```
 
+<!--
 ### 数组分割
 
 ```javascript
@@ -137,7 +138,7 @@ function Chunk(arr = [], size = 1) {
 
 const arr = [1, 2, 3, 4, 5];
 Chunk(arr, 2); // [[1, 2], [3, 4], [5]]
-```
+``` -->
 
 ### 数组过滤
 

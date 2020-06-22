@@ -2,6 +2,35 @@
 
 封装功能，提供简单而高效的 API 是提高团队开发效率的可行方案。命令模式即是将分散化的小粒度功能整合成复杂的对象，并提供更简单而统一的 API 来管理并简化功能的使用。
 
+```js
+const Commands = (() => {
+  let obj = {
+    value: 1000,
+    plus(number) {
+      this.value += number;
+    },
+    minus(number) {
+      this.value -= number;
+    },
+  };
+  return {
+    getValue: () => obj.value,
+    excute: ({ command, number }) => {
+      obj[command].call(obj, number);
+    },
+  };
+})();
+
+Commands.excute({ command: 'plus', number: 10 });
+Commands.excute({ command: 'plus', number: 30 });
+Commands.excute({ command: 'minus', number: 15 });
+console.log(Commands.getValue()); // 1025
+```
+
+1.  《JavaScript 设计模式 张容铭著 》
+
+<!--
+
 ```javascript
 let MyCommands = (() => {
   let Actions = {
@@ -14,7 +43,7 @@ let MyCommands = (() => {
     // others command function is code here ...
   };
   return {
-    excute: function(msg) {
+    excute: function (msg) {
       if (!msg) return;
       // 如果msg是数组
       if (msg.length) {
@@ -38,9 +67,7 @@ let MyCommands = (() => {
 })();
 
 MyCommands.excute({ command: 'name', param: ['马冬梅'] });
-
 MyCommands.excute([{ command: 'name', param: '袁华' }]);
-
 MyCommands.excute([
   { command: 'name', param: '夏洛' },
   { command: 'age', param: ['马冬梅', 19, 20] },
@@ -48,12 +75,10 @@ MyCommands.excute([
 ]);
 ```
 
-```javascript
+````javascript
 我是马冬梅
  我是袁华
  我是夏洛
  马冬梅 今年 19 岁  明年 20 岁！
 夏洛 今年 80 岁  明年 81 岁！
-```
-
-1.  《JavaScript 设计模式 张容铭著 》
+````

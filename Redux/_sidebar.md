@@ -3,6 +3,7 @@
   - [redux overview](Redux/redux-overview.md)
   - [redux explanation](Redux/redux-explanation.md)
   - [redux store](Redux/redux-store.md)
+  - [creatStore implementation](Redux/redux-creatStore-implementation.md)
   - [combineReducers](Redux/react-combineReducers.md)
   - [redux applymiddlewares](Redux/redux-middleware-async.md)
 
@@ -22,3 +23,5 @@
 - Rematch
 
   - [rematch](Redux/rematch.md)
+
+

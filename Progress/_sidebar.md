@@ -5,8 +5,8 @@
 - [函数节流和防抖](Progress/throttle-deBounce.md)
 - [图片优化](Progress/Picture-optimization.md)
 - [初、中、高级开发差异](Progress/junior-mid-senior.md)
-- [按需加载 @babel/polyfill](Progress/babel-polyfill.md)
-- [抽象语法树(AST)](Progress/javascript-ast.md)
+<!-- - [按需加载 @babel/polyfill](Progress/babel-polyfill.md) -->
+<!-- - [抽象语法树(AST)](Progress/javascript-ast.md) -->
 - [前端开发的历史和演进](Progress/FE-evolution.md)
 - [瓶颈之后，如何提高](Progress/about-improve.md)
 - [计算机网络(谢希仁)](Progress/computer-network-book.md)
@@ -19,7 +19,7 @@
 - [想给方法传一个空参数](Progress/transmit-Empty-parameter.md)
 - [useful-regular](Progress/useful-regular-expression.md)
 - [选择开源库的正确姿势](Progress/Select-Open-Source-Library.md)
-- [移动端解决方案](Progress/Mobile-Devices.md)
+<!-- - [移动端解决方案](Progress/Mobile-Devices.md) -->
 - [微信小程序](Progress/wechat-mini-app.md)
 - [svg](Progress/svg.md)
 - [定时器](Progress/timer.md)

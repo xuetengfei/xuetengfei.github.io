@@ -3,8 +3,11 @@ const readline = require('readline');
 const path = require('path');
 const fs = require('fs');
 
-const catalogue = '';
-const source = '';
+// 要检测的文件名
+const catalogue = 'Progress';
+
+// 绝对路径，用来生成 mv 命令
+const source = '/Users/xue/Desktop/Project/XUE/_doc/engineering';
 
 if (!catalogue) {
   console.log('Miss catalogue name');
@@ -28,12 +31,14 @@ rl.on('line', line => {
   const name = line.slice(sIdx, eIdx);
   articleList.push(name);
 });
+
 rl.on('close', () => {
   const mdNames = articleList.filter(v => !existsMdFiles.includes(v));
   console.log(`读取完毕！不在 ${catalogue} 目录的文件是`, mdNames);
   if (source) {
     const cmd = mdNames.map(v => `${source}/${v}`).join(' ');
     console.log(`mv ${cmd} ${catalogue}`);
+    return;
   }
   console.log(`在根目录执行 mv some-path/Mocha.md ${catalogue}`);
 });

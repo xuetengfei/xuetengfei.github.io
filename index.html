@@ -15,7 +15,6 @@
     />
     <link rel="stylesheet" href="./_set/vue.css" />
     <link rel="stylesheet" href="./_set/xue.css" />
-    <link rel="stylesheet" id="darkModeLink" href="" />
     <script>
       (function (doc, win) {
         return;
@@ -96,40 +95,36 @@
     <script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
     <script src="./_set/docsify-copy-code@2.js"></script>
     <script>
-      window.onload = function () {
-        let BodyDom = document.getElementsByTagName('body')[0];
-        let ContentDom = document.getElementById('main');
-        let SectionDom = document.getElementsByTagName('section')[0];
-        window.document.onkeydown = disableRefresh;
-        function disableRefresh(evt) {
-          evt = evt ? evt : window.event;
-          if (evt.keyCode) {
-            if (evt.keyCode == 76) {
-              BodyDom.classList.toggle('close');
-            }
-            if (evt.keyCode == 79) {
-              // keyboard:l
-              window.scroll(0, 0);
-            }
-            if (evt.keyCode == 72) {
-              // keyboard:h go Home
-              window.location = '#';
-            }
+      let BodyDom, AsideDom;
+      function handleKeydown(evt) {
+        evt = evt ? evt : window.event;
+        if (evt.keyCode) {
+          if (evt.keyCode == 76) {
+            BodyDom.classList.toggle('close');
+          }
+          if (evt.keyCode == 79) {
+            // keyboard:l
+            window.scroll(0, 0);
+          }
+          if (evt.keyCode == 72) {
+            // keyboard:h go Home
+            window.location = '#';
           }
         }
+      }
+      window.onload = function () {
+        if (!BodyDom) {
+          BodyDom = document.getElementsByTagName('body')[0];
+        }
+        window.document.onkeydown = handleKeydown;
       };
       document.getElementById('Mode').addEventListener('click', function () {
-        const ModeLink = document.getElementById('darkModeLink');
-        const href = ModeLink.getAttribute('href');
-        const url = '//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css';
-        ModeLink.setAttribute('href', href ? '' : url);
+        BodyDom.classList.toggle('Dark');
       });
-    </script>
-    <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
-    <script>
       // if (typeof navigator.serviceWorker !== 'undefined') {
       // navigator.serviceWorker.register('./sw.js');
       // }
     </script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
   </body>
 </html>

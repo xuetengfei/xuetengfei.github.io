@@ -1,5 +1,20 @@
-.dark-mode:not(img) {
-  color: #ffffff;
+.Dark:not(img) {
+  background-color: #b1b1b1;
+}
+.Dark .markdown-section p {
+  color: #ececec;
+}
+.Dark .sidebar {
+  background-color: #b1b1b1;
+  color: #ececec;
+}
+.Dark .input-wrap input {
+  background-color: #b1b1b1;
+  color: #ececec;
+}
+
+body.Dark > main > aside > div.sidebar-nav > ul > li a {
+  color: #ececec;
 }
 
 .markdown-section p {

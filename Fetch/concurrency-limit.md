@@ -113,14 +113,6 @@ app.get('/api/concurrency/:id', async (req, res) => {
 });
 ```
 
-<!--
-1. [第 153 题：实现一个批量请求函数 multiRequest(urls, maxNum) · Issue #378 · Advanced-Frontend/Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/378)
-1. [Promise.all concurrency limit | Develop Paper](https://developpaper.com/promise-all-concurrency-limit/)
-1. [javascript - Resolve promises one after another (i.e. in sequence)? - Stack Overflow](https://stackoverflow.com/questions/24586110/resolve-promises-one-after-another-i-e-in-sequence)
- [Promise.all concurrency limit | Develop Paper](https://developpaper.com/promise-all-concurrency-limit/)
-
- -->
-
 ## p-limit
 
 ```js
@@ -160,14 +152,6 @@ export default function index() {
 1. [tc39/proposal-async-iteration: Asynchronous iteration for JavaScript](https://github.com/tc39/proposal-async-iteration#the-async-iteration-statement-for-await-of)
 2. [async-pool/es7.js at master · rxaviers/async-pool](https://github.com/rxaviers/async-pool/blob/master/lib/es7.js)
 3. [p-limit - npm](https://www.npmjs.com/package/p-limit)
-
-<!--
-
- [现代JS中的流程控制：详解Callbacks 、Promises 、Async/Await - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000016143319#item-9)
-
-[Promise.race vs. Promise.any And Promise.all vs. Promise.allSettled](https://sung.codes/blog/2019/05/18/promise-race-vs-promise-any-and-promise-all-vs-promise-allsettled/)
-
- -->
 
 ## 同步循环中的异步等待
 
@@ -211,3 +195,20 @@ fn().then(res => console.log('end', res));
 ```
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/ayncpool-5-96niIo.jpg' alt='ayncpool-5-96niIo'/>
+
+<!--
+
+ [现代JS中的流程控制：详解Callbacks 、Promises 、Async/Await - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000016143319#item-9)
+
+[Promise.race vs. Promise.any And Promise.all vs. Promise.allSettled](https://sung.codes/blog/2019/05/18/promise-race-vs-promise-any-and-promise-all-vs-promise-allsettled/)
+
+
+[JavaScript async and await in loops | Zell Liew](https://zellwk.com/blog/async-await-in-loops/)
+
+
+1. [第 153 题：实现一个批量请求函数 multiRequest(urls, maxNum) · Issue #378 · Advanced-Frontend/Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/378)
+1. [Promise.all concurrency limit | Develop Paper](https://developpaper.com/promise-all-concurrency-limit/)
+1. [javascript - Resolve promises one after another (i.e. in sequence)? - Stack Overflow](https://stackoverflow.com/questions/24586110/resolve-promises-one-after-another-i-e-in-sequence)
+ [Promise.all concurrency limit | Develop Paper](https://developpaper.com/promise-all-concurrency-limit/)
+
+ -->

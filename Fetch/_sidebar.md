@@ -36,3 +36,4 @@
 
   - [异步请求的演变过程](Fetch/Evolution-process.md)
   - [Fetch 替代 XMLHttpRequest](Fetch/fetch.md)
+  - [concurrency limit](Fetch/concurrency-limit.md)

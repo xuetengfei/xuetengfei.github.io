@@ -1,3 +1,5 @@
+## 1
+
 ```javascript
 const api = 'https://www.apiopen.top/weatherApi?city=';
 const arr = ['深圳', '北京'];
@@ -21,6 +23,8 @@ function fetchWeather(cityname) {
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/promise-order-fetch-1564267930.jpg'/>
 
 经常会遇到这种情况，比如有下面一个数组,对这个数组 promise 数组依次执行，要每隔 2 秒依次问候数组中的人，于是我们将 setTimeout 包装成一个 promise.(类似之前的红绿灯的问题)
+
+## 2
 
 ```javascript
 let arr = ['tom', 'lucy', 'jeke'];
@@ -58,4 +62,34 @@ sayHello();
 // hello, tom
 // hello, lucy
 // hello, jeke
+```
+
+## 3
+
+```javascript
+const prom1 = a => {
+  return new Promise(resolve => {
+    resolve(a);
+  });
+};
+const prom2 = a => {
+  return new Promise(resolve => {
+    resolve(a * 2);
+  });
+};
+const prom3 = a => {
+  return new Promise(resolve => {
+    resolve(a * 3);
+  });
+};
+
+const arr = [prom1, prom2, prom3];
+
+const result = arr.reduce((all, current) => {
+  return all.then(current);
+}, Promise.resolve(1));
+
+result.then(res => {
+  console.log(res); // 6
+});
 ```

@@ -3,7 +3,7 @@
 - [最近的笔记](Progress/index.md)
 - [Express](Express/express-01.md)
 - [算法](Algorithm/index.md)
-- [异步编程](Fetch/index.md)
+- [异步编程](Async/index.md)
 - [函数式编程](FP/index.md)
 - [MongoDB](MongoDB/mongo-install.md)
 - [MySQL](mysql/index.md)

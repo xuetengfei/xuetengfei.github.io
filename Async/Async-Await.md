@@ -5,22 +5,24 @@ async 函数就是将 Generator 函数的星号`*` 替换成 `async`，将 `yiel
 ## Syntax
 
 ```javascript
-const getUser = () => {
-  return new Promise((resolve, reject) => {
-    return resolve({ id: 1, name: 'someuser' });
-  });
-};
+const api = 'http://httpbin.org/get';
 
-const fetchPosts = id => {
-  return new Promise((resolve, reject) => {
-    return resolve(id);
-  });
-};
+const getUser = () =>
+  fetch(`${api}?id=1`)
+    .then(r => r.json())
+    .then(json => json?.args?.id);
+
+const getPost = userId =>
+  fetch(`${api}?id=${userId}&post=2`)
+    .then(r => r.json())
+    .then(json => ({
+      id: json?.args?.id,
+      post: json?.args?.post,
+    }));
 
 const fn = async function () {
-  const user = await getUser();
-  const posts = await fetchPosts(user.id);
-  return { user, posts };
+  const userId = await getUser();
+  return await getPost(userId);
 };
 
 fn()
@@ -28,7 +30,7 @@ fn()
   .catch(err => console.error(err.stack));
 
 /* 
-  res { user: { id: 1, name: 'someuser' }, posts: 1 }
+res {id: "1", post: "2"}
 */
 ```
 

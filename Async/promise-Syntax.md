@@ -330,43 +330,12 @@ Promise.all([async1, async2, async3])
   });
 ``` -->
 
-# Promise.all 并发执行
-
-```javascript
-const api = 'https://www.apiopen.top/weatherApi?city=';
-const arr = ['深圳', '北京'];
-
-function fetchWeather(cityname) {
-  const executor = (resolve, reject) => {
-    fetch(`${api}${cityname}`, { mode: 'cors' })
-      .then(data => resolve(data.json()))
-      .catch(error => reject(error));
-  };
-  return new Promise(executor);
-}
-
-Promise.all(arr.map(v => fetchWeather(v)))
-  .then(values => {
-    console.log(values);
-    // array of resolved values,in same order as function array
-  })
-  .catch(err => {
-    console.log('error', err);
-    // called on any reject
-  });
-
-// (2) [{…深圳}, {…北京}]
-```
-
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/async-promise-all-result-1564224667.jpg'/> -->
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/async-promise-all-1564224362.jpg'/>
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/bingfaqingqiu1548583268.jpg'/> -->
-
 # Promise.race
 
-Promise.race 方法,它的使用方法和 Promise.all 一样，接收一个 promise 对象数组为参数。
+Promise.race 方法,它的使用方法和 Promise.all 一样，接收一个 promise 实例数组为参数。
 
-Promise.all 在接收到的所有的对象 promise 都变为 FulFilled 或者 Rejected 状态之后才会继续进行后面的处理，与之相对的是 Promise.race 只要有一个 promise 对象进入 FulFilled 或者 Rejected 状态的话，就会继续进行后面的处理。
+Promise.all 在`所有的promise实例` 都变为 FulFilled 或者 Rejected 状态之后才会继续进行后面的处理.  
+Promise.race 只要有`一个 promise实例`进入 FulFilled 或者 Rejected 状态的话，就会继续进行后面的处理。
 
 像 Promise.all 时的例子一样，我们来看一个带计时器的 Promise.race 的使用例子。
 
@@ -403,12 +372,62 @@ Promise.race([winnerPromise, loserPromise]).then(function (value) {
 /* 
 执行上面代码的话，
 会看到 winnter和loser promise对象的 setTimeout 方法都会执行完毕，
-
 console.log 也会分别输出它们的信息。
+
 也就是说， 
 Promise.race 在第一个promise对象变为Fulfilled之后，并不会取消其他promise对象的执行。
+
+那么，可以使用Promise.race做并发限制器，后面我会讲
 */
 ```
+
+# 并行(并发)执行
+
+```js
+const api = ' http://httpbin.org/get?id=';
+
+const list = [1, 2, 3].map(v =>
+  fetch(`${api}${v}`)
+    .then(res => res.json())
+    .then(json => json?.args?.id),
+);
+
+function fn() {
+  Promise.all(list)
+    .then(res => {
+      console.log('res: ', res);
+    })
+    .catch(err => {
+      console.log('error', err);
+    });
+}
+
+fn();
+```
+
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200626-BfDoBd-async-parallel.jpg' alt='20200626-BfDoBd-async-parallel'/>
+
+# 串行(继发)请求
+
+```js
+const api = ' http://httpbin.org/get?id=';
+async function fn() {
+  for (let item of [1, 2, 3]) {
+    const res = await fetch(`${api}${item}`);
+    const json = await res.json();
+    const end = json?.args?.id;
+    console.log('end: ', end);
+  }
+}
+
+fn();
+```
+
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200626-YWRgEE-async-queue.jpg' alt='20200626-YWRgEE-async-queue'/>
+
+经常会遇到这种情况，比如有下面一个数组,对这个数组 promise 数组依次执行，要每隔 2 秒依次问候数组中的人，于是我们将 setTimeout 包装成一个 promise.(类似之前的红绿灯的问题)
+
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/async-promise-all-1564224362.jpg'/>
 
 ```js
 ```

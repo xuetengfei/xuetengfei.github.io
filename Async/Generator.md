@@ -2,10 +2,12 @@
 
 形式上，Generator 函数是一个普通函数，但是有两个特征。
 
+```md
 1. function 关键字与函数名之间有一个星号`*`；
 2. 函数体内部使用`yield`表达式（yield 意思就是“产出”），定义不同的内部状态。
+```
 
-Generator 函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个遍历器对象（Iterator Object）。
+Generator 函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个`遍历器对象`（Iterator Object）。
 
 下一步，必须调用这个遍历器对象的`next方法`，使得指针移向下一个状态。也就是说，每次调用 next 方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个 yield 表达式（或 return 语句）为止。
 
@@ -26,7 +28,7 @@ document.getElementById('btn').addEventListener('click', () => {
 });
 ```
 
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/generate.jpg" />
+<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/generate.jpg" width='300px'/>
 
 代码分析:`let x = xue();`调用这个名字叫`xue`的 Generator 函数，返回一个遍历器对象,`现在的x就是一个遍历器对象`。
 Generator 函数里面的每一个 yield 关键字代表暂停。遍历器对象的 next 方法，会使得 Generator 函数前进一步到下一个 yield 暂停点。直至，遍历器对象迭代完毕`done:true`。
@@ -82,18 +84,16 @@ b.next(13); // { value:42, done:true }
 Generator 是实现状态机的最佳结构。比如，下面的 clock 函数就是一个状态机。
 
 ```javascript
+// ES5 实现
 var ticking = true;
-var clock = function () {
+var clock1 = function () {
   if (ticking) console.log('Tick!');
   else console.log('Tock!');
   ticking = !ticking;
 };
-```
 
-上面代码的 clock 函数一共有两种状态（Tick 和 Tock），每运行一次，就改变一次状态。这个函数如果用 Generator 实现，就是下面这样。
-
-```javascript
-var clock = function* () {
+// Generator 实现
+var clock2 = function* () {
   while (true) {
     console.log('Tick!');
     yield;
@@ -103,9 +103,35 @@ var clock = function* () {
 };
 ```
 
-上面的 Generator 实现与 ES5 实现对比，可以看到少了用来保存状态的外部变量 ticking，这样就更简洁，更安全（状态不会被非法篡改）、更符合函数式编程的思想，在写法上也更优雅。Generator 之所以可以不用外部变量保存状态，是因为它本身就包含了一个状态信息，即目前是否处于暂停态。
+使用 Generator 实现,少了用来保存状态的外部变量 ticking，这样就更简洁，更安全（状态不会被非法篡改）、更符合函数式编程的思想，在写法上也更优雅。
+
+也可以封装多个状态
+
+```js
+const clock = function* () {
+  const empty = Object.create(null);
+  while (true) {
+    yield Object.assign(empty, { a: 'red', b: 'green' });
+    yield Object.assign(empty, { a: 'white', b: 'black' });
+  }
+};
+
+let x = clock();
+
+setInterval(() => {
+  let res = x.next();
+  console.log(res.value);
+}, 1000);
+
+// {a: "red", b: "green"}
+// {a: "white", b: "black"}
+// {a: "red", b: "green"}
+// {a: "white", b: "black"}
+```
 
 > Generator 异步操作的同步化表达
+
+Loading 界面的逻辑
 
 ```javascript
 function* loadUI() {
@@ -121,9 +147,7 @@ loader.next();
 loader.next();
 ```
 
-上面代码中，第一次调用 loadUI 函数时，该函数不会执行，仅返回一个遍历器。下一次对该遍历器调用 next 方法，则会显示 Loading 界面（showLoadingScreen），并且异步加载数据（loadUIDataAsynchronously）。等到数据加载完成，再一次使用 next 方法，则会隐藏 Loading 界面。可以看到，这种写法的好处是所有 Loading 界面的逻辑，都被封装在一个函数，按部就班非常清晰。
-
-Ajax 是典型的异步操作，通过 Generator 函数部署 Ajax 操作，可以用同步的方式表达。
+Generator 函数部署 Ajax
 
 ```javascript
 function* main() {
@@ -171,6 +195,35 @@ fetchJson('http://example.com/api').then(obj => console.log(obj));
 [async 函数](http://es6.ruanyifeng.com/#docs/async#%E5%90%AB%E4%B9%89)是什么？
 
 它就是 Generator 函数的语法糖。async 函数就是将 Generator 函数的星号`*`替换成 async，将 yield 替换成 await，仅此而已。async 函数对 Generator 函数的改进，(1)内置执行器，自动执行、(2)返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用 then 方法指定下一步的操作。
+
+> UUIDGenerator
+
+UUIDGenerator 是一个 generator 函数，它使用当前时间和随机数计算 UUID 。
+
+```javascript
+function* UUIDGenerator() {
+  let d, r;
+  while (true) {
+    yield 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      r = (new Date().getTime() + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
+    });
+  }
+}
+const UUID = UUIDGenerator();
+
+setInterval(() => {
+  console.log(UUID.next().value);
+}, 300);
+```
+
+```
+861b9ff5-1062-41ff-967c-bdb81e812d3f
+26a146a1-4faf-4ade-8c66-dcb78517c810
+3ebd10ab-2f6c-410f-9468-898aa1fb863b
+b902cc25-6045-4c6a-b74f-a662bb8f40a5
+```
 
 ---
 

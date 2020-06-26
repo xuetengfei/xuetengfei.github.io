@@ -4,10 +4,8 @@
   - [Event Loop](AsyncEventLoop.md)
   - [Callback](Async/callback.md)
   - [Promise](Async/promise-Syntax.md)
-  - [promise 继发写法](Async/Promise-Queue.md)
-  - [Generator 函数:异步编程解决方案](Async/Generator.md)
-  - [generator 函数:状态机](Async/state-machine.md)
-  - [generator 函数:UUIDGenerator](Async/UUIDGenerator.md)
+  - [并发限制器](Async/concurrency-limit.md)
+  - [Generator](Async/Generator.md)
   - [Async/Await Syntax](Async/Async-Await.md)
   - [Async/Await 继发执行](Async/Async-Await-Secondary-exe.md)
   - [Async/Await 并发执行](Async/Async-Await-Concurrent-exe.md)
@@ -31,14 +29,20 @@
 
   - [异步请求的演变过程](Async/Evolution-process.md)
   - [Fetch 替代 XMLHttpRequest](Async/fetch.md)
-  - [concurrency limit](Async/concurrency-limit.md)
 
 
 
 
-  <!-- - [promise.then chain](Async/promise-chain.md) -->
-  <!-- - [Promise.race 多个异步调用](Async/Promise-race.md) -->
-  <!-- - [Promise 并发执行](Async/Promise-Concurrent-exe.md) -->
-  <!-- - [Promise Queue:异步函数顺序执行](Async/Promise-Queue.md) -->
+  <!-- 
+  
+  
+  - [promise.then chain](Async/promise-chain.md) 
+  - [Promise.race 多个异步调用](Async/Promise-race.md) 
+  - [Promise 并发执行](Async/Promise-Concurrent-exe.md) 
+  - [Promise Queue:异步函数顺序执行](Async/Promise-Queue.md) 
+  - [promise 继发写法](Async/Promise-Queue.md) 
+  
+  -->
+
 
 

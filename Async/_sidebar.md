@@ -4,15 +4,17 @@
   - [Event Loop](AsyncEventLoop.md)
   - [Callback](Async/callback.md)
   - [Promise](Async/promise-Syntax.md)
-  - [并发限制器](Async/concurrency-limit.md)
   - [Generator](Async/Generator.md)
-  - [Async/Await Syntax](Async/Async-Await.md)
-  - [Async/Await 继发执行](Async/Async-Await-Secondary-exe.md)
-  - [Async/Await 并发执行](Async/Async-Await-Concurrent-exe.md)
+  - [Async](Async/Async-Await.md)
+  - [异步编程的演变](Async/Evolution-process.md)
+  - [串行(继发)请求](Async/Queue.md)
+  - [并行(并发)请求](Async/concurrency.md)
+  - [并发限制器](Async/concurrency-limit.md)
   - [错误处理](Async/async-resolve-error.md)
   - [前端请求的技术演变及其优劣](Async/fe-request-evolution.md)
   - [promisify](Async/convert-callbacks-to-promises.md)
   - [Cancel Fetch](Async/how-to-cancel-a-fetch-request.md)
+
 
 - 前端请求
 
@@ -27,7 +29,6 @@
 
 - Fetch
 
-  - [异步请求的演变过程](Async/Evolution-process.md)
   - [Fetch 替代 XMLHttpRequest](Async/fetch.md)
 
 
@@ -41,6 +42,8 @@
   - [Promise 并发执行](Async/Promise-Concurrent-exe.md) 
   - [Promise Queue:异步函数顺序执行](Async/Promise-Queue.md) 
   - [promise 继发写法](Async/Promise-Queue.md) 
+  - [Async/Await 继发执行](Async/Async-Await-Secondary-exe.md)
+  - [Async/Await 并发执行](Async/Async-Await-Concurrent-exe.md)
   
   -->
 

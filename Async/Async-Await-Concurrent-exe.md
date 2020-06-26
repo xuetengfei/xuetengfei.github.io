@@ -1,4 +1,4 @@
-```javascript
+<!-- ```javascript
 const fetch = require('node-fetch');
 const api = 'https://www.apiopen.top/weatherApi?city=';
 
@@ -35,7 +35,7 @@ async function fetchData() {
 }
 
 fetchData();
-```
+``` -->
 
 ### 方法二:创建一个 fetchAll 函数
 

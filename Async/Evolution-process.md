@@ -1,3 +1,5 @@
+callback
+
 ```javascript
 getData(a => {
   getMoreData(a, b => {
@@ -12,6 +14,8 @@ getData(a => {
 });
 ```
 
+promise
+
 ```javascript
 getData()
   .then(a => getMoreData(a))
@@ -21,25 +25,7 @@ getData()
   .then(e => console.log(e));
 ```
 
-```javascript
-getData()
-  .then(getMoreData)
-  .then(getMoreData)
-  .then(getMoreData)
-  .then(getMoreData)
-  .then(console.log);
-```
-
-```javascript
-(async () => {
-  const a = await getData();
-  const b = await getData(a);
-  const c = await getData(b);
-  const d = await getData(c);
-  const e = await getData(d);
-  console.log(e);
-})();
-```
+async
 
 ```javascript
 (async () => {

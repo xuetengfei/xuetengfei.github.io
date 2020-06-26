@@ -12,7 +12,6 @@
   - [并发限制器](Async/concurrency-limit.md)
   - [错误处理](Async/error-handling.md)
   - [promisify](Async/convert-callbacks-to-promises.md)
-  - [Cancel Fetch](Async/how-to-cancel-a-fetch-request.md)
 
 
 - 前端请求
@@ -29,6 +28,7 @@
 - Fetch
 
   - [Fetch 替代 XMLHttpRequest](Async/fetch.md)
+  - [Cancel Fetch](Async/how-to-cancel-a-fetch-request.md)
   - [前端请求的技术演变及其优劣](Async/fe-request-evolution.md)
 
 

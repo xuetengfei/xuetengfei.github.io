@@ -10,8 +10,7 @@
   - [串行(继发)请求](Async/Queue.md)
   - [并行(并发)请求](Async/concurrency.md)
   - [并发限制器](Async/concurrency-limit.md)
-  - [错误处理](Async/async-resolve-error.md)
-  - [前端请求的技术演变及其优劣](Async/fe-request-evolution.md)
+  - [错误处理](Async/error-handling.md)
   - [promisify](Async/convert-callbacks-to-promises.md)
   - [Cancel Fetch](Async/how-to-cancel-a-fetch-request.md)
 
@@ -30,6 +29,7 @@
 - Fetch
 
   - [Fetch 替代 XMLHttpRequest](Async/fetch.md)
+  - [前端请求的技术演变及其优劣](Async/fe-request-evolution.md)
 
 
 
@@ -42,8 +42,6 @@
   - [Promise 并发执行](Async/Promise-Concurrent-exe.md) 
   - [Promise Queue:异步函数顺序执行](Async/Promise-Queue.md) 
   - [promise 继发写法](Async/Promise-Queue.md) 
-  - [Async/Await 继发执行](Async/Async-Await-Secondary-exe.md)
-  - [Async/Await 并发执行](Async/Async-Await-Concurrent-exe.md)
   
   -->
 

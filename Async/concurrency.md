@@ -1,3 +1,25 @@
+循环体内，没有 await 等待返回。一次性发起请求，那么的话，都是并发。
+
+```js
+const api = ' http://httpbin.org/get?id=';
+
+const f = id =>
+  fetch(`${api}${id}`)
+    .then(res => res.json())
+    .then(json => json?.args?.id);
+
+async function getAll() {
+  const arr = [1, 2, 3];
+  for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    f(element);
+  }
+}
+getAll();
+```
+
+这样无法控制并发的返回结果的顺序。日常开发需要**`控制时序`**
+
 #### 方法一:Promise.all
 
 ```js
@@ -66,24 +88,4 @@ async function fetchAll() {
     data2: await f(2),
   };
 }
-```
-
-循环体内，没有 await 等待返回。一次性发起请求，那么的话，都是并发。
-
-```js
-const api = ' http://httpbin.org/get?id=';
-
-const f = id =>
-  fetch(`${api}${id}`)
-    .then(res => res.json())
-    .then(json => json?.args?.id);
-
-async function getAll() {
-  const arr = [1, 2, 3];
-  for (let index = 0; index < arr.length; index++) {
-    const element = arr[index];
-    f(element);
-  }
-}
-getAll();
 ```

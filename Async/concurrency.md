@@ -20,7 +20,7 @@ getAll();
 
 这样无法控制并发的返回结果的顺序。日常开发需要**`控制时序`**
 
-#### 方法一:Promise.all
+<!-- ### e.g.1
 
 ```js
 const api = ' http://httpbin.org/get?id=';
@@ -42,50 +42,31 @@ function fn() {
 }
 
 fn();
-```
+``` -->
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200626-BfDoBd-async-parallel.jpg' alt='20200626-BfDoBd-async-parallel'/>
-
-#### 方法二:创建一个 fetchAll 函数
+## e.g
 
 ```javascript
+const fetch = require('node-fetch');
 const api = ' http://httpbin.org/get?id=';
+
+// const startTime = Date.now();
+// const log = v => console.log(v, 'cost:', Date.now() - startTime, 'ms');
 
 const f = id =>
   fetch(`${api}${id}`)
     .then(res => res.json())
-    .then(json => json?.args?.id);
+    .then(json => json.args.id);
 
-async function fetchAll() {
-  const data1 = f(1);
-  const data2 = f(2);
-  return {
-    data1: await data1,
-    data2: await data2,
-  };
-}
-
-async function getAll() {
+const getAll = async () => {
   try {
-    const result = await fetchAll();
-    console.log('result: ', result);
+    return await Promise.all([f(1), f(2), f(3)]);
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-getAll();
-
-/* 
-result: {data1: "1", data2: "2"}
-*/
-
-// 注意 fetchAll 函数的写法问题
-// 错误的写法,这样写是串行
-async function fetchAll() {
-  return {
-    data1: await f(1),
-    data2: await f(2),
-  };
-}
+getAll().then(res => console.log('res: ', res));
 ```
+
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200626-BfDoBd-async-parallel.jpg' alt='20200626-BfDoBd-async-parallel'/>

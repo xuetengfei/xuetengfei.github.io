@@ -383,13 +383,7 @@ Promise.race 在第一个promise对象变为Fulfilled之后，并不会取消其
 
 ---
 
-1. [ES6 系列之我们来聊聊 Promise · Issue #98 · mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog/issues/98)
-2. [The Async Await Episode I Promised - YouTube](https://www.youtube.com/watch?v=vn3tm0quoqE)
-3. [⭐️🎀 JavaScript Visualized: Promises & Async/Await - DEV Community 👩‍💻👨‍💻](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
 4. [使用 Promise - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises)
 5. [JavaScript Promise 迷你书（中文版）](http://liubin.org/promises-book/#what-is-promise)
-6. [JavaScript Promises - 众成翻译](https://zcfy.cc/article/javascript-promises-101)
-
-```
-
-```
+6. [JavaScript Visualized: Promises & Async/Await - DEV Community ](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
+7. [JavaScript Promises - 众成翻译](https://zcfy.cc/article/javascript-promises-101)

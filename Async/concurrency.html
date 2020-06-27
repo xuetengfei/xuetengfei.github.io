@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const startTime = Date.now();
+      const log = v => console.log(v, 'cost:', Date.now() - startTime, 'ms');
+      const api = ' http://httpbin.org/get?id=';
+      const f = id =>
+        fetch(`${api}${id}`)
+          .then(res => res.json())
+          .then(json => json.args.id);
+
+      const getAll = async () => {
+        try {
+          const result = await Promise.all([f(1), f(2), f(3)]);
+          log(result);
+          return result;
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      getAll().then(res => console.log('res: ', res));
+    </script>
+  </body>
+</html>

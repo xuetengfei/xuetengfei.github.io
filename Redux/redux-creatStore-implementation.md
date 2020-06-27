@@ -1,36 +1,6 @@
 使用命令模式，实现一个 createStore 方法
 
-> 命令模式:封装功能，简化 API。封装功能，提供简单而高效的 API 是提高团队开发效率的可行方案。命令模式即是将分散化的小粒度功能整合成复杂的对象，并提供更简单而统一的 API 来管理并简化功能的使用。
-
-```js
-// 命令模式
-const Commands = (() => {
-  let Actions = {
-    value: 1000,
-    plus(number) {
-      this.value += number;
-      return this.value;
-    },
-    minus(number) {
-      this.value -= number;
-      return this.value;
-    },
-  };
-  return {
-    getValue: () => Actions.value,
-    excute: ({ command, number }) => {
-      Actions[command].call(Actions, number);
-    },
-  };
-})();
-
-Commands.excute({ command: 'plus', number: 10 });
-Commands.excute({ command: 'plus', number: 30 });
-Commands.excute({ command: 'minus', number: 15 });
-console.log(Commands.getValue()); // 1025
-```
-
-正式编码
+[命令模式 - xuetengfei](/javascript/DesignPattern/Command-mode)
 
 ```js
 // index.js

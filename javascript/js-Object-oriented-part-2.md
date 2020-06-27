@@ -10,15 +10,15 @@ function Animal(name, energy) {
 
 Animal.prototype = {
   constructor: Animal,
-  eat: function(amount = 0) {
+  eat: function (amount = 0) {
     console.log(` ${this.name} is eating  `);
     this.energy += amount;
   },
-  sleep: function(length) {
+  sleep: function (length) {
     console.log(` ${this.name} is sleeping.`);
     this.energy += length;
   },
-  play: function(length) {
+  play: function (length) {
     console.log(` ${this.name} is playing.`);
     this.energy -= length;
   },

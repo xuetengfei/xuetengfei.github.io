@@ -14,7 +14,7 @@
 - 条件和判断
 
   - [优化条件判断语句](javascript/Improve-judge.md)
-  <!-- - [Object replace Switch](javascript/Object-Replace-Switch.md) -->
+  - [Object replace Switch](javascript/Object-Replace-Switch.md)
   - [使用 map 书写复杂的判断](javascript/judge-with-map.md)
   - [常用的判断](javascript/is-an-empty-obj.md)
 
@@ -76,11 +76,10 @@
 
 
 - OOP
+
   - [call-apply-bind](javascript/call-apply-bind.md)
-  - [OOP - 基本概念](javascript/js-Object-oriented-part-1.md)
-  - [OOP - es5、es6](javascript/js-Object-oriented-part-2.md)
-  - [OOP - es5、es6 继承](javascript/oop-inherit.md)
-  - [原型对象、原型、原型链](javascript/js-prototype-chain.md)
+  - [OOP、Inherit](javascript/js-Object-oriented-part.md)
+  - [原型链](javascript/js-prototype-chain.md)
   - [new 操作符](javascript/new-Operator.md)
   - [ES6 Class 静态方法](javascript/Class-Static-methods.md.md)
   - [JavaScript 中的私有变量](javascript/private-variable.md)

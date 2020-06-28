@@ -24,7 +24,7 @@
 
   - [leetCode](Algorithm/leetCode-part-1.md)
   - [Max Consecutive Ones](Algorithm/Max-Consecutive-1.md)
-  - [找出最长连续步数](Algorithm/longStep.md)
+  <!-- - [找出最长连续步数](Algorithm/longStep.md) -->
 
 - Others
 

@@ -6,8 +6,7 @@
 // index.js
 function createStore(fn) {
   let state = fn(undefined, { type: undefined });
-  console.log('state: ', state);
-  const observerList = [];
+  let observerList = [];
   return {
     getState: () => state,
     dispatch: action => {
@@ -16,9 +15,9 @@ function createStore(fn) {
     },
     subscribe: observer => {
       observerList.push(observer);
-      const unsubscribe = () => {
-        observerList = observerList.filter(l => l !== observer);
-      };
+      function unsubscribe() {
+        observerList = observerList.filter(v => v !== observer);
+      }
       return unsubscribe;
     },
   };
@@ -92,4 +91,28 @@ state:  0
 
   6 passing (4ms)
 
+```
+
+```js
+function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+const store = createStore(counter);
+let unsubscribeConsole = store.subscribe(_ => console.log(store.getState()));
+store.dispatch({ type: 'INCREMENT' });
+store.dispatch({ type: 'INCREMENT' });
+unsubscribeConsole();
+store.dispatch({ type: 'INCREMENT' });
+store.dispatch({ type: 'INCREMENT' });
+
+// 1
+// 2
 ```

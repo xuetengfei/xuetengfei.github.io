@@ -38,12 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 ```
 
-[Lazy loading images using event handlers - example code](https://codepen.io/imagekit_io/pen/MBNwKB)
+1. [Lazy loading images using event handlers - example code](https://codepen.io/imagekit_io/pen/MBNwKB)
 
 ## 方法二:IntersectionObserver API 实现懒加载
 
-可以使用**IntersectionObserver**判断图片是否进入适口，比之前计算高度的方式，更简单优雅。还有很多的浏览器不支持这个 API。没事，问题不大，官方垫片用起来。[w3c · IntersectionObserver · polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)。
+可以使用**IntersectionObserver**判断图片是否进入适口，比之前计算高度的方式，更简单优雅。还有很多的浏览器不支持这个 API。没事，问题不大，官方垫片用起来。
 
+<!--
 ```md
 npm install intersection-observer --save-dev
 ```
@@ -51,101 +52,67 @@ npm install intersection-observer --save-dev
 ```javascript
 // 项目入口引入 intersection-observer
 import 'intersection-observer';
+``` -->
+
+使用 交叉观察者(IntersectionObserver)实现图片懒加载。并且封装成一个 react 组件。
+
+```js
+// lazyImage.tsx
+import React, { useEffect, useRef } from 'react';
+import loadingPlaceholder from './loading.svg';
+import { observer } from './observer';
+
+export default function LazyImage(props) {
+  const { src, url, alt } = props;
+  const ref = useRef(null);
+
+  useEffect(() => {
+    observer.observe(ref.current);
+  }, []);
+
+  return (
+    <>
+      <div className="lazy-load-image-warpper">
+        <img
+          ref={ref}
+          src={src || loadingPlaceholder}
+          data-src={url}
+          alt={alt || 'a image'}
+        />
+      </div>
+    </>
+  );
+}
 ```
 
-```html
-<!-- 简单样式一下 -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Lazy load - IntersectionObserver</title>
-    <style>
-      img {
-        display: block;
-        width: 300px;
-        border: 4px solid #000;
-        margin-bottom: 1000px;
-      }
-    </style>
-  </head>
-  <body>
-    <img src="loading.gif" data-src="https://picsum.photos/100/100" alt="1" />
-    <img src="loading.gif" data-src="https://picsum.photos/110/110" alt="2" />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=1"
-      alt="3"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=2"
-      alt="3"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=3"
-      alt="3"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=4"
-      alt="4"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=5"
-      alt="5"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=6"
-      alt="6"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=7"
-      alt="7"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=8"
-      alt="8"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=9"
-      alt="9"
-    />
-    <img
-      src="loading.gif"
-      data-src="https://picsum.photos/200/300?random=10"
-      alt="10"
-    />
-  </body>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const imageObserver = new IntersectionObserver((entries, imgObserver) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.src = entry.target.dataset.src;
-            imgObserver.unobserve(entry.target); // 解除观察
-          }
-        });
-      });
-      document.querySelectorAll('img').forEach(img => {
-        imageObserver.observe(img);
-      });
-    });
-  </script>
-</html>
+```js
+// observer
+function handler(Images, observer) {
+  for (const image of Images) {
+    if (image.isIntersecting) {
+      const picture = new Image();
+      picture.src = image.target.dataset.src;
+      picture.onload = function () {
+        console.log(`The picture ${image.target.dataset.src} had loaded`);
+        image.target.src = picture.src;
+        image.target.classList.add('picture-shadow');
+      };
+      observer.unobserve(image.target);
+    } else {
+    }
+  }
+}
+
+const options = {
+  rootMargin: '0px 0px -400px 0px',
+};
+
+export const observer = new IntersectionObserver(handler, options);
 ```
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200603115630lazy-Images-using-the-Intersection-Observer-API.jpg' alt='20200603115630lazy-Images-using-the-Intersection-Observer-API'/>
-
-1. [codepen demo: Intersection Observer - Lazy Load](https://codepen.io/rpsthecoder/pen/pByZjR?editors=1010)
-2. [A Few Functional Uses for Intersection Observer to Know When an Element is in View | CSS-Tricks](https://css-tricks.com/a-few-functional-uses-for-intersection-observer-to-know-when-an-element-is-in-view/)
-3. [Lazy Loading Images using the Intersection Observer API](https://blog.bitsrc.io/lazy-loading-images-using-the-intersection-observer-api-5a913ee226d#:~:text=Lazy%20Loading%20Images%20using%20Intersection,and%20placed%20in%20the%20view.)
+1. [在线预览](https://code-sand-box.vercel.app/#/lazyLoadImage)
+2. [源代码](https://github.com/xuetengfei/CodeSandBox/blob/600525f75a79c397abe2609c8e6a95b5c1329bfe/page/LazyLoadImage/lazyImage.tsx#L10)
+3. [w3c · IntersectionObserver · polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)。
 
 ## 方法三：第三方库 lazysizes
 
@@ -202,29 +169,6 @@ export default function ImageWaterfall() {
 />
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/lazy-load-1557220030.jpg'/>
-
-#### 提升用户体验
-
-添加额外的模糊过度样式，可以提升用户体验，下面的 css 效果是这样的。
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/blur-css-img-1555747251.jpg' width="700px"/>
-
-```
-<style>
-	.blur-up {
-		-webkit-filter: blur(5px);
-		filter: blur(5px);
-		transition: filter 400ms, -webkit-filter 400ms;
-	}
-
-	.blur-up.lazyloaded {
-		-webkit-filter: blur(0);
-		filter: blur(0);
-	}
-</style>
-
-<img src="lqip-src.jpg" data-src="image.jpg" class="lazyload blur-up" />
-
-```
 
 ## 后话
 
@@ -283,3 +227,36 @@ export default function ImageWaterfall() {
 ---
 
 1. [The Complete Guide to Lazy Loading Images | CSS-Tricks](https://css-tricks.com/the-complete-guide-to-lazy-loading-images/)
+
+<!--
+
+#### 提升用户体验
+
+添加额外的模糊过度样式，可以提升用户体验，下面的 css 效果是这样的。
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/blur-css-img-1555747251.jpg' width="700px"/>
+
+```
+<style>
+	.blur-up {
+		-webkit-filter: blur(5px);
+		filter: blur(5px);
+		transition: filter 400ms, -webkit-filter 400ms;
+	}
+
+	.blur-up.lazyloaded {
+		-webkit-filter: blur(0);
+		filter: blur(0);
+	}
+</style>
+
+<img src="lqip-src.jpg" data-src="image.jpg" class="lazyload blur-up" />
+
+```
+
+ -->
+
+<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200603115630lazy-Images-using-the-Intersection-Observer-API.jpg' alt='20200603115630lazy-Images-using-the-Intersection-Observer-API'/> -->
+<!--
+1. [codepen demo: Intersection Observer - Lazy Load](https://codepen.io/rpsthecoder/pen/pByZjR?editors=1010)
+2. [A Few Functional Uses for Intersection Observer to Know When an Element is in View | CSS-Tricks](https://css-tricks.com/a-few-functional-uses-for-intersection-observer-to-know-when-an-element-is-in-view/)
+3. [Lazy Loading Images using the Intersection Observer API](https://blog.bitsrc.io/lazy-loading-images-using-the-intersection-observer-api-5a913ee226d#:~:text=Lazy%20Loading%20Images%20using%20Intersection,and%20placed%20in%20the%20view.) -->

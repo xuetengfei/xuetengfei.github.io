@@ -1,6 +1,7 @@
+上一篇博客简单介绍了，store 的简单实现。这篇博客补充完成，附加上测试。
 使用命令模式，实现一个 createStore 方法
 
-[命令模式 - xuetengfei](/javascript/DesignPattern/Command-mode)
+1. [命令模式 - xuetengfei](/javascript/DesignPattern/Command-mode)
 
 ```js
 // index.js

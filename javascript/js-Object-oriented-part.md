@@ -303,7 +303,7 @@ class Animal {
 
 <!-- 怎样实现 JS 中的继承? 其实实现继承的方式有多种。 原型链继承，构造函数继承，组合继承等等。 -->
 
-# ES5 实现继承
+<!-- # ES5 实现继承
 
 第一: 原型链继承
 
@@ -418,8 +418,63 @@ console.log('litterFox: ', litterFox);
 litterFox.speak();
 // rename-ffox makes a noise.
 // rename-ffox roars.
+``` -->
+
+# 实现继承
+
+```js
+const log = (...x) => console.log(...x);
+
+/* ES6/ES2015 classes */
+class A {
+  constructor() {
+    this.a = 10;
+  }
+  print() {
+    console.log(this.a, this.b);
+  }
+}
+
+let a = new A();
+log('a: ', a); // a:  A { a: 10 }
+a.print(); // 10 undefined
+
+class B extends A {
+  constructor() {
+    super();
+    this.b = 20;
+  }
+}
+let b = new B();
+log('b : ', b); // b :  B { a: 10, b: 20 }
+b.print(); // 10 20
+
+/* ES5 equivalent */
+function C() {
+  this.c = 100;
+}
+
+C.prototype.print = function () {
+  console.log(this.c, this.d);
+};
+
+let c = new C();
+log('c: ', c); // c:  C { c: 100 }
+c.print(); // 100 undefined
+
+function D() {
+  C.call(this);
+  this.d = 200;
+}
+
+D.prototype = Object.create(C.prototype);
+
+let d = new D();
+log(' d: ', d); // d:  C { c: 100, d: 200 }
+d.print(); //  100 200
 ```
 
 ---
 
+1. [JavaScript 中的继承 | MDN](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Inheritance)
 1. [super - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/super)

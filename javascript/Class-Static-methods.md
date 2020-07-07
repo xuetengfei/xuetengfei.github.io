@@ -23,4 +23,4 @@ console.log(Point.distance(p1, p2)); // 7.0710678118654755
 
 ---
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+1. [Classes - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)

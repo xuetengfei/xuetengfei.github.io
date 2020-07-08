@@ -2,14 +2,14 @@ Proxy 对象用于定义基本操作(如属性查找、赋值、枚举、函数�
 
 ### Syntax
 
-```javascript
+```js
 const handler = {
   set: function (target, property, value, receiver) {},
 };
 const p = new Proxy(target, handler);
 ```
 
-```javascript
+```js
 const wrap = obj => {
   return new Proxy(obj, {
     get(target, propKey) {
@@ -29,7 +29,7 @@ console.log(wrapped.message);
 
 ### example: Validation
 
-```javascript
+```js
 let checkHandler = {
   set: function (obj, prop, value) {
     if (prop === 'age') {
@@ -82,7 +82,7 @@ $ node javascript-Proxy.js
 
 可以使用代理对属性读 / 写创建副作用。 想法是触发一些函数，如果一个特定的属性被访问或写入。 举例:
 
-```javascript
+```js
 const sendEmail = () => {
   console.log('Sending Email After Task Completion');
 };
@@ -108,7 +108,7 @@ tasks.status = 'complete';
 
 ### example: Caching
 
-```javascript
+```js
 const cacheTarget = (target, ttl = 60) => {
   const CREATED_AT = Date.now();
   const isExpired = () => Date.now() - CREATED_AT > ttl * 1000;
@@ -132,7 +132,7 @@ setTimeout(() => {
 
 ### lazy code
 
-```javascript
+```js
 const executeOperations = (operations, args) => {
   return operations.reduce((args, method) => {
     return [method(...args)];
@@ -208,7 +208,7 @@ console.log(a.run()); // -> 100
 apply 方法拦截函数的调用、call 和 apply 操作。
 apply 方法可以接受三个参数，分别是目标对象、目标对象的上下文对象（this）和目标对象的参数数组。
 
-```javascript
+```js
 var handler = {
   apply(target, ctx, args) {
     return Reflect.apply(...arguments);
@@ -248,7 +248,6 @@ proxy2.apply(null, [7, 8]); // 30
 
 ---
 
-0.[Proxy - ECMAScript 6 入门](https://es6.ruanyifeng.com/#docs/proxy)
-
+1. [Proxy - ECMAScript 6 入门](https://es6.ruanyifeng.com/#docs/proxy)
 1. [Proxy - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
-2. [Javascript Proxies : Real World Use Cases – Arbaz Siddiqui](https://www.arbazsiddiqui.me/javascript-proxies-real-world-use-cases/)
+1. [Javascript Proxies : Real World Use Cases – Arbaz Siddiqui](https://www.arbazsiddiqui.me/javascript-proxies-real-world-use-cases/)

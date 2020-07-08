@@ -1,5 +1,13 @@
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-cover-1552709232.png'/>
 
+> 基于原型的语言？
+
+JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。
+
+准确地说，这些属性和方法定义在 Object 的构造器函数(constructor functions)之上的 prototype 属性上，而非对象实例本身。
+
+在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是`_proto_` 属性，是从构造函数的 prototype 属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。
+
 ## prototype
 
 !> 每个「函数」都有 prototype 属性。 在规范里，prototype 被定义为给其它对象提供共享属性的对象。也就是说，prototype 自己也是**对象**，只是被用以承担某个职能罢了。
@@ -365,11 +373,11 @@ console.log(a);
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-04-1552708761.jpg'/>
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-05-1552708761.jpg'/>
 
----
+<!-- ---
 
 1. [继承与原型链 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 2. [配图来源](https://cnodejs.org/topic/5c8a6a657ce0df3732428093)
 3. [How To Work with Prototypes and Inheritance in JavaScript | DigitalOcean](https://www.digitalocean.com/community/tutorials/understanding-prototypes-and-inheritance-in-javascript)
 4. [Understanding Classes in JavaScript – Tania Rascia](https://www.taniarascia.com/understanding-classes-in-javascript/)
 5. [【第 1752 期】深入理解 JavaScript 原型](https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651234313&idx=1&sn=4f645f142e2b5bccc3651214a81de6bd&chksm=bd49798d8a3ef09bbe23df57fd068e4aa3fdefc0d889a6f5ef495574cb7980fc872ce20febd0&scene=21#wechat_redirect)
-6. [JS 基础-原型、原型链 | 前端进阶积累](http://obkoro1.com/web_accumulate/accumulate/JS/prototype.html#prototype)
+6. [JS 基础-原型、原型链 | 前端进阶积累](http://obkoro1.com/web_accumulate/accumulate/JS/prototype.html#prototype) -->

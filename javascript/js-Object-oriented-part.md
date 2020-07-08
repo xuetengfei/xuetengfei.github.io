@@ -294,184 +294,78 @@ class Animal {
 }
 ```
 
-<!--
-
-[JavaScript原型初学者指南 - 众成翻译](https://www.zcfy.cc/article/a-beginner-s-guide-to-javascript-s-prototype)
-
-
- -->
-
-<!-- 怎样实现 JS 中的继承? 其实实现继承的方式有多种。 原型链继承，构造函数继承，组合继承等等。 -->
-
-<!-- # ES5 实现继承
-
-第一: 原型链继承
-
-```js
-// 原型链继承:继承全部属性和方法
-// 将父类的实例作为子类的原型
-children.prototype = new Father();
-children.prototype.constructor = children;
-```
-
-```js
-// 定义基类
-function Animal(kind) {
-  // 私有属性
-  this.name = 'Animal';
-  this.type = kind;
-}
-
-// 公有方法或属性
-Animal.prototype.eat = function () {
-  console.log('吃');
-};
-
-// 定义子类
-function Duck() {
-  // 私有属性
-  this.type = 'Duck';
-}
-
-Duck.prototype = new Animal(); // 继承
-
-const duck = new Duck();
-duck.eat(); // 吃
-console.log(duck.name); // Animal
-```
-
-第二: 只继承公有方法 有时候显然不想让子类继承父类的私有属性，
-
-```js
-children.prototype.__proto__ = Father.prototype;
-// or
-children.prototype.__proto__ = Object.create(Father.prototype);
-```
-
-```js
-Duck.prototype.swim = function () {
-  console.log('游泳');
-};
-// 只继承Animal的公有方法或者属性
-Duck.prototype.__proto__ = Animal.prototype;
-
-let duck = new Duck();
-duck.eat(); // 吃,
-duck.swim(); // 游泳
-console.log(duck.name); // undefined,
-//  先会在Duck类上找name私有属性，而且Animal.prototype没有包含Animal类的私有属性
-```
-
-# ES6 实现继承
-
-```js
-class Cat {
-  constructor(name) {
-    this.name = name;
-  }
-  speak() {
-    console.log(this.name + ' makes a noise.');
-  }
-}
-
-// -- 01-class Lion --
-class Lion extends Cat {
-  speak() {
-    console.log(this.name + ' roars.');
-  }
-}
-
-let litterLion = new Lion('Tom');
-litterLion.speak(); // Tom roars.
-
-// -- 02-class Tiger --
-class Tiger extends Cat {
-  speak() {
-    super.speak();
-    console.log(this.name + ' roars.');
-  }
-}
-
-let litterTiger = new Tiger('Tom');
-litterTiger.speak();
-// Tom makes a noise.
-// Tom roars.
-
-//  -- 03-class Fox --
-class Fox extends Cat {
-  constructor(name) {
-    // super关键字用于访问和调用父对象上的函数。
-    // 在构造函数中使用时，super关键字将单独出现，并且必须在使用this关键字之前使用
-    super();
-    // 调用super,是为了重写变量
-    this.name = 'rename-' + name;
-  }
-  speak() {
-    super.speak();
-    console.log(this.name + ' roars.');
-  }
-}
-
-let litterFox = new Fox('ffox');
-console.log('litterFox: ', litterFox);
-// litterFox:  Fox { name: 'rename-ffox' }
-litterFox.speak();
-// rename-ffox makes a noise.
-// rename-ffox roars.
-``` -->
-
 # 实现继承
 
 ```js
 const log = (...x) => console.log(...x);
-
-/* ES6/ES2015 classes */
+log('====================================');
+/* ES6  */
 class A {
-  constructor() {
+  constructor(type) {
     this.a = 10;
+    this.type = type;
   }
   print() {
-    console.log(this.a, this.b);
+    log(this.a, this.b, this.type);
   }
 }
 
-let a = new A();
-log('a: ', a); // a:  A { a: 10 }
-a.print(); // 10 undefined
+let a = new A('alphabet-a');
+log('a: ', a); // a:  A { a: 10, type: 'alphabet-a' }
+a.print(); // 10 undefined alphabet-a
 
 class B extends A {
-  constructor() {
-    super();
+  constructor(type, c) {
+    super(type); // super(type) == A.call(this,type)
     this.b = 20;
+    this.c = c;
+  }
+  print() {
+    super.print();
+    log('b own print function');
   }
 }
-let b = new B();
-log('b : ', b); // b :  B { a: 10, b: 20 }
-b.print(); // 10 20
 
-/* ES5 equivalent */
-function C() {
+log('====================================');
+let b = new B('alphabet-b', 30);
+log('b : ', b); // b :  B { a: 10, type: 'alphabet-b', b: 20, c: 30 }
+b.print();
+// 10 20 alphabet-b
+// b own print function
+
+/* ES5  */
+function C(d) {
   this.c = 100;
+  this.d = d;
 }
 
 C.prototype.print = function () {
   console.log(this.c, this.d);
 };
 
-let c = new C();
-log('c: ', c); // c:  C { c: 100 }
-c.print(); // 100 undefined
+log('====================================');
+let c = new C(150);
+log('c: ', c); // c:  C { c: 100, d: 150 }
+c.print(); // 100 150
 
-function D() {
-  C.call(this);
-  this.d = 200;
+function D(d, e) {
+  C.call(this, d);
+  this.e = e;
 }
-
 D.prototype = Object.create(C.prototype);
+D.prototype.constructor = D;
+D.prototype.print = function () {
+  console.log(this.c, this.d, this.e);
+};
 
-let d = new D();
-log(' d: ', d); // d:  C { c: 100, d: 200 }
-d.print(); //  100 200
+log('====================================');
+let d = new D(150, 200);
+log(' d: ', d); // d:  D { c: 100, d: 150, e: 200 }
+d.print(); // 100 150 200
+
+console.log(Object.getPrototypeOf(d)); // D { constructor: [Function: D], print: [Function (anonymous)] }
+console.log(d.constructor); // [Function: D]
+log('====================================');
 ```
 
 ---

@@ -27,6 +27,32 @@ console.log(wrapped.message);
 // >> hello world
 ```
 
+e.g: handler.apply() 方法用于拦截函数的调用
+
+```js
+const fetch = ms => {
+  return new Promise((resolve, _) => {
+    setTimeout(() => {
+      resolve(ms);
+    }, ms * 1000);
+  });
+};
+
+const handler = {
+  apply: function (target, _context, args) {
+    // dosomething
+    console.log('target: ', target); // target:  [Function: fetch]
+    return target(...args);
+  },
+};
+
+const Task = new Proxy(fetch, handler);
+
+Task(1)
+  .then(res => console.log(res))
+  .catch();
+```
+
 ### example: Validation
 
 ```js

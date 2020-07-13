@@ -8,7 +8,7 @@ apt-get update && apt install vim
 
 ```
 
-使用 **`-v`** 标记可以指定挂载一个本地主机的文件到容器中去。在 container 内去修改 test.md 那么，本地主机的 test.md 文件也会有相应的改动。这里是单个文件，也可以是一个目录。
+使用 `-v` 标记可以指定挂载一个本地主机的文件到容器中去。在 container 内去修改 test.md 那么，本地主机的 test.md 文件也会有相应的改动。这里是单个文件，也可以是一个目录。
 我的理解：可以看作为软链接。`ln -s path/to/file path/to/symlink`
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/docker-LqmHNH.jpg' alt='docker-LqmHNH'/>

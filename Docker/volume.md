@@ -1,5 +1,9 @@
 卷提供了将容器的特定文件系统路径连接回主机的能力。如果挂载了容器中的目录，那么在主机上也可以看到该目录中的更改。如果我们在容器重新启动时挂载相同的目录，我们会看到相同的文件
 
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/docker-2jGs2x.jpg' alt='docker-2jGs2x'/>
+
+---
+
 > 1.挂载一个主机文件作为数据卷
 
 ```sh
@@ -23,8 +27,6 @@ docker volume create host-data
 <!-- 查看一下 -->
 
 docker volume ls
-
-<!-- 打印结果 -->
 
 | DRIVER | VOLUME NAME |
 | ------ | ----------- |

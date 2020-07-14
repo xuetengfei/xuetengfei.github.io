@@ -231,3 +231,45 @@ blockquote p {
 .markdown-section hr {
   border-bottom-width: 5px;
 }
+
+/* table css */
+
+table,
+thead,
+tbody,
+tfoot,
+td,
+th,
+caption {
+  display: block;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+th,
+td {
+  padding: 0.25rem;
+  text-align: left;
+  border: none !important;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 150px;
+}
+th:nth-child(n + 1),
+td:nth-child(n + 1) {
+  flex: 1;
+}
+
+.markdown-section td,
+.markdown-section th {
+  padding: 6px 13px;
+}

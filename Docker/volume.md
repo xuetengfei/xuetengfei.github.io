@@ -1,6 +1,6 @@
 卷提供了将容器的特定文件系统路径连接回主机的能力。如果挂载了容器中的目录，那么在主机上也可以看到该目录中的更改。如果我们在容器重新启动时挂载相同的目录，我们会看到相同的文件
 
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/docker-2jGs2x.jpg' alt='docker-2jGs2x'/> -->
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/docker-2jGs2x.jpg' alt='docker-2jGs2x'/>
 
 ---
 
@@ -50,7 +50,7 @@ index.css
 root@2d0a35731712:~# exit <!-- exit -->
 exit
 
-➜ docker run -it --rm -v host-data:/root ubuntu:16.04 bash\
+➜ docker run -it --rm -v host-data:/root ubuntu:16.04 bash
 
 root@d590dbc9acd6:/# cd root && ls <!-- 查看root目录下面的文件 -->
 index.css <!-- index.css 还存在，没有销毁 -->

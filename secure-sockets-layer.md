@@ -16,3 +16,5 @@ symmetric-encryption
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/symmetric-encryption-SF6lWU.jpg' alt='symmetric-encryption-SF6lWU'/>
 <!-- image size 1233*502 -->
+
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200715-k6YBkL-加密.jpg' alt='20200715-k6YBkL-加密'/>

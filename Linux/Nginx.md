@@ -1,57 +1,17 @@
 # Nginx CLI Cheatsheet
 
-?> 检查 Nginx Web 服务器
-
-```bash
-systemctl status nginx
-```
-
-```bash
-nginx -t
-```
-
-?> 停止
-
-```bash
-sudo systemctl stop nginx
-```
-
-```bash
-nginx -s quit
-```
-
-?> 加载
-
-```bash
-sudo systemctl start nginx
-```
-
-?> 重新加载
-
-```bash
-sudo systemctl restart nginx
-```
-
-```bash
-nginx -s reload
-```
-
-?> Fast Shutdown
-
-```bash
-nginx -s stop
-```
-
-```bash
-nginx -s quit
-```
-
-?> 得到正在运行的 ngixn 进程列表
-
-```bash
-ps -ax | grep nginx
-ps -ef|grep nginx|grep -v grep
-```
+| 说明                     | 命令                         |
+| ------------------------ | ---------------------------- |
+| 检查 Nginx Web 服务器(1) | systemctl status nginx       |
+| 检查 Nginx Web 服务器(2) | nginx -t                     |
+| 停止 (1)                 | sudo systemctl stop nginx    |
+| 停止 (2)                 | nginx -s quit                |
+| 加载                     | sudo systemctl start nginx   |
+| 重新加载 (1)             | sudo systemctl restart nginx |
+| 重新加载 (2)             | nginx -s reload              |
+| Fast Shutdown (1)        | nginx -s stop                |
+| Fast Shutdown (2)        | nginx -s quit                |
+| 列出 ngixn 进程 (1)      | ps -ax 丨 grep nginx         |
 
 ?> 在 Mac 中方便的安装软件或者卸载软件
 

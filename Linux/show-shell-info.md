@@ -1,19 +1,22 @@
 将帮助信息写在 Bash 脚本脚本的头部，然后只要执行"sh some.sh","sh some.sh help",或者就能输出这段帮助信息
 
-docker run -it --rm alpine
+docker run -it --rm xue/alpine:1.0.2
 
 ```
-/tmp # pwd
-/tmp
+/ # pwd
+/
 
-/tmp # ls
-a.sh
+/ # ls
+bin        etc        lib        mnt        proc       root       sbin       sys        usr
+dev        home       media      opt        readme.sh  run        srv        tmp        var
 
-/tmp # cat a.sh
+/ # cat readme.sh
 #!/bin/bash
 
-### 脚本的备注
-### 没有参数的时候，打印出来备注
+### alpine 如何安装软件呢？
+### apk update
+### apk add packageName
+
 
 help() {
     sed -rn 's/^### ?//;T;p' "$0"
@@ -24,13 +27,14 @@ if [[ $# == 0 ]] || [[ "$1" == "-h" ]]; then
     exit 1
 fi
 
-echo Hello World
+echo 直接执行该脚本
 
-/tmp # sh a.sh
-脚本的备注
-没有参数的时候，打印出来备注
+/ # sh readme.sh
+alpine 如何安装软件呢？
+apk update
+apk add packageName
 
-/tmp #
+/ #
 ```
 
 ---

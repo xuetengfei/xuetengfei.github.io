@@ -1,0 +1,27 @@
+- [Linux Cheatsheet](Linux/Linux-command-Cheatsheet.md)
+- [Linux 基础](Linux/linux-Basics.md)
+- [Linux 上生成随机密码](Linux/generate-random-password.md)
+- [Linux 查询 IP 地址](Linux/ip-address.md)
+- [Linux 的硬链接与软链接](Linux/ln-hard-symb-links.md)
+- [终端查看Linux命令的工具: tldr](Linux/tldr.md)
+- [Nginx](Linux/Nginx.md)
+- [Nginx 返回 remote IP](Linux/Nginx-get-remote-ip.md)
+- [SSH](Linux/SSH.md)
+- [使用brew services管理服务](Linux/brew-services.md)
+- [ubuntu 安装 nodejs](Linux/install-nodejs-in-ubuntu.md)
+- [Makefile](Linux/Makefile.md)
+- [关闭指定端口](Linux/port-close.md)
+- [测试网路连通性](Linux/Network-connectivity.md)
+- [Curl && httpie](Linux/curl-httpie.md)
+- [Oh-My-Zsh](Linux/oh-my-zsh.md)
+- [shell-tips](Linux/show-shell-info.md)
+
+<!-- 
+   - [MacOS Tips](Linux/mac-tips.md) 
+   - [mac 效率工具和技巧](Linux/mac.md) 
+   - [解决macOS上sudoers权限问题](Linux/mac-sudoers.md) 
+   - [Alfred workflow](Linux/Alfred-workflow.md) 
+   - [shell 脚本](Linux/shell.md) 
+   - [cron 时间表达式](Linux/cron.md) 
+-->
+

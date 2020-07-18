@@ -7,7 +7,6 @@
 - [函数式编程](FP/index.md)
 - [MongoDB](MongoDB/mongo-install.md)
 - [MySQL](mysql/index.md)
-- [Mac && Linux](MacLinux/Linux-command-Cheatsheet.md)
 - [TypeScript](TypeScript/001-basic.md)
 - [Node](node/index.md)
 - [前端工程](engineering/index.md)
@@ -19,5 +18,6 @@
 - [协议](protocol/index.md)
 - [全栈之路](fullStack/index.md)
 - [Docker](Docker/index.md)
+- [Linux](Linux/Linux-command-Cheatsheet.md)
 - [photography](photography/index.md)
 

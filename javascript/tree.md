@@ -46,7 +46,6 @@ fn(treeData);
 ```
 
 ```javascript
-// console.log(Arr);
 
 [
   { id: 0, title: '0-0', key: 'j58azgz6', hasChildren: true },
@@ -139,7 +138,9 @@ const tree = require('./d.js').tree;
 
 /* 1 */
 const branch = arr =>
-  [].concat(...arr.map(v => (v.children.length ? [v.id, ...branch(v.children)] : v.id)));
+  [].concat(
+    ...arr.map(v => (v.children.length ? [v.id, ...branch(v.children)] : v.id)),
+  );
 
 log.debug('branch: ', branch(tree));
 log.debug('branch: ', branch(tree).length);
@@ -149,7 +150,8 @@ log.debug('branch: ', branch(tree).length);
 /* 2 */
 const branch2 = arr =>
   arr.reduce(
-    (init, v) => init.concat(v.children.length ? [v.id, ...branch2(v.children)] : v.id),
+    (init, v) =>
+      init.concat(v.children.length ? [v.id, ...branch2(v.children)] : v.id),
     [],
   );
 

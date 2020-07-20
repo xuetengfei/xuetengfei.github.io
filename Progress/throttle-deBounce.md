@@ -12,7 +12,7 @@ window.addEventListener(
 
 function throttle(fn, waitTime) {
   let flag = true;
-  return function() {
+  return function () {
     if (!flag) {
       return;
     }
@@ -37,7 +37,7 @@ window.addEventListener(
 
 function deBounce(fn, interval) {
   let timer = null;
-  return function() {
+  return function () {
     if (timer) {
       clearTimeout(timer);
     }
@@ -51,3 +51,7 @@ function deBounce(fn, interval) {
 ?> fn.apply(this, arguments)
 
 调用 fn 的时候都是用的`fn.apply(this, arguments)`。主要原因是为了 fn 函数内的 this 与原本的事件回调函数绑定的 this 保持一致。
+
+---
+
+1 .[debounce & throttle demonstrate](http://demo.nimius.net/debounce_throttle/)

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font: 1em/1.25 sans-serif;
+        background: #fff;
+      }
+      .title,
+      .intro {
+        margin: 0;
+        padding: 5px 5px 0;
+      }
+
+      .title small {
+        font-size: 0.5em;
+        font-weight: normal;
+        color: #aaa;
+      }
+
+      .grid {
+        margin-top: 20px;
+        font-size: 0;
+        text-align: center;
+      }
+
+      .column {
+        display: inline-block;
+        vertical-align: top;
+        min-width: 25%; /* value to use above 900px */
+        width: calc((900px - 100%) * 900); /* 900px "breakpoint" */
+        max-width: 100%; /* value to use below 900px */
+        text-align: left;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+
+      .media {
+        padding: 0 0 10px;
+        font-size: 0;
+        background: #fbfbfb;
+        border: 1px solid #cfcfcf;
+      }
+
+      .media img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .media h1 {
+        margin: 0 0 10px;
+        font-size: 1.125rem;
+      }
+
+      .media p {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .media-body,
+      .media-img {
+        display: inline-block;
+        min-width: 50%; /* value to use above 400px */
+        width: calc((400px - 100%) * 400); /* 400px "breakpoint" */
+        max-width: 100%; /* value to use below 400px */
+        vertical-align: top;
+        padding: 10px 10px 0;
+        box-sizing: border-box;
+        border: 1px solid #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="column">
+        <div class="media">
+          <div class="media-img">
+            <img
+              src="https://placeholdit.imgix.net/~text?w=130&h=90"
+              alt="media-img"
+            />
+          </div>
+          <div class="media-body">
+            <h1>Lorem Ipsum Dolor Sit Amet</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              corporis quia eos temporibus.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="media">
+          <div class="media-img">
+            <img
+              src="https://placeholdit.imgix.net/~text?w=130&h=90"
+              alt="media-img"
+            />
+          </div>
+          <div class="media-body">
+            <h1>Lorem Ipsum Dolor Sit Amet</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              corporis quia eos temporibus.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="media">
+          <div class="media-img">
+            <img
+              src="https://placeholdit.imgix.net/~text?w=130&h=90"
+              alt="media-img"
+            />
+          </div>
+          <div class="media-body">
+            <h1>Lorem Ipsum Dolor Sit Amet</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              corporis quia eos temporibus.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="media">
+          <div class="media-img">
+            <img
+              src="https://placeholdit.imgix.net/~text?w=130&h=90"
+              alt="media-img"
+            />
+          </div>
+          <div class="media-body">
+            <h1>Lorem Ipsum Dolor Sit Amet</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              corporis quia eos temporibus.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

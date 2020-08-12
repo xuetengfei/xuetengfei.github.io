@@ -1,6 +1,6 @@
 - [xuetengfei's Browser bookmark](Progress/Static-hosting.md)
 - [express mock data](Progress/mockData.md)
-- [Javascript Proxy](Progress/javascript-Proxy.md)
+<!-- - [Javascript Proxy](Progress/javascript-Proxy.md) -->
 - [无卡顿的滚动列表](Progress/make-infinite-scroll.md)
 - [函数节流和防抖](Progress/throttle-deBounce.md)
 - [图片优化](Progress/Picture-optimization.md)
@@ -16,7 +16,7 @@
 - [项目管理心得](Progress/Experience-of-Project-Management.md)
 - [全局捕获错误](Progress/handle-error.md)
 - [stacktrace-js](Progress/stacktrace-js.md)
-- [想给方法传一个空参数](Progress/transmit-Empty-parameter.md)
+<!-- - [想给方法传一个空参数](Progress/transmit-Empty-parameter.md) -->
 - [useful-regular](Progress/useful-regular-expression.md)
 - [选择开源库的正确姿势](Progress/Select-Open-Source-Library.md)
 <!-- - [移动端解决方案](Progress/Mobile-Devices.md) -->

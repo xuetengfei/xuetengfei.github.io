@@ -1,11 +1,12 @@
 - 概念
 
+  - [Javascript Proxy](javascript/javascript-Proxy.md)
   - [事件委托](javascript/Event-delegation.md)
   - [浅拷贝和深拷贝](javascript/Shallow-and-deep-copy.md)
 
 - 设计模式
 
-  - [IIFE](javascript/js-iife.md)
+  <!-- - [IIFE](javascript/js-iife.md) -->
   - [命令模式](javascript/DesignPattern/Command-mode.md)
   - [惰性模式](javascript/DesignPattern/inertia-mode.md)
   - [惰性载入函数](javascript/lazy-load-func.md)

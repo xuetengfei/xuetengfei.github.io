@@ -274,7 +274,7 @@ proxy2.apply(null, [7, 8]); // 30
 
 ---
 
-1. [grocery/003-proxy.js at master · xuetengfei/grocery](https://github.com/xuetengfei/grocery/blob/master/003-proxy.js#L5-L20)
+1. [code source](https://github.com/xuetengfei/grocery/blob/master/003-proxy.js#L5-L20)
 1. [Proxy - ECMAScript 6 入门](https://es6.ruanyifeng.com/#docs/proxy)
 1. [Proxy - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 1. [Javascript Proxies : Real World Use Cases – Arbaz Siddiqui](https://www.arbazsiddiqui.me/javascript-proxies-real-world-use-cases/)

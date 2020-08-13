@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- [1-Line Layouts](https://1linelayouts.glitch.me/) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-size: 40px;
+      }
+      body {
+        height: 3000px;
+      }
+      body * {
+        outline: 2px solid #333;
+      }
+      .wrap {
+        width: 50%;
+        /* margin: 0 auto 30px; */
+        margin-left: 100px;
+        margin-bottom: 100px;
+        resize: both;
+        overflow: auto;
+        padding: 20px;
+      }
+      /* ex1 */
+      .ex1 {
+        display: grid;
+        place-items: center;
+      }
+      /* ex2 */
+      .ex2,
+      .ex3 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .ex2 .box {
+        flex: 1 1 150px;
+        margin: 5px;
+        text-align: center;
+        vertical-align: center;
+      }
+      .ex3 .box {
+        flex: 0 1 150px;
+        margin: 5px;
+        text-align: center;
+        vertical-align: center;
+        /* flex: <flex-grow> <flex-shrink> <flex-basis>; */
+        /* flex: 0 1 150px;的意思就是，项目的初始宽度是150px，且不可以扩大，但是当容器宽度不足150px时，项目可以缩小。*/
+        /* 如果写成flex: 1 1 150px;，就表示项目始终会占满所有宽度。 */
+      }
+      .ex4 {
+        display: grid;
+        grid-template-columns: minmax(150px, 25%) 1fr;
+        /* grid-template-columns指定页面分成两列。第一列的宽度是minmax(150px, 25%)，即最小宽度为150px，最大宽度为总宽度的25%；第二列为1fr，即所有剩余宽度。 */
+      }
+
+      .ex5 {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+
+      .ex6 {
+        display: grid;
+        grid-template: auto 1fr auto / auto 1fr auto;
+      }
+      .ex6 header {
+        grid-column: 1 / 4;
+      }
+      .ex6 .left-side {
+        grid-column: 1 / 2;
+      }
+      .ex6 main {
+        grid-column: 2 / 3;
+      }
+      .ex6 .right-side {
+        grid-column: 3 / 4;
+      }
+      .ex6 footer {
+        grid-column: 1 / 4;
+      }
+      .ex62 {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      .ex62 .center {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .ex62 .center * {
+        flex: 1 1 150px;
+        text-align: center;
+        vertical-align: center;
+      }
+
+      .ex7 {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      .ex7 .span-12 {
+        grid-column: 1 / span 12;
+      }
+
+      .ex7 .span-6 {
+        grid-column: 1 / span 6;
+      }
+
+      .ex7 .span-4 {
+        grid-column: 4 / span 4;
+      }
+
+      .ex7 .span-2 {
+        grid-column: 3 / span 2;
+      }
+      /* centering text */
+      .ex7 .section {
+        display: grid;
+        place-items: center;
+        text-align: center;
+      }
+
+      .ex8 {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap ex1">🍎</div>
+    <!-- 1 -->
+    <div class="wrap ex2">
+      <div class="box">🍊</div>
+      <div class="box">🍐</div>
+      <div class="box">🍋</div>
+    </div>
+    <!-- 2 -->
+    <div class="wrap ex3">
+      <div class="box">🍌</div>
+      <div class="box">🍉</div>
+      <div class="box">🍇</div>
+    </div>
+    <!-- 3 -->
+    <div class="wrap ex4">
+      <div>
+        🍓
+      </div>
+      <div>
+        🍈
+      </div>
+    </div>
+    <!-- 4 -->
+    <div class="wrap ex5">
+      <header>🍒</header>
+      <main>🍑</main>
+      <footer>🥭</footer>
+    </div>
+    <!-- 6 -->
+    <div class="wrap ex6">
+      <header>🍍</header>
+      <div class="left-side">🥥🥥🥥</div>
+      <main>🥝</main>
+      <div class="right-side">🍅🍅🍅</div>
+      <footer>🍆</footer>
+    </div>
+
+    <!-- 6.2 -->
+    <div class="wrap ex62">
+      <header>🍍</header>
+      <div class="center">
+        <div class="left-side">🥥🥥🥥</div>
+        <main>🥝</main>
+        <div class="right-side">🍅🍅🍅</div>
+      </div>
+      <footer>🍆</footer>
+    </div>
+    <!-- 7 -->
+    <div class="wrap ex7">
+      <div class="span-12 green section">🥑</div>
+      <div class="span-6 coral section">🥦</div>
+      <div class="span-4 blue section">🥬</div>
+      <div class="span-2 yellow section">🥒</div>
+    </div>
+
+    <!-- 8 -->
+    <div class="wrap ex8">
+      <div class="box pink">🌶</div>
+      <div class="box purple">🌽</div>
+      <div class="box blue">🥕</div>
+      <div class="box green">🧄</div>
+    </div>
+  </body>
+</html>

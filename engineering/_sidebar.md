@@ -23,6 +23,7 @@
     
 - 其他
 
+    - [TypeScript](engineering/TypeScript.md)
     - [API-design](engineering/API-design.md)
     - [哈希一致性](engineering/Hash-consistency.md)
     - [用 eslint 检查代码](engineering/eslint.md)

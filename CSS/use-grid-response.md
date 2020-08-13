@@ -1,12 +1,13 @@
-使用 CSS Grid(网格) 布局来创建一个超酷的图像网格，它会根据屏幕的宽度改变列的数量，以实现响应式布局。
-
-添加一行 CSS 代码即可实现响应式布局。
-
-这意味着我们不必通过丑陋的类名（即 col-sm-4，col-md-8）来混淆 HTML ，或者为每一个屏幕尺寸创建媒体查询。
-
-效果如下
+> 无媒体查询的响应式设计
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/grid-response.gif"/>
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+```
 
 ```html
 <div class="container">
@@ -45,7 +46,7 @@
 
 这样很完美。minmax() 函数定义大于或等于 min 且小于或等于 max 的大小范围。所以现在列的宽度至少 100px 。但是，如果有更多的可用空间，网格将简单地分配给每个列，因为列的值变成了一个等分单位 1fr ，而不是 100px 。
 
-## 添加图片
+> 添加图片
 
 我们将在每个网格项内添加一个 img 标签。
 
@@ -63,6 +64,27 @@ img {
 
 为了使图像适合该网格项，我们将它设置为与网格项一样宽和高，然后使用 object-fit: cover;。这将使图片覆盖整个容器，如果需要的话，浏览器会裁剪该图片。
 
+> minmax() Function Works
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: minmax(100px, 200px) 1fr 1fr;
+  /* grid-template-columns: minmax(200px, 50%) 1fr 1fr; */
+  /* grid-template-columns: minmax(200px, 1fr) 1fr 1fr; */
+  /* grid-template-columns: minmax(max-content, max-content) 1fr 1fr; */
+  /* grid-template-columns: minmax(min-content, min-content) 1fr 1fr; */
+  /* grid-template-columns: minmax(auto, auto) 1fr 1fr; */
+}
+```
+
+```javascript
+minmax(min, max);
+// Length 丨 Percentage丨 Flexible Length丨 max-content丨 min-content丨 auto
+```
+
+<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/responsive-1554176638.gif'/> -->
+
 ---
 
-1 .[使用 Grid 实现的响应式布局 一行 CSS 代码实现](https://www.css88.com/archives/8706)
+1. [How the minmax() Function Works](https://bitsofco.de/how-the-minmax-function-works/)

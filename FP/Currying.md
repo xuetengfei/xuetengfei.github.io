@@ -29,7 +29,7 @@ const curry = (fn, need = fn.length, ...args) =>
 ```javascript
 const l = console.log;
 
-const sum = (x, y, z) => x + y + x;
+const sum = (x, y, z) => x + y + z;
 
 l(curry(Math.min, 4)(10)(50)(2)(4)); // 2
 l(curry(sum)(1)(2)(3)); // 4

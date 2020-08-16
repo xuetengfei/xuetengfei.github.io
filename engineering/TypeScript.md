@@ -25,7 +25,7 @@ TypeScript 只是 JavaScript 的一个附加层，在开始使用它之前，不
 
 ```javascript
 // greeting.ts
-const greeting = (person: string) => {
+const greeting = (person: string): void => {
   console.log('Good day ' + person);
 };
 
@@ -41,81 +41,43 @@ var greeting = function (person) {
 greeting('Tom');
 ```
 
----
-
 ## 原始数据类型
 
-Primitive Data Types 原始数据类型包括：**boolean、number、string、null、undefined Symbol**
-
-##### boolean
+> 原始数据类型包括：boolean、number、string、null、undefined Symbol
 
 ```javascript
+// boolean
 let isAwesome: boolean = true;
 let isAwesome: boolean = new Boolean(1);
 let isAwesome: boolean = Boolean(1);
-```
 
-##### number
-
-```javascript
+// number
 let decimalNumber: number = 42;
 let binaryNumber: number = 0b101010; // => 42
-```
 
-##### string
-
-```javascript
+// string
 let person: string = 'Tom';
 let greet: string = `Good day${person}`;
-```
 
-##### Void
+// null、 undefined
+let _u: undefined = undefined;
+let _n: null = null;
 
-JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 void 表示没有任何返回值的函数
+// any 任意值类型
+let someNumber: any = 'seven';
+someNumber = 7;
 
-```javascript
-// ts
+// JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 void 表示没有任何返回值的函数
 let unusable: void = undefined;
+
 function consoleName(): void {
   console.log('My name is Tom');
 }
-
-// js
-const unusableone = undefined;
-function consoleName() {
-  console.log('My name is Tom');
-}
 ```
-
-##### Null 和 Undefined
-
-```javascript
-let _u: undefined = undefined;
-let _n: null = null;
-```
-
-##### any 任意值类型
-
-```javascript
-// ts
-let someNumber: any = 'seven';
-someNumber = 7;
-console.log(someNumber.someProps);
-// js
-let someNumber = 'seven';
-someNumber = 7;
-console.log(someNumber.someProps);
-```
-
-变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型：
-
----
 
 ## 类型推论
 
 TypeScript 会在没有明确的指定类型的时候推测出一个类型，这就是类型推论。
-
----
 
 ## 联合类型
 

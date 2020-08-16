@@ -1,9 +1,3 @@
-1. [TypeScript](https://www.typescriptlang.org/)
-2. [Online TypeScript Playground](https://www.typescriptlang.org/play/index.html)
-3. [前言 - TypeScript 入门教程](https://ts.xcatliu.com/)
-
----
-
 ?> What is a TypeScript
 
 TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持，它由 Microsoft 开发，代码开源于 GitHub 上。
@@ -45,6 +39,8 @@ greeting('Tom');
 
 > 原始数据类型包括：boolean、number、string、null、undefined Symbol
 
+[基础类型 · TypeScript](https://www.tslang.cn/docs/handbook/basic-types.html)
+
 ```javascript
 // boolean
 let isAwesome: boolean = true;
@@ -79,9 +75,9 @@ function consoleName(): void {
 
 TypeScript 会在没有明确的指定类型的时候推测出一个类型，这就是类型推论。
 
-## 联合类型
+## 联合类型:表示多种类型的 “或” 关系
 
-联合类型（Union Types）表示取值可以为多种类型中的一种。
+联合类型（Union Types）表示取值可以为多种类型中的一种,表示多种类型的 “或” 关系
 
 ```javascript
 // ts
@@ -101,14 +97,41 @@ someThing = 7;
   <figcaption>length 不是 string 和 number 的共有属性，所以会报错。访问 string 和 number 的共有属性 toString 是ok的</figcaption>
 </figure>
 
-## 对象的类型—接口
+## 使用联合类型表示枚举
 
-在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implement）。TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。  
-**在 TypeScript 中，使用接口（Interfaces）来定义对象的类型**
+```ts
+type Position = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
 
-### 接口:强制保持一致
+const position: Position = 'UP';
+```
 
-赋值的时候，变量的形状必须和接口的形状保持一致
+可以避免使用 **enum** 侵入了运行时。
+
+## 交叉类型:表示多种类型的 “与” 关系
+
+```ts
+interface Person {
+  name: string
+  age: number
+}
+
+interface Animal {
+  name: string
+  color: string
+}
+
+const x: Person & Animal = {
+  name: 'x',
+  age: 1,
+  color: 'red
+}
+```
+
+## 对象
+
+在 TypeScript 中，使用接口（Interfaces）来定义对象的类型.TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。
+
+赋值的时候，变量的形状必须和接口的形状**强制保持一致**
 
 ```javascript
 // ts
@@ -259,6 +282,18 @@ let directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Ri
 let directions = [0 /* Up */, 1 /* Down */, 2 /* Left */, 3 /* Right */];
 ```
 
+## 其他用法
+
+> in 关键词
+
+```ts
+type Person = {
+  [key in 'name' | 'age']: number;
+};
+
+// { name: number; age: number; }
+```
+
 ## 泛型
 
 ```javascript
@@ -285,15 +320,26 @@ function RepeatArray(length, value) {
 RepeatArray(3, 'x'); // ['x', 'x', 'x']
 ```
 
-<iframe
+<!-- <iframe
      src="https://codesandbox.io/embed/great-cerf-o0os9?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="TypeScript with React"
      allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-   ></iframe>
-   
+   ></iframe> -->
+
+## 声明文件
+
+声明文件已 **.d.ts** 结尾，用来描述代码结构，一般用来为 js 库提供类型定义。
+这个语法提示就是声明文件的功劳了，先来看一个简单的声明文件长啥样，这是 jsonp 这个库的声明文件:
+
 ---
 
-1. [Adding TypeScript](https://create-react-app.dev/docs/adding-typescript/)
-2. [TypeScript Playground - TypeScript with React](https://www.typescriptlang.org/play/index.html?jsx=2&esModuleInterop=true&e=196#example/typescript-with-react)
+<!-- 1. [Adding TypeScript](https://create-react-app.dev/docs/adding-typescript/) -->
+<!-- 2. [TypeScript Playground - TypeScript with React](https://www.typescriptlang.org/play/index.html?jsx=2&esModuleInterop=true&e=196#example/typescript-with-react) -->
+
+2. [结构 · 声明文件 · TypeScript 中文网 · TypeScript——JavaScript 的超集](https://www.tslang.cn/docs/handbook/declaration-files/library-structures.html)
+3. [TypeScript](https://www.typescriptlang.org/)
+4. [Online TypeScript Playground](https://www.typescriptlang.org/play/index.html)
+5. [前言 - TypeScript 入门教程](https://ts.xcatliu.com/)
+6. [React & Webpack · TypeScript 中文网 · TypeScript——JavaScript 的超集](https://www.tslang.cn/docs/handbook/react-&-webpack.html)

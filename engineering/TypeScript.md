@@ -364,6 +364,24 @@ const x: Person & Animal = {
 
 ## 泛型
 
+```js
+function identity(arg: number): number {
+  return arg;
+}
+
+function identity(arg: any): any {
+  return arg;
+}
+
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+// 给identity添加了类型变量T。
+// T帮助我们捕获用户传入的类型（比如：number），之后我们就可以使用这个类型。
+// 之后我们再次使用了 T当做返回值类型。现在我们可以知道参数类型与返回值类型是相同的了。 这允许我们跟踪函数里使用的类型的信息。
+```
+
 ```javascript
 function RepeatArray<T>(length: number, value: T): Array<T> {
   let result: T[] = [];

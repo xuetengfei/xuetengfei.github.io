@@ -2,8 +2,10 @@
 
 ## chmod +x auto.sh
 
+
 echo "-------Auto Git Begin-------"
-git pull --rebase
+git config pull.rebase false
+git pull
 git add .
 now="$(date +"%Y-%m-%d %H:%M")"
 git commit -m "${now}"

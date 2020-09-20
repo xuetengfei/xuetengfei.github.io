@@ -2,10 +2,10 @@
 
 ```javascript
 function sum(x, y, z) {
-  return x + y + x;
+  return x + y + z;
 }
 
-function curry_sum = (x) {
+function curry_sum(x) {
   return y => {
     return z => {
       return x + y + z

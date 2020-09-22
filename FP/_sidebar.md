@@ -9,6 +9,6 @@
 - [Debug](FP/fp-debug.md)
 - [helper: promisify](FP/promisify.md)
 - [FP Trick](FP/FP-Trick.md)
-<!-- - [函子 (Functor) 和容器](FP/Functor.md) -->
-<!-- - [closure](Fp/closure.md) -->
-<!-- - [pure function](FP/Pure-function.md) -->
+- [函子 (Functor) 和容器](FP/Functor.md)
+- [closure](Fp/closure.md)
+- [pure function](FP/Pure-function.md)

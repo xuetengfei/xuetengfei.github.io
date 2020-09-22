@@ -5,7 +5,7 @@ function sum(x, y, z) {
   return x + y + z;
 }
 
-function curry_sum(x) {
+function currySum(x) {
   return y => {
     return z => {
       return x + y + z
@@ -13,8 +13,10 @@ function curry_sum(x) {
   }
 }
 
+{
 // ES6
-const curry_sum_2 =x=>y=>x+y+z
+const currySum =x=>y=>x+y+z
+}
 ```
 
 ## 实现 curry

@@ -5,10 +5,6 @@
 <!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/chahua-2019-01-21.jpg' width='600px'/> -->
 <!-- <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Linus-Torvalds.jpeg" width='900px'/> -->
 
-# xuetengfei_blog
-
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/think-1566222930.jpeg'/>
-
 <!--
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/linus-torvalds-1566157562.jpg' width='400px' style="outline:none"/>
@@ -16,15 +12,17 @@
 
  ?> 怕什么真理无穷，进一寸有一寸的欢喜。
 ?> `docsify serve docs` cli to build the project ,and the `docs` is the project name.
-
 ?> the `l` keyboard: Switch menu
-
 ?> the `o` keyboard: Scroll 2 top
-
 ?> the `h` keyboard: Go Home
-
 ?> [github.com/xuetengfei](https://github.com/xuetengfei)
 
 -->
 
+
+
+# welcome to my blog
+
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/think-1566222930.jpeg'/>
+ 
 之前不小心，把隐私信息暴露到 GitHub 了，我重新整理了一下仓库分支。commit 一下就清零了。唉！

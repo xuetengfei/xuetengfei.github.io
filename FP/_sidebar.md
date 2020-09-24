@@ -1,6 +1,6 @@
-- [curry](FP/Currying.md)
+- [curry](FP/curry.md)
 - [compose](FP/compose.md)
-- [pipeline](FP/pipe.md)
+- [pipe](FP/pipe.md)
 - [callAll](FP/callAll.md)
 - [partial - 偏函数](FP/Partial-function.md)
 - [Pointfree 风格](FP/Pointfree.md)

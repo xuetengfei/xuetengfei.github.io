@@ -3,7 +3,7 @@
 3. [快速切换目录软件推荐——autojump - westfly - 博客园](https://www.cnblogs.com/westfly/p/3283525.html)
 4. [代替那些「用完就删」的 App，试试这 9 个实用的网页小工具 - 少数派](https://sspai.com/post/43899)
 5. [除了养成整理文件的好习惯，你还应该具备自动化处理的思维 - 少数派](https://sspai.com/post/43894)
-6. [独居生活清洁指南 - 少数派](https://sspai.com/post/43862)
+<!-- 6. [独居生活清洁指南 - 少数派](https://sspai.com/post/43862) -->
 7. [快捷添加注释，灵活使用搜索，帮你迅速找到软件和文件 - 少数派](https://sspai.com/post/43673)
 8. [通过终端命令调整 Dock 栏的隐藏速度｜一日一技 · Mac - 少数派](https://sspai.com/post/33366)
 9. [简单几条命令，轻松开启 macOS 系统隐藏功能 | 新手问号 - 少数派](https://sspai.com/post/41695)

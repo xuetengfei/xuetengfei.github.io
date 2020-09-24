@@ -38,25 +38,25 @@ for (let i = 0; i < array.length; i++) {
 
 ```javascript
 // 非引用透明
-var counter = 0;
+const counter = 0;
 function increment() {
   return ++counter;
 }
 
 // 引用透明
-var increment = counter => counter + 1;
+const increment = counter => counter + 1;
 ```
 
 ### 不可变性
 
 ```javascript
-var sortDesc = function (arr) {
+const sortDesc = function (arr) {
   return arr.sort(function (a, b) {
     return b - a;
   });
 };
 
-var arr = [1, 3, 2];
+const arr = [1, 3, 2];
 sortDesc(arr); // [1, 2, 3]
 arr; // [1, 2, 3]
 ```
@@ -65,8 +65,13 @@ arr; // [1, 2, 3]
 
 ## 函数式编程核心
 
-柯里化（Currying）和函数组合（Compose）
+1. 柯里化（Currying）
+2. 函数组合（Compose）
 
+
+---
+
+4. [Introduction · JS 函数式编程指南](https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/)
 <!-- 2. [functional-programming-for-javascript](https://github.com/FrontendMagazine/FrontendMagazine.github.io/blob/master/src/_posts/2016-04-29-functional-programming-for-javascript-people.md)
 3. [函数式编程入门教程 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2017/02/fp-tutorial.html)
-4. [Introduction · JS 函数式编程指南](https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/) -->
+ -->

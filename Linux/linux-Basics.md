@@ -40,7 +40,8 @@
 | find . -name ".git" 丨 xargs rm -Rf                 | 1                                                        |
 | find . -path "./sk" -prune -o -name "\*.txt" -print | 查找当前目录或者子目录下所有.txt 文件，但是跳过子目录 sk |
 
-找出当前目录下所有.txt 文件并以“File:文件名”的形式打印出来,把他们拼接起来写入到 all.md 文件中
+找出当前目录下所有.txt 文件并以“File:文件名”的形式打印出来,把他们拼接起来写入到
+all.md 文件中
 
 ```
 find . -type f -name "*.txt" -exec printf "File: %s\n" {} \;> name.md

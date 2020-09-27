@@ -141,6 +141,7 @@ ssh -p 8888 root@192.168.1.179
 ```javascript
 ack 函数式编程 --ignore-dir=_set --type=nojs
 ```
+
 #### 列出当前目录及子目录下所有文件和文件夹
 
 ```
@@ -222,6 +223,7 @@ find . -path "./sk" -prune -o -name "*.txt" -print
 ```
 find . -name ".git" | xargs rm -Rf
 ```
+
 ### Linux:给文件追加多行内容
 
 ```shell

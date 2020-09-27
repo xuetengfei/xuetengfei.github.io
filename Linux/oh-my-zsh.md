@@ -34,8 +34,7 @@ take	Create a new directory and change to it,
 cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 ```
 
-筛选对应的命令
-·
+筛选对应的命令 ·
 
 ```shell
  ➜  Desktop alias | grep config
@@ -61,11 +60,13 @@ chsh -s `which bash`
 chsh -s /bin/bash
 ```
 
-当然不愿意把 zsh 当成默认的 shell, 而又想使用它, 那么可以每次进入是都使用 zsh 进入, 而输入 exit 退出
+当然不愿意把 zsh 当成默认的 shell, 而又想使用它, 那么可以每次进入是都使用 zsh 进
+入, 而输入 exit 退出
 
 ## 杀进程
 
-以前杀进程是 ps aux | grep xxx 查进程的 PID，然后 kill PID。有了 zsh，直接 kill xxx 然后按下 tab 键即可，比如 `kill node`回车
+以前杀进程是 ps aux | grep xxx 查进程的 PID，然后 kill PID。有了 zsh，直接 kill
+xxx 然后按下 tab 键即可，比如 `kill node`回车
 
 ```shell
 ➜  Desktop kill 50890
@@ -78,7 +79,10 @@ chsh -s /bin/bash
 
 ## autojump
 
-[autojump](https://github.com/wting/autojump)按照使用频率记录路径，使得目录的跳转更为方便。安装「 brew install autojump 」。如需跳转到包含 'foo' 的目录，执行 j foo，这是最基础，也是最常用的命令。除此之外，还有 jc, jo, jco 命令，查看官网文档获取更多的使用方法。
+[autojump](https://github.com/wting/autojump)按照使用频率记录路径，使得目录的跳
+转更为方便。安装「 brew install autojump 」。如需跳转到包含 'foo' 的目录，执行 j
+foo，这是最基础，也是最常用的命令。除此之外，还有 jc, jo, jco 命令，查看官网文档
+获取更多的使用方法。
 
 ## zsh-autosuggestions
 

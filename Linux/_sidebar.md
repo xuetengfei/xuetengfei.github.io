@@ -1,5 +1,4 @@
 - [Linux 基础](Linux/linux-tutorial.md)
-- [Linux Cheatsheet](Linux/Linux-command-Cheatsheet.md)
 - [Linux 上生成随机密码](Linux/generate-random-password.md)
 - [Linux 查询 IP 地址](Linux/ip-address.md)
 - [Linux 的硬链接与软链接](Linux/ln-hard-symb-links.md)

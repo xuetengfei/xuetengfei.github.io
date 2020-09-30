@@ -4,7 +4,7 @@
 
 | 目录           | 常见目录说明                                                       |
 | -------------- | ------------------------------------------------------------------ |
-| /bin           | 存放二进制可执行文件(ls,cat,mkdir 等)，常用命令一般都在这里        |
+| /bin           | 存放二进制可执行文件(ls, cat, mkdir 等)，常用命令一般都在这里      |
 | /boot          | 存放用于系统引导时使用的各种文件                                   |
 | /etc           | 存放系统管理和配置文件                                             |
 | /home          | 存放所有用户文件的根目录，是用户主目录的基点                       |
@@ -42,13 +42,50 @@ chgrp – 更改文件组所有权
 passwd – 更改用户密码
 ```
 
+> 读取，写入，和执行
+
+```bash
+-rw-rw-r-- 1 me   me   0 2008-03-06 14:52 foo.txt
+```
+
+十个字符是文件的属性, 这十个字符的第一个字符表明文件类型, 常见的有: `-` 代表普通
+文件， `d` 代表文件夹。 后面 9 个长度的字符，3 个一组，共三组。表示: 文件所有者
+，文件组所有者，和其他人读(r)，写(w)，执行权(x)。
+
+> chmod － 更改文件模式
+
+更改文件或目录的模式（权限），可以利用 chmod 命令。  
+注意只有文件的所有者(owner)或者超级用户才(admin) 能更改文件或目录的模式。  
+chmod 命令支持两种不同的方法来改变文件模式：八进制数字表示法，或 符号表示法。
+
+1.八进制数字表示法  
+二进制转为八进制后,数字相加,就会得到一个权限编码。通过使用 3 个八进制数字，我们
+能够设置文件所有者，用户组，和其他人的权限。
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/blog-images/2020-09-30-1080873691.jpg' width='500px'/>
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/blog-images/iShot2020-09-30-14.02.35.jpg' width='500px'/>
+
+2.符号表示法
+
+chmod 命令支持一种符号表示法，来指定文件模式。符号表示法分为三部分：更改会影响谁
+， 要执行哪个操作，要设置哪种权限。通过字符 “u”，“g”，“o”，和 “a” 的组合来指定要
+影响的对象， u 是"user"的简写，意思是文件或目录的所有者。 g 是用户组。 o 是
+"others" 的简写，意思是其他所有的人。 a 是 "all"的简写，是"u", "g"和“o”三者的联
+合。如果没有指定字符，则假定使用”all”。执行的操作可能是一个“＋”字符，表示加上一
+个权限， 一个 “－”，表示删掉一个权限，或者是一个“＝”，表示只有指定的权限可用，其
+它所有的权限被删除。权限由 “r”，“w”，和 “x” 来指定。
+
+```bash
+chmod u+x foo.txt # 给user加上执行权限
+chmod u+x,go=rw  foo.txt # 给user加上执行权限,g和o只是读写权限
+```
+
 > 用户
 
-| 命令提示符         | 命令提示符                                                                        |
-| :----------------- | :-------------------------------------------------------------------------------- |
-| [root@xiaoming ~]# | root 当前登录用户 localhost 主机名 ~ 当前工作目录提示符 超级用户是 #,普通用户是\$ |
-| whoami             | 显示登录的用户名                                                                  |
-| groups zhangsan    | 显示 zhangsan 用户所在的所有组                                                    |
+| 命令提示符         | 命令提示符                                                                         |
+| :----------------- | :--------------------------------------------------------------------------------- |
+| [root@xiaoming ~]# | root 当前登录用户 localhost 主机名 ~ 当前工作目录提示符 超级用户是 #, 普通用户是\$ |
+| whoami             | 显示登录的用户名                                                                   |
+| groups zhangsan    | 显示 zhangsan 用户所在的所有组                                                     |
 
 > 使用命令
 
@@ -81,7 +118,7 @@ passwd – 更改用户密码
 | 命令提示符         | 命令提示符                                    |
 | :----------------- | :-------------------------------------------- |
 | cp 1.md 2.md       | 复制 1.md 的内容到 2.md                       |
-| cp -i 1.md 2.md    | 2.md 存在的话,交互提醒                        |
+| cp -i 1.md 2.md    | 2.md 存在的话, 交互提醒                       |
 | cp 1.md 2.md ./dir | 复制 1.md 2.md 文件到 dir。dir 文件夹必须存在 |
 | cp dir1/\* dir2    |                                               |
 | cp -v dir1/\* dir2 | 显示操作结果 verbose 详细的                   |
@@ -90,8 +127,8 @@ passwd – 更改用户密码
 
 | 命令提示符          | 命令提示符                                |
 | :------------------ | :---------------------------------------- |
-| mv dir1 dir2        | dir2 存在:移动.dir2 不存在:重命名         |
-| mv -i dir1 dir2     | dir2 存在的时候,交互提醒                  |
+| mv dir1 dir2        | dir2 存在: 移动.dir2 不存在: 重命名       |
+| mv -i dir1 dir2     | dir2 存在的时候, 交互提醒                 |
 | mv file1 file2 dir1 | 移动 file1 file2 文件到 dir1，dir1 需存在 |
 
 > 重定向标准输出 stdout
@@ -147,8 +184,8 @@ cat movie.mpeg.0* > movie.mpeg
 # 因为通配符总是以有序的方式展开，所以这些参数会以正确顺序安排。
 ```
 
-如果没有给 cat 任何参数，它会从标准输入读入数据，因为标准输入，默认情况下,它正在
-等待输入数据
+如果没有给 cat 任何参数，它会从标准输入读入数据，因为标准输入，默认情况下, 它正
+在等待输入数据
 
 ```bash
 ➜  gaze cat > 1.txt
@@ -215,26 +252,26 @@ $ ls
 | find . -name ".git" 丨 xargs rm -Rf                 | 1                                                        |
 | find . -path "./sk" -prune -o -name "\*.txt" -print | 查找当前目录或者子目录下所有.txt 文件，但是跳过子目录 sk |
 
-找出当前目录下所有.txt 文件并以“File:文件名”的形式打印出来,把他们拼接起来写入到
-all.md 文件中
+找出当前目录下所有.txt 文件并以“File: 文件名”的形式打印出来, 把他们拼接起来写入
+到 all.md 文件中
 
 ```
 find . -type f -name "*.txt" -exec printf "File: %s\n" {} \;> name.md
 ```
 
-> 递归删除所有的`.bak`文件(批量删除当前目录及子目录中指定类型的文件)
+> 递归删除所有的 `.bak` 文件(批量删除当前目录及子目录中指定类型的文件)
 
 ```linux
 find . -type f -name "*.bak" -delete
 ```
 
-> 递归删除条件筛选出的`.log` 文件
+> 递归删除条件筛选出的 `.log` 文件
 
 ```linux
 find ./ -name "*_2017-04-*.log" | xargs rm -f
 ```
 
-> 递归删除所有的`.log` 文件,并且打印出删除文件名称和路径
+> 递归删除所有的 `.log` 文件, 并且打印出删除文件名称和路径
 
 !>主要不要遗漏后面有一个分号
 
@@ -243,37 +280,30 @@ find ./ -name '*.log' -type f -print -exec rm -rf {} \;
 ```
 
 ```javascript
-.//asd/adsa/asd.log
-.//asd/123.log
+. //asd/adsa/asd.log
+. //asd/123.log
 ```
 
-> 找出当前目录下所有.txt 文件并以“File:文件名”的形式打印出来
+> 找出当前目录下所有.txt 文件并以“File: 文件名”的形式打印出来
 
 ```javascript
-find . -type f -name "*.txt" -exec printf "File: %s\n" {} \;
-```
-
-```javascript
-├── ad
-│   └── e
-│       └── asd.txt
-├── asd
-│   └── adsa
-│       └── ojh.txt
-└── kkk
-    ├── 20170418.sql
-    └── asdasfafa
+find. - type f - name "*.txt" - exec printf "File: %s\n" {}\;
 ```
 
 ```javascript
-File: ./asd/adsa/ojh.txt
-File: ./ad/e/asd.txt
+├──
+ad│└── e│└── asd.txt├── asd│└── adsa│└── ojh.txt└── kkk├── 20170418. sql└── asdasfafa
+```
+
+```javascript
+File: . / asd / adsa / ojh.txt
+File: . / ad / e / asd.txt
 ```
 
 > 要列出所有长度为零的文件
 
 ```javascript
-find . -empty
+find. - empty
 ```
 
 > 删除当前目录中除去某个文件之外的所有文件
@@ -310,22 +340,15 @@ curl ifconfig.me
 > SSH 远程连接：
 
 ```javascript
-ssh -p 8888 root@192.168.1.179
+ssh - p 8888 root @192 .168 .1 .179
 ```
 
 ---
 
-> find:强大的查询文件
+> find: 强大的查询文件
 
 ```javascript
-.
-├── ad
-├── asd
-│   └── adsa
-└── kkk
-    ├── 20170418.sql
-    └── asdasfafa
-        └── 1.txt
+.├──ad├── asd│└── adsa└── kkk├── 20170418. sql└── asdasfafa└── 1. txt
 
 5 directories, 2 files
 ```
@@ -338,22 +361,23 @@ ssh -p 8888 root@192.168.1.179
 ```
 
 ```javascript
-~/Desktop/LUnix » find .
+~/Desktop/LUnix»
+find.
 
-.
-./kkk
-./kkk/20170418.sql
-./kkk/asdasfafa
-./kkk/asdasfafa/1.txt
-./asd
-./asd/adsa
-./ad
+    .
+    . / kkk
+    . / kkk / 20170418. sql
+    . / kkk / asdasfafa
+    . / kkk / asdasfafa / 1. txt
+    . / asd
+    . / asd / adsa
+    . / ad
 ```
 
 > ack : 搜索文件和文件夹利器
 
 ```javascript
-ack 函数式编程 --ignore-dir=_set --type=nojs
+ack 函数式编程--ignore - dir = _set--type = nojs
 ```
 
 > 列出当前目录及子目录下所有文件和文件夹
@@ -374,17 +398,17 @@ ack 函数式编程 --ignore-dir=_set --type=nojs
 find /home ! -name "*.txt"
 ```
 
-> 找出当前目录下所有.txt 文件并以“File:文件名”的形式打印出来,把他们拼接起来写入
-> 到 all.md 文件中
+> 找出当前目录下所有.txt 文件并以“File: 文件名”的形式打印出来, 把他们拼接起来写
+> 入到 all.md 文件中
 
 ```
 find . -type f -name "*.txt" -exec printf "File: %s\n" {} \;> name.md
 ```
 
-> 找出当前目录下所有.txt 文件并以“File:文件名”的形式打印出来
+> 找出当前目录下所有.txt 文件并以“File: 文件名”的形式打印出来
 
 ```
-find . -type f -name "*.txt" -exec printf "File: %s\n" {} \;
+find. - type f - name "*.txt" - exec printf "File: %s\n" {}\;
 ```
 
 > 搜索大于 10KB 的文件
@@ -396,7 +420,7 @@ find . -type f -size +10k
 > 要列出所有长度为零的文件
 
 ```
-find . -empty
+find. - empty
 ```
 
 > 删除所有长度为零的文件
@@ -439,7 +463,7 @@ find . -path "./sk" -prune -o -name "*.txt" -print
 find . -name ".git" | xargs rm -Rf
 ```
 
-> Linux:给文件追加多行内容
+> Linux: 给文件追加多行内容
 
 ```shell
 ➜ cat >> 1.md

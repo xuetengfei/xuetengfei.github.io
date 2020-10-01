@@ -33,8 +33,8 @@ body.Dark > main > aside > div.sidebar-nav > ul > li a {
     max-width: 900px !important;
   }
   .markdown-section p {
-    font-size: 20px;
-    line-height: 2em;
+    font-size: 17px;
+    line-height: 1.7em;
   }
   .markdown-section p strong {
     padding: 0 3px;

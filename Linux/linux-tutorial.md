@@ -216,6 +216,11 @@ ldappasswd
 lsappinfo
 ```
 
+```bash
+# 删除当前目录中除去某个文件之外的所有文件
+ls | grep -v 20170418.sql | xargs rm -f
+```
+
 > 使用展开和引用
 
 ```bash
@@ -236,93 +241,141 @@ $ ls
 # 2010-03 2010-06 2010-09 2010-12 2011-03 2011-06 2011-09 2011-12 2012-03 2012-06 2012-09 2012-12
 ```
 
+> 进程
+
+| 进程     |                        |
+| :------- | :--------------------- |
+| ps       | 报告当前进程快照       |
+| top      | 显示任务               |
+| jobs     | 列出活跃的任务         |
+| bg       | 把一个任务放到后台执行 |
+| fg       | 把一个任务放到前台执行 |
+| kill     | 给一个进程发送信号     |
+| killall  | 杀死指定名字的进程     |
+| shutdown | 关机或重启系统         |
+
+> shell 环境
+
+| shell 环境 |                                      |
+| :--------- | :----------------------------------- |
+| printenv   | 打印部分或所有的环境变量             |
+| set        | 设置 shell 选项                      |
+| export     | 导出环境变量，让随后执行的程序知道。 |
+| alias      | 创建命令别名                         |
+
+当我们输入 ls 后， shell 不会查找整个计算机系统，来找到`/bin/ls`（ls 命令的绝对
+路径名），而是，它查找一个目录列表， 这些目录包含在 PATH 变量中。PATH 变量经常（
+但不总是，依赖于发行版）在 `/etc/profile` 启动文件中设置，通过这些代码：
+`PATH=$PATH:$HOME/bin`修改 PATH 变量，添加目录 `$HOME/bin`到目录列表的末尾。
+
+> 网络系统
+
+| 网络系统   |                                                                |
+| :--------- | :------------------------------------------------------------- |
+| ping       | 发送 ICMP ECHO_REQUEST(特殊的网络数据包 IMCP) 软件包到网络主机 |
+| traceroute | 打印到一台网络主机的路由数据包                                 |
+| netstat    | 打印网络连接，路由表，接口统计数据，伪装连接，和多路广播成员   |
+| ftp        | 因特网文件传输程序                                             |
+| wget       | 非交互式网络下载器                                             |
+| ssh        | OpenSSH SSH 客户端（远程登录程序）                             |
+| scp        | OpenSSH SSH 客户端（远程登录程序）                             |
+| scp        | 安全复制,被用来复制文件                                        |
+| sftp       | 是 ftp 程序的安全替代品                                        |
+
+```bash
+[me@linuxbox ~]$ scp remote-sys:document.txt .
+me@remote-sys's password:
+document.txt
+100%        5581        5.5KB/s         00:00
+[me@linuxbox ~]$
+```
+
 > find
 
 | 命令                                                | 解释                                                     |
 | --------------------------------------------------- | -------------------------------------------------------- |
-| find .                                              | 列出当前目录及子目录下所有文件和文件夹                   |
-| find /home -name "\*.txt"                           | 在/home 目录下查找以.txt 结尾的文件名                    |
-| find /home ! -name "\*.txt"                         | 找出/home 下不是以.txt 结尾的文件                        |
-| find . -maxdepth 3 -type f                          | 向下最大深度限制为 3                                     |
 | find . -type f -atime -7                            | 搜索最近七天内被访问过的所有文件                         |
 | find . -type f -size +10k                           | 搜索大于 10KB 的文件                                     |
 | find . -type f -perm 777                            | 当前目录下搜索出权限为 777 的文件                        |
 | find . -type f -name "\*.txt" -delete               | 删除当前目录下所有.txt 文件                              |
-| find . -empty                                       | 要列出所有长度为零的文件                                 |
-| find . -name ".git" 丨 xargs rm -Rf                 | 1                                                        |
 | find . -path "./sk" -prune -o -name "\*.txt" -print | 查找当前目录或者子目录下所有.txt 文件，但是跳过子目录 sk |
 
-找出当前目录下所有.txt 文件并以“File: 文件名”的形式打印出来, 把他们拼接起来写入
-到 all.md 文件中
+```bash
+mkdir -p playground/dir-{00{1..9},0{10..99},100}
+touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
 
-```
-find . -type f -name "*.txt" -exec printf "File: %s\n" {} \;> name.md
-```
+# 找到所有的'file-A'
+find . -type f -name 'file-A'
+find . ! -name "file-A"
 
-> 递归删除所有的 `.bak` 文件(批量删除当前目录及子目录中指定类型的文件)
+# `-exec command {} ;`   `{}`是当前路径名的符号表示
 
-```linux
-find . -type f -name "*.bak" -delete
-```
+# 删除所有的'file-A'
+find . -type f -name 'file-A' -print -exec rm -rf {} \;
 
-> 递归删除条件筛选出的 `.log` 文件
+# 删除所有的'file-C'
+find . -type f -name 'file-C' -delete
 
-```linux
-find ./ -name "*_2017-04-*.log" | xargs rm -f
-```
+#  删除本地文件夹下的 git 文件
+find . -name ".git" | xargs rm -f
 
-> 递归删除所有的 `.log` 文件, 并且打印出删除文件名称和路径
-
-!>主要不要遗漏后面有一个分号
-
-```linux
-find ./ -name '*.log' -type f -print -exec rm -rf {} \;
-```
-
-```javascript
-. //asd/adsa/asd.log
-. //asd/123.log
-```
-
-> 找出当前目录下所有.txt 文件并以“File: 文件名”的形式打印出来
-
-```javascript
-find. - type f - name "*.txt" - exec printf "File: %s\n" {}\;
-```
-
-```javascript
-├──
-ad│└── e│└── asd.txt├── asd│└── adsa│└── ojh.txt└── kkk├── 20170418. sql└── asdasfafa
-```
-
-```javascript
-File: . / asd / adsa / ojh.txt
-File: . / ad / e / asd.txt
-```
-
-> 要列出所有长度为零的文件
-
-```javascript
+# 列出所有长度为零的文件
 find. - empty
+find . -empty -delete
+
+# 找出当前目录下所有file-B文件加上换行符,输出到name.md 文件中
+find . -type f -name "file-B" -exec printf "%s\n" {} \;>name.md
+
+# 搜索大于 10KB 的文件
+find . -type f -size +10k
+
+# 当前目录下搜索出权限为 777 的文件
+find . -type f -atime -7
+
+# 向下最大深度限制为 3
+find . -maxdepth 3 -type f
+
+# 查找当前目录或者子目录下所有.txt 文件，但是跳过子目录 sk
+find . -path "./sk" -prune -o -name "*.txt" -print
+
 ```
 
-> 删除当前目录中除去某个文件之外的所有文件
+> ack : 搜索文件和文件夹利器
 
-```linux
-ls | grep -v 20170418.sql | xargs rm -f
+```javascript
+ack 函数式编程--ignore - dir = _set--type = nojs
 ```
 
-```linux
-~/Desktop/LUnix/kkk » ls
-1.txt        123.log      20170418.sql
-------------------------------------------------------------
-~/Desktop/LUnix/kkk » ls | grep -v 20170418.sql | xargs rm -f
-------------------------------------------------------------
-~/Desktop/LUnix/kkk » ls
-20170418.sql
+> Linux: 给文件追加多行内容
+
+```bash
+➜ cat >> 1.md
+add No.2 line content to file!
+add No.3 line content to file!
+^C
 ```
 
----
+```bash
+➜ echo 'some new content'>> 1.md
+```
+
+> 查看文本文件头部 n 行
+
+```bash
+head -n 200 filename   # 200 可替换为任一数字
+```
+
+> 查看文本文件末尾 n 行
+
+```bash
+tail -n 200 filename  # 200 可替换为任一数字
+```
+
+> 查看文本文件行数
+
+```bash
+wc -l filename
+```
 
 > 显示本机公网地址：
 
@@ -339,18 +392,18 @@ curl ifconfig.me
 
 > SSH 远程连接：
 
-```javascript
-ssh - p 8888 root @192 .168 .1 .179
+```
+ssh - p 8888 root @192.168.1.179
 ```
 
----
-
-> find: 强大的查询文件
-
-```javascript
-.├──ad├── asd│└── adsa└── kkk├── 20170418. sql└── asdasfafa└── 1. txt
-
-5 directories, 2 files
+```linux
+~/Desktop/LUnix/kkk » ls
+1.txt        123.log      20170418.sql
+------------------------------------------------------------
+~/Desktop/LUnix/kkk » ls | grep -v 20170418.sql | xargs rm -f
+------------------------------------------------------------
+~/Desktop/LUnix/kkk » ls
+20170418.sql
 ```
 
 当前目录搜索所有文件，文件内容 包含 “140.206.111.111” 的内容
@@ -358,142 +411,6 @@ ssh - p 8888 root @192 .168 .1 .179
 ```bash
 ~/Desktop/LUnix » find . -type f -name "*" | xargs grep "140.206.111.111"
 ./kkk/asdasfafa/1.txt:140.206.111.111
-```
-
-```javascript
-~/Desktop/LUnix»
-find.
-
-    .
-    . / kkk
-    . / kkk / 20170418. sql
-    . / kkk / asdasfafa
-    . / kkk / asdasfafa / 1. txt
-    . / asd
-    . / asd / adsa
-    . / ad
-```
-
-> ack : 搜索文件和文件夹利器
-
-```javascript
-ack 函数式编程--ignore - dir = _set--type = nojs
-```
-
-> 列出当前目录及子目录下所有文件和文件夹
-
-```
- find .
-```
-
-> 在/home 目录下查找以.txt 结尾的文件名
-
-```
- find /home -name "*.txt"
-```
-
-> 找出/home 下不是以.txt 结尾的文件
-
-```
-find /home ! -name "*.txt"
-```
-
-> 找出当前目录下所有.txt 文件并以“File: 文件名”的形式打印出来, 把他们拼接起来写
-> 入到 all.md 文件中
-
-```
-find . -type f -name "*.txt" -exec printf "File: %s\n" {} \;> name.md
-```
-
-> 找出当前目录下所有.txt 文件并以“File: 文件名”的形式打印出来
-
-```
-find. - type f - name "*.txt" - exec printf "File: %s\n" {}\;
-```
-
-> 搜索大于 10KB 的文件
-
-```
-find . -type f -size +10k
-```
-
-> 要列出所有长度为零的文件
-
-```
-find. - empty
-```
-
-> 删除所有长度为零的文件
-
-```
-find . -empty -delete
-```
-
-> 当前目录下搜索出权限为 777 的文件
-
-```
- find . -type f -atime -7
-```
-
-> 删除当前目录下所有.txt 文件
-
-```
-find . -type f -name "*.txt" -delete
-```
-
-```
-find . -type f -perm 777
-```
-
-> 向下最大深度限制为 3
-
-```
-find . -maxdepth 3 -type f
-```
-
-> 查找当前目录或者子目录下所有.txt 文件，但是跳过子目录 sk |
-
-```
-find . -path "./sk" -prune -o -name "*.txt" -print
-```
-
-> 清除本地文件夹下的 git 文件
-
-```
-find . -name ".git" | xargs rm -Rf
-```
-
-> Linux: 给文件追加多行内容
-
-```shell
-➜ cat >> 1.md
-add No.2 line content to file!
-add No.3 line content to file!
-^C
-```
-
-or
-
-```
-➜ echo 'some new content'>> 1.md
-```
-
-> 查看文本文件头部 n 行
-
-```shell
-head -n 200 filename   # 200 可替换为任一数字
-```
-
-> 查看文本文件末尾 n 行
-
-```shell
-tail -n 200 filename  # 200 可替换为任一数字
-```
-
-> 查看文本文件行数
-
-```shell
-wc -l filename
 ```
 
 ---

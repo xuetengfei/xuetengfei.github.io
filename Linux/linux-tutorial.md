@@ -430,6 +430,21 @@ ssh - p 8888 root @192.168.1.179
 | sed      | 用于筛选和转换文本的流编辑器           |
 | aspell   | 交互式拼写检查器                       |
 
+> 组命令和子 shell
+
+```bash
+ls -l > output.txt
+echo "Listing of foo.txt" >> output.txt
+cat foo.txt >> output.txt
+```
+
+简写
+
+```bash
+{ ls -l; echo "Listing of foo.txt"; cat foo.txt; } > output.txt
+```
+
 ---
 
 1. [Linux 命令搜索引擎](http://wangchujiang.com/linux-command/)
+1. [The Linux Command Line 中文版](https://www.kancloud.cn/thinkphp/linux-command-line)

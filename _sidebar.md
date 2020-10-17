@@ -13,7 +13,7 @@
 - [Redux](Redux/index.md)
 - [Python](Python/index.md)
 - [CSS](CSS/css.md)
-- [Git](Git/index.md)
+- [Git](git/index.md)
 - [Vue](Vue/vue.md)
 - [协议](protocol/index.md)
 - [全栈之路](fullStack/index.md)

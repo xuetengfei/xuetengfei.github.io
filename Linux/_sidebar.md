@@ -19,7 +19,6 @@
    - [MacOS Tips](Linux/mac-tips.md) 
    - [mac 效率工具和技巧](Linux/mac.md) 
    - [解决macOS上sudoers权限问题](Linux/mac-sudoers.md) 
-   - [Alfred workflow](Linux/Alfred-workflow.md) 
    - [shell 脚本](Linux/shell.md) 
    - [cron 时间表达式](Linux/cron.md) 
 -->

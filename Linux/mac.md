@@ -161,3 +161,66 @@ qlmanage: resetting quicklookd
 ---
 
 1. [Power Up Your Command Line - A Blog by Darren Burns](https://darrenburns.net/posts/tools/)
+
+
+---
+
+
+终端 **su root** 切换到 **root 用户**，此时拥有最高权限，任何操作都要慎重。
+
+**/etc/sudoers** 这个文件千万不要随便乱动。为了保护系统安全，sudoers 的权限一旦修改后，任何 sudo 命令都会被拒绝。
+
+让 Linux 用户 sudo 操作免密
+
+前言
+当前用户不是 root 时，有些操作会因为权限不够而被拒绝，需要 sudo 才可以完成。但是每次 sudo 都需要输入密码，很烦，干脆修改 sudoers，让 sudo 不需要验证密码。
+
+---
+
+什么操作？？？
+https://segmentfault.com/q/1010000007575129
+
+```bash
+sudo chown -R $(whoami) /usr/local
+```
+
+**whoami**就是一個命令，會 echo 當前登錄用戶的名字。當然你知道自己的用戶名，比如 jack,就直接
+
+```javascript
+sudo chown -R jack /usr/local
+```
+
+---
+
+**去掉 Dock 栏的隐藏速度**
+
+```
+defaults write com.apple.dock autohide-time-modifier -int 0;killall Dock
+```
+
+恢复设置
+
+```
+defaults delete com.apple.dock autohide-time-modifier;killall Dock
+```
+
+#### 最小化和隐藏
+
+macOS 提供两种不显示窗口的方式，一个叫“最小化”，一个叫“隐藏”，快捷键分别为：
+
+```
+Cmd + h    隐藏 (hide)
+Cmd + m    最小化 (minimize)
+```
+
+他们的区别在于，“隐藏”是 App 级别的操作，把当前 App 的所有窗口都收起来，而“最小化”，是窗口级别的操作，只把当前窗口收起来。收入的位置也不同，“隐藏”会把 App 都收入 Dock 上的程序图标内，其实看起来和平时没有什么区别：
+
+Cmd+m 最小化 chrome 浏览器后，Cmd+Tab 切换到 chrome。最小化的 chrome 窗口无法恢复正常大小。但是可以用 Cmd-H 隐藏。 后用 Cmd+Tab 恢复窗口显示。
+
+或者，用 Cmd+Tab 切换到需要的 chrome 图标上，放开 Tab 键，然后再按 Alt 键，放开 Cmd。手指头有点别扭。
+
+<!--
+
+
+[装点你的 Dock：外观篇丨一日一技 · Mac - 少数派](https://sspai.com/post/33493)
+ -->

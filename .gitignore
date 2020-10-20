@@ -23,6 +23,7 @@ package.json
 *bak*
 
 .vscode
+.vscode/*
 ### macOS ###
 # General
 .DS_Store

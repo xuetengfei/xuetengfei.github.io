@@ -1,9 +1,7 @@
 {
-    "python.pythonPath": "/usr/local/bin/python3",
-    "python.linting.pylintEnabled": false,
-    "python.linting.enabled": true,
-    "python.linting.flake8Enabled": false,
-    "cSpell.words": [
-        "Jsencrypt"
-    ]
+  "python.pythonPath": "/usr/local/bin/python3",
+  "python.linting.pylintEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": false,
+  "notebook.displayOrder": []
 }

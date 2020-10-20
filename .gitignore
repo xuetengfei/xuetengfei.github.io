@@ -22,7 +22,7 @@ source-code/python_syntax/Pipfile.lock
 package.json
 *bak*
 
-
+.vscode
 ### macOS ###
 # General
 .DS_Store

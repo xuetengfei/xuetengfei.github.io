@@ -33,8 +33,20 @@ body.Dark > main > aside > div.sidebar-nav > ul > li a {
     max-width: 900px !important;
   }
   .markdown-section p {
-    font-size: 17px;
-    line-height: 1.7em;
+    font-size: 19px;
+    line-height: 38px;
+    color: #0a0a23;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: inherit;
+    vertical-align: baseline;
+    margin: 0 0 1.5em 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .markdown-section p::selection {
+    background-color: #8cd842;
+    background-color: rgba(66, 185, 131, 0.2);
   }
   .markdown-section p strong {
     padding: 0 3px;
@@ -198,6 +210,8 @@ blockquote p {
 .anchor span {
   color: #34495e;
   color: #042341;
+  color: #0a0a23;
+  font-weight: 500;
   position: relative;
 }
 
@@ -272,4 +286,38 @@ td:nth-child(n + 1) {
 .markdown-section td,
 .markdown-section th {
   padding: 6px 13px;
+}
+
+.xx {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  --dark-blue: #002ead;
+  --theme-color: #0a0a23;
+  --gray90: #0a0a23;
+  --gray85: #1b1b32;
+  --gray80: #2a2a40;
+  --gray75: #3b3b4f;
+  --gray45: #858591;
+  --gray15: #d0d0d5;
+  --gray10: #dfdfe2;
+  --gray05: #eeeef0;
+  --gray00: #fff;
+  --header-height: 38px;
+  --sr-annote-color-0: #b4d9fb;
+  --sr-annote-color-1: #ffeb3b;
+  --sr-annote-color-2: #80deea;
+  --sr-annote-color-3: #85d1f6;
+  --sr-annote-color-4: #8cd842;
+  --sr-annote-color-5: #ffb7da;
+  color: var(--gray90);
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: inherit;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0 0 1.5em 0;
+  min-width: 100%;
 }

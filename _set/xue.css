@@ -162,7 +162,7 @@ blockquote p {
   border-left: 3px solid #f5311d;
   padding: 15px 15px 15px 50px;
   margin-bottom: 20px;
-  background: #feecea url('./danger.svg') no-repeat;
+  /* background: #feecea url('./danger.svg') no-repeat; */
   background-position: 10px center;
   background-size: 24px auto;
 }
@@ -171,7 +171,7 @@ blockquote p {
   border-left: 3px solid #4dc657;
   padding: 15px 15px 15px 50px;
   margin-bottom: 20px;
-  background: #effaf0 url('./success.svg') no-repeat;
+  /* background: #effaf0 url('./success.svg') no-repeat; */
   background-position: 10px center;
   background-size: 24px auto;
 }
@@ -179,7 +179,7 @@ blockquote p {
   border-left: 3px solid #349ef3;
   padding: 15px 15px 15px 50px;
   margin-bottom: 20px;
-  background: #e6f3fe url('./info.svg') no-repeat;
+  /* background: #e6f3fe url('./info.svg') no-repeat; */
   background-position: 10px center;
   background-size: 24px auto;
 }

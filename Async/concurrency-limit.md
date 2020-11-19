@@ -61,7 +61,7 @@ export default function index() {
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/asyncPool-4-fWzZtg.jpg' alt='asyncPool-4-fWzZtg'/>
 
-> 4. 所有请求完成后，请求时序图
+> 4.所有请求完成后，请求时序图
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/asyncPool-3-dadjlf.jpg' alt='asyncPool-3-dadjlf'/>
 

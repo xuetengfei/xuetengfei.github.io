@@ -1,12 +1,11 @@
 # Promise
 
-Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。Promise 对象是一个构造函数，用来生成 Promise 实例
+Promise 是异步编程的一种解决方案，比传统的解决方案回调函数和事件更合理强大。Promise 对象是一个构造函数，用来生成 Promise 实例
 
 # Syntax
 
 ```js
 const promise = new Promise(function(resolve, reject) {
-  // ... some code
   if (/* 异步操作成功 */){
     resolve(value);
   } else {

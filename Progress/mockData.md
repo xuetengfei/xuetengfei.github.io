@@ -5,7 +5,8 @@
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/mockdata-1555260122.jpg'/>
  -->
 
-mockjs 是用来生产随机的数据(姓名、地址、字符串、url、省份、颜色、文字、段落、时间戳等)。
+mockjs 是用来生产随机的数据(姓名、地址、字符串、url、省份、颜色、文字、段落、时
+间戳等)。
 
 #### Install Deps
 
@@ -28,9 +29,26 @@ exports.app = app;
 
 app.use(bodyParser.json());
 
-require('./api-1');
-// require('./api-2');
-// require('./api-3');
+// npm install cors --save-dev
+// const cors = require('cors');
+// app.use(cors());
+
+// or set CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PATCH, PUT, DELETE',
+  );
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Authorization,X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method',
+  );
+  res.header('Content-Type', 'application/json;charset=utf-8');
+  next();
+});
+
+require('./mock-serve');
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
@@ -39,7 +57,7 @@ app.listen(port, () => {
 });
 ```
 
-#### api-1.js
+#### mock-serve.js
 
 ```javascript
 const Mock = require('mockjs');
@@ -60,6 +78,13 @@ app.all('/logrecord', (_req, res) =>
       },
     }),
   ),
+);
+
+app.all('*', (_req, res) =>
+  res.json({
+    status: '1',
+    data: {},
+  }),
 );
 ```
 

@@ -1,8 +1,6 @@
-MacLinux
+Linux Mac
 
 <!--
-
-1. [SSH Essentials: Working with SSH Servers, Clients, and Keys | DigitalOcean](https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys)
 
 2) [12 Terminal Commands Every Web Developer Should Know About - Tutorialzine](https://tutorialzine.com/2017/08/12-terminal-commands-every-web-developer-should-know)
 

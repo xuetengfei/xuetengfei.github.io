@@ -1,4 +1,4 @@
-Proxy 对象用于定义基本操作(如属性查找、赋值、枚举、函数调用等)的自定义行为。Proxy 这个词的原意是代理，可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。
+Proxy 使你能够包装目标对象,通过 Proxy 可以拦截和重新定义该对象的基本操作。
 
 ### Syntax
 
@@ -8,6 +8,8 @@ const handler = {
 };
 const p = new Proxy(target, handler);
 ```
+
+#### get object attribute
 
 ```js
 const wrap = obj => {
@@ -27,16 +29,15 @@ console.log(wrapped.message);
 // >> hello world
 ```
 
-e.g: handler.apply() 方法用于拦截函数的调用
+#### handler.apply 拦截函数的调用
 
 ```js
-const fetch = ms => {
-  return new Promise((resolve, _) => {
+const fetch = ms =>
+  new Promise((resolve, _) => {
     setTimeout(() => {
       resolve(ms);
     }, ms * 1000);
   });
-};
 
 const handler = {
   apply: function (target, _context, args) {
@@ -53,7 +54,7 @@ Task(1)
   .catch();
 ```
 
-### example: Validation
+#### Validation
 
 ```js
 let checkHandler = {
@@ -104,9 +105,10 @@ $ node javascript-Proxy.js
 >> The age seems invalid
 ```
 
-### example: Side Effects
+#### Side Effects
 
-可以使用代理对属性读 / 写创建副作用。 想法是触发一些函数，如果一个特定的属性被访问或写入。 举例:
+可以使用代理对属性读 / 写创建副作用。 想法是触发一些函数，如果一个特定的属性被访
+问或写入。 举例:
 
 ```js
 const sendEmail = () => {
@@ -132,7 +134,7 @@ tasks.status = 'complete';
 // { status: 'complete' }
 ```
 
-### example: Caching
+#### Caching
 
 ```js
 const cacheTarget = (target, ttl = 60) => {
@@ -156,7 +158,7 @@ setTimeout(() => {
 // undefined
 ```
 
-### lazy code
+#### lazy code
 
 ```js
 const executeOperations = (operations, args) => {
@@ -231,8 +233,8 @@ console.log(a.run()); // -> 100
 
 ### javascript
 
-apply 方法拦截函数的调用、call 和 apply 操作。
-apply 方法可以接受三个参数，分别是目标对象、目标对象的上下文对象（this）和目标对象的参数数组。
+apply 方法拦截函数的调用、call 和 apply 操作。 apply 方法可以接受三个参数，分别
+是目标对象、目标对象的上下文对象（this）和目标对象的参数数组。
 
 ```js
 var handler = {

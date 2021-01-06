@@ -3,5 +3,14 @@
   "python.linting.pylintEnabled": false,
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": false,
-  "notebook.displayOrder": []
+  "notebook.displayOrder": [],
+  "search.exclude": {
+    "_set": true,
+    "**/.git": true,
+    "**/bower_components": true,
+    "**/node_modules": true,
+    "**/tmp": true
+  },
+  "search.quickOpen.includeHistory": false,
+  "search.searchOnType": false
 }

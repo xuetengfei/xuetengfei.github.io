@@ -1,8 +1,24 @@
-Promise 看起来有点复杂，所以 ES2017 引进了 `async` 和 `await`。async 函数就是 Generator 函数的语法糖。Async/Await 应该是目前最简单的异步方案了并且可以避免 `Promise.prototype.then`链式调用的问题。
+Promise 看起来有点复杂，所以 ES2017 引进了 `Async` 和 `Await`。async 函数就是
+Generator 函数的语法糖。Async/Await 应该是目前最简单的异步方案了并且可以避免
+`Promise.prototype.then`链式调用的问题。
 
-async 函数就是将 Generator 函数的星号`*` 替换成 `async`，将 `yield` 替换成 `await`
+async 函数就是将 Generator 函数的星号`*` 替换成 `Async`，将 `yield` 替换成
+`Await`
 
 ## Syntax
+
+```js
+async function functionName() {
+  const value = await functionReturningPromise();
+}
+
+// ES6 syntax
+const functionName = async () => {
+  const value = await functionReturningPromise();
+};
+```
+
+## Usage
 
 ```javascript
 const api = 'http://httpbin.org/get';
@@ -34,16 +50,25 @@ res {id: "1", post: "2"}
 */
 ```
 
-**`async` 函数返回一个 `Promise 对象`,**可以用 `then` `catch` 方法指定下一步的操作。
+**`async` 函数返回一个 `Promise 对象`,**可以用 `then` `catch` 方法指定下一步的操
+作。
 
-而 async 函数的 await 命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。async 函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而 await 命令就是内部 then 命令的语法糖。
+而 async 函数的 await 命令后面，可以是 Promise 对象和原始类型的值（数值、字符串
+和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。async 函数完全可以看
+作多个异步操作，包装成的一个 Promise 对象，而 await 命令就是内部 then 命令的语法
+糖。
 
-?> `await`只能在 async 中运行。`await` 表示在这里等待 `promise` 返回结果了，再继续执行。
-`await` 等待的虽然是 `promise` 对象，但不必写`.then(..)`，直接可以得到返回值`.catch(..)`也不用写，可以直接用标准的`try/catch`语法捕捉错误。`async` 函数返回的 `Promise` 对象，必须等到内部`所有`的 `await` 命令的 `Promise` 对象执行完，才会发生状态改变也就是说，只有当 `async` 函数内部的异步操作都执行完，才会执行 `then` 方法的回调。
+?> `await`只能在 async 中运行。`await` 表示在这里等待 `promise` 返回结果了，再继
+续执行。 `await` 等待的虽然是 `promise` 对象，但不必写`.then(..)`，直接可以得到
+返回值`.catch(..)`也不用写，可以直接用标准的`try/catch`语法捕捉错误。`async` 函
+数返回的 `Promise` 对象，必须等到内部`所有`的 `await` 命令的 `Promise` 对象执行
+完，才会发生状态改变也就是说，只有当 `async` 函数内部的异步操作都执行完，才会执
+行 `then` 方法的回调。
 
 ### 错误处理
 
-如果 `async` 函数内部抛出异常，则会导致返回的 `Promise` 对象状态变为 `reject` 状态。抛出的错误而会被 `catch` 方法回调函数接收到。
+如果 `async` 函数内部抛出异常，则会导致返回的 `Promise` 对象状态变为 `reject` 状
+态。抛出的错误而会被 `catch` 方法回调函数接收到。
 
 ```javascript
 async function fetch() {

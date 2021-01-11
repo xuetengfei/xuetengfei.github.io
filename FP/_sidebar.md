@@ -1,6 +1,5 @@
 - [curry](FP/curry.md)
-- [compose](FP/compose.md)
-- [pipe](FP/pipe.md)
+- [compose、pipe](FP/compose-and-pipe.md)
 - [callAll](FP/callAll.md)
 - [partial - 偏函数](FP/Partial-function.md)
 - [Pointfree 风格](FP/Pointfree.md)
@@ -12,3 +11,5 @@
 - [函子 (Functor) 和容器](FP/Functor.md)
 - [closure](Fp/closure.md)
 - [pure function](FP/Pure-function.md)
+
+<!-- - [pipe](FP/pipe.md) -->

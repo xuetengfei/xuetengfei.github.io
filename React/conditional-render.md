@@ -114,9 +114,7 @@ function App({ list, isLoading }) {
 ## 参考链接
 
 1. [条件渲染 - React](https://react.docschina.org/docs/conditional-rendering.html)
-1. [All the Conditional Renderings in React - RWieruch](https://www.robinwieruch.de/conditional-rendering-react/)
+2. [All the Conditional Renderings in React - RWieruch](https://www.robinwieruch.de/conditional-rendering-react/)
 
-<!--
-https://www.robinwieruch.de/gentle-introduction-higher-order-components/
-https://www.zcfy.cc/article/javascript-fundamentals-before-learning-react#
--->
+<!-- https://www.robinwieruch.de/gentle-introduction-higher-order-components/
+https://www.zcfy.cc/article/javascript-fundamentals-before-learning-react# -->

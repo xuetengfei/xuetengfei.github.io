@@ -14,10 +14,10 @@
 
 - 条件和判断
 
+  - [判断](javascript/all-kinds-of-judgment.md)
   - [优化条件判断语句](javascript/Improve-judge.md)
   - [Object replace Switch](javascript/Object-Replace-Switch.md)
   - [使用 map 书写复杂的判断](javascript/judge-with-map.md)
-  - [常用的判断](javascript/is-an-empty-obj.md)
 
 - 循环
 

@@ -1,10 +1,8 @@
-Hooks+Context 我们将创建一个新的文件 viewportContext，在其中可以存储当前视口大小
-的状态以及计算逻辑。
+React Hooks 的响应式布局实现，还介绍了如何自定义 hooks 与使用 Context 上下文，来
+复用，以达到性能最佳优化
 
-github 上面的响应式布局 hooks，都是大同小异的实现方式。
-
-本文除了介绍 React Hooks 的响应式布局实现，还介绍了如何自定义 hooks 与使用
-Context 上下文，来复用，以达到性能最佳优化
+Hooks+Context 将创建一个新的文件 viewportContext，在其中可以存储当前视口大小的状
+态以及计算逻辑。
 
 ```javascript
 const viewportContext = React.createContext({});
@@ -37,7 +35,7 @@ const useViewport = () => {
 };
 ```
 
-```js
+```javascript
 const App = () => {
   return (
     <ViewportProvider>

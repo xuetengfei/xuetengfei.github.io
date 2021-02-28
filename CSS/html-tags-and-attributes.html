@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <base href="https://example.com/" /> -->
+    <title>Document</title>
+    <style>
+      meter::-webkit-meter-optimum-value {
+        box-shadow: 0 5px 5px -5px #999 inset;
+        background-image: linear-gradient(
+          90deg,
+          #8bcf69 5%,
+          #e6d450 5%,
+          #e6d450 15%,
+          #f28f68 15%,
+          #f28f68 55%,
+          #cf82bf 55%,
+          #cf82bf 95%,
+          #719fd1 95%,
+          #719fd1 100%
+        );
+        background-size: 100% 100%;
+        background: Green; /* Green */
+      }
+      #fuel {
+        margin: 0 auto;
+        width: 300px;
+        height: 20px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: 1px solid #ccc;
+        border-radius: 100px;
+        /* Firefox */
+        /* background-color: whiteSmoke; */
+        /* box-shadow: 0 5px 5px -5px #333 inset; */
+        /* background-image: linear-gradient(
+          90deg,
+          #8bcf69 5%,
+          #e6d450 5%,
+          #e6d450 15%,
+          #f28f68 15%,
+          #f28f68 55%,
+          #cf82bf 55%,
+          #cf82bf 95%,
+          #719fd1 95%,
+          #719fd1 100%
+        );
+        */
+        background-image: linear-gradient(90deg, #8bcf69 10%, #fff 100%);
+        background-image: linear-gradient(
+          90deg,
+          #8bcf69 5%,
+          #fff 5%,
+          #fff 15%,
+          #fff 15%,
+          #fff 55%,
+          #fff 55%,
+          #fff 95%,
+          #fff 95%,
+          #fff 100%
+        );
+        background-image: linear-gradient(90deg, #8bcf69, #fff);
+        background: linear-gradient(
+          90deg,
+          rgba(0, 212, 255, 1) 61.3%,
+          rgba(255, 255, 255, 1) 0%
+        );
+        background-size: 100% 100%;
+        /* background: palegreen; */
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>This is a <mark>paragraph</mark></p>
+      <p title="I'm a tooltip">I have a tooltip</p>
+      <p contenteditable>Write your name here</p>
+      <h4>Disk usage</h4>
+      <div>
+        <label for="disk-c">C:</label>
+        <meter id="disk-c" value="0.6"></meter>
+      </div>
+
+      <div>
+        <label for="disk-d">D:</label>
+        <meter id="dist-d" min="10" max="50" value="40"></meter>
+      </div>
+      <img src="images/example.svg" alt="" />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <label for="fuel">Fuel level:</label>
+      <meter id="fuel" min="0" max="100" value="30" />
+    </div>
+  </body>
+</html>
+
+<!-- [The HTML5 meter Element | CSS-Tricks](https://css-tricks.com/html5-meter-element/) -->
+
+<!-- <a href="https://dev.to/sasscrafter/awesome-html-tags-and-attributes-339p"
+      >Awesome HTML tags and attributes - DEV Community</a
+    > -->

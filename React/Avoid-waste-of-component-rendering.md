@@ -4,9 +4,11 @@
 shouldComponentUpdate(nextProps, nextState);
 ```
 
-当 props 或 state 发生变化时，shouldComponentUpdate() 会在渲染执行之前被调用。返回值默认为 true。首次渲染或使用 forceUpdate() 时不会调用该方法。
+当 props 或 state 发生变化时，shouldComponentUpdate() 会在渲染执行之前被调用。返
+回值默认为 true。首次渲染或使用 forceUpdate() 时不会调用该方法。
 
-根据 shouldComponentUpdate() 的返回值，判断 React 组件的输出是否受当前 state 或 props 更改的影响。
+根据 shouldComponentUpdate() 的返回值，判断 React 组件的输出是否受当前 state 或
+props 更改的影响。
 
 ## React.PureComponent
 
@@ -18,13 +20,16 @@ class Greeting extends React.Component {
 }
 ```
 
-React.PureComponent 与 React.Component 很相似。两者的区别在于 React.Component 并未实现 shouldComponentUpdate()，而 React.PureComponent 中以`浅比较` prop 和 state 的方式来实现了该函数。
+React.PureComponent 与 React.Component 很相似。两者的区别在于 React.Component 并
+未实现 shouldComponentUpdate()，而 React.PureComponent 中以`浅比较` prop 和
+state 的方式来实现了该函数。
 
 PureComponent 会对 props 和 state 进行浅层比较，并减少了跳过必要更新的可能性。
 
 ## React.memo
 
-React.memo 为高阶组件。它与 React.PureComponent 非常相似，但它适用于函数组件，但不适用于 class 组件。
+React.memo 为高阶组件。它与 React.PureComponent 非常相似，但它适用于函数组件，但
+不适用于 class 组件。
 
 ```javascript
 import React from 'react';
@@ -67,4 +72,5 @@ useMemo(() => fn, deps);
 
 <!--
 [Improve performance in React functional components using React.memo()](https://blog.bitsrc.io/improve-performance-in-react-functional-components-using-react-memo-b2e80c11e15a)
+
  -->

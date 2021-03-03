@@ -1,5 +1,3 @@
-<!-- clear-react-components-and-jsx.md -->
-
 一、 可选的 props 和空对象 {}
 
 在父组件内部完成此操作总是比在组件本身内部完成更为干净。

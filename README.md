@@ -19,12 +19,12 @@
 
 -->
 
-
-
 <!-- # welcome to my blog -->
 
 <!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/think-1566222930.jpeg'/> -->
+
 <img src='./_assets/xtf.svg'>
- 
+
 <!-- 之前不小心，把隐私信息暴露到 GitHub 了， -->
-我重新整理了一下仓库分支。log就清零了。唉！
+
+<!-- 我重新整理了一下仓库分支。log 就清零了。唉！ -->

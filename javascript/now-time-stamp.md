@@ -25,9 +25,11 @@ console.log(timestamp2); // 1404958872
 格式化
 
 ```javascript
+const padZero =value=>String(value).padStart(2,'0')
+
 function formatDate(now) {
   var year = now.getFullYear();
-  var month = now.getMonth() + 1;
+  var month = padZero(now.getMonth() + 1;)
   var date = now.getDate();
   var hour = now.getHours();
   var minute = now.getMinutes();

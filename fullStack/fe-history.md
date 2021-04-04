@@ -170,6 +170,9 @@ Client-side MV* 架构
 ---
 
 1. [jstraining/history.md at master · ruanyf/jstraining](https://github.com/ruanyf/jstraining/blob/master/docs/history.md)
+2. [前后端分离架构概述_Hopefully Sky的博客-CSDN博客_前后端分离](https://blog.csdn.net/fuzhongmin05/article/details/81591072)
 2. [proxy_pass url 反向代理的坑 | Nginx 入门教程](https://xuexb.github.io/learn-nginx/example/proxy_pass.html#url-%E5%8F%AA%E6%98%AF-host)
 3. [淘宝前后端分离实践](https://2014.jsconfchina.com/slides/herman-taobaoweb/index.html#/48)
 4. [Serverless 来袭](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247489844&idx=1&sn=2a0cc520053cba4d62114aa1e9a46976&chksm=e929243bde5ead2db3962ad3f07135e364d84aba908158079c75e26c96c12fc5758759372441)
+
+

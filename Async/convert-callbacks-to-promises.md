@@ -1,4 +1,4 @@
-## Node:util.promisify
+# Node:util.promisify
 
 ```javascript
 const fs = require('fs');

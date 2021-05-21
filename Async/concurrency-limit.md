@@ -1,4 +1,4 @@
-实现一个批量请求函数，要求如下：
+### 实现一个批量请求函数，要求如下：
 
 ```md
 1. 要求并发数量控制数 limit {Number}
@@ -53,7 +53,9 @@ export default function index() {
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/asyncPool-1-5N3hD3.jpg' alt='asyncPool-1-5N3hD3'/>
 
-> 2.接口做了一些逻辑处理，将 id 对 3 取模,决定接口响应的时间的长短。目的是，让一部分接口提前返回。那么，就留下一个空位，可以增加新的请求。下图可以看到，在整体请求结束前，并发数始终在控制的最大并发数，而不是分批次请求。
+> 2.接口做了一些逻辑处理，将 id 对 3 取模,决定接口响应的时间的长短。目的是，让一
+> 部分接口提前返回。那么，就留下一个空位，可以增加新的请求。下图可以看到，在整体
+> 请求结束前，并发数始终在控制的最大并发数，而不是分批次请求。
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/asyncPool-2-mcxhQU.jpg' alt='asyncPool-2-mcxhQU'/>
 
@@ -95,7 +97,9 @@ asyncPool(2, [300, 500, 400, 200], timeout).then(r => console.log('r', r));
 
 `express 模拟接口的逻辑`
 
-接口逻辑处理，为了测试两个问题。第一：对于请求 id 对 3 取模 ，决定接口的返回延迟时间。为了测试，整体请求的过程中是否都是处在最大并发请求中。第二，接口报错不影响整体请求和最后结果顺序。
+接口逻辑处理，为了测试两个问题。第一：对于请求 id 对 3 取模 ，决定接口的返回延迟
+时间。为了测试，整体请求的过程中是否都是处在最大并发请求中。第二，接口报错不影响
+整体请求和最后结果顺序。
 
 ```js
 const { app } = require('./index');

@@ -1,14 +1,24 @@
 # useEffect 处理副作用
 
-在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug 并破坏 UI 的一致性。`useEffect 为函数式组件带来执行副作用的能力`。该 Hook 接收一个包含命令式、且可能有副作用代码的函数。
+在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录
+日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug
+并破坏 UI 的一致性。`useEffect 为函数式组件带来执行副作用的能力`。该 Hook 接收一
+个包含命令式、且可能有副作用代码的函数。
 
-使用 useEffect 完成副作用操作。赋值给 useEffect 的函数会在组件渲染到屏幕`之后`执行。默认情况下，effect 将在每轮渲染结束后执行，但你可以选择让它 在只有某些值改变的时候 才执行。默认情况下，effect 会在每轮组件渲染完成后执行。这样的话，一旦 effect 的依赖发生变化，它就会被重新创建。
+使用 useEffect 完成副作用操作。赋值给 useEffect 的函数会在组件渲染到屏幕`之后`执
+行。默认情况下，effect 将在每轮渲染结束后执行，但你可以选择让它 在只有某些值改变
+的时候 才执行。默认情况下，effect 会在每轮组件渲染完成后执行。这样的话，一旦
+effect 的依赖发生变化，它就会被重新创建。
 
-**useEffect**与**ClassComponents**中的 **componentDidMount** ，**componentDidUpdate** 和 **componentWillUnmount** 具有相同的用途，但是被统一为一个 API。
+**useEffect**与**ClassComponents**中的 **componentDidMount**
+，**componentDidUpdate** 和 **componentWillUnmount** 具有相同的用途，但是被统一
+为一个 API。
 
 ## useEffect Purpose
 
-通过这个 useEffect，React 知道开发者期望某个组件在每次 render 之后做些什么事情。React 会记录下传给 useEffect 的这个方法，然后在进行了 DOM 更新之后调用这个方法。
+通过这个 useEffect，React 知道开发者期望某个组件在每次 render 之后做些什么事情
+。React 会记录下传给 useEffect 的这个方法，然后在进行了 DOM 更新之后调用这个方法
+。
 
 默认情况下，它会在**第一次 render** 和 **之后的每次 update **后运行。
 
@@ -24,7 +34,10 @@ useEffect(
 );
 ```
 
-useEffect 支持两个参数，第一个参数是一个函数，会在 render/update 之后执行，类似于 componentDidMount 、componentDidUpdate。同时这个函数也可以返回一个函数，这个函数会在**组件卸载后**执行，类似于类组件的 componentWillUnmount 生命周期函数。第二个参数是数组，通过**跳过效果**优化性能。
+useEffect 支持两个参数，第一个参数是一个函数，会在 render/update 之后执行，类似
+于 componentDidMount 、componentDidUpdate。同时这个函数也可以返回一个函数，这个
+函数会在**组件卸载后**执行，类似于类组件的 componentWillUnmount 生命周期函数。第
+二个参数是数组，通过**跳过效果**优化性能。
 
 ```javascript
 const [width, setWidth] = useState(window.innerWidth);
@@ -88,8 +101,7 @@ function Counter() {
       <button
         onClick={() => {
           setCount(c => c + 1);
-        }}
-      >
+        }}>
         Click Me!
       </button>
     </>
@@ -139,9 +151,79 @@ function useUpdate(fn) {
 }
 ```
 
+## Cleanup the fetch request
+
+```js
+function MyComponent() {
+  useEffect(() => {
+    // Side-effect logic...
+    return () => {
+      // Side-effect cleanup
+    };
+  }, []);
+
+  // ...
+}
+```
+
+```js
+import { useState, useEffect } from 'react';
+
+function Employees() {
+  const [list, setList] = useState(null);
+
+  useEffect(() => {
+    let controller = new AbortController();
+    (async () => {
+      try {
+        const response = await fetch('/employees/list', {
+          signal: controller.signal,
+        });
+        setList(await response.json());
+        controller = null;
+      } catch (e) {
+        // Handle fetch error
+      }
+    })();
+    return () => controller?.abort();
+  }, []);
+
+  return (
+    <div>
+      {list === null ? 'Fetching employees...' : ''}
+      {list?.map(name => (
+        <div>{name}</div>
+      ))}
+    </div>
+  );
+}
+```
+
+## Web sockets
+
+```js
+import { useState } from 'react';
+
+function MyComponent() {
+  const [value, setValue] = useState();
+
+  useEffect(() => {
+    const socket = new WebSocket('wss://www.example.com/ws');
+    socket.onmessage = event => {
+      setValue(JSON.parse(event.data));
+    };
+    return () => socket.close();
+  }, []);
+
+  // ...
+}
+```
+
 ## Description
 
-就像可以使用多个 useState 一样，`也可以使用多个 useEffect`。这会将不相关逻辑分离到不同的 effect 中。Hook 允许我们按照代码的用途分离他们， 而不是像生命周期函数那样。
+就像可以使用多个 useState 一样，`也可以使用多个 useEffect`。这会将不相关逻辑分离
+到不同的 effect 中。Hook 允许我们按照代码的用途分离他们， 而不是像生命周期函数那
+样。
 
 `React 将按照 useEffect 声明的顺序依次调用组件中的每一个 useEffect。`
 

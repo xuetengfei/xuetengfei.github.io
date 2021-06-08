@@ -33,6 +33,8 @@
 - [JavaScript ‪Module Cheatsheet](Progress/Module-Cheatsheet.md)
 - [Chrome DevTools Tips](Progress/Chrome-DevTools-Tips.md)
 - [graphql](Progress/graphql.md)
+- [Tips:attach-event-handlers](Progress/attach-event-handlers-inside-other-handlers.md)
+
 <!-- - [csrf-attacks](Progress/csrf-attacks.md) -->
 <!-- - [js 错误的学习方法](Progress/Wrong-Learning-JS-sMethod.md) -->
 <!-- - [关于 return](Progress/use-return.md) -->

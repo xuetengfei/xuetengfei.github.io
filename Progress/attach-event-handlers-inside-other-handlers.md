@@ -1,6 +1,6 @@
 # Attach Event Handlers Inside Other Handlers
 
-```javascript
+```js
 const handleClick = function () {
   // Open the modal
 };
@@ -18,7 +18,7 @@ The handleKeydown handler depends on handleClick because we only check the
 pressed key if the modal is already opened. It's a common way to add a flag to
 track if the modal is opened or not:
 
-```javascript
+```js
 let isModalOpened = false;
 
 const handleClick = function () {
@@ -41,7 +41,7 @@ difficult to maintain the code.
 Instead of adding event separately at first, we add an event handler right
 inside another one which it depends on. Here is how the tip approaches:
 
-```javascript
+```js
 const handleClick = function () {
   document.addEventListener('keydown', handleKeydown);
 };

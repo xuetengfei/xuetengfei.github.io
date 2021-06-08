@@ -5,8 +5,8 @@
 const RUNTIME = 'docsify';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
-//   'fonts.gstatic.com',
-//   'fonts.googleapis.com',
+  //   'fonts.gstatic.com',
+  //   'fonts.googleapis.com',
   'unpkg.com',
 ];
 // The Util Function to hack URLs of intercepted requests
@@ -52,7 +52,10 @@ self.addEventListener('fetch', event => {
     );
     event.waitUntil(
       Promise.all([fetchedCopy, caches.open(RUNTIME)])
-        .then(([response, cache]) => response.ok && cache.put(event.request, response))
+        .then(
+          ([response, cache]) =>
+            response.ok && cache.put(event.request, response),
+        )
         .catch(_ => {
           /* eat any errors */
         }),

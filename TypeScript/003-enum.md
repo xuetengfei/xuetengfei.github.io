@@ -6,7 +6,7 @@ Enum:枚举（Enum）类型用于取值被限定在一定范围内的场景，�
 
 枚举项有两种类型：常数项（constant member）和计算所得项（computed member）。
 
-```javascript
+```js
 /* ts */
 
 enum Days {
@@ -43,7 +43,7 @@ console.log(Days[0] === 'Sun'); // true
 
 在编译阶段被删除，并且不能包含计算成员。
 
-```javascript
+```js
 /* ts */
 // 手动赋值:默认情况下，枚举值，从 0 开始为元素编号，递增加一。 也可以手动的指定成员的数值。
 const enum Color {

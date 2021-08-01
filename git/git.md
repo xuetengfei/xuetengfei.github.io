@@ -1,3 +1,11 @@
+# 想快速地在项目找到字符串
+
+可以在本地储存库使用 `git grep`
+
+```sh
+git grep -n 'db'
+```
+
 # 修改远程仓库地址
 
 方法一
@@ -14,8 +22,8 @@ git remote add origin [url]
 
 # 修改上次 commit
 
-无修改代码情况下,使用一次新的 commit，替代上一次提交。如果代码没有任何新变化，则用来改写上一次 commit 的提交信息
-amend：修正
+无修改代码情况下,使用一次新的 commit，替代上一次提交。如果代码没有任何新变化，则
+用来改写上一次 commit 的提交信息 amend：修正
 
 ```bash
 git commit --amend -m "some-message"

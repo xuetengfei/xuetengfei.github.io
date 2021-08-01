@@ -20,4 +20,3 @@
 - [Docker](Docker/index.md)
 - [Linux](Linux/linux-tutorial.md)
 - [photography](photography/index.md)
-

@@ -11,6 +11,8 @@ brew install mongodb-community@4.4
 2. 日志文件路径:`/usr/local/var/log/mongodb`
 3. 数据存放路径:`/usr/local/var/mongodb`
 
+![mogndb-local-files](http://loremxuetengfei.oss-cn-beijing.aliyuncs.com/mogndb-local-files.png)
+
 > 可以使用 brew 命令或 mongo 命令来启动服务
 
 brew 启动:

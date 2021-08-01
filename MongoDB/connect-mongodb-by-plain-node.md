@@ -53,3 +53,14 @@ MongoDB Enterprise atlas-k1zxb1-shard-0:PRIMARY>
 1. process.env.DB 里面存放是的 mongodb Atlas uri. 如果，账号和密码包含特殊字符
    如`: / ? # [ ] @`等需要
    encode.[Troubleshoot Connection Issues — MongoDB Atlas](https://docs.atlas.mongodb.com/troubleshoot-connection/)
+
+> mongodb URI 格式说明
+
+The following connects and logs in to the records database as user sysop with
+the password moon:
+
+```powershell
+mongodb://sysop:moon@localhost/records
+```
+
+[Connection String URI Format — MongoDB Manual](https://docs.mongodb.com/manual/reference/connection-string/)

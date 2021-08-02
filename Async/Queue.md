@@ -3,9 +3,9 @@
 ```js
 // 1
 async function loadData() {
-  var res1 = await fetch(url1);
-  var res2 = await fetch(url2);
-  var res3 = await fetch(url3);
+  const res1 = await fetch(url1);
+  const res2 = await fetch(url2);
+  const res3 = await fetch(url3);
   return 'whew all done';
 }
 
@@ -34,4 +34,25 @@ async function fn() {
 fn();
 ```
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200626-YWRgEE-async-queue.jpg' alt='20200626-YWRgEE-async-queue'/>
+![20200626-YWRgEE-async-queue.jpg](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200626-YWRgEE-async-queue.jpg)
+
+## 工作中的需求
+
+```js
+// 业务需要请求最近 3 天时间内最新的的数据,优先昨天，其次前天，再其次大前天
+
+async function initFetch() {
+  for (let day of [1, 2, 3]) {
+    const date = moment(new Date(), 'YYYY-MM-DD').subtract(day, 'days');
+    const res = await advanceGetList({ date });
+    if (res?.data?.length) {
+      console.log('end: ', end);
+      break; // break 是重点
+    }
+  }
+}
+
+useEffect(() => {
+  initFetch();
+}, []);
+```

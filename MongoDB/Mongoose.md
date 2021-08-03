@@ -1,7 +1,7 @@
 > ODM
 
 ORM:对象与关系形数据库映射 Object Relational Mapping  
-ODM:对象与文档形数据库映射 Object Document Mapping
+ODM: Object Data Modeler
 
 > Mongoose
 
@@ -22,3 +22,5 @@ collection，schema 不具备操作数据库的能力
 <!-- Model 是由 Schema 编译而成的假想（fancy）构造器，具有抽象属性和行为。Model 的每
 一个实例（instance）就是一个 document，document 可以保存到数据库和对数据库进行操
 作。简单说就是 model 是由 schema 生成的模型，可以对数据库的操作。 -->
+
+<!-- [mongoose - npm](https://www.npmjs.com/package/mongoose) -->

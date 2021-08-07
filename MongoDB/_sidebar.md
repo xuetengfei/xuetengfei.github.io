@@ -1,6 +1,0 @@
-- [MongoDB Install](MongoDB/mongo-install.md)
-- [MongoDB Structure](MongoDB/mongo-structure.md)
-- [MongoDB Shell](MongoDB/mongo-shell.md)
-- [Connect MongoDB Plain Node](MongoDB/connect-mongodb-by-plain-node.md)
-- [what is ORM](MongoDB/what-is-orm.md)
-- [ODM Mongoose](MongoDB/Mongoose.md)

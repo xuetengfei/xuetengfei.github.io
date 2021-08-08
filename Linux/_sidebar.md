@@ -14,6 +14,7 @@
 - [Curl && httpie](Linux/curl-httpie.md)
 - [Oh-My-Zsh](Linux/oh-my-zsh.md)
 - [shell-tips](Linux/show-shell-info.md)
+- [linux-deploy-jar](Linux/under-linux-deploy-jar.md)
 
 <!-- 
    - [MacOS Tips](Linux/mac-tips.md) 

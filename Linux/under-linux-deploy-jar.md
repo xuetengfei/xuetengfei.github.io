@@ -1,7 +1,23 @@
+Linux 上已经有了 jar 包，几种常用的部署方式
+
+1、在 Java Archive（JAR）中作为独立应用程序进行部署，java -jar 启动方式  
+2、nohup 启动方式。（推荐）  
+3、注册为 Linux 服务（推荐）  
+4、systemctl 启动方式。
+
+---
+
 ## nohup 命令
 
 Linux 的 nohup 命令可以将程序以忽略挂起信号的方式运行起来，被运行的程序的输出信
 息将不会显示到终端。
+
+```sh
+nohup java -jar /web/server.jar > log.txt 2>&1 &
+```
+
+该命令的意思是：nohub 使用 java 执行 server.jar 这个文件，并且输出日志到 log.txt
+文件，&表示后台运行
 
 ## start.sh
 
@@ -129,5 +145,7 @@ nohup 命令
 1. [java - How do I run a spring boot executable jar in a Production environment? - Stack Overflow](https://stackoverflow.com/questions/22886083/how-do-i-run-a-spring-boot-executable-jar-in-a-production-environment)
 1. [Chapter 4. Developing and deploying a Spring Boot runtime application Red Hat support for Spring Boot 2.1 | Red Hat Customer Portal](https://access.redhat.com/documentation/en-us/red_hat_support_for_spring_boot/2.1/html/spring_boot_2.1.x_runtime_guide/creating-a-basic-springboot-application_spring-boot)
 [Deploying a spring boot application in Linux as system service | by Karikevinod | Medium](https://karikevinod.medium.com/deploying-a-spring-boot-application-in-linux-as-system-service-6e08e9dc1803)
+https://www.jianshu.com/p/ec477d84fc7d
+
 
  -->

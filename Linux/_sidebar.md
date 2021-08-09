@@ -15,6 +15,7 @@
 - [Oh-My-Zsh](Linux/oh-my-zsh.md)
 - [shell-tips](Linux/show-shell-info.md)
 - [linux-deploy-jar](Linux/under-linux-deploy-jar.md)
+- [get nohup PID](Linux/get-nohup-pid.md)
 
 <!-- 
    - [MacOS Tips](Linux/mac-tips.md) 

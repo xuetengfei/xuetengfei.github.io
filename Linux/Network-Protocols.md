@@ -1,5 +1,3 @@
-Networking Protocols
-
 ```md
 FTP - File Transfer Protocol : Port 21
 

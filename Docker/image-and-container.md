@@ -1,4 +1,42 @@
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/concept-porta的副本-b1aWEi.png' alt='concept-porta的副本-b1aWEi'/> -->
+## 区分
+
+区分一下镜像容器的概念.
+
+Image(镜像):比作于项目源码  
+Container(容器):比作于运行起来的项目 app
+
+Container = Image + read_white_layer
+
+## 演示
+
+可以使用一个镜像 image 来创建多个容器,每一个容器有自己的数据读写空间,各自独立和
+隔离. 相当于一个类创建多个实例,然后,每个实例有自己变量.
+
+比如:使用同一个 nginx 镜像启动多个容器
+
+```sh
+# 用 nginx 镜像启动一个容器,访问`http://localhost:81`，会看到Nginx 欢迎页面。
+
+docker run --name webserver -d -p 81:80 nginx
+
+# 多创建几个容器
+
+docker run --name webserver-2 -d -p 82:80 nginx
+docker run --name webserver-3 -d -p 83:80 nginx
+
+# 查看一下所有容器
+
+docker container ls -a
+
+# 结果如下
+
+PORTS                               NAMES
+0.0.0.0:83->80/tcp, :::83->80/tcp   webserver-3
+0.0.0.0:82->80/tcp, :::82->80/tcp   webserver-2
+0.0.0.0:81->80/tcp, :::81->80/tcp   webserver
+
+# 现在,我们在 81、82、83 三个端口可以访问 3 台不同的 nginx 服务器.
+```
 
 ## 制作一个镜像
 
@@ -89,7 +127,8 @@ nginx                        latest              2622e6cca7eb        4 weeks ago
 
 ## Alpine 操作系统镜像
 
-Alpine 操作系统是一个面向安全的轻型 Linux 发行版。使用 Alpine 镜像替换 Ubuntu 基础镜像，安装软件包时需要用 apk 包管理器替换 apt 工具
+Alpine 操作系统是一个面向安全的轻型 Linux 发行版。使用 Alpine 镜像替换 Ubuntu 基
+础镜像，安装软件包时需要用 apk 包管理器替换 apt 工具
 
 ```
 ➜ docker run -it --name xxx --rm alpine

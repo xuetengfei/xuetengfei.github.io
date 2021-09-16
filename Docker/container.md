@@ -42,6 +42,12 @@ Commands:
   wait        Block until one or more containers stop, then print their exit codes
 ```
 
+## exec
+
+```sh
+docker exec -it <container-id> sh
+```
+
 ## 后台转前台
 
 Attach to and detach from a running container

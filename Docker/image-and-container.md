@@ -57,7 +57,7 @@ RUN apt-get update \
  && cd .oh-my-zsh && upgrade_oh_my_zsh
 ```
 
-```
+```sh
 ➜  docker build -t "test:v.1.0.0" .
 Sending build context to Docker daemon 2.048kB
 Step 1/2 : FROM ubuntu:16.04
@@ -76,7 +76,7 @@ Successfully tagged test:v.1.0.0
 
 ```
 
-```
+```sh
 <!-- 多了一个 9cda7bb804ce  -->
 ➜  docker images
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
@@ -102,7 +102,7 @@ exec zsh &&  cd .oh-my-zsh &&  upgrade_oh_my_zsh
 
 1. [docker commit：根据容器的更改创建新图像](https://docs.docker.com/engine/reference/commandline/commit/)
 
-```
+```sh
 ➜  docker run -it xtfsdocker/xtf-ubuntu:v1 /bin/bash
 root@ae0b85ab015a:/# exit
 exit
@@ -133,7 +133,7 @@ nginx                        latest              2622e6cca7eb        4 weeks ago
 Alpine 操作系统是一个面向安全的轻型 Linux 发行版。使用 Alpine 镜像替换 Ubuntu 基
 础镜像，安装软件包时需要用 apk 包管理器替换 apt 工具
 
-```
+```sh
 ➜ docker run -it --name xxx --rm alpine
 / #
 / # apk update && apk add curl
@@ -163,7 +163,7 @@ OK: 7 MiB in 18 packages
 }
 ```
 
-```
+```sh
 ➜ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 ed309bcaafb9        alpine              "/bin/sh"           29 seconds ago      Up 28 seconds                           xxx

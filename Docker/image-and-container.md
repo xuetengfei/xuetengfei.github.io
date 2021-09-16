@@ -18,6 +18,9 @@ Container = Image + read_white_layer
 # 用 nginx 镜像启动一个容器,访问`http://localhost:81`，会看到Nginx 欢迎页面。
 
 docker run --name webserver -d -p 81:80 nginx
+# 完整的命令如下
+# docker container run --name webserver-2 --detach --publish 82:80 nginx
+
 
 # 多创建几个容器
 

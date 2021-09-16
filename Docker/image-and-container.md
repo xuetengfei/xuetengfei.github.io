@@ -19,7 +19,7 @@ Container = Image + read_white_layer
 
 docker run --name webserver -d -p 81:80 nginx
 # 完整的命令如下
-# docker container run --name webserver --detach --publish 80:80 nginx
+# docker container run --name webserver --detach --publish 81:80 nginx
 
 
 # 多创建几个容器

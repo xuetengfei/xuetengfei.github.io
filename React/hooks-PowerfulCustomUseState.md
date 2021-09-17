@@ -1,10 +1,15 @@
 # 强大的 custom Hooks
 
-Custom Hooks 自定义 Hook 是一个 JavaScript 函数，其名称以“ use” 开头，可以调用其他 Hook。
+Custom Hooks 自定义 Hook 是一个 JavaScript 函数，其名称以“ use” 开头，可以调用其
+他 Hook。
 
-与 React 组件不同的是，自定义 Hook 不需要具有特殊的标识。可以自由的决定它的参数是什么，以及它应该返回什么（如果需要的话）。换句话说，它就像一个正常的函数。但是它的名字应该始终以 use 开头，这样可以一眼看 Custom Hooks。
+与 React 组件不同的是，自定义 Hook 不需要具有特殊的标识。可以自由的决定它的参数
+是什么，以及它应该返回什么（如果需要的话）。换句话说，它就像一个正常的函数。但是
+它的名字应该始终以 use 开头，这样可以一眼看 Custom Hooks。
 
-在两个组件中使用相同的 Hook **不会共享 state **。自定义 Hook 是一种重用状态逻辑的机制(例如设置为订阅并存储当前值)，所以每次使用自定义 Hook 时，其中的所有 state 和副作用都是完全隔离的。
+在两个组件中使用相同的 Hook**不会共享 state**。自定义 Hook 是一种重用状态逻辑的
+机制(例如设置为订阅并存储当前值)，所以每次使用自定义 Hook 时，其中的所有 state
+和副作用都是完全隔离的。
 
 ## 1. useMousePosition Hook
 
@@ -99,7 +104,7 @@ function useFormInput(initalValue) {
   };
 }
 
-export default function() {
+export default function () {
   const nameObj = useFormInput('xue');
   return (
     <>
@@ -129,7 +134,7 @@ function useWidth() {
   return width;
 }
 
-export default function() {
+export default function () {
   const [count, setCount] = useState(0);
   const width = useWidth();
   return (
@@ -146,7 +151,9 @@ export default function() {
 
 不管你做什么样的前端项目，Modal 组件肯定会使用到。
 
-目前 React 的组件库，比较流行的应该是阿里的 ant.design 了，在使用这个的时候，是不是经常会写很多重复的逻辑在各个组件里面呢？要么就是自己实现一个高阶组件来抽象一层，让其他组件可以复用。
+目前 React 的组件库，比较流行的应该是阿里的 ant.design 了，在使用这个的时候，是
+不是经常会写很多重复的逻辑在各个组件里面呢？要么就是自己实现一个高阶组件来抽象一
+层，让其他组件可以复用。
 
 ```javascript
 export const useModal = (
@@ -194,12 +201,43 @@ render() {
 }
 ```
 
-在上面的代码中，首先使用了 useState 定义了 3 个 state 属性，这里示例中就 3 个，如果你需要更多的自定义内容，可以自己再扩展。useState 方法给定一个初始化的属性值，返回一个属性变量和设置该属性的方法。
-以 visible 为例，这个属性用来控制 Modal 的隐藏和显示。在使用 useState 方法返回的 setVisible 的时候，组件状态会自动更新，然后触发重新渲染，是不是跟 React 的 Class 组件的 setState 有点类似?
+在上面的代码中，首先使用了 useState 定义了 3 个 state 属性，这里示例中就 3 个，
+如果你需要更多的自定义内容，可以自己再扩展。useState 方法给定一个初始化的属性值
+，返回一个属性变量和设置该属性的方法。以 visible 为例，这个属性用来控制 Modal 的
+隐藏和显示。在使用 useState 方法返回的 setVisible 的时候，组件状态会自动更新，然
+后触发重新渲染，是不是跟 React 的 Class 组件的 setState 有点类似?
 
-在自定义的 Modal 中，返回了 show，hide 方法，setTitle，setContent 方法，以及一个 CustomModal 组件，这样外部在使用的时候就可以直接像上面的使用代码一样，放到 render 中即可。
+在自定义的 Modal 中，返回了 show，hide 方法，setTitle，setContent 方法，以及一个
+CustomModal 组件，这样外部在使用的时候就可以直接像上面的使用代码一样，放到
+render 中即可。
 
-在需要修改 title 或者修改内容的时候，调用 setTitle 和 setContent 修改 modal 中的内容，注意这里的 setContent 不止可以传入 String，还可以传入一个 ReactElement，所有里面的你可以传一个 Form 进去，实现弹出框形式的表单组件。
+在需要修改 title 或者修改内容的时候，调用 setTitle 和 setContent 修改 modal 中的
+内容，注意这里的 setContent 不止可以传入 String，还可以传入一个 ReactElement，所
+有里面的你可以传一个 Form 进去，实现弹出框形式的表单组件。
+
+## usePrevious
+
+```js
+import { useEffect, useRef } from 'react';
+
+export function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
+
+// Usage
+export function MyComponent(props) {
+  const { name } = props;
+  const previousName = usePrevious(name);
+
+  if (name != previousName) {
+    // Do something
+  }
+}
+```
 
 <!--
 

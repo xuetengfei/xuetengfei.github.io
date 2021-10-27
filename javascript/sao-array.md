@@ -1,5 +1,15 @@
 ### range
 
+```js
+Object.assign(Number.prototype, {
+  *[Symbol.iterator](a) {
+    for (let i = this; i--; ) yield this - i;
+  },
+});
+console.log('[...20]', [...20]);
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+```
+
 ```javascript
 Array.from(Array(10).keys());
 // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -78,7 +88,9 @@ const [first, ...rest] = [1, 2, 3, 4, 5];
 
 ### Chunk
 
-使用 Array.from() 创建一个新的数组，它的长度与将要生成的 chunk(块) 数量相匹配。 使用 Array.slice() 将新数组的每个元素映射到长度为 size 的 chunk 中。 如果原始数组不能均匀分割，最后的 chunk 将包含剩余的元素。
+使用 Array.from() 创建一个新的数组，它的长度与将要生成的 chunk(块) 数量相匹配。
+使用 Array.slice() 将新数组的每个元素映射到长度为 size 的 chunk 中。 如果原始数
+组不能均匀分割，最后的 chunk 将包含剩余的元素。
 
 ```javascript
 const chunk = (arr, size) => {
@@ -190,7 +202,7 @@ console.log('Result: ', Result); // [1, 3]
   https://dmitripavlutin.com/javascript-array-from-applications/
   Array.from(arrayLikeOrIterable[, mapFunction[, thisArg]]);
 */
-const someNumbers = { '0': 10, '1': 15, length: 2 };
+const someNumbers = { 0: 10, 1: 15, length: 2 };
 Array.from(someNumbers, value => value * 2); // => [20, 30]
 
 // 2. Transform array-like into an array

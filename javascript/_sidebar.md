@@ -10,7 +10,8 @@
   - [命令模式](javascript/DesignPattern/Command-mode.md)
   - [惰性模式](javascript/DesignPattern/inertia-mode.md)
   - [惰性载入函数](javascript/lazy-load-func.md)
-
+  - [策略模式](javascript/strategy-pattern.md)
+  - [优化if-else](javascript/optimize-the-if-else.md)
 
 - 条件和判断
 

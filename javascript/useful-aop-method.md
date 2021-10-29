@@ -1,4 +1,6 @@
-```js
+# 原型上面添加函数
+
+```javascript
 Function.prototype.before = function (beforefun) {
   //函数调用前执行
   let _this = this; // 保存原函数引用
@@ -28,9 +30,9 @@ Function.prototype.around = function (beforeFun, afterFun) {
 };
 ```
 
+## 代码实践
 
 ```js
-
 // Function.prototype.before code
 // Function.prototype.after code 
 // Function.prototype.around code

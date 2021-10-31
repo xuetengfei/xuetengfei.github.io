@@ -2,10 +2,12 @@
 
 区分一下镜像容器的概念.
 
-Image(镜像):比作于项目源码  
-Container(容器):比作于运行起来的项目 app
+Image(镜像):
+  真实的package，包含环境、配置、代码。not running.
 
-Container = Image + read_white_layer
+Container(容器):
+  运行中的环境。running.
+  Container = Image + read_white_layer
 
 ## 演示
 

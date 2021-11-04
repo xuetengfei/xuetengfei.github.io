@@ -121,12 +121,18 @@ alias -s php=vi
 alias -s py=vi
 alias -s rb=vi
 alias -s html=vi
+
+alias -g G='| grep'
+alias his='history -10' # $ history -10  >> 查看最近十条历史
 ```
+
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Xnip2019-04-13_18-54-02-1555152879.jpg'/>
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Xnip2019-04-13_18-54-55-1555152941.jpg'/>
+
 
 ---
 
 1. [oh-my-zsh 插件推荐](https://hufangyun.com/2017/zsh-plugin/)
 2. [一些命令行效率工具](http://wulfric.me/2015/08/zsh/)
+3. [Alias Flag Description:-a -g -s](https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet#alias)

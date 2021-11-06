@@ -10,9 +10,9 @@ brew install fzf
 ```
 
 ```bash
-# 并且安装对于的快捷键
-# To install useful key bindings and fuzzy completion:
+# 安装对应的快捷键
 ➜ ~ $(brew --prefix)/opt/fzf/install
+
 Downloading bin/fzf ...
   - Already exists
   - Checking fzf executable ... 0.27.2
@@ -43,7 +43,7 @@ For more information, see: https://github.com/junegunn/fzf
 
 ```bash
 # base usage
-#[junegunn/fzf: A command-line fuzzy finder](https://github.com/junegunn/fzf#search-syntax)
+https://github.com/junegunn/fzf#search-syntax
 ```
 
 ```bash

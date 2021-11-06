@@ -21,7 +21,6 @@ IPv6 地址使用更复杂的十六进制。总的比特数是 128，这意味�
 curl ifconfig.me
 curl ident.me
 curl api.ipify.org
-curl ip-api.com
 ```
 
 ## 查看当前 IP 地址对应的地理位置

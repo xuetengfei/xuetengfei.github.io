@@ -290,61 +290,7 @@ document.txt
 [me@linuxbox ~]$
 ```
 
-> find
-
-| 命令                                                | 解释                                                     |
-| --------------------------------------------------- | -------------------------------------------------------- |
-| find . -type f -atime -7                            | 搜索最近七天内被访问过的所有文件                         |
-| find . -type f -size +10k                           | 搜索大于 10KB 的文件                                     |
-| find . -type f -perm 777                            | 当前目录下搜索出权限为 777 的文件                        |
-| find . -type f -name "\*.txt" -delete               | 删除当前目录下所有.txt 文件                              |
-| find . -path "./sk" -prune -o -name "\*.txt" -print | 查找当前目录或者子目录下所有.txt 文件，但是跳过子目录 sk |
-
-```bash
-mkdir -p playground/dir-{00{1..9},0{10..99},100}
-touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
-
-# 找到所有的'file-A'
-find . -type f -name 'file-A'
-find . ! -name "file-A"
-
-# `-exec command {} ;`   `{}`是当前路径名的符号表示
-
-# 删除所有的'file-A'
-find . -type f -name 'file-A' -print -exec rm -rf {} \;
-
-# 删除所有的'file-C'
-find . -type f -name 'file-C' -delete
-
-#  删除本地文件夹下的 git 文件
-find . -name ".git" | xargs rm -f
-
-# 列出所有长度为零的文件
-find. - empty
-find . -empty -delete
-
-# 找出当前目录下所有file-B文件加上换行符,输出到name.md 文件中
-find . -type f -name "file-B" -exec printf "%s\n" {} \;>name.md
-
-# 搜索大于 10KB 的文件
-find . -type f -size +10k
-
-# 当前目录下搜索出权限为 777 的文件
-find . -type f -atime -7
-
-# 向下最大深度限制为 3
-find . -maxdepth 3 -type f
-
-# 查找当前目录或者子目录下所有.txt 文件，但是跳过子目录 sk
-find . -path "./sk" -prune -o -name "*.txt" -print
-
-```
-
-> ack : 搜索文件和文件夹利器
-
-```javascript
-ack 函数式编程--ignore - dir = _set--type = nojs
-```
+````
 
 > Linux: 给文件追加多行内容
 
@@ -353,7 +299,7 @@ ack 函数式编程--ignore - dir = _set--type = nojs
 add No.2 line content to file!
 add No.3 line content to file!
 ^C
-```
+````
 
 ```bash
 ➜ echo 'some new content'>> 1.md

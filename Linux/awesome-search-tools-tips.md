@@ -1,4 +1,4 @@
-> 搜索文件使用 fzf，搜索文件内容 ag
+> 搜索文件使用 fzf/fd，搜索文件内容 ag
 
 ## fzf
 
@@ -81,6 +81,59 @@ fzf | xargs trash
 fzf -m | xargs trash
 ```
 
+## [fd](https://github.com/sharkdp/fd)
+
+fd 是一种简单ㄡ快速和用户友好的 find 替代方案. 虽然它不寻求复刻 find 所有强大的
+功能,但它提供了明智的 (自定的) 80%的用例.
+
+```bash
+方便语法: fd PATTERN而不是find -iname '*PATTERN*'
+彩色终端输出 (类似于ls)
+聪明案例: 默认情况下,搜索不区分大小写 如果模式包含大写字符*, 则切换为区分大小写字符
+默认情况下,忽略隐藏的目录和文件
+忽略匹配你gitignore文件中的模式,默认情况
+正则表达式
+Unicode感知.
+命令输入量*50%*优于*find: -)
+用类似于GNU穿行的语法，执行并行命令
+```
+
+```bash
+USAGE:
+    fd [FLAGS/OPTIONS] [<pattern>] [<path>...]
+
+FLAGS:
+    -H, --hidden            搜索隐藏的文件和目录
+    -I, --no-ignore         不要忽略 .(git | fd)ignore 文件匹配
+        --no-ignore-vcs     不要忽略.gitignore文件的匹配
+    -s, --case-sensitive    区分大小写的搜索（默认值：智能案例）
+    -i, --ignore-case       不区分大小写的搜索（默认值：智能案例）
+    -F, --fixed-strings     将模式视为文字字符串
+    -a, --absolute-path     显示绝对路径而不是相对路径
+    -L, --follow            遵循符号链接
+    -p, --full-path         搜索完整路径（默认值：仅限 file-/dirname）
+    -0, --print0            用null字符分隔结果
+    -h, --help              打印帮助信息
+    -V, --version           打印版本信息
+
+OPTIONS:
+    -d, --max-depth <depth>        设置最大搜索深度（默认值：无）
+    -t, --type <filetype>...       按类型过滤：文件（f），目录（d），符号链接（l），
+                                   可执行（x），空（e）
+    -e, --extension <ext>...       按文件扩展名过滤
+    -x, --exec <cmd>               为每个搜索结果执行命令
+    -E, --exclude <pattern>...     排除与给定glob模式匹配的条目
+        --ignore-file <path>...    以.gitignore格式添加自定义忽略文件
+    -c, --color <when>             何时使用颜色：never，*auto*, always
+    -j, --threads <num>            设置用于搜索和执行的线程数
+    -S, --size <size>...           根据文件大小限制结果。
+
+ARGS:
+    <pattern>    the search pattern, a regular expression (optional)
+    <path>...    the root directory for the filesystem search (optional)
+
+```
+
 ## ag
 
 [ggreer/the_silver_searcher: A code-searching tool similar to ack, but faster.](https://github.com/ggreer/the_silver_searcher)
@@ -96,10 +149,9 @@ OPTIONS:
   -Q --literal            Don't parse PATTERN as a regular expression
   -g --filename-pattern   PATTERN
 
-
-ag --list-file-types
-ag --js foo 在js文件中查询
-
+ag --list-file-types    // list file types
+ag --js foo             // 在js文件中查询
+ag 'pattern1|pattern2'  // multiple search expressions
 ```
 
 ## ack

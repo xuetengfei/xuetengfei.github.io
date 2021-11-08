@@ -1,7 +1,6 @@
 - [Linux 基础](Linux/linux-tutorial.md)
 - [Modern Unix](Linux/Modern-Unix.md)
 - [awesome-search-tools-tips](Linux/awesome-search-tools-tips.md)
-- [Linux 上生成随机密码](Linux/generate-random-password.md)
 - [Linux 查询 IP 地址](Linux/ip-address.md)
 - [Linux 的硬链接与软链接](Linux/ln-hard-symb-links.md)
 - [终端查看Linux命令的工具: tldr](Linux/tldr.md)
@@ -19,6 +18,7 @@
 - [shell-tips](Linux/show-shell-info.md)
 - [linux-deploy-jar](Linux/under-linux-deploy-jar.md)
 - [get nohup PID](Linux/get-nohup-pid.md)
+- [tips](Linux/linux-tips.md)
 
 <!-- 
    - [MacOS Tips](Linux/mac-tips.md) 

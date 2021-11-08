@@ -1,7 +1,10 @@
+## generate-random-password
+
 最简单的方法了
 
-```shell
+```bash
 $ date | md5sum
+$ date | md5  # OSX
 # 2085e02c7c22926a6fbf9c126a4cad17  -
 ```
 

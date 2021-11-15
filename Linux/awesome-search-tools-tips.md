@@ -134,6 +134,13 @@ ARGS:
 
 ```
 
+To make exclude-patterns like these permanent, you can create a .fdignore file.
+They work like .gitignore files, but are specific to fd. For example:
+
+```bash
+➜  ~ bat .fdignore
+```
+
 ## ag
 
 [ggreer/the_silver_searcher: A code-searching tool similar to ack, but faster.](https://github.com/ggreer/the_silver_searcher)

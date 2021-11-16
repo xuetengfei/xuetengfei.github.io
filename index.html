@@ -77,15 +77,39 @@
         },
         plugins: [
           function (hook) {
-            //  var footer = '<p class="docsify-updated">{docsify-updated}</p>';
-            var footer = '';
-            hook.beforeEach(function (content) {
-              return content + footer;
+            hook.init(function () {
+              // 初始化完成后调用，只调用一次，没有参数。
+              console.log('初始化完成后调用，只调用一次，没有参数。init');
+              // window.$('.content').createTOC({
+              //   title: 'jQueryScript',
+              //   insert: '.sidebar',
+              // });
+            });
+            // var footer = '<p class="docsify-updated">{docsify-updated}</p>';
+            // var footer = '';
+            // hook.beforeEach(function (content) {
+            // console.log('content', content);
+            // return content + footer;
+            // });
+            hook.doneEach(function () {
+              // 每次路由切换时数据全部加载完成后调用，没有参数。
+              // window.$('.content').createTOC({
+              //   title: 'TOC',
+              //   insert: '#TOC',
+              // });
+            });
+            hook.ready(function () {
+              console.log('初始化完成后调用，只调用一次，没有参数。 ready');
+              // 初始化并第一次加载完成数据后调用，没有参数。
             });
           },
         ],
         // 启用相对路径
         relativePath: true,
+        toc: {
+          scope: '.markdown-section',
+          headings: 'h1, h2, h3, h4, h5, h6',
+        },
       };
     </script>
     <script src="./_set/docsify.min.js.js"></script>
@@ -96,6 +120,7 @@
     <script src="./_set/docsify-copy-code@2.js"></script>
     <script src="./_set/plugins/external-script.js"></script>
     <script src="./_set/plugins/search.min.js"></script>
+    <script src="./_set/toc.js"></script>
     <script>
       let BodyDom, AsideDom;
       function handleKeydown(evt) {

@@ -51,7 +51,7 @@ git push origin master
 ---
 
 ```javascript
-git clearn -i
+git clean -i
 git clean -nfd
 git clean -fd
 ```

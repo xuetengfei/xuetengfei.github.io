@@ -1,4 +1,4 @@
-# 前言
+### 前言
 
 2. [30 秒就能理解的 JavaScript 代码片段（30 seconds of code）](http://www.css88.com/30-seconds-of-code/)
 3. [Eustia: A Tool for Generating JavaScript Utility Libraries:)](http://eustia.liriliri.io/)
@@ -7,7 +7,7 @@
 
 [damonare/Sorts: The algorithm of sort.Personal site //damonare.cn](https://github.com/damonare/Sorts)
 
-# RGB 转 hex
+### RGB 转 hex
 
 ```javascript
 const rgbToHex = (r, g, b) =>
@@ -24,24 +24,24 @@ const hexToRgb = hex =>
     .map(x => parseInt(x, 16))
     .join()})`;
 
-console.log(hexToRgb('#  27ae60')); // rgb(39,174,96)
+console.log(hexToRgb('###  27ae60')); // rgb(39,174,96)
 ```
 
-# 获取当前页面 URL
+### 获取当前页面 URL
 
 ```javascript
 const currentUrl = _ => window.location.href;
 // currentUrl() -> 'https://google.com'
 ```
 
-# 判断奇偶数:even-偶数
+### 判断奇偶数:even-偶数
 
 ```javascript
 const isEven = num => num % 2 === 0;
 // isEven(3) -> false
 ```
 
-# Shallow clone object (浅克隆对象)
+### Shallow clone object (浅克隆对象)
 
 使用 Object.assign() 和一个空对象({})来创建原始对象的浅拷贝。
 
@@ -55,7 +55,7 @@ console.log(a); //  { x: true, y: 1, c: [1, 2] }
 console.log(b); //  { x: true, y: 1, c: [1, 2] }
 ```
 
-# 基本数据类型判断
+### 基本数据类型判断
 
 1.检查一个值是否为一个`数组`
 
@@ -123,7 +123,7 @@ var isNumber = isType('Number');
 console.log(isArray([1, 2, 3])); // true
 ```
 
-# instanceof
+### instanceof
 
 instanceof 主要的作用就是判断一个实例是否属于某种类型
 
@@ -133,7 +133,7 @@ let nicole = new person();
 nicole instanceof person; // true
 ```
 
-# indexOf
+### indexOf
 
 ```javascript
 const str = 'xuetengfei';
@@ -141,9 +141,11 @@ log(str.indexOf('t')); // 3
 log(str.indexOf('a') == -1); // true
 ```
 
-# includes
+### includes
 
-不要用 indexof，一是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比较是否不等于-1，表达起来不够直观。二是，它内部使用严格相等运算符（===）进行判断，这会导致对 NaN 的误判。
+不要用 indexof，一是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比
+较是否不等于-1，表达起来不够直观。二是，它内部使用严格相等运算符（===）进行判断
+，这会导致对 NaN 的误判。
 
 ```javascript
 ['cat', 'dog', 'bat'].includes('cat'); //true
@@ -156,7 +158,7 @@ log(str.indexOf('a') == -1); // true
 
 [浅谈 instanceof 和 typeof 的实现原理 | Nicole's Blog](https://tinycat2017.github.io/2018/05/28/%E6%B5%85%E8%B0%88-instanceof-%E5%92%8C-typeof-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)
 
-# hasOwnProperty 判断属性是否存在
+### hasOwnProperty 判断属性是否存在
 
 判断**自身属性**而非**继承属性**
 
@@ -174,7 +176,7 @@ changeO();
 o.hasOwnProperty('prop'); // 返回 false
 ```
 
-# in
+### in
 
 [in](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/in)
 如果指定的属性在指定的对象或其原型链中，则 in 运算符返回 true
@@ -187,9 +189,10 @@ console.log('make' in mycar); // true
 console.log('toString' in mycar); // true
 ```
 
-# 数组去假值
+### 数组去假值
 
-从数组中移除 falsey 值元素。使用 Array.filter() 过滤掉数组中所有 假值元素(false, null, 0, "", undefined, and NaN)。
+从数组中移除 falsey 值元素。使用 Array.filter() 过滤掉数组中所有 假值元素(false,
+null, 0, "", undefined, and NaN)。
 
 ```javascript
 // lodash
@@ -213,7 +216,7 @@ const a = [0, 1, false, 2, '', 3, null, 123, undefined, 'apple'].filter(
 console.log('a is', a); // => [ 1, 2, 3, 123, 'apple' ]
 ```
 
-# 对象去假值
+### 对象去假值
 
 ```javascript
 // 删除对象中空的属性
@@ -236,7 +239,7 @@ const compactObj = obj => {
 console.log(compactObj(obj)); // { bank: 'ICCB', id: 4386 }
 ```
 
-# 三元表达式
+### 三元表达式
 
 ```javascript
 // 箭头函数没有{}也没有return关键字，隐式返回
@@ -262,7 +265,7 @@ console.log(add()); //  输出:空字符串
 console.log(typeof add()); //  string
 ```
 
-# 短路求值，避免无意义的条件判断
+### 短路求值，避免无意义的条件判断
 
 ```javascript
 // 反例
@@ -292,9 +295,10 @@ console.log(createMicrobrewery22('asd')); // asd
 console.log(createMicrobrewery22()); // Hipster Brew Co.
 ```
 
-# React 中的三目运算符
+### React 中的三目运算符
 
-如果要在 render 中的 JSX 中使用 if-else 语句，可以使用 JavaScripts 三元运算符来执行此操作：
+如果要在 render 中的 JSX 中使用 if-else 语句，可以使用 JavaScripts 三元运算符来
+执行此操作：
 
 ```javascript
 import React, { Component } from 'react';
@@ -356,11 +360,14 @@ return (
 // ...
 ```
 
-# 隐性返回速记法
+### 隐性返回速记法
 
-我们经常使用 return 关键字来返回一个函数的结果。仅有一个表达式的箭头函数会隐性返回函数结果（函数必须省略大括号({})才能省略 return 关键字）。如果要返回多行表达式（比如一个对象字面量），那么需要用 **()** 而不是 **{}** 来包裹函数体。这样可以确保代码作为一个单独的表达式被计算返回。
+我们经常使用 return 关键字来返回一个函数的结果。仅有一个表达式的箭头函数会隐性返
+回函数结果（函数必须省略大括号({})才能省略 return 关键字）。如果要返回多行表达式
+（比如一个对象字面量），那么需要用 **()** 而不是 **{}** 来包裹函数体。这样可以确
+保代码作为一个单独的表达式被计算返回。
 
-# 强制要求传参，否则报错
+### 强制要求传参，否则报错
 
 可以在**utils.js**这类函数文件头部，写一个小函数，来检测函数调用是否正确传参。
 
@@ -381,7 +388,7 @@ add(1, 2); //3
 add(1); // Error: Missing parameter:number.
 ```
 
-# 在函数参数中解构嵌套对象
+### 在函数参数中解构嵌套对象
 
 ```javascript
 var car = {
@@ -398,7 +405,7 @@ const modelAndVIN = ({ model, engine: { vin } }) => {
 modelAndVIN(car); // => model: bmw 2018  vin: 12345
 ```
 
-# 类数组的数据类型转为为数组
+### 类数组的数据类型转为为数组
 
 ```javascript
 typeof [...doucment.getElementByClassName('name')]  // is Array
@@ -406,7 +413,7 @@ typeof [...doucment.getElementByClassName('name')]  // is Array
 Array.form（ArrayLike）
 ```
 
-# 数值交换(数组结构)
+### 数值交换(数组结构)
 
 ```javascript
 let param1 = 1;
@@ -417,9 +424,11 @@ console.log(param1); // 2
 console.log(param2); // 1
 ```
 
-# 接收函数返回的多个结果
+### 接收函数返回的多个结果
 
-在下面的代码中，我们从/post 中获取一个帖子，然后在/comments 中获取相关评论。由于我们使用的是 async/await，函数把返回值放在一个数组中。而我们使用数组解构后就可以把返回值直接赋给相应的变量。
+在下面的代码中，我们从/post 中获取一个帖子，然后在/comments 中获取相关评论。由于
+我们使用的是 async/await，函数把返回值放在一个数组中。而我们使用数组解构后就可以
+把返回值直接赋给相应的变量。
 
 ```javascript
 async function getFullPost() {
@@ -428,7 +437,7 @@ async function getFullPost() {
 const [post, comments] = getFullPost();
 ```
 
-# Object [key] 验证函数
+### Object [key] 验证函数
 
 ```javascript
 // object validation rules
@@ -457,7 +466,7 @@ console.log(validate(schema, { first: 'Bruce' })); // false
 console.log(validate(schema, { first: 'Bruce', last: 'Wayne' })); // true
 ```
 
-# 让对象拥有私有成员
+### 让对象拥有私有成员
 
 可以通过闭包完成
 
@@ -519,9 +528,10 @@ let close = () => {
 };
 ```
 
-# 混叠变量
+### 混叠变量
 
-不管在外部作用域有什么值指定给$，在 IIFE 中，这些值都会被"屏蔽"，$参数一直指向 jQuery 方法。
+不管在外部作用域有什么值指定给$，在 IIFE 中，这些值都会被"屏蔽"，$参数一直指向
+jQuery 方法。
 
 ```javascript
 (function ($) {
@@ -539,7 +549,7 @@ let close = () => {
 
 [JavaScript 立即执行函数表达式(IIFE)用例 - 众成翻译](https://www.zcfy.cc/article/use-cases-for-javascript-x27-s-iifes-marius-schulz-4082.html)
 
-# 使用 Set 实现数组去重
+### 使用 Set 实现数组去重
 
 ```javascript
 let arr = [1, 1, 2, 2, 3, 3];
@@ -548,7 +558,7 @@ let deduped = [...new Set(arr)];
 console.log(deduped); // [1, 2, 3]
 ```
 
-# 短路、类型转换、且或非
+### 短路、类型转换、且或非
 
 ```javascript
 callback && callback();
@@ -565,11 +575,12 @@ console.log(1 && 2); // 2
 // 2、只要“&&”前面是false，无论“&&”后面是true还是false，结果都将返“&&”前面的值;
 ```
 
-之所以可以这么做，是因为在 JavaScript 中，true && expression 总是返回 expression，而 false && expression 总是返回 false。
+之所以可以这么做，是因为在 JavaScript 中，true && expression 总是返回
+expression，而 false && expression 总是返回 false。
 
 <!-- [全面解析 JavaScript 中“&&”和“||”操作符(总结篇)*javascript 技巧*脚本之家](https://www.jb51.net/article/88781.htm) -->
 
-# 日期格式化(不依赖第三方)
+### 日期格式化(不依赖第三方)
 
 ```javascript
 Date.prototype.format = function (fmt) {
@@ -607,7 +618,7 @@ console.log('a is', a);
 // 17-10-14 22:18:17
 ```
 
-# 星级评价
+### 星级评价
 
 ```javascript
 const startLevel = rate => '★★★★★☆☆☆☆☆'.slice(5 - rate, 10 - rate);
@@ -616,10 +627,10 @@ console.log('startLevel is', startLevel(4)); // => startLevel is ★★★★☆
 
 ---
 
-# 将数字转化为整数数组
+### 将数字转化为整数数组
 
-Number to array of digits
-将数字转换为字符串，使用 split() 来转换构建一个数组。 使用 Array.map() 和 parseInt() 将每个值转换为整数。
+Number to array of digits 将数字转换为字符串，使用 split() 来转换构建一个数组。
+使用 Array.map() 和 parseInt() 将每个值转换为整数。
 
 ```javascript
 const digitize = n => ('' + n).split('').map(i => parseInt(i));
@@ -627,7 +638,7 @@ const digitize = n => ('' + n).split('').map(i => parseInt(i));
 console.log(digitize(2334)); // [2, 3, 3, 4]
 ```
 
-# 交换两个变量的值
+### 交换两个变量的值
 
 使用数组解构来交换两个变量之间的值。
 
@@ -657,7 +668,7 @@ console.log(a); // 30
 console.log(b); // 20
 ```
 
-# 求数组最大(小)值
+### 求数组最大(小)值
 
 ```javascript
 Math.max(...[14, 3, 77]);
@@ -672,7 +683,7 @@ const arrayMin = arr => Math.min(...arr);
 // arrayMin([10, 1, 5]) -> 1
 ```
 
-# 过滤出数组中的非唯一值
+### 过滤出数组中的非唯一值
 
 使用 Array.filter() 滤除掉非唯一值，使数组仅包含`唯一值`。
 
@@ -683,9 +694,11 @@ const filterNonUnique = arr =>
 console.log(filterNonUnique([1, 2, 2, 3, 4, 4, 5])); // [1,3,5]
 ```
 
-# 根据指定的 depth 平铺数组
+### 根据指定的 depth 平铺数组
 
-每次递归，使 depth 减 1 。使用 Array.reduce() 和 Array.concat() 来合并元素或数组。默认情况下， depth 等于 1 时停递归。省略第二个参数 depth ，只能平铺 1 层的深度 (单层平铺)。
+每次递归，使 depth 减 1 。使用 Array.reduce() 和 Array.concat() 来合并元素或数组
+。默认情况下， depth 等于 1 时停递归。省略第二个参数 depth ，只能平铺 1 层的深度
+(单层平铺)。
 
 ```javascript
 const flattenDepth = (arr, depth = 1) =>
@@ -699,7 +712,7 @@ const flattenDepth = (arr, depth = 1) =>
 console.log(flattenDepth([1, [2], [[[3], 4], 5]], 2)); // [ 1, 2, [ 3 ], 4, 5 ]
 ```
 
-# 平铺数组
+### 平铺数组
 
 ```javascript
 const flatten = arr => arr.reduce((a, v) => a.concat(v), []);
@@ -709,9 +722,10 @@ console.log(flatten([1, [9], 8, 23])); // [ 1, 9, 8, 23 ]
 // 验证之后，对于三层嵌套的时候，无法展开一层平铺 ？！
 ```
 
-# 深度平铺数组
+### 深度平铺数组
 
-使用递归。 通过空数组([]) 使用 Array.concat() ，结合 展开运算符(... ) 来平铺数组。 递归平铺每个数组元素。
+使用递归。 通过空数组([]) 使用 Array.concat() ，结合 展开运算符(... ) 来平铺数组
+。 递归平铺每个数组元素。
 
 ```javascript
 const deepFlatten = arr =>
@@ -719,7 +733,7 @@ const deepFlatten = arr =>
 // deepFlatten([1,[2],[[3],4],5]) -> [1,2,3,4,5]
 ```
 
-# 多维数组展开为一维数组
+### 多维数组展开为一维数组
 
 How to flatten nested array in JavaScript?
 
@@ -734,7 +748,7 @@ flatten(foo);
 // [1, 2, 3, "4", 5, "6", 7, 8, 9, 10]
 ```
 
-# 获取数组的第一个元素
+### 获取数组的第一个元素
 
 得到第一个元素
 
@@ -775,14 +789,14 @@ const nth = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
 console.log(nth(['a', 'b', 'c', 'd'], -2)); // c
 ```
 
-# 获取数组交集
+### 获取数组交集
 
 ```javascript
 const similarity = (arr, values) => arr.filter(v => values.includes(v));
 // similarity([1,2,3], [1,2,4]) -> [1,2]
 ```
 
-# 数组求和
+### 数组求和
 
 ```javascript
 const sum = arr => arr.reduce((acc, val) => acc + val, 0);
@@ -790,7 +804,7 @@ const sum = arr => arr.reduce((acc, val) => acc + val, 0);
 console.log(sum([1, 2, 3, 4, 999])); // 1009
 ```
 
-# Take right
+### Take right
 
 ```javascript
 // 从一个给定的数组中创建一个后N个元素的数组
@@ -800,7 +814,7 @@ const takeRight = (arr, n = 1) => arr.slice(arr.length - n, arr.length);
 // takeRight([1, 2, 3]) -> [3]
 ```
 
-# Take
+### Take
 
 ```javascript
 // 从一个给定的数组中创建一个前N个元素的数组
@@ -810,14 +824,14 @@ const take = (arr, n = 1) => arr.slice(0, n);
 // take([1, 2, 3], 0) -> []
 ```
 
-# Current URL (获取当前页面 URL)
+### Current URL (获取当前页面 URL)
 
 ```javascript
 const currentUrl = _ => window.location.href;
 // currentUrl() -> 'https://google.com'
 ```
 
-# Factorial (阶乘)
+### Factorial (阶乘)
 
 使用递归。如果 n 小于或等于 1 ，则返回 1 。否则返回 n 和 n - 1 的阶乘。
 
@@ -826,7 +840,7 @@ const factorial = n => n < = 1 ? 1 : n * factorial(n - 1);
 // factorial(6) -> 720
 ```
 
-# Greatest common divisor (GCD) (最大公约数)
+### Greatest common divisor (GCD) (最大公约数)
 
 使用递归。当 y 等于 0 的情况下，返回 x 。否则，返回 y 和 x/y 余数最大公约数。
 
@@ -835,7 +849,7 @@ const gcd = (x, y) => (!y ? x : gcd(y, x % y));
 // gcd (8, 36) -> 4
 ```
 
-# Percentile (百分比)
+### Percentile (百分比)
 
 使用 Array.reduce() 来计算有多少数字小于等于该值，并用百分比表示。
 
@@ -868,7 +882,7 @@ const percentile = (arr, val, length = 3) =>
 console.log(percentile([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 18, 11], 6, 5)); // 45.833
 ```
 
-# Round number to n digits (精确的几位小数)
+### Round number to n digits (精确的几位小数)
 
 ```javascript
 const round = (n, decimals = 0) =>
@@ -877,7 +891,7 @@ const round = (n, decimals = 0) =>
 console.log(round(11.00123233735, 4)); // 11.0012
 ```
 
-# 数组拼接
+### 数组拼接
 
 ```javascript
 const ArrayConcat = (arr, ...args) => [].concat(arr, ...args);
@@ -886,7 +900,7 @@ console.log(ArrayConcat([1], [1, 2, 3, [4]]));
 // [ 1, 1, 2, 3, [ 4 ] ]
 ```
 
-# 数组比较
+### 数组比较
 
 ```javascript
 const difference = (a, b) => {
@@ -897,9 +911,10 @@ const difference = (a, b) => {
 console.log(difference([1, 2, 3], [1, 2])); // [3]
 ```
 
-# 检查数组包含
+### 检查数组包含
 
-使用 slice() 来抵消数组/字符串，并且使用 indexOf() 来检查是否包含该值。如果省略最后一个参数 fromIndex ，则会检查整个数组/字符串。
+使用 slice() 来抵消数组/字符串，并且使用 indexOf() 来检查是否包含该值。如果省略
+最后一个参数 fromIndex ，则会检查整个数组/字符串。
 
 ```javascript
 const includes = (collection, val, fromIndex = 0) =>
@@ -909,9 +924,10 @@ console.log(includes([1, 2, 3, 4], [1, 2], 1)); // false
 console.log(includes('30-seconds-of-code', 'code')); // true
 ```
 
-# 数组交集
+### 数组交集
 
-根据数组 b 创建一个 Set 对象，然后在数组 a 上使用 Array.filter() 方法，只保留数组 b 中也包含的值。
+根据数组 b 创建一个 Set 对象，然后在数组 a 上使用 Array.filter() 方法，只保留数
+组 b 中也包含的值。
 
 ```javascript
 const intersection = (a, b) => {
@@ -922,9 +938,10 @@ const intersection = (a, b) => {
 console.log(intersection([1, 2, 3], [4, 3, 2])); // [ 2, 3 ]
 ```
 
-# 移除数组中的元素
+### 移除数组中的元素
 
-使用 Array.filter() 和 Array.reduce() 来查找返回真值的数组元素，使用 Array.splice() 来移除元素。 func 有三个参数(value, index, array)，是过滤函数
+使用 Array.filter() 和 Array.reduce() 来查找返回真值的数组元素，使用
+Array.splice() 来移除元素。 func 有三个参数(value, index, array)，是过滤函数
 
 ```javascript
 const remove = (arr, func) =>
@@ -937,7 +954,7 @@ const remove = (arr, func) =>
 //remove([1, 2, 3, 4], n => n % 2 == 0) -> [2, 4]
 ```
 
-# Array union (数组合集)
+### Array union (数组合集)
 
 用数组 a 和 b 的所有值创建一个 Set 对象，并转换成一个数组。
 
@@ -947,7 +964,7 @@ const union = (a, b) => Array.from(new Set([...a, ...b]));
 // union([1,2,3], [4,3,2]) -> [1,2,3,4]
 ```
 
-# 从数组中排除给定值
+### 从数组中排除给定值
 
 使用 Array.filter() 创建一个排除所有给定值的数组。
 
@@ -957,16 +974,17 @@ const without = (arr, ...args) => arr.filter(v => args.indexOf(v) === -1);
 // without([2, 1, 2, 3, 4, 5, 5, 5, 3, 2, 7, 7], 3, 1, 5, 2) -> [ 4, 7, 7 ]
 ```
 
-# 求数组的平均数 Average
+### 求数组的平均数 Average
 
-使用 Array.reduce() 将数组中的每个值添加到一个累加器，使用 0 初始化，除以数组的 length (长度)。
+使用 Array.reduce() 将数组中的每个值添加到一个累加器，使用 0 初始化，除以数组的
+length (长度)。
 
 ```javascript
 const average = arr => arr.reduce((acc, val) => acc + val, 0) / arr.length;
 // average([1,2,3]) -> 2
 ```
 
-# 计数数组中某个值的出现次数
+### 计数数组中某个值的出现次数
 
 每次遇到数组中的指定值时，使用 Array.reduce() 来递增计数器
 
@@ -976,9 +994,10 @@ const countOccurrences = (arr, value) =>
 // countOccurrences([1,1,2,1,2,3], 1) -> 3
 ```
 
-# 删除数组中的元素
+### 删除数组中的元素
 
-循环数组，使用 Array.shift() 删除数组的第一个元素，直到函数的返回值为 true 。返回其余的元素。
+循环数组，使用 Array.shift() 删除数组的第一个元素，直到函数的返回值为 true 。返
+回其余的元素。
 
 ```javascript
 const dropElements = (arr, func) => {
@@ -988,9 +1007,10 @@ const dropElements = (arr, func) => {
 // dropElements([1, 2, 3, 4], n => n >= 3) -> [3,4]
 ```
 
-# Fill array (填充数组)
+### Fill array (填充数组)
 
-使用 Array.map() 将指定值映射到 start(包含)和 end (排除)之间。省略 start 将从第一个元素开始，省略 end 将在最后一个元素完成。
+使用 Array.map() 将指定值映射到 start(包含)和 end (排除)之间。省略 start 将从第
+一个元素开始，省略 end 将在最后一个元素完成。
 
 ```javascript
 const fillArray = (arr, value, start = 0, end = arr.length) =>
@@ -999,7 +1019,7 @@ const fillArray = (arr, value, start = 0, end = arr.length) =>
 // fillArray([1,2,3,4],'8',1,3) -> [1,'8','8',4]
 ```
 
-# 复制数组
+### 复制数组
 
 ```javascript
 const a1 = [1, 2];
@@ -1010,7 +1030,7 @@ const [...a2] = a1;
 // a2都是a1的克隆。
 ```
 
-# 合并数组
+### 合并数组
 
 ```javascript
 // ES5
@@ -1031,7 +1051,7 @@ arr1.concat(arr2, arr3);
 // [ 'a', 'b', 'c', 'd', 'e' ]
 ```
 
-# 数组的处理：同位覆盖
+### 数组的处理：同位覆盖
 
 ```javascript
 let a = Object.assign([1, 2, 3, 9], [4, 5, , 6]);
@@ -1039,7 +1059,7 @@ console.log(a); // [ 4, 5, 3, 6 ]
 console.log(typeof a);
 ```
 
-# 递归计算费纳波切数组
+### 递归计算费纳波切数组
 
 ```javascript
 let fibonacci = (len = 5, arr = [1]) => {
@@ -1052,7 +1072,7 @@ let fibonacci = (len = 5, arr = [1]) => {
 console.log(fibonacci(6)); // [ 1, 1, 2, 3, 5, 8 ]
 ```
 
-# instanceof
+### instanceof
 
 instanceof 主要的作用就是判断一个实例是否属于某种类型
 
@@ -1062,7 +1082,7 @@ let nicole = new person();
 nicole instanceof person; // true
 ```
 
-# indexOf
+### indexOf
 
 ```javascript
 const str = 'xuetengfei';
@@ -1070,9 +1090,11 @@ log(str.indexOf('t')); // 3
 log(str.indexOf('a') == -1); // true
 ```
 
-# includes
+### includes
 
-不要用 indexof，一是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比较是否不等于-1，表达起来不够直观。二是，它内部使用严格相等运算符（===）进行判断，这会导致对 NaN 的误判。
+不要用 indexof，一是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比
+较是否不等于-1，表达起来不够直观。二是，它内部使用严格相等运算符（===）进行判断
+，这会导致对 NaN 的误判。
 
 ```javascript
 ['cat', 'dog', 'bat'].includes('cat'); //true
@@ -1083,13 +1105,12 @@ log(str.indexOf('a') == -1); // true
 
 [JavaScript 确定一个字符串是否包含在另一个字符串中的四种方法 - Mazey - 博客园](https://www.cnblogs.com/mazey/p/8436381.html)
 
-# some
+### some
 
-some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。
-some() 方法会依次执行数组的每个元素：
-如果**有一个**元素满足条件，则表达式返回 true , 剩余的元素不会再执行检测。
-如果没有满足条件的元素，则返回 false。
-注意： some() 不会对空数组进行检测。some() 不会改变原始数组
+some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。 some() 方法会依次
+执行数组的每个元素：如果**有一个**元素满足条件，则表达式返回 true , 剩余的元素不
+会再执行检测。如果没有满足条件的元素，则返回 false。注意： some() 不会对空数组进
+行检测。some() 不会改变原始数组
 
 ```javascript
 const arr = ['a', 'b', 'c', 'd'];
@@ -1098,7 +1119,7 @@ log(arr.some(x => x === 'a')); // true
 
 [浅谈 instanceof 和 typeof 的实现原理 | Nicole's Blog](https://tinycat2017.github.io/2018/05/28/%E6%B5%85%E8%B0%88-instanceof-%E5%92%8C-typeof-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)
 
-# hasOwnProperty 判断属性是否存在
+### hasOwnProperty 判断属性是否存在
 
 判断**自身属性**而非**继承属性**
 
@@ -1116,7 +1137,7 @@ changeO();
 o.hasOwnProperty('prop'); // 返回 false
 ```
 
-# in
+### in
 
 [in](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/in)
 如果指定的属性在指定的对象或其原型链中，则 in 运算符返回 true
@@ -1129,7 +1150,7 @@ console.log('make' in mycar); // true
 console.log('toString' in mycar); // true
 ```
 
-# Object.keys/value/entries
+### Object.keys/value/entries
 
 ```javascript
 const icecreamColors = {
@@ -1149,7 +1170,7 @@ console.log(entries);
 // [ [ 'chocolate', 'brown' ],['vanilla', 'white'],['strawberry', 'red'] ]
 ```
 
-# 三元表达式
+### 三元表达式
 
 ```javascript
 // 箭头函数没有{}也没有return关键字，隐式返回
@@ -1175,7 +1196,7 @@ console.log(add()); //  输出:空字符串
 console.log(typeof add()); //  string
 ```
 
-# 短路求值，避免无意义的条件判断
+### 短路求值，避免无意义的条件判断
 
 ```javascript
 // 反例
@@ -1205,9 +1226,10 @@ console.log(createMicrobrewery22('asd')); // asd
 console.log(createMicrobrewery22()); // Hipster Brew Co.
 ```
 
-# React 中的三目运算符
+### React 中的三目运算符
 
-如果要在 render 中的 JSX 中使用 if-else 语句，可以使用 JavaScripts 三元运算符来执行此操作：
+如果要在 render 中的 JSX 中使用 if-else 语句，可以使用 JavaScripts 三元运算符来
+执行此操作：
 
 ```javascript
 import React, { Component } from 'react';
@@ -1269,11 +1291,14 @@ return (
 // ...
 ```
 
-# 隐性返回速记法
+### 隐性返回速记法
 
-我们经常使用 return 关键字来返回一个函数的结果。仅有一个表达式的箭头函数会隐性返回函数结果（函数必须省略大括号({})才能省略 return 关键字）。如果要返回多行表达式（比如一个对象字面量），那么需要用 **()** 而不是 **{}** 来包裹函数体。这样可以确保代码作为一个单独的表达式被计算返回。
+我们经常使用 return 关键字来返回一个函数的结果。仅有一个表达式的箭头函数会隐性返
+回函数结果（函数必须省略大括号({})才能省略 return 关键字）。如果要返回多行表达式
+（比如一个对象字面量），那么需要用 **()** 而不是 **{}** 来包裹函数体。这样可以确
+保代码作为一个单独的表达式被计算返回。
 
-# 强制要求传参，否则报错
+### 强制要求传参，否则报错
 
 可以在**utils.js**这类函数文件头部，写一个小函数，来检测函数调用是否正确传参。
 
@@ -1294,9 +1319,9 @@ add(1, 2); //3
 add(1); // Error: Missing parameter:number.
 ```
 
-[[翻译]你点的 ES6 小技巧，请查收 · Issue # 9 · WhiteYin/translation](https://github.com/WhiteYin/translation/issues/9)
+[[翻译]你点的 ES6 小技巧，请查收 · Issue ### 9 · WhiteYin/translation](https://github.com/WhiteYin/translation/issues/9)
 
-# 在函数参数中解构嵌套对象
+### 在函数参数中解构嵌套对象
 
 ```javascript
 var car = {
@@ -1313,7 +1338,7 @@ const modelAndVIN = ({ model, engine: { vin } }) => {
 modelAndVIN(car); // => model: bmw 2018  vin: 12345
 ```
 
-# 数值交换(数组结构)
+### 数值交换(数组结构)
 
 ```javascript
 let param1 = 1;
@@ -1324,9 +1349,11 @@ console.log(param1); // 2
 console.log(param2); // 1
 ```
 
-# 接收函数返回的多个结果
+### 接收函数返回的多个结果
 
-在下面的代码中，我们从/post 中获取一个帖子，然后在/comments 中获取相关评论。由于我们使用的是 async/await，函数把返回值放在一个数组中。而我们使用数组解构后就可以把返回值直接赋给相应的变量。
+在下面的代码中，我们从/post 中获取一个帖子，然后在/comments 中获取相关评论。由于
+我们使用的是 async/await，函数把返回值放在一个数组中。而我们使用数组解构后就可以
+把返回值直接赋给相应的变量。
 
 ```javascript
 async function getFullPost() {
@@ -1335,7 +1362,7 @@ async function getFullPost() {
 const [post, comments] = getFullPost();
 ```
 
-# Object [key] 验证函数
+### Object [key] 验证函数
 
 ```javascript
 // object validation rules
@@ -1364,7 +1391,7 @@ console.log(validate(schema, { first: 'Bruce' })); // false
 console.log(validate(schema, { first: 'Bruce', last: 'Wayne' })); // true
 ```
 
-# 使用 Set 实现数组去重
+### 使用 Set 实现数组去重
 
 ```javascript
 let arr = [1, 1, 2, 2, 3, 3];
@@ -1373,9 +1400,10 @@ let deduped = [...new Set(arr)];
 console.log(deduped); // [1, 2, 3]
 ```
 
-# difference - 数组比较
+### difference - 数组比较
 
-返回两个数组之间的差异。根据数组 b 创建一个 Set 对象，然后在数组 a 上使用 Array.filter() 方法，过滤出数组 b 中不包含的值。
+返回两个数组之间的差异。根据数组 b 创建一个 Set 对象，然后在数组 a 上使用
+Array.filter() 方法，过滤出数组 b 中不包含的值。
 
 ```javascript
 const difference = (a, b) => {
@@ -1390,9 +1418,10 @@ const difference = (a, b) => {
 difference([1, 2, 3], [1, 2, 4]); // [3]
 ```
 
-# differenceWith - 通过比较函数比较两个数组的差异
+### differenceWith - 通过比较函数比较两个数组的差异
 
-过滤出数组中比较函数不返回 true 的所有值。 类似于 difference ,除了接受一个 comparator （比较函数）。
+过滤出数组中比较函数不返回 true 的所有值。 类似于 difference ,除了接受一个
+comparator （比较函数）。
 
 使用 Array.filter() 和 Array.findIndex() 来查找合适的值。
 
@@ -1408,3 +1437,4 @@ differenceWith(
   (a, b) => Math.round(a) === Math.round(b),
 ); // [1, 1.2]
 ```
+

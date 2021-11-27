@@ -30,11 +30,11 @@
 - [时间复杂度](Progress/Time-Complexity.md)
 - [哈希碰撞](Progress/Hash-collision.md)
 - [命令行通配符教程](Progress/wildcards.md)
-- [JavaScript ‪Module Cheatsheet](Progress/Module-Cheatsheet.md)
+- [JavaScript Module Cheatsheet](Progress/Module-Cheatsheet.md)
 - [Chrome DevTools Tips](Progress/Chrome-DevTools-Tips.md)
 - [graphql](Progress/graphql.md)
 - [Tips:attach-event-handlers](Progress/attach-event-handlers-inside-other-handlers.md)
-
+- [Tips:Javascript RORO 模式](Progress/Javascript-RORO.md)
 <!-- - [csrf-attacks](Progress/csrf-attacks.md) -->
 <!-- - [js 错误的学习方法](Progress/Wrong-Learning-JS-sMethod.md) -->
 <!-- - [关于 return](Progress/use-return.md) -->

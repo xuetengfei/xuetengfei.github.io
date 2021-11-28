@@ -71,3 +71,5 @@ shell 在启动时都会去找配置文件，然后运行它。你安装的一�
 运行，就需要在配置文件中设置路径。有过设置路径后还是不管用的经历吗？多半是因为把
 配置写在了错误的配置文件里。应该在配置 shell（最常见的是配置默认命令）之前，使用
 `echo $SHELL`，确认自己现在用的是什么 shell 后，再去编辑对应的配置文件.
+
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20211128-LMcsWz-0__CrxqGCSzirCUHoo.png' alt='20211128-LMcsWz-0__CrxqGCSzirCUHoo'/>

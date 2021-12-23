@@ -1,19 +1,5 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script src="./cancel-fetch.js"></script>
-  </body>
-</html>
-```
-
-```javascript
+```js
 // cancel-fetch.js
-
 // 错误捕捉函数
 function to(promise) {
   return promise

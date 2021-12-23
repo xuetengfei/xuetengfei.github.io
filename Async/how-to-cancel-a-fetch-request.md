@@ -111,6 +111,3 @@ function abortableFetch(request, opts) {
 1. [Abortable fetch  |  Web  |  Google Developers](https://developers.google.com/web/updates/2017/09/abortable-fetch)
 2. [AbortController - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
 
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/uPic/2020%2004%2017%2016%2045%2019%20pQB2Fb.png' /> -->
-<!-- https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200417165005%20xxx-upic.jpg -->
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200417165005%20xxx-upic.jpg' /> -->

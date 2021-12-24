@@ -10,7 +10,6 @@
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/linus-torvalds-1566157562.jpg' width='400px' style="outline:none"/>
 
 
- ?> 怕什么真理无穷，进一寸有一寸的欢喜。
 ?> `docsify serve docs` cli to build the project ,and the `docs` is the project name.
 ?> the `l` keyboard: Switch menu
 ?> the `o` keyboard: Scroll 2 top
@@ -20,6 +19,8 @@
 -->
 
 # welcome to my blog
+
+?> 怕什么真理无穷，进一寸有一寸的欢喜。
 
 <!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/think-1566222930.jpeg'/> -->
 

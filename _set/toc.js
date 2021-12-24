@@ -1,5 +1,5 @@
 var defaultOptions = {
-  headings: 'h1, h2',
+  headings: 'h2',
   scope: '.markdown-section',
   title: 'Table of Contents',
   listType: 'ul',
@@ -87,7 +87,10 @@ var buildTOC = function (options) {
   var lastLi = null;
   var selector = options.scope + ' ' + options.headings;
   var headers = getHeaders(selector).filter(h => h.id);
-
+  console.log('headers', headers);
+  if (headers.length <= 2) {
+    return [];
+  }
   headers.reduce(function (prev, curr, index) {
     var currentLevel = getLevel(curr.tagName);
     var offset = currentLevel - prev;
@@ -100,6 +103,7 @@ var buildTOC = function (options) {
     return currentLevel;
   }, getLevel(options.headings));
 
+  console.log('ret', ret);
   return ret;
 };
 
@@ -108,7 +112,9 @@ function plugin(hook, vm) {
   var userOptions = vm.config.toc;
 
   hook.mounted(function () {
+    return;
     var content = window.Docsify.dom.find('.content');
+    console.log('content', content);
     if (content) {
       var nav = window.Docsify.dom.create('aside', '');
       window.Docsify.dom.toggleClass(nav, 'add', 'nav');
@@ -125,7 +131,17 @@ function plugin(hook, vm) {
     }
 
     const toc = buildTOC(userOptions);
-
+    // console.log('toc', toc);
+    if (!toc.length) {
+      return;
+    }
+    var content = window.Docsify.dom.find('.content');
+    console.log('content', content);
+    if (content) {
+      var nav = window.Docsify.dom.create('aside', '');
+      window.Docsify.dom.toggleClass(nav, 'add', 'nav');
+      window.Docsify.dom.before(content, nav);
+    }
     // Just unset it for now.
     if (!toc.innerHTML) {
       nav.innerHTML = null;

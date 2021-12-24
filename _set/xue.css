@@ -334,7 +334,9 @@ td:nth-child(n + 1) {
   margin: 0 48px;
 }
 .nav {
-  width: var(--toc-width, 700px);
+  /* 这里该toc的UI */
+  width: var(--toc-width, 200px);
+  padding-top: 50px;
   /*   align-self: flex-start;
   flex: 0 0 auto; */
 }
@@ -419,7 +421,7 @@ aside.nav.nothing {
     display: block;
   }
   .markdown-section {
-    /* margin: 0 auto; */
+    margin: 0 auto;
   }
 }
 

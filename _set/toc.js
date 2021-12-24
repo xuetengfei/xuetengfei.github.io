@@ -1,5 +1,5 @@
 var defaultOptions = {
-  headings: 'h2',
+  headings: 'h1,h2',
   scope: '.markdown-section',
   title: 'Table of Contents',
   listType: 'ul',
@@ -112,7 +112,6 @@ function plugin(hook, vm) {
   var userOptions = vm.config.toc;
 
   hook.mounted(function () {
-    return;
     var content = window.Docsify.dom.find('.content');
     console.log('content', content);
     if (content) {
@@ -132,22 +131,14 @@ function plugin(hook, vm) {
 
     const toc = buildTOC(userOptions);
     // console.log('toc', toc);
-    if (!toc.length) {
-      return;
-    }
-    var content = window.Docsify.dom.find('.content');
-    console.log('content', content);
-    if (content) {
-      var nav = window.Docsify.dom.create('aside', '');
-      window.Docsify.dom.toggleClass(nav, 'add', 'nav');
-      window.Docsify.dom.before(content, nav);
-    }
+    // if (!toc.length) {
+    //   return;
+    // }
     // Just unset it for now.
     if (!toc.innerHTML) {
       nav.innerHTML = null;
       return;
     }
-
     // Fix me in the future
     var title = document.createElement('p');
     title.innerHTML = userOptions.title;

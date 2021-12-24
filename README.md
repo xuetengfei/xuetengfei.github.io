@@ -19,11 +19,11 @@
 
 -->
 
-<!-- # welcome to my blog -->
+# welcome to my blog
 
 <!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/think-1566222930.jpeg'/> -->
 
-<img src='./_assets/xtf.svg'>
+<img src='./_assets/xtf.svg' style='width:'>
 
 <!-- 之前不小心，把隐私信息暴露到 GitHub 了， -->
 

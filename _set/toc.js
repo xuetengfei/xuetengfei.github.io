@@ -88,7 +88,7 @@ var buildTOC = function (options) {
   var selector = options.scope + ' ' + options.headings;
   var headers = getHeaders(selector).filter(h => h.id);
   console.log('headers', headers);
-  if (headers.length <= 2) {
+  if (headers.length <= 1) {
     return [];
   }
   headers.reduce(function (prev, curr, index) {

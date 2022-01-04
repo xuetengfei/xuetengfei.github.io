@@ -66,6 +66,7 @@
   - [封装 Toast 组件](React/Toast-component.md)
   - [clear-react-components-and-jsx](React/clear-react-components-and-jsx.md)
   - [use-react-hooks-make-responsive-layout](React/use-react-hooks-make-responsive-layout.md)
+  - [How do React hooks really work](React/how_do_react_hooks_really_work.md)
 
   <!-- - [just run react demo not project](React/Instant-Prototyping.md) -->
   <!-- - [propTypes and defaultProps](React/defaultProps.md) -->

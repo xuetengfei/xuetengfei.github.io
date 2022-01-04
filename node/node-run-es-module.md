@@ -1,4 +1,4 @@
-## 方法一:声明 package.json 中 type 为 module
+## 方法一:设置 package.json 中 type 字段为 module
 
 [模块：包 | Node.js v17.3.0 文档](https://nodejs.org/api/packages.html#type)
 
@@ -27,7 +27,7 @@ console.log('res', _.get(o, 'a', 0));
 res 1
 ```
 
-## 方法二 js 的后缀后修改为 mjs
+## 方法二:js 的后缀后修改为 mjs
 
 [模块：ECMAScript 模块 | Node.js v17.3.0 文档](https://nodejs.org/api/esm.html)
 

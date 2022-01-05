@@ -71,12 +71,13 @@
   - [ES6 解构](javascript/destructuring-nested-objects.md)
   - [...运算符](javascript/the-three-dots.md)
   - [Function](javascript/sao-Function.md)
+  - [ResizeObserver、MutationObserver、IntersectionObserver](javascript/some-observer.md)
 
 - 常用代码
 
   - [表单验证](javascript/verify-user-info.md)
   - [常用的JS正则校验表达式](javascript/Regular-expression.md)
-  - [ @ 函数计算集合](javascript/trick.md)
+  - [函数计算集合](javascript/trick.md)
 
 
 - OOP
@@ -94,4 +95,4 @@
 
 - window
 
-  - [页面的骚操作](javascript/sao-window.md)
+  - [页面的骚操作](javascript/trick-of-window.md)

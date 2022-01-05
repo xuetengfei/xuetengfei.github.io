@@ -1,6 +1,7 @@
 ?> Regex
 
-<a href="https://regex101.com/">Online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript</a>
+<a href="https://regex101.com/">Online regex tester and debugger: PHP, PCRE,
+Python, Golang and JavaScript</a>
 
 > 元字符`\b`,用来匹配一个位置。匹配单词的开始或结束.
 

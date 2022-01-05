@@ -24,11 +24,8 @@
 - [javascript 模块化历史](Progress/Modularization.md)
 - [Javascript 模块化之 CommonJS](Progress/CommonJS-Standard.md)
 - [ES 模块和导入导出规则](Progress/es-module.md)
-- [正则表达式](Progress/Regex.md)
 - [时间复杂度](Progress/Time-Complexity.md)
-- [哈希碰撞](Progress/Hash-collision.md)
-- [命令行通配符教程](Progress/wildcards.md)
-- [JavaScript Module Cheatsheet](Progress/Module-Cheatsheet.md)
+
 - [graphql](Progress/graphql.md)
 
 <!-- - [csrf-attacks](Progress/csrf-attacks.md) -->

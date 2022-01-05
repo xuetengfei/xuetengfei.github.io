@@ -79,7 +79,12 @@
   - [表单验证](javascript/verify-user-info.md)
   - [常用的JS正则校验表达式](javascript/Regular-expression.md)
   - [函数计算集合](javascript/trick.md)
+  - [正则表达式](javascript/Regex.md)
+  - [哈希碰撞](javascript/Hash-collision.md)
+  - [命令行通配符教程](javascript/wildcards.md)
 
+- 模块化
+  - [不同的导出方法和相应的导入方法](javascript/Module-Cheatsheet.md)
 
 - OOP
 

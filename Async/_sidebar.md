@@ -13,7 +13,6 @@
   - [错误处理](Async/error-handling.md)
   - [promisify](Async/convert-callbacks-to-promises.md)
 
-
 - 前端请求
 
   - [基于 token 身份验证](Async/token.md)
@@ -24,7 +23,6 @@
   - [浏览器的同源策略](Async/Same-origin_policy.md)
   - [前端跨域](Async/Cross-Domain.md)
 
-
 - Fetch
 
   - [Fetch 替代 XMLHttpRequest](Async/fetch.md)
@@ -32,10 +30,7 @@
   - [前端请求的技术演变及其优劣](Async/fe-request-evolution.md)
 
 
-
-
   <!-- 
-  
   
   - [promise.then chain](Async/promise-chain.md) 
   - [Promise.race 多个异步调用](Async/Promise-race.md) 
@@ -44,6 +39,3 @@
   - [promise 继发写法](Async/Promise-Queue.md) 
   
   -->
-
-
-

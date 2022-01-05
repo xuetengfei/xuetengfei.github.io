@@ -1,5 +1,5 @@
 最近，闲来无事。把自己日常的浏览器书签整理成了一个在线的书签。  
-地址是:[xuetengfei's Browser bookmark](https://static-bookmarks.now.sh/)
+地址是:[xuetengfei's Browser bookmark](https://xtf-bookmarks.vercel.app/)
 
 技术整理
 
@@ -26,8 +26,8 @@ jobs:
         run: curl -X POST https://api.vercel.com/xxxxxxxx
 ```
 
-第三方免费托管平台: [Vercel](https://vercel.com)
-这个平台之前叫「ZEIT」现在改名叫「Vercel」
+第三方免费托管平台: [Vercel](https://vercel.com) 这个平台之前叫「ZEIT」现在改名
+叫「Vercel」
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200602-RlKH2g-book-mark-1.jpg' alt='20200602-RlKH2g-book-mark-1'/>
 

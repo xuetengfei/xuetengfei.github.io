@@ -41,7 +41,7 @@ document.getElementById('btn').addEventListener('click', () => {
 });
 ```
 
-[xuetengfei's browser bookmark](https://static-bookmarks.now.sh/)
+[xuetengfei's browser bookmark](https://xtf-bookmarks.vercel.app/)
 
 ---
 

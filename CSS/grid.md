@@ -1,11 +1,18 @@
-> CSS Grid(网格) 布局（又称为 “Grid(网格)” ），是一个二维的基于网格的布局系统，它的目标是完全改变我们基于网格的用户界面的布局方式。
+> CSS Grid(网格) 布局（又称为 “Grid(网格)” ），是一个二维的基于网格的布局系统，
+> 它的目标是完全改变我们基于网格的用户界面的布局方式。
 
-CSS 一直用来布局我们的网页，但一直以来都存在这样或那样的问题。一开始我们用表格（table），然后是浮动（float），再是定位（postion）和内嵌块（inline-block），但是所有这些方法本质上都是只是 hack 而已，并且遗漏了很多重要的功能（例如垂直居中）。Flexbox 的出现很大程度上改善了我们的布局方式，但它的目的是为了解决更简单的一维布局，而不是复杂的二维布局（实际上 Flexbox 和 Grid 能协同工作，而且配合得非常好）。Grid(网格) 布局是第一个专门为解决布局问题而创建的 CSS 模块。
+CSS 一直用来布局我们的网页，但一直以来都存在这样或那样的问题。一开始我们用表格
+（table），然后是浮动（float），再是定位（postion）和内嵌块（inline-block），但
+是所有这些方法本质上都是只是 hack 而已，并且遗漏了很多重要的功能（例如垂直居中）
+。Flexbox 的出现很大程度上改善了我们的布局方式，但它的目的是为了解决更简单的一维
+布局，而不是复杂的二维布局（实际上 Flexbox 和 Grid 能协同工作，而且配合得非常好
+）。Grid(网格) 布局是第一个专门为解决布局问题而创建的 CSS 模块。
 
 ## 网格容器(Grid Container) 网格项(Grid Item)
 
-在这个例子中，container 就是 网格容器(Grid Container)。
-网格容器（Grid Container）的子元素（例如直接子元素）。这里 item 元素就是网格项(Grid Item)，但是 sub-item 不是。
+在这个例子中，container 就是 网格容器(Grid Container)。网格容器（Grid
+Container）的子元素（例如直接子元素）。这里 item 元素就是网格项(Grid Item)，但是
+sub-item 不是。
 
 ```html
 <div class="container">
@@ -41,10 +48,12 @@ div {
 }
 ```
 
-<img src ='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/gird-layout.jpg' width="600px"/>
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/gird-layout.jpg' width="600px" />
 
-<img src='https://newimg88.b0.upaiyun.com/newimg88/2018/12/template-columns-rows-01.svg'/ width='400px'>
-如果你的定义包含多个重复值，则可以使用 repeat() 表示法来简化定义：
+<img
+src='https://newimg88.b0.upaiyun.com/newimg88/2018/12/template-columns-rows-01.svg'/
+width='400px'> 如果你的定义包含多个重复值，则可以使用 repeat() 表示法来简化定义
+：
 
 ```css
 .container2 {
@@ -60,7 +69,9 @@ div {
 
 指定网格线(grid lines)的大小。你可以把它想象为设置列/行之间间距的宽度。
 
-注意：这两个属性将删除 grid- 前缀，就是将 grid-column-gap 和 grid-row-gap 重命名为 column-gap 和 row-gap。 Chrome 68+，Safari 11.2 Release 50+ 和 Opera 54+ 已经支持无前缀的属性。
+注意：这两个属性将删除 grid- 前缀，就是将 grid-column-gap 和 grid-row-gap 重命名
+为 column-gap 和 row-gap。 Chrome 68+，Safari 11.2 Release 50+ 和 Opera 54+ 已经
+支持无前缀的属性。
 
 ```css
 .container3 {
@@ -90,11 +101,13 @@ div {
 }
 ```
 
-注意：这个属性将删除 grid- 前缀，就是将 grid-gap 重命名为 gap。 Chrome 68+，Safari 11.2 Release 50+ 和 Opera 54+ 已经支持无前缀的属性。
+注意：这个属性将删除 grid- 前缀，就是将 grid-gap 重命名为 gap。 Chrome
+68+，Safari 11.2 Release 50+ 和 Opera 54+ 已经支持无前缀的属性。
 
 ## justify-items
 
-?> justify-items 描述的是 每一个网格内，网格项(Grid Item)在 行(row)方向对齐的方式，适用于容器内的所有网格项。
+?> justify-items 描述的是 每一个网格内，网格项(Grid Item)在 行(row)方向对齐的方
+式，适用于容器内的所有网格项。
 
 ```css
 .container {
@@ -111,7 +124,8 @@ div {
 
 ## align-items
 
-?> align-items 描述的是 每一个网格内，网格项(Grid Item)在 列(column)方向对齐的方式，适用于容器内的所有网格项。
+?> align-items 描述的是 每一个网格内，网格项(Grid Item)在 列(column)方向对齐的方
+式，适用于容器内的所有网格项。
 
 ```css
 .container {
@@ -129,8 +143,8 @@ div {
 place-items: <align-items> <justify-items>;
 ```
 
-第一个值设置 align-items 属性，第二个值设置 justify-items 属性。
-如果省略第二个值，则将第一个值同时分配给这两个属性。
+第一个值设置 align-items 属性，第二个值设置 justify-items 属性。如果省略第二个值
+，则将第一个值同时分配给这两个属性。
 
 ## justify-content
 
@@ -142,9 +156,11 @@ place-items: <align-items> <justify-items>;
 </div>
 ```
 
-假设 `container` 宽度为 500px ,三个 `<div class="item"></div>`宽度为 100px,那么网格项总宽度小于网格容器`container`
+假设 `container` 宽度为 500px ,三个 `<div class="item"></div>`宽度为 100px,那么
+网格项总宽度小于网格容器`container`
 
-在这种情况下，您可以设置网格容器内的网格的对齐方式。 此属性沿着 inline（行）轴线对齐网格（相反的属性是 align-content ，沿着 block（列）轴线对齐网格）。
+在这种情况下，您可以设置网格容器内的网格的对齐方式。 此属性沿着 inline（行）轴线
+对齐网格（相反的属性是 align-content ，沿着 block（列）轴线对齐网格）。
 
 用法和 flexbox 里面的 justify-content 一样的。
 
@@ -189,13 +205,15 @@ place-content 是设置 align-content 和 justify-content 的简写形式。
 place-content: <align-content> <justify-content>;
 ```
 
-第一个值设置 align-content 属性，第二个值设置 justify-content 属性。如果省略第二个值，则将第一个值同时分配给这两个属性。
+第一个值设置 align-content 属性，第二个值设置 justify-content 属性。如果省略第二
+个值，则将第一个值同时分配给这两个属性。
 
 ## grid-auto-flow
 
 ?> 描述网格项排序方式:默认是`Z`字排序
 
-如果你有一些没有明确放置在网格上的网格项(grid items)，自动放置算法 会自动放置这些网格项。该属性控制自动布局算法如何工作。
+如果你有一些没有明确放置在网格上的网格项(grid items)，自动放置算法 会自动放置这
+些网格项。该属性控制自动布局算法如何工作。
 
 ```css
 .container {
@@ -207,7 +225,8 @@ place-content: <align-content> <justify-content>;
 - column：告诉自动布局算法依次填入每列，根据需要添加新列 `Ɯ`字排序
 - dense：告诉自动布局算法在稍后出现较小的网格项时，尝试填充网格中较早的空缺
 
-请注意，dense 只会更改网格项的可视顺序，并可能导致它们出现乱序，这对可访问性不利。
+请注意，dense 只会更改网格项的可视顺序，并可能导致它们出现乱序，这对可访问性不利
+。
 
 ```css
 .container6 {
@@ -223,9 +242,12 @@ place-content: <align-content> <justify-content>;
 
 ## grid
 
-在一个声明中设置所有以下属性的简写： grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, 和 grid-auto-flow 。（注意：您只能在单个网格声明中指定显式或隐式网格属性）。
+在一个声明中设置所有以下属性的简写： grid-template-rows, grid-template-columns,
+grid-template-areas, grid-auto-rows, grid-auto-columns, 和 grid-auto-flow 。（注
+意：您只能在单个网格声明中指定显式或隐式网格属性）。
 
-[grid Syntax | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid#Syntax)属性顺序问题 特别容易出错。
+[grid Syntax | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid#Syntax)属
+性顺序问题 特别容易出错。
 
 ```css
 .container {
@@ -244,7 +266,8 @@ place-content: <align-content> <justify-content>;
 
 ## 子元素 网格项(Grid Items) 属性
 
-!> float，display: inline-block，display: table-cell，vertical-align 和 column-\* 属性对网格项无效。
+!> float，display: inline-block，display: table-cell，vertical-align 和
+column-\* 属性对网格项无效。
 
 ```css
 .item {
@@ -255,7 +278,8 @@ place-content: <align-content> <justify-content>;
 }
 ```
 
-- <line> ：可以是一个数字引用一个编号的网格线，或者一个名字来引用一个命名的网格线
+- <line> ：可以是一个数字引用一个编号的网格线，或者一个名字来引用一个命名的网格
+  线
 - span <number> ：该网格项将跨越所提供的网格轨道数量
 - span <name> ：该网格项将跨越到它与提供的名称位置
 - auto：表示自动放置，自动跨度，默认会扩展一个网格轨道的宽度或者高度
@@ -313,7 +337,8 @@ place-content: <align-content> <justify-content>;
 }
 ```
 
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/nine-layout.jpg"/ width='400px'>
+<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/nine-layout.jpg"/
+width='400px'>
 
 ## justify-self
 
@@ -341,9 +366,11 @@ place-self 是设置 align-self 和 justify-self 的简写形式。
 
 ---
 
-1. [CSS Grid 图解](https://www.css88.com/archives/8510#prop-grid)
-2. [CSS3 Flexbox 图解](https://www.css88.com/archives/8629)
-3. [如何使用 CSS Grid 快速而又灵活的布局](https://www.css88.com/archives/8512)
-4. [5 分钟学会 CSS Grid 布局](https://www.css88.com/archives/8506)
-5. [从零开始学 CSS Grid 布局 – F2EX](http://f2ex.cn/css-grid-layout-guide/)
-6. [horseshoe/flex.md at master · veedrin/horseshoe](https://github.com/veedrin/horseshoe/blob/master/flex/flex.md)
+1. [2022 年不能再错过 CSS 网格布局了. Medium](https://w3cplus.medium.com/2022%E5%B9%B4%E4%B8%8D%E8%83%BD%E5%86%8D%E9%94%99%E8%BF%87-css-%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80%E4%BA%86-3ce9452ef031)
+2. [CSS Grid 图解](https://www.css88.com/archives/8510#prop-grid)
+3. [CSS3 Flexbox 图解](https://www.css88.com/archives/8629)
+4. [如何使用 CSS Grid 快速而又灵活的布局](https://www.css88.com/archives/8512)
+5. [5 分钟学会 CSS Grid 布局](https://www.css88.com/archives/8506)
+6. [从零开始学 CSS Grid 布局 – F2EX](http://f2ex.cn/css-grid-layout-guide/)
+7. [horseshoe/flex.md at master · veedrin/horseshoe](https://github.com/veedrin/horseshoe/blob/master/flex/flex.md)
+8. [Grid for layout, Flexbox for components - Ahmad Shadeed](https://ishadeed.com/article/grid-layout-flexbox-components/)

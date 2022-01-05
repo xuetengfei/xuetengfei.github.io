@@ -21,6 +21,7 @@
   - [优化条件判断语句](javascript/Improve-judge.md)
   - [Object replace Switch](javascript/Object-Replace-Switch.md)
   - [使用 map 书写复杂的判断](javascript/judge-with-map.md)
+  - [校验金额](javascript/CHECK_THE_AMOUNT_regular-expression.md)
 
 - 循环
 
@@ -92,7 +93,13 @@
   - [Class EnhanceArray](javascript/class-EnhanceArray.md)
   - [使用方法链](javascript/method-chain.md)
 
-
 - window
 
   - [页面的骚操作](javascript/trick-of-window.md)
+
+- Tips
+
+  - [想给方法传一个空参数](javascript/transmit-Empty-parameter.md)
+  - [Chrome DevTools Tips](javascript/Chrome-DevTools-Tips.md)
+  - [attach-event-handlers](javascript/attach-event-handlers-inside-other-handlers.md)
+  - [Javascript RORO 模式](javascript/Javascript-RORO.md)

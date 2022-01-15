@@ -1,8 +1,8 @@
 # Node cluster 模块
 
-Node.js 的单个实例在单个线程中运行。为了利用多核系统，用户有时会想要启动一组
-Node.js 进程来处理负载。集群模块允许轻松创建所有共享服务器端口的子进程。
-[Cluster | Node.js v17.3.1 Documentation](https://nodejs.org/api/cluster.html)
+> Node.js 的单个实例在单个线程中运行。为了利用多核系统，用户有时会想要启动一组
+> Node.js 进程来处理负载。集群模块允许轻松创建所有共享服务器端口的子进程。  
+> [Cluster | Node.js v17.3.1 Documentation](https://nodejs.org/api/cluster.html)
 
 ## 单线程遇到瓶颈
 
@@ -106,6 +106,6 @@ pm2 start app.js -i 4
 
 ---
 
-1.[How to Add Cluster Support to Node.js | CheatCode](https://cheatcode.co/tutorials/how-to-add-cluster-support-to-node-js)
-
-2.[Improving Node.js Application Performance With Clustering | AppSignal Blog](https://blog.appsignal.com/2021/02/03/improving-node-application-performance-with-clustering.html)
+1. [Cluster | Node.js v17.3.1 Documentation](https://nodejs.org/api/cluster.html)
+2. [How to Add Cluster Support to Node.js | CheatCode](https://cheatcode.co/tutorials/how-to-add-cluster-support-to-node-js)
+3. [Improving Node.js Application Performance With Clustering | AppSignal Blog](https://blog.appsignal.com/2021/02/03/improving-node-application-performance-with-clustering.html)

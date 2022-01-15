@@ -1,3 +1,5 @@
+# Node cluster 模块
+
 ## 单线程遇到瓶颈
 
 <!-- How to use the Node.js cluster module to take advantage of a multi-core processor in your production environment. -->
@@ -22,18 +24,13 @@ JavaScript 的相同规则也适用于 Node.js。
 
 ## 原生集群模式
 
-原生 Node.js 群集模块是在单机上扩展 Node 应用程序的基本方法，在同一台机器上的多
-进程。
-
-进程的一个实例（称为“master”）是负责生成其他子进程（称为“worker”）的实例，在同一
-端口上公开服务。在如今机器的 CPU 都是多核的背景下，使用原生集群模式更充分的" 压
-榨" 机器性能了，提高应用程序吞吐量。
-
-Node.js 的集群模块，简单讲就是复制一些可以共享 TCP 连接的工作线程。集群模块会创
-建一个 master 主线程，然后复制任意多份程序并启动，这叫做工作线程。工作线程通过
-IPC 频道进行通信并且使用了 Round-robin algorithm 算法进行工作调度以此实现负载均
-衡。 Round-robin 调度策略主要是 master 主线程负责接收所有的连接并派发给下面的各
-个工作线程。
+Node.js 默认单进程运行，对于多核 CPU 的计算机来说，这样做效率很低，因为只有一个
+核在运行，其他核都在闲置。cluster 模块就是为了解决这个问题而提出的。 cluster 模
+块允许设立一个主进程和若干个 worker 进程，由主进程监控和协调 worker 进程的运行
+。worker 之间采用进程间通信交换消息，cluster 模块内置一个负载均衡器，采用
+Round-robin 算法协调各个 worker 进程之间的负载。运行时，所有新建立的链接都由主进
+程完成，然后主进程再把 TCP 连接分配给指定的 worker 进程。使用原生集群模式更充分
+的"压榨" 机器性能了，提高应用程序吞吐量。
 
 可以不受 CPU 核心限制的创建任意多个工作线程。产生大于内核的数量的大量进程可能并
 不好，因为在较低级别，操作系统可能会平衡这些进程之间的 CPU 时间。
@@ -53,7 +50,9 @@ if (cluster.isMaster) {
   // Let's fork as many workers as you have CPU cores
   for (let i = 0; i < numCPUs; ++i) {
     cluster.fork();
-    // 注：通过 fork()复制的进程都是独立的进程，有着全新的 V8 实例
+    // fork方法用于新建一个worker进程，上下文都复制主进程。只有主进程才能调用这个方法。
+    // 该方法返回一个worker对象
+    // 通过 fork()复制的进程都是独立的进程，有着全新的 V8 实例
   }
 } else {
   // Worker:

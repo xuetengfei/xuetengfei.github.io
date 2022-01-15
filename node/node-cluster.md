@@ -1,5 +1,9 @@
 # Node cluster 模块
 
+Node.js 的单个实例在单个线程中运行。为了利用多核系统，用户有时会想要启动一组
+Node.js 进程来处理负载。集群模块允许轻松创建所有共享服务器端口的子进程。
+[Cluster | Node.js v17.3.1 Documentation](https://nodejs.org/api/cluster.html)
+
 ## 单线程遇到瓶颈
 
 <!-- How to use the Node.js cluster module to take advantage of a multi-core processor in your production environment. -->
@@ -21,6 +25,8 @@ JavaScript 的相同规则也适用于 Node.js。
 集群模块通过分散 Node.js 应用程序的工作负载，帮助我们充分利用一个服务器的处理能
 力。例如，如果我们有一个 8 核处理器，而不是我们的工作被隔离到只有一个核心，我们
 可以将其扩展到所有八个核心。
+
+nodejs 单机多进程（集群）
 
 ## 原生集群模式
 
@@ -101,3 +107,5 @@ pm2 start app.js -i 4
 ---
 
 1.[How to Add Cluster Support to Node.js | CheatCode](https://cheatcode.co/tutorials/how-to-add-cluster-support-to-node-js)
+
+2.[Improving Node.js Application Performance With Clustering | AppSignal Blog](https://blog.appsignal.com/2021/02/03/improving-node-application-performance-with-clustering.html)

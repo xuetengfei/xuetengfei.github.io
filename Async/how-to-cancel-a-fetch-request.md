@@ -48,8 +48,7 @@ async function fn() {
 fn();
 ```
 
-控制台中,会打印出 **Fetch aborted**
-Network 中, status 为 **(canceled)**
+控制台中,会打印出 **Fetch aborted** Network 中, status 为 **(canceled)**
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200417165153%20cancel-fetch.jpg
 ' />
@@ -110,4 +109,3 @@ function abortableFetch(request, opts) {
 
 1. [Abortable fetch  |  Web  |  Google Developers](https://developers.google.com/web/updates/2017/09/abortable-fetch)
 2. [AbortController - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
-

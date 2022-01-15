@@ -1,5 +1,3 @@
-node-cluster.md
-
 ## 原生集群模式
 
 原生 Node.js 群集模块是在单机上扩展 Node 应用程序的基本方法，在同一台机器上的多
@@ -51,8 +49,10 @@ if (cluster.isMaster) {
 
 ## PM2 集群模式
 
-使用原生方法有些麻烦而且你还需要处理如果某个工作线程挂掉了等额外的逻辑。 PM2 内
-置了处理上述的逻辑，你不用再写这么多繁琐的代码了。
+使用原生方法有些麻烦而且还需要处理如果某个工作线程挂掉了等额外的逻辑。  
+PM2 内置了处理上述的逻辑，不用再写这么多繁琐的代码了。
+
+### 拉起 4 个工作线程
 
 ```sh
 pm2 start app.js -i 4
@@ -62,7 +62,7 @@ pm2 start app.js -i 4
 
 ### 实时调整集群数量
 
-你可以使用命令 `pm2 scale <app name> <n> `调整你的线程数量， 如
-`pm2 scale app +3` 会在当前基础上加 3 个工作线程。
+可以使用命令 `pm2 scale <app name> <n> `调整你的线程数量，  
+如 `pm2 scale app +3` 会在当前基础上加 3 个工作线程。
 
 ![20220115-Sclygm-PM2-cluster](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220115-Sclygm-PM2-cluster.png)

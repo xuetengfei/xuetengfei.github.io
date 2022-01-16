@@ -29,4 +29,5 @@
   <!-- - [node 定时器和 mac 系统通知](node/node-timeing-task.md) -->
 
 - [node-cluster](node/node-cluster.md)
+- [node-cluster-loadtest](node/node-cluster-test.md)
 - [node-js-horizontal-scaling](node/node-js-horizontal-scaling.md)

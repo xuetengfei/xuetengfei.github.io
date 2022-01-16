@@ -44,34 +44,36 @@ Round-robin 算法协调各个 worker 进程之间的负载。运行时，所有
 [cluster 集群 | Node.js API 文档](http://nodejs.cn/api/cluster.html)
 
 ```javascript
+const express = require('express');
 const cluster = require('cluster');
-const http = require('http');
 const os = require('os');
-const pid = process.pid;
 
+const app = express();
+const pid = process.pid;
 const numCPUs = os.cpus().length;
 
+app.get('/', function (_req, res) {
+  res.json({ success: true, pid });
+  // cluster.worker.kill();
+});
+
 if (cluster.isMaster) {
-  // Master:
-  // Let's fork as many workers as you have CPU cores
   for (let i = 0; i < numCPUs; ++i) {
     cluster.fork();
-    // fork方法用于新建一个worker进程，上下文都复制主进程。只有主进程才能调用这个方法。
-    // 该方法返回一个worker对象
-    // 通过 fork()复制的进程都是独立的进程，有着全新的 V8 实例
   }
+  cluster.on('exit', function (worker, code, signal) {
+    console.log(`worker ${worker.process.pid} is died`);
+    cluster.fork();
+  });
 } else {
-  // Worker:
-  // Let's spawn a HTTP server
-  // (Workers can share any TCP connection.
-  //  In this case its a HTTP server)
-  http
-    .createServer(function (req, res) {
-      res.writeHead(200);
-      res.end(`ok......${pid}`);
-    })
-    .listen(8080);
+  app.listen(3200, () => {
+    console.log(`is running on 3200,pid is ${pid}`);
+  });
 }
+
+// app.listen(3200, () => {
+//   console.log(`is running on 3200,pid is ${pid}`);
+// });
 ```
 
 没有 Node.js 集群：所有请求都转发到单个处理器核心

@@ -2,7 +2,7 @@
 - [前端开发的历史和前后端分离](fullStack/fe-history.md)
 - [Web前端开发的后端指南](fullStack/guide-to-the-backend.md)
 - [横向扩展与纵向扩展](fullStack/Scalability.md)
-- [分布式系统](fullStack/Distributed-Systems.md)
+- [一些架构术语](fullStack/Architecture.md)
 
 
 <!--

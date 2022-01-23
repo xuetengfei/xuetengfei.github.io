@@ -11,6 +11,72 @@
 的不同实现串联起来：如果当前节点能够处理任务则直接处理掉，如果无法处理则委托给责
 任链的下一个节点，如此往复直到有节点可以处理这个任务。
 
+责任链模式提供松散耦合的对象链，该模式本质上是对能够处理特定请求的对象的线性搜索
+
+```javascript
+function fn1({ a } = { a: null }) {
+  if (a === 1) {
+    return { success: 'ok' };
+  }
+  return null;
+}
+function fn2({ a } = { a: null }) {
+  if (a === 2) {
+    return { success: 'ok' };
+  }
+  return null;
+}
+function fn3({ a } = { a: null }) {
+  if (a === 3) {
+    return { success: 'ok' };
+  }
+  return null;
+}
+function fn4({ a } = { a: null }) {
+  if (a === 4) {
+    return { success: 'ok' };
+  }
+  return null;
+}
+
+function ResponsibilityChain(args) {
+  this.args = args;
+  this.response = null;
+}
+ResponsibilityChain.prototype = {
+  joint: function (fn) {
+    if (!this.response) {
+      const calc = fn(this.args);
+      console.log(`${fn.name} res is run`);
+      if (calc) {
+        this.response = calc;
+      }
+    }
+    return this;
+  },
+  value: function () {
+    return this.response;
+  },
+};
+
+function run() {
+  var respChain = new ResponsibilityChain({ a: 3 });
+  const respChainEntry = respChain.joint(fn1).joint(fn4).joint(fn3).joint(fn2);
+  const R = respChainEntry.value();
+  console.log('R', R);
+}
+run();
+
+/* 
+
+fn1 res is run
+fn4 res is run
+fn3 res is run
+R { success: 'ok' }
+
+ */
+```
+
 2 策略模式
 
 策略模式是对算法的封装，它把算法的责任和算法本身分割开，委派给不同的对象管理。策

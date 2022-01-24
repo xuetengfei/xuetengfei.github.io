@@ -1,4 +1,5 @@
-路由是指应用程序的端点（URI）如何响应客户端请求。在 express 中有**三种**路由注册方式。
+路由是指应用程序的端点（URI）如何响应客户端请求。在 express 中有**三种**路由注册
+方式。
 
 ## 1.Basic route:
 
@@ -9,7 +10,7 @@ const express = require('express');
 const app = express();
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.send('hello world');
 });
 ```
@@ -38,27 +39,28 @@ app.all('/secret', function(req, res, next) {
 
 ## 2 Chainable route
 
-`app.route()`
-You can create **chainable route** handlers for a route path by using app.route().
+`app.route()` You can create **chainable route** handlers for a route path by
+using app.route().
 
 ```javascript
 app
   .route('/book')
-  .get(function(req, res) {
+  .get(function (req, res) {
     res.send('Get a random book');
   })
-  .post(function(req, res) {
+  .post(function (req, res) {
     res.send('Add a book');
   })
-  .put(function(req, res) {
+  .put(function (req, res) {
     res.send('Update the book');
   });
 ```
 
 ## 3 Express.Router
 
-使用 express.Router 类创建模块化的可安装路由处理程序。 路由器实例是一个完整的中间件和路由系统。因此，它通常被称为“迷你应用程序”。
-推荐使用这种路由注册方式,**职责单一,高内聚,低耦合。**
+使用 express.Router 类创建模块化的可安装路由处理程序。 路由器实例是一个完整的中
+间件和路由系统。因此，它通常被称为“迷你应用程序”。推荐使用这种路由注册方式,**职
+责单一,高内聚,低耦合。**
 
 ```javascript
 const express = require('express');

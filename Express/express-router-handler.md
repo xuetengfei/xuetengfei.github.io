@@ -64,4 +64,4 @@ ModuleRouter.get('/frontEnd', (req, res) => {
 module.exports = ModuleRouter;
 ```
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Snipaste_2019-11-30_13-21-19-1575091454.jpg'/>
+<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Snipaste_2019-11-30_13-21-19-1575091454.jpg'/> -->

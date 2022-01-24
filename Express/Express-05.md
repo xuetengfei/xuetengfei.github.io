@@ -1,5 +1,4 @@
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/express-middleware-1573025943.jpg'/>
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/plumbing-sound-1573698554.jpg'/>
 
 ```
 中间件功能可以执行以下任务：

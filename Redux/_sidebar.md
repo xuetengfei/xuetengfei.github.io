@@ -7,10 +7,10 @@
   - [combineReducers](Redux/react-combineReducers.md)
   - [redux applymiddlewares](Redux/redux-middleware-async.md)
 
-- React-Redux
+- React-Redux
 
-  - [React-Redux](Redux/react-redux-Introduction.md)
-  - [通俗理解 React-Redux](Redux/redux-summary.md)
+  - [React-Redux](Redux/react-redux-Introduction.md)
+  - [通俗理解 React-Redux](Redux/redux-summary.md)
   - [dynamically-load-reducers](Redux/dynamically-load-reducers.md)
 
 - Redux-Saga

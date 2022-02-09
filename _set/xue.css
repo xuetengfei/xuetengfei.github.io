@@ -324,9 +324,9 @@ td:nth-child(n + 1) {
 
 /*  */
 .content {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
 }
 .markdown-section1 {
   /*   flex: 1 1 0%; */
@@ -346,11 +346,15 @@ aside.nav.nothing {
 
 .page_toc {
   position: fixed;
+  right: 0;
+  top: 80px;
+  z-index: 100;
   border-left-style: solid;
   border-left-width: 1px;
   border-left-color: rgba(0, 0, 0, 0.07);
   border-image-slice: 1;
   padding-left: 5px;
+  background-color: #fff;
 }
 
 .page_toc code {
@@ -429,4 +433,8 @@ aside.nav.nothing {
   border-left: 5px solid;
   color: var(--theme-color, #42b983);
   padding-left: 10px;
+}
+
+.gitalk-container {
+  display: none !important;
 }

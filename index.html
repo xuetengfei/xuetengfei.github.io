@@ -15,6 +15,10 @@
     />
     <link rel="stylesheet" href="./_set/vue.css" />
     <link rel="stylesheet" href="./_set/xue.css" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css"
+    />
     <script>
       (function (doc, win) {
         return;
@@ -48,7 +52,7 @@
         </li>
       </ul>
     </nav>
-    <div id="app">Welcome to visit My Blog，Please wait...</div>
+    <div id="app">Welcome to visit My Blog,Please wait...</div>
     <script>
       window.$docsify = {
         name: '',
@@ -79,28 +83,23 @@
           function (hook) {
             hook.init(function () {
               // 初始化完成后调用，只调用一次，没有参数。
-              console.log('初始化完成后调用，只调用一次，没有参数。init');
+              console.log('初始化完成后调用,只调用一次,没有参数。init');
               // window.$('.content').createTOC({
               //   title: 'jQueryScript',
               //   insert: '.sidebar',
               // });
             });
-            // var footer = '<p class="docsify-updated">{docsify-updated}</p>';
-            // var footer = '';
-            // hook.beforeEach(function (content) {
-            // console.log('content', content);
-            // return content + footer;
-            // });
-            hook.doneEach(function () {
-              // 每次路由切换时数据全部加载完成后调用，没有参数。
-              // window.$('.content').createTOC({
-              //   title: 'TOC',
-              //   insert: '#TOC',
-              // });
+            // const footer = '';
+            hook.beforeEach(function (content) {
+              // const pageHash = window.location.hash.slice(2);
+              // return content;
             });
+            hook.doneEach(function () {});
             hook.ready(function () {
-              console.log('初始化完成后调用，只调用一次，没有参数。 ready');
-              // 初始化并第一次加载完成数据后调用，没有参数。
+              // const footer = '<div id="gitalk-container">xxxx</div>';
+              // console.log('初始化完成后调用,只调用一次,没有参数。 ready');
+              // // 初始化并第一次加载完成数据后调用，没有参数。
+              // return content + footer;
             });
           },
         ],
@@ -151,6 +150,19 @@
       // if (typeof navigator.serviceWorker !== 'undefined') {
       // navigator.serviceWorker.register('./sw.js');
       // }
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script>
+      var gitalk = new Gitalk({
+        clientID: 'da901149791c3731159e',
+        clientSecret: 'e6ed5e3cbabfd0abd6572f5fffbb8191d7d83f72',
+        repo: 'xuetengfei/xuetengfei.github.io',
+        owner: 'xuetengfei',
+        admin: ['xuetengfei'],
+        id: decodeURI(window.location.hash.slice(2)), // Ensure uniqueness and length less than 50
+        distractionFreeMode: false, // Facebook-like distraction free mode
+      });
     </script>
   </body>
 </html>

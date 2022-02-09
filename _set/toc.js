@@ -41,7 +41,7 @@ var tocClick = function (e) {
 };
 
 var createList = function (wrapper, count) {
-  console.log('wrapper', wrapper);
+  // console.log('wrapper', wrapper);
   if (!wrapper) return;
   while (count--) {
     wrapper = wrapper.appendChild(document.createElement('ul'));
@@ -87,7 +87,7 @@ var buildTOC = function (options) {
   var lastLi = null;
   var selector = options.scope + ' ' + options.headings;
   var headers = getHeaders(selector).filter(h => h.id);
-  console.log('headers', headers);
+  // console.log('headers', headers);
   if (headers.length <= 1) {
     return [];
   }
@@ -103,7 +103,7 @@ var buildTOC = function (options) {
     return currentLevel;
   }, getLevel(options.headings));
 
-  console.log('ret', ret);
+  // console.log('ret', ret);
   return ret;
 };
 
@@ -113,7 +113,7 @@ function plugin(hook, vm) {
 
   hook.mounted(function () {
     var content = window.Docsify.dom.find('.content');
-    console.log('content', content);
+    // console.log('content', content);
     if (content) {
       var nav = window.Docsify.dom.create('aside', '');
       window.Docsify.dom.toggleClass(nav, 'add', 'nav');

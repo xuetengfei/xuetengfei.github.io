@@ -5,7 +5,7 @@
 <!-- <a href="../engineering/Cache-mechanism.mm.html"  target="_blank">知识点脑图(大
 图)</a> -->
 
-# HTTP 缓存
+## HTTP 缓存
 
 如何避免不必要的网络请求？浏览器的 HTTP 缓存是您的第一道防线。虽然它并非是最强大
 或最灵活的方法，并且对缓存响应生命周期的控制有限，但它具有一定效率，所有浏览器均
@@ -70,13 +70,13 @@ cache-control 设置的 max-age，则没有过期，命中强缓存，不发请�
 时间做比对，一致则命中协商缓存，返回 304；不一致则返回新的 last-modified 和文件
 并返回 200；
 
-### 浏览器缓存总流程图
+### 浏览器缓存过程(总流程图)
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/cache.png" width='600px'/>
 
 图中有(a)(b)(c)(d)四个过程的处理方式
 
-### a.浏览器判定是否有缓存
+#### a.浏览器判定是否有缓存
 
 ```javascript
 200 ok from cache
@@ -85,7 +85,7 @@ cache-control 设置的 max-age，则没有过期，命中强缓存，不发请�
 304 not modified
 ```
 
-### b.缓存是否过期
+#### b.缓存是否过期
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Cache-Control-1.png" width='500px'/>
 
@@ -120,24 +120,41 @@ Http1.1 中的标准，可以看成是 expires 的补充。使用的是相对时
    为未过期，则使用客户端缓存。那么就是属于`强缓存`。
 ```
 
-### c.跟服务器协商是否使用缓存
+#### c.跟服务器协商是否使用缓存
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/etag-1.png" width='500px'/>
 
-到这一步的时候，浏览器会向服务器发送请求，同时如果上一次的缓存中有 Last-modified
-和 Etag 字段，  
+<!-- 到这一步的时候，浏览器会向服务器发送请求，同时如果上一次的缓存中有 Last-modified
+和 Etag 字段，
 浏览器将在 request header 中加入 If-Modified-Since（对应于 Last-modified）， 和
-If-None-Match（对应于 Etag）。  
-Last-modified: 表明请求的资源上次的修改时间。  
-If-Modified-Since：客户端保留的资源上次的修改时间。  
+If-None-Match（对应于 Etag）。
+Last-modified: 表明请求的资源上次的修改时间。
+If-Modified-Since：客户端保留的资源上次的修改时间。
 Etag：资源的内容标识。（不唯一，通常为文件的 md5 或者一段 hash 值，只要保证写入
-和验证时的方法一致即可）  
+和验证时的方法一致即可）
 If-None-Match： 客户端保留的资源内容标识。
 
 通常情况下，如果同时发送 If-None-Match 、If-Modified-Since 字段，服务器只要比较
-etag 的内容即可，当然具体处理方式，看服务器的约定规则。
+etag 的内容即可，当然具体处理方式，看服务器的约定规则。 -->
 
-### d.协商缓存
+到这一步的时候，浏览器会向服务器发送请求， 同时如果上一次的缓存中有
+Last-modified 和 Etag 字段，浏览器将在 request header 中加入 If-Modified-Since（
+对应于 Last-modified）， 和 If-None-Match（对应于 Etag）。
+
+ETag 和 If-None-Match：这两个要一起说。Etag 是上一次加载资源时，服务器返回的
+response header，是对该资源的一种唯一标识，只要资源有变化，Etag 就会重新生成。浏
+览器在下一次加载资源向服务器发送请求时，会将上一次返回的 Etag 值放到 request
+header 里的 If-None-Match 里，服务器接受到 If-None-Match 的值后，会拿来跟该资源
+文件的 Etag 值做比较，如果相同，则表示资源文件没有发生改变，命中协商缓存。
+
+Last-Modified 和 If-Modified-Since：这两个也要一起说。Last-Modified 是该资源文件
+最后一次更改时间，服务器会在 response header 里返回，同时浏览器会将这个值保存起
+来，在下一次发送请求时，放到 request header 里的 If-Modified-Since 里，服务器在
+接收到后也会做比对，如果相同则命中协商缓存。
+
+![验证器,确保缓存内容仍然可用](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220221-ZT7SbW-275_2252940556_.jpg)
+
+#### d.协商缓存
 
 在这个阶段，服务器一般会将 Cache-control、expires 、last-modified、date、etag 等
 字段在 response header 中返回，便于下次缓存。当然具体的场景，也是看服务器的约定

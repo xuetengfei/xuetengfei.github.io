@@ -197,8 +197,6 @@ Last-Modified 标注的最后修改只能精确到秒级，如果某些文件在
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/user-cache.png" width='500px'/>
 
-<!-- 1. [etoah/BrowserCachePolicy: Detail of Browser Cache Policy](https://github.com/etoah/BrowserCachePolicy) -->
-
 1. [深入理解浏览器的缓存机制](https://www.infoq.cn/article/8VU-VCrhoxducaFPrNOL)
 2. [HTTP 缓存 - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching)
 3. [Cache-Control - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control)

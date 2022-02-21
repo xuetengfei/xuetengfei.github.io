@@ -84,7 +84,11 @@ Cookie: PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1;
 ），如果 b.com 设置了 Cookie，那么这个 cookies 会被视为第三方 Cookie，因为它们的
 名称与网址栏中的名称不同：a.com。
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200421203254%20same-site-cookie-diagram-1.png' alt='20200421203254same-site-cookie-diagram-1'/>
+## 第三方 cookie 工作原理
+
+![20220221-Txm2VQ-Third-Party-Cookie-How-do-they-work](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220221-Txm2VQ-Third-Party-Cookie-How-do-they-work.png)
+
+![20220221-tIEi5M-Third-Party-Cookie-Mechanism](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220221-tIEi5M-Third-Party-Cookie-Mechanism.png)
 
 <figure>
  <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200421161333%20tmall-cookies.jpg' alt='20200421161333tmall-cookies'/>
@@ -136,3 +140,6 @@ const getUserId = (req, res) => getAppCookies(req, res)['userId'];
 4. [SameSite cookies - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
 5. [Chrome's Changes Could Break Your App: Prepare for SameSite Cookie Updates | Heroku](https://blog.heroku.com/chrome-changes-samesite-cookie)
 6. [Express cookie-session middleware](http://expressjs.com/en/resources/middleware/cookie-session.html)
+7. [Tracking protection :: Current Status Of Browser Tracking Prevention | cookiestatus.com](https://www.cookiestatus.com/introduction/tracking-protection/)
+8. [First Party Cookie vs Third Party Cookie - MadMarTech](http://madmartech.com/first-party-cookie-vs-third-party-cookie/)
+9. [SameSite cookie 的说明](https://web.dev/samesite-cookies-explained/)

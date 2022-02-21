@@ -10,7 +10,6 @@
   - [Cookies](engineering/cookies.md)
   - [Session](engineering/session.md)
   - [JWT](engineering/JSON-Web-Token.md)
-  - [JWT 简单演示](engineering/jwt-simple-demo.md)
   - [HttpOnly's cookies save JWT](engineering/use-cookies-save-jwt-token.md)
   - [CSRF](engineering/anti-CSRF.md)
 

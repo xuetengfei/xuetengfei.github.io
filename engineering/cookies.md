@@ -1,56 +1,88 @@
-<!-- <figure>
-  <img src='https://webdev.imgix.net/samesite-cookies-explained/set-cookie-response-header.png
-'/>
-  <figcaption>Servers set cookies using the Set-Cookie header.</figcaption>
-</figure>
+# HTTP Cookie
 
-<figure>
- <img src='https://webdev.imgix.net/samesite-cookies-explained/cookie-request-header.png'/>
-  <figcaption>Your browser sends cookies back in the Cookie header.</figcaption>
-</figure>
+> As old as the Web itself.Servers set cookies using the Set-Cookie header. Your
+> browser sends cookies back in the Cookie header.Cookies may come from a
+> variety of different domains on one page.
 
-<figure>
- <img src='https://webdev.imgix.net/samesite-cookies-explained/cross-site-set-cookie-response-header.png'/>
-  <figcaption>Cookies may come from a variety of different domains on one page.</figcaption>
-</figure> -->
+HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本
+地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。
+通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie
+使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。 Cookie 主要用于以下三个方
+面：
 
-#### As old as the Web itself
+1. 会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）
+2. 个性化设置（如用户自定义设置、主题等）
+3. 浏览器行为跟踪（如跟踪分析用户行为等）
 
-cookie 是向 web 站点添加持久状态的方法之一。服务器使用 **set-cookie** 标头设置 cookie。您的浏览器在 Cookie 头中发送回 Cookie
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200512114240%20cook-work.jpg' alt='20200512114240cook-work'/>
+## 工作流程
 
-#### 设置 Cookie
+当服务器收到 HTTP 请求时，服务器可以在响应头里面添加一个 Set-Cookie 选项。浏览器
+收到响应后通常会保存下 Cookie，之后浏览器对该服务器每一次请求中都通过 Cookie 请
+求头部将 Cookie 信息发送给服务器。另外，Cookie 的过期时间、域、路径、有效期、适
+用站点都可以根据需要来指定。Cookie 可能会被完全移除，例如在浏览器的隐私设置里面
+设置为禁用 cookie。
 
-cookie 是向 web 站点添加持久状态的方法之一。设置 Cookie 其实是通过在 HTTP 响应中设置 set-cookie 头完成的，每一个 set-cookie 都会让浏览器在 Cookie 中存一个键值对。在设置 Cookie 值的同时，协议还支持许多参数来配置这个 Cookie 的传输、存储和权限。
+![工作流程示意图](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200512114240%20cook-work.jpg)
 
-```md
-- {Number} maxAge: 设置这个键值对在浏览器的最长保存时间。是一个从服务器当前时刻开始的毫秒数。
-
-- {Date} expires: 设置这个键值对的失效时间，
-  如果设置了 maxAge，expires 将会被覆盖。如果 maxAge 和 expires 都没设置，
-  Cookie 将会在浏览器的会话失效（一般是关闭浏览器时）的时候失效。
-
-- {String} path: 设置键值对生效的 URL 路径，默认设置在根路径上（/），
-  也就是当前域名下的所有 URL 都可以访问这个 Cookie。
-
-- {String} domain: 设置键值对生效的域名，默认没有配置，可以配置成只在指定域名才能访问。
-
-- {Boolean} httpOnly: 设置是否可以被 js 访问，
-  默认为 true，不允许被 js 访问。** document.cookie 是否可以读写 **
-
-- {Boolean} secure: 设置只在 HTTPS 连接上传输，
-  框架会帮我们判断当前是否在 HTTPS 连接上自动设置 secure 的值。
+```javascript
+GET /sample_page.html HTTP/1.1
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
 ```
 
-#### 获取 Cookie
+## 设置 Cookie
 
-服务器使用 **set-cookie** 标头设置 cookie。浏览器在 **Cookie 头**中发送回 Cookie 。由于 HTTP 请求中的 Cookie 是在一个 header 中传输过来的，可以从 Cookie 中获取键值对。
+设置 Cookie 其实是通过在 HTTP 响应中设置 set-cookie 头完成的，每一个 set-cookie
+都会让浏览器在 Cookie 中存一个键值对。在设置 Cookie 值的同时，协议还支持许多参数
+来配置这个 Cookie 的传输、存储和权限。
 
-#### First-Party vs Third-Party Cookie
+[Set-Cookie - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie)
 
-访问网站 **a.com** 并尝试从相同的域名 **a.com** 访问服务，则生成的 Cookie 将被视为第一方 Cookie。 由于 Cookie 是由同一网站创建的，因此您可以在访问 a.com 的网络服务时享受同一网站上已保存的登录信息，购物车项目，网站偏好设置等。
+```javascript
+// Set-Cookie
+Set-Cookie: <cookie-name>=<cookie-value>
+Set-Cookie: <cookie-name>=<cookie-value>; Expires=<date>
+Set-Cookie: <cookie-name>=<cookie-value>; Max-Age=<non-zero-digit>
+Set-Cookie: <cookie-name>=<cookie-value>; Domain=<domain-value>
+Set-Cookie: <cookie-name>=<cookie-value>; Path=<path-value>
+Set-Cookie: <cookie-name>=<cookie-value>; Secure
+Set-Cookie: <cookie-name>=<cookie-value>; HttpOnly
 
-而如果您访问 a.com 网站，但该页面包含来自其他域名 b.com 的内容（图像，iframe 等），如果 b.com 设置了 Cookie，那么这个 cookies 会被视为第三方 Cookie，因为它们的名称与网址栏中的名称不同：a.com。
+Set-Cookie: <cookie-name>=<cookie-value>; SameSite=Strict
+Set-Cookie: <cookie-name>=<cookie-value>; SameSite=Lax
+
+// Multiple directives are also possible, for example:
+Set-Cookie: <cookie-name>=<cookie-value>; Domain=<domain-value>; Secure; HttpOnly
+
+Set-Cookie: sessionid=38afes7a8; HttpOnly; Path=/
+Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+
+```
+
+## 获取 Cookie
+
+服务器使用 **set-cookie** 标头设置 cookie。浏览器在 **Cookie 头**中发送回 Cookie
+。由于 HTTP 请求中的 Cookie 是在一个 header 中传输过来的，可以从 Cookie 中获取键
+值对。
+
+[Document.cookie - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie)
+
+```js
+Cookie: <cookie-list>
+Cookie: name=value
+Cookie: name=value; name2=value2; name3=value3
+Cookie: PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1;
+```
+
+## First-Party vs Third-Party Cookie
+
+访问网站 **a.com** 并尝试从相同的域名 **a.com** 访问服务，则生成的 Cookie 将被视
+为第一方 Cookie。 由于 Cookie 是由同一网站创建的，因此您可以在访问 a.com 的网络
+服务时享受同一网站上已保存的登录信息，购物车项目，网站偏好设置等。
+
+而如果您访问 a.com 网站，但该页面包含来自其他域名 b.com 的内容（图像，iframe 等
+），如果 b.com 设置了 Cookie，那么这个 cookies 会被视为第三方 Cookie，因为它们的
+名称与网址栏中的名称不同：a.com。
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200421203254%20same-site-cookie-diagram-1.png' alt='20200421203254same-site-cookie-diagram-1'/>
 
@@ -59,12 +91,47 @@ cookie 是向 web 站点添加持久状态的方法之一。设置 Cookie 其实
   <figcaption>天猫里面有很多阿里妈妈广告联盟的请求，设置了很多阿里妈妈的 cookies，便于跟踪。</figcaption>
 </figure>
 
-<!--
-https://blog.heroku.com/chrome-changes-samesite-cookie
-https://searchengineland.com/the-state-of-tracking-and-data-privacy-in-2020-329259
-https://web.dev/samesite-cookies-explained/
-https://auth0.com/blog/browser-behavior-changes-what-developers-need-to-know/
-https://juejin.im/post/5e97124df265da47b27d97ff#heading-1
-http://madmartech.com/first-party-cookie-vs-third-party-cookie/
+## Sending Cookies in Express.js
 
- -->
+```javascript
+// sentTokenCookie creates a cookie which expires after one day
+const sendUserIdCookie = (userId, res) => {
+  // Our token expires after one day
+  const oneDayToSeconds = 24 * 60 * 60;
+  res.cookie('userId', userId, {
+    maxAge: oneDayToSeconds,
+    // You can't access these tokens in the client's javascript
+    httpOnly: true,
+    // Forces to use https in production
+    secure: process.env.NODE_ENV === 'production' ? true : false,
+  });
+};
+
+// returns an object with the cookies' name as keys
+const getAppCookies = req => {
+  // We extract the raw cookies from the request headers
+  const rawCookies = req.headers.cookie.split('; ');
+  // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+
+  const parsedCookies = {};
+  rawCookies.forEach(rawCookie => {
+    const parsedCookie = rawCookie.split('=');
+    // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
+    parsedCookies[parsedCookie[0]] = parsedCookie[1];
+  });
+  return parsedCookies;
+};
+
+// Returns the value of the userId cookie
+const getUserId = (req, res) => getAppCookies(req, res)['userId'];
+```
+
+[Sending and Receiving Cookies from Express.js ← Alligator.io](https://alligator.io/nodejs/express-cookies/)
+
+---
+
+1. [Cookie - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cookie)
+2. [HTTP cookies - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies)
+3. [SameSite cookie 配方](https://web.dev/samesite-cookie-recipes/)
+4. [SameSite cookies - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
+5. [Chrome's Changes Could Break Your App: Prepare for SameSite Cookie Updates | Heroku](https://blog.heroku.com/chrome-changes-samesite-cookie)

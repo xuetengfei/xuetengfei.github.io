@@ -2,9 +2,7 @@
 
   - [performance](engineering/web-performance-optimization.md)
   - [Tree Shaking:代码剪枝](engineering/tree-sharking.md)
-  - [浏览器 - 渲染原理](engineering/Browser-Rendering-Principle.md)
-  - [浏览器 - 缓存机制](engineering/Cache-mechanism.md)
-  - [浏览器 - 缓存机制补充](engineering/Cache-mechanism-supplement.md)
+  - [图片懒加载](engineering/Picture-Lazy-Loading.md)
 
 - 安全
   - [Cookies](engineering/cookies.md)
@@ -13,18 +11,16 @@
   - [HttpOnly's cookies save JWT](engineering/use-cookies-save-jwt-token.md)
   - [CSRF](engineering/anti-CSRF.md)
 
-- 浏览器原理
+- 浏览器
 
   - [浏览器 - 渲染原理](engineering/Browser-Rendering-Principle.md)
-
-- 技术方案
-
-  - [图片懒加载](engineering/Picture-Lazy-Loading.md)
+  - [浏览器 - 缓存机制](engineering/Cache-mechanism.md)
+  - [浏览器 - 缓存机制补充](engineering/Cache-mechanism-supplement.md)
 
 - 其他
 
   - [TypeScript](engineering/TypeScript.md)
-  - [API-design](engineering/API-design.md)
+  <!-- - [API-design](engineering/API-design.md) -->
   - [哈希一致性](engineering/Hash-consistency.md)
   - [用 eslint 检查代码](engineering/eslint.md)
   - [用 Prettier 美化代码](engineering/prettier.md)

@@ -72,11 +72,9 @@ cache-control 设置的 max-age，则没有过期，命中强缓存，不发请�
 
 ### 浏览器缓存过程(总流程图)
 
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/cache.png" width='600px'/>
+![20220222-oPVMSI-310_2253943748_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220222-oPVMSI-310_2253943748_.svg)
 
-图中有(a)(b)(c)(d)四个过程的处理方式
-
-#### a.浏览器判定是否有缓存
+#### 浏览器判定是否有缓存
 
 ```javascript
 200 ok from cache
@@ -85,7 +83,7 @@ cache-control 设置的 max-age，则没有过期，命中强缓存，不发请�
 304 not modified
 ```
 
-#### b.缓存是否过期
+#### 缓存是否过期
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Cache-Control-1.png" width='500px'/>
 
@@ -120,7 +118,7 @@ Http1.1 中的标准，可以看成是 expires 的补充。使用的是相对时
    为未过期，则使用客户端缓存。那么就是属于`强缓存`。
 ```
 
-#### c.跟服务器协商是否使用缓存
+#### 跟服务器协商是否使用缓存
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/etag-1.png" width='500px'/>
 
@@ -154,7 +152,7 @@ Last-Modified 和 If-Modified-Since：这两个也要一起说。Last-Modified �
 
 ![验证器,确保缓存内容仍然可用](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220221-ZT7SbW-275_2252940556_.jpg)
 
-#### d.协商缓存
+#### 协商缓存
 
 在这个阶段，服务器一般会将 Cache-control、expires 、last-modified、date、etag 等
 字段在 response header 中返回，便于下次缓存。当然具体的场景，也是看服务器的约定

@@ -135,3 +135,4 @@ const getUserId = (req, res) => getAppCookies(req, res)['userId'];
 3. [SameSite cookie 配方](https://web.dev/samesite-cookie-recipes/)
 4. [SameSite cookies - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
 5. [Chrome's Changes Could Break Your App: Prepare for SameSite Cookie Updates | Heroku](https://blog.heroku.com/chrome-changes-samesite-cookie)
+6. [Express cookie-session middleware](http://expressjs.com/en/resources/middleware/cookie-session.html)

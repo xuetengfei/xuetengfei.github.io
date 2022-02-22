@@ -34,18 +34,22 @@ HTTP 协议定义了客户端和服务器之间交互的消息内容和步骤，
 
 ### TCP/IP 通信传输流
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/chuanshu1548603073.jpg' width='600px'/>
+网络通信就是交换数据包。电脑 A 向电脑 B 发送一个数据包，后者收到了，回复一个数据
+包，从而实现两台电脑之间的通信。数据包的结构，基本上是下面这样：
+
+![20220222-TJFWlf-330_2253944316_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220222-TJFWlf-330_2253944316_.jpg)
 
 发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反
 之，接收端在层与层传输数据时，每经过一层 时会把对应的首部消去。
 
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/front-end-interact-1571460593.jpg'/> -->
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/chuanshu1548603073.jpg' width='600px'/>
 
 ## HTTP 请求方法
 
 根据 HTTP 标准，HTTP 请求可以使用多种请求方法。  
 HTTP1.0 定义了三种请求方法： GET, POST 和 HEAD 方法。这三种属于简单请求。  
 HTTP1.1 新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。
+
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/http-methods1548607998.jpg'/>
 
 | 方法    | 描述                                                                               |

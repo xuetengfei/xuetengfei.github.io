@@ -4,6 +4,7 @@ HTTP 是个应用层协议,几乎所有的 HTTP 通信都是由 TCP/IP 来承载
 
 TCP/IP 是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。TCP 为
 HTTP 提供了一条可靠的比特传输管道。就像是漫威中雷神他们家有一个彩虹传输桥。
+
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/color-brdge-1548648413.jpg'/>
 
 客户端应用程序可以打开一条 TCP/IP 连接，连接到可能运行在世界任何地方的服务器应用
@@ -39,7 +40,7 @@ TCP 端口，并将此 TCP 端口的输出回送到显示屏上。Telnet 常用�
 
 ## 建立 TCP 连接需要三次握手
 
-```
+```bash
 A:我喜欢你
 B:我也喜欢你
 A:那咱们在一起吧
@@ -56,7 +57,6 @@ TCP 连接的建立(三次握手): 从 Close 状态到 Establish 状态。最开
 Tcp 使用序列号来确保数据按顺序发送且没有漏洞。
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/tcp-1572511244.png'/>
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/tcp-1-1556503245.png'/> -->
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/tcp-3-1556503245.gif'/>
 
 ## 为什么 TCP 客户端最后还要发送一次确认呢？
@@ -81,12 +81,11 @@ Tcp 使用序列号来确保数据按顺序发送且没有漏洞。
 数据传输完毕后，双方都可释放连接。最开始的时候，客户端和服务器都是处于
 ESTABLISHED 状态，然后客户端主动关闭，服务器被动关闭。
 
-```
+```bash
 A:咱们分手吧
 B:你确定吗?
 B:那好吧,再见
 A:再见
-
 ```
 
 ## 为什么建立连接是三次握手，关闭连接确是四次挥手呢？
@@ -99,13 +98,5 @@ A:再见
 
 ---
 
-UDP 传输数据 A:我喜欢你 B:没有回应
-
----
-
 1. [TCP 的那些事儿（上）](https://coolshell.cn/articles/11564.html)
 2. [TCP 的那些事儿（下）](https://coolshell.cn/articles/11609.html)
-
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/tcp-2-1556503245.png'/> -->
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/tcp-4-1556503245.gif'/> -->
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/tcp_open_close-1556505636.jpg'/> -->

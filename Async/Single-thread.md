@@ -1,71 +1,101 @@
-### JAVASCRIPT 单线程
+。进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源
+分配和调度的基本单位，是操作系统结构的基础。 在早期面向进程设计的计算机结构中，
+进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程
+序是指令、数据及其组织形式的描述，进程是程序的实体。
+
+线程（英语：thread）是操作系统能够进行运算调度的最小单位。 它被包含在进程
+Process 之中，是进程中的实际运作单位。 一条线程指的是进程中一个单一顺序的控制流
+，一个进程中可以并发多个线程，每条线程并行执行不同的任务
+
+<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220222-tQCNSw-295_2252940333_.png" width="550px"  >
+
+## JAVASCRIPT 单线程
+
+ <!-- JavaScript 是一种可以非阻塞的单线程语言？ -->
 
 JavaScript 语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。对于拿到
 的程序，一行一行的执行，上面的执行`没有完成`，比如，一个函数需要一段时间才能执行
 ，或者必须等待一些事情，那么它会在同时冻结所有事情，因为 JavaScript 中的同步代码
 一次只能执行一个任务。它等待直到某个特定语句执行完毕，然后移动到下一个语句。
 
-JavaScript 是一种单线程编程语言。这意味着它有一个调用堆栈和一个内存堆。正如预期
-的那样，它按顺序执行代码，并且在进入下一个代码之前必须完成一段代码的执行。然而，
-多亏了 V8 引擎，JavaScript 可以是异步的，这意味着我们可以在代码中同时执行多个任
-务。
-
 JavaScript 的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript 的主要用途是
 与用户互动，以及操作 DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比
 如，假定 JavaScript 同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线
-程删除了这个节点，这时浏览器应该以哪个线程为准？
-
-所以，为了避免复杂性，从一诞生，JavaScript 就是单线程，这已经成了这门语言的核心
-特征，将来也不会改变。
+程删除了这个节点，这时浏览器应该以哪个线程为准？所以，为了避免复杂性，从一诞生
+，JavaScript 就是单线程，这已经成了这门语言的核心特征，将来也不会改变。
 
 为了利用多核 CPU 的计算能力，HTML5 提出 Web Worker 标准，允许 JavaScript 脚本创
 建多个线程，但是子线程完全受主线程控制，且不得操作 DOM。所以，这个新标准并没有改
 变 JavaScript 单线程的本质。
 
-### 同步与异步
+浏览器为我们提供了 JavaScript 引擎本身不提供的一些功能：Web API。这包括 DOM
+API、setTimeout、HTTP 请求等。这可以帮助我们创建一些异步的、非阻塞的行为。
+
+当我们调用一个函数时，它会被添加到调用堆栈中。调用堆栈是 JS 引擎的一部分，这不是
+特定于浏览器的。这是一个堆栈，这意味着它是先进后出的（想想一堆煎饼）。当一个函数
+返回一个值时，它会从堆栈中弹出 👋
+
+## JS 为何会有异步
+
+JS 是单线程的语言，所谓“单线程”就是一根筋，对于拿到的程序，一行一行的执行，上面
+的执行为完成，就傻傻的等着。例如
+
+```javascript
+console.time('loop');
+for (let i = 0; i < 1e10; i++) {
+  console.log(i);
+}
+console.timeEnd('loop');
+// do another thing
+```
+
+上面的程序时间执行完成，执行过程中就会有卡顿，其他的事儿就先撂一边不管了。执行程
+序这样没有问题，但是浏览器就不一样了。因此在浏览器端运行的 js ，可能会有大量的网
+络请求，而一个网络资源啥时候返回，这个时间是不可预估的。这种情况也要傻傻的等着、
+卡顿着、啥都不做吗？———— 那肯定不行。
+
+因此，JS 对于这种场景就设计了异步 ———— 即，发起一个网络请求，就先不管这边了，先
+干其他事儿，网络请求啥时候返回结果，到时候再说。这样就能保证一个网页的流程运行
+
+那么我们如何使用 Javascript 获取异步代码呢？
+
+<!-- Javascript 引擎，它有在后台处理这些任务的 Web API。调用堆栈识别 Web API 的函数并
+将它们交给浏览器处理。一旦浏览器完成了这些任务，它们就会返回并作为回调推送到堆栈
+中。
+
+### 同步、异步编程
 
 - `同步编程`，就是计算机一行一行按顺序依次执行代码，当前代码任务耗时执行
   会`阻塞`后续代码的执行，是一种典型的请求-响应模型，当请求调用一个函数或方法后
   ，需等待其响应返回，然后执行后续代码。
+
 - `异步编程`，不同于同步编程的请求-响应模式，其是一种事件驱动编程，请求调用函数
-  或方法后，无需立即等待响应，可以继续执行其他任务，而之前任务响应返回后可以通过
-  状态、通知和回调来通知调用者。
+或方法后，无需立即等待响应，可以继续执行其他任务，而之前任务响应返回后可以通过状
+态、通知和回调来通知调用者。
 
 ### 同步编程存在代码阻塞的问题
 
 比如,在浏览器的 console 面板中输入下面的代码.
 
-```javascript
-let t = Date.now();
-for (let i = 0; i < 100000000; i++) {}
-console.log(Date.now() - t); // > 98
-```
 
-上面的程序花费 98ms 的时间执行完成,修改一个循环次数在下面这个页面中.
 
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/test-javascript-danxiancheng.jpg" >
-
-跑这个 100000000000 次循环的函数后,页面完全卡死,上面的红色标记是一个链接,点击没
-有任何反应,看下面的 network 显示面板,可以看到没有任何的网络请求.最后,我是关闭了
-这样页面才让谷歌浏览器的内存降下来的.
-
-一般情况下，同步编程，代码按序依次执行，能很好的保证程序的执行，但是在某些场景下
-，比如读取文件内容，或请求服务器接口数据，需要根据返回的数据内容执行后续操作，读
-取文件和请求接口直到数据返回这一过程是需要时间的，网络越差，耗费时间越长，如果按
-照同步编程方式实现，在等待数据返回这段时间，JavaScript 是不能处理其他任务的，此
-时页面的交互，滚动等任何操作也都会被阻塞，这显然是及其不友好，不可接受的，而这正
-是需要异步编程大显身手的场景. 当使用异步编程时，在等待当前任务的响应返回之前，可
-以继续执行后续代码，即当前执行任务不会阻塞后续执行。
+跑这个 1e10 次循环的函数后,页面完全卡死。同步编程，代码按序依次执行，能很好的保
+证程序的执行，但是在某些场景下，比如读取文件内容，或请求服务器接口数据，需要根据
+返回的数据内容执行后续操作，读取文件和请求接口直到数据返回这一过程是需要时间的，
+网络越差，耗费时间越长，如果按照同步编程方式实现，在等待数据返回这段时间
+，JavaScript 是不能处理其他任务的，此时页面的交互，滚动等任何操作也都会被阻塞，
+这显然是及其不友好，不可接受的，而这正是需要异步编程大显身手的场景. 当使用异步编
+程时，在等待当前任务的响应返回之前，可以继续执行后续代码，即当前执行任务不会阻塞
+后续执行。
 
 ## 多线程
 
 前面说明了异步编程能很好的解决同步编程阻塞的问题，那么实现异步的方式有哪些呢？通
-常实现异步方式是多线程，如 C#, 即同时开启多个线程，不同操作能并行执行.但是 js 是
-单线程的.如何处理异步呢? 事件循环机制.
+常实现异步方式是多线程，但是 js 是单线程的.如何处理异步呢? 事件循环机制.
 
 ## 并行与并发
 
-前文提到多线程的任务可以并行执行，而 JavaScript `单线程异步编程`可以实
+多线程的任务可以并行执行，而 JavaScript `单线程异步编程`可以实
 现`多任务并发执行`，这里有必要说明一下并行与并发的区别。
 
 - `并行`，parallelism 指同一时刻内多任务同时进行；
@@ -74,24 +104,35 @@ console.log(Date.now() - t); // > 98
   秒钟服务器建立的总连接数，而假如，服务器处 10ms 能处理一个连接，那么其并发连接
   数就是 100。
 
+  -->
+
+<!--
+
+并发和并行
+Concurrency 意味着同时执行多个任务，但不是同时执行。例如，两个任务在重叠的时间段内工作。
+
+Parallelism 意味着同时执行两个或多个任务，例如同时执行多个计算。
+
+线程和进程
+Threads 是一系列可以相互独立执行的代码执行。
+
+Process 是正在运行的程序的一个实例。一个程序可以有多个进程。
+
+同步和异步
+在 synchronous 编程中，任务是一个接一个地执行。每个任务都等待任何先前的任务完成，然后才执行。
+
+在 asynchronous 编程中，当一个任务被执行时，你可以切换到另一个任务，而不必等待前一个任务完成。
+
+ -->
+
 ## 任务队列
 
 单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个
-任务耗时很长，后一个任务就不得不一直等着。
+任务耗时很长，后一个任务就不得不一直等着。如果排队是因为计算量大，CPU 忙不过来，
+倒也算了，但是很多时候 CPU 是闲着的，因为 IO 设备（输入输出设备）很慢（比如 Ajax
+操作从网络读取数据），不得不等着结果出来，再往下执行。
 
-如果排队是因为计算量大，CPU 忙不过来，倒也算了，但是很多时候 CPU 是闲着的，因为
-IO 设备（输入输出设备）很慢（比如 Ajax 操作从网络读取数据），不得不等着结果出来
-，再往下执行。
-
-实际工作生活中,肯定不会跑上面个 100000000000 次循环的这样的函数,但是真实的前端业
-务肯定会有大量的网络请求，而一个网络资源啥时候返回，这个时间是不可预估的。这种情
-况也要傻傻的等着、卡顿着、啥都不做吗？———— 那肯定不行。
-
-JavaScript 语言的设计者意识到，这时主线程完全可以不管 IO 设备，挂起处于等待中的
-任务，先运行排在后面的任务。等到 IO 设备返回了结果，再回过头，把挂起的任务继续执
-行下去。
-
-!>于是，所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务
+于是，所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务
 （asynchronous）。同步任务指的是，在`主线程上排队执行的任务`，只有前一个任务执行
 完毕，才能执行后一个任务；异步任务指的是
 ，`不进入主线程、而进入"任务队列"（task queue）的任务`，只有"任务队列"通知主线程
@@ -111,9 +152,9 @@ JavaScript 语言的设计者意识到，这时主线程完全可以不管 IO �
 
 !>（4）主线程不断重复上面的第三步。
 
-<!-- <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/stack-heap-queue.jpg"  > -->
-<!-- <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/event-loop-img.png"   > -->
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/event-loop-img-2.png"   >
+
+<!--
 
 ?> 举例:我打算去银行柜台办理业务的时候,到银行门口才发现我忘记带银行卡了,我不能占
 着茅坑不拉屎啊,于是乎就在旁边的座椅(座椅就是*任务队列*)上坐着等家人送银行卡过来,
@@ -124,9 +165,9 @@ JavaScript 语言的设计者意识到，这时主线程完全可以不管 IO �
 就去看座椅那边有没有人`排号`,如果有,就叫过来处理业务,如此循环.(累死了,绞尽脑汁举
 例子~)
 
-因此，JS `异步`场景就和这个银行柜台办理业务是一模一样的.只要主线程空了，就会去读
+<!-- 因此，JS `异步`场景就和这个银行柜台办理业务是一模一样的.只要主线程空了，就会去读
 取"任务队列"，这就是 JavaScript 的运行机制。这个过程会不断重复.这就是事件循
-环[Concurrency model and Event Loop - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)。
+环[Concurrency model and Event Loop - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)。 -->
 
 以下代码的输出顺序是什么? 答案是`b c a`
 
@@ -169,7 +210,7 @@ fs.readFile('data1.json', (err, data) => {
 
 ---
 
-0. [在线演示](http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
-1. [理解 JavaScript 的 async/await - 边城客栈 - SegmentFault 思否](https://segmentfault.com/a/1190000007535316)
-1. [You-Dont-Know-JS/async & performance at 1ed-zh-CN · getify/You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS/tree/1ed-zh-CN/async%20%26%20performance)
-1. [wangfupeng1988/js-async-tutorial: 深入理解 JavaScript 异步](https://github.com/wangfupeng1988/js-async-tutorial)
+1. [在线演示](http://latentflip.com/loupe)
+2. [理解 JavaScript 的 async/await - 边城客栈 - SegmentFault 思否](https://segmentfault.com/a/1190000007535316)
+3. [You-Dont-Know-JS/async & performance at 1ed-zh-CN · getify/You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS/tree/1ed-zh-CN/async%20%26%20performance)
+4. [JavaScript 运行机制详解：再谈 Event Loop - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2014/10/event-loop.html)

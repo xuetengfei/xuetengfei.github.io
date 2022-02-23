@@ -63,6 +63,7 @@ JavaScript 进程阻塞时，我们触发的点击等事件，会在进程恢复
 
 ![20220223-ILtOhc-340_2254945648_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220223-ILtOhc-340_2254945648_.png)
 
+<!--
 ## 传统的异步操作:回调函数
 
 先看一段比较常见的代码
@@ -93,6 +94,8 @@ fs.readFile('data1.json', (err, data) => {
 
 从上面两个 demo 看来，实现异步的最核心原理，就是将 callback 作为参数传递给异步执
 行函数，当有`结果返回之后再触发 callback 执行`，就是如此简单！
+
+ -->
 
 ---
 

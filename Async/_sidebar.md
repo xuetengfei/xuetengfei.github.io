@@ -1,6 +1,6 @@
 - 异步编程
 
-  - [js 是单线程的语言](Async/Single-thread.md)
+  - [JAVASCRIPT 单线程](Async/Single-thread.md)
   - [Event Loop](Async/EventLoop.md)
   - [Callback](Async/callback.md)
   - [Promise](Async/promise-Syntax.md)

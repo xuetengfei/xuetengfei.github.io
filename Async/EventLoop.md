@@ -24,29 +24,37 @@ baz();
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200526-HDH7q2-event-loop.gif' alt='20200526-HDH7q2-event-loop'/>
 
 1. 调用 bar 函数. bar 函数返回一个 setTimeout 函数.
-2. 我们传递给 setTimeout 的回调函数会被添加到 web API， setTimeout 函数和 bar 会
+2. 我们传递给 setTimeout 的回调函数会被添加到 web API, setTimeout 函数和 bar 会
    从调用栈中弹出
-3. 定时器运行，同时 foo 被调用并打印 First。Foo 返回(未定义)，baz 被调用
+3. 定时器运行,同时 foo 被调用并打印 First。Foo 返回(未定义),baz 被调用
    ,setTimeout 的回调函数被添加到队列中。
-4. baz 打印出 Third. baz 执行完成后，event loop 看到 callstack 现在是空的
+4. baz 打印出 Third. baz 执行完成后,event loop 看到 callstack 现在是空的
 5. setTimeout 的 callback 打印出 Second.
 
 ### 探究任务队列(Queue)
 
-在事件循环中，实际上有两种类型的队列,任务队列分为 macrotasks 和 microtasks，在
-ES6 规范中，microtask 称为 jobs，macrotask 称为 task。
+在事件循环中,实际上有两种类型的队列,任务队列分为 macrotasks 和 microtasks,在 ES6
+规范中,microtask 称为 jobs,macrotask 称为 task。
+
+首先要说明宏任务其实一开始就是任务（task）,为什么呢？因为 ES6 新引入了 Promise
+标准,同时浏览器实现上多了一个 microtask 微任务概念,作为对照才称宏任务。微任务队
+列中的每一个微任务会依次被执行。不同的是它会等到微任务队列为空才会停止执行(即使
+中途有微任务加入)。换句话说,微任务可以添加新的微任务到队列中,并在下一个任务开始
+执行之前且当前事件循环结束之前执行完所有的微任务
+。([MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth)
+)
 
 ```code
 宏任务 === macrotask === task
-script ，setTimeout ，setInterval ，setImmediate ，I/O ，UI rendering
+script ,setTimeout ,setInterval ,setImmediate ,I/O ,UI rendering
 
 微任务 === microtask === jobs
-process.nextTick ，promise ，Object.observe ，MutationObserver
+process.nextTick ,promise ,Object.observe ,MutationObserver
 微任务仅来自于我们的代码
 ```
 
-微任务优先级高于宏任务，所以只有当所有的微任务执行完成后(即微任务队列为空)，才会
-去执行宏任务。如下图所示。
+微任务优先级高于宏任务,所以只有当所有的微任务执行完成后(即微任务队列为空),才会去
+执行宏任务。如下图所示。
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200527095703event-loop.gif' alt='20200527095703event-loop'/>
 

@@ -1,7 +1,8 @@
-## JavaScript 如何在浏览器中工作？
+<!-- http://localhost:7788/#/Async/Single-thread -->
 
-答案是事件循环。浏览器中 JavaScript 的执行流程和 Node.js 中的流程都是基于事件循
-环的。
+[单线程](Async/Single-thread.md)那篇文章,探究了 js 的单线程特性以及 js 在浏览器
+宿主中的运行时环境。 JavaScript 如何在浏览器中工作？答案是事件循环。浏览器中
+JavaScript 的执行流程和 Node.js 中的流程都是基于事件循环的。
 
 ![20220223-ILtOhc-340_2254945648_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220223-ILtOhc-340_2254945648_.png)
 

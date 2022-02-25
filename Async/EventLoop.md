@@ -45,12 +45,11 @@ baz();
 )
 
 ```code
-宏任务 === macrotask === task
+宏任务 === macrotask === task   (宿主环境具有的能力)
 script ,setTimeout ,setInterval ,setImmediate ,I/O ,UI rendering
 
-微任务 === microtask === jobs
+微任务 === microtask === jobs (js具有的能力,微任务仅来自于我们的代码)
 process.nextTick ,promise ,Object.observe ,MutationObserver
-微任务仅来自于我们的代码
 ```
 
 微任务优先级高于宏任务,所以只有当所有的微任务执行完成后(即微任务队列为空),才会去

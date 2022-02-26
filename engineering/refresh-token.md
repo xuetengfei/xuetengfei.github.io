@@ -18,8 +18,19 @@ token 经常过期,过期后怎么办呢？
 
 另外一种办法是,再来一个 token。业务接口用来鉴权的 token,我们称之为 access
 token。一个专门生成 access token 的 token,我们称为 refresh token。
+![20220225-eoSDdG-refresh-flow-01](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220225-eoSDdG-refresh-flow-01.svg)
 
 可以设置 access token 的有效期短一点,refresh token 的有效期长一点。如果 refresh
 token 也过期了,此时就重新登录了。
+
+```json
+{
+  "access_token": "79ed4e85-954d-4044-9362-99ac9695d7e0",
+  "refresh_token": "ff8cfad8-9888-44c7-afb2-8c597cf96037",
+  "scope": "",
+  "token_type": "bearer",
+  "expires_in": 300
+}
+```
 
 ![20220224-jedDHj-359_2255944903_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220224-jedDHj-359_2255944903_.webp)

@@ -1,3 +1,5 @@
+[数据类型](https://zh.javascript.info/types)
+
 ## 数据类型判断
 
 ```js

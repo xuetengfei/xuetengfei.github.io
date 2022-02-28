@@ -16,6 +16,13 @@ const partial =
   (f, ...args) =>
   (...moreArgs) =>
     f(...args, ...moreArgs);
+
+// or
+function partial(func, ...argsBound) {
+  return function (...args) {
+    return func.call(this, ...argsBound, ...args);
+  };
+}
 ```
 
 ```javascript

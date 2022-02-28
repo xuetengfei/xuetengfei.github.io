@@ -1,8 +1,75 @@
+## this 丢失
+
+```js
+let user = {
+  firstName: 'John',
+  sayHi() {
+    console.log(`Hello, ${this.firstName}!`);
+  },
+};
+
+setTimeout(user.sayHi, 1000); // Hello, undefined!
+
+let f = user.sayHi;
+setTimeout(f, 1000); // Hello, undefined!
+
+// 这是因为 setTimeout 获取到了函数 user.sayHi，但它和对象分离开了。
+```
+
+```js
+let user = {
+  firstName: 'John',
+  sayHi() {
+    console.log(`Hello, ${this.firstName}!`);
+  },
+};
+setTimeout(function () {
+  user.sayHi(); // Hello, John!
+}, 1000);
+// or
+setTimeout(() => user.sayHi(), 1000); // Hello, John!
+```
+
+活着解决方案 1：最简单的解决方案是使用一个包装函数。解决方案 2：函数提供了一个内
+建方法 bind，它可以绑定 this。
+
+## bind
+
+```javascript
+let user = {
+  firstName: 'John',
+};
+
+function func() {
+  console.log(this.firstName);
+}
+
+let funcUser = func.bind(user);
+funcUser(); // John
+```
+
+[Lodash bindAll Documentation](https://lodash.com/docs/4.17.15#bindAll)
+
+```js
+var view = {
+  label: 'docs',
+  click: function () {
+    console.log('clicked ' + this.label);
+  },
+};
+
+_.bindAll(view, ['click']);
+jQuery(element).on('click', view.click);
+// => 'clicked docs'
+```
+
+## call、apply
+
 call 和 apply 都是为了解决改变 this 的指向。作用都是相同的，只是传参的方式不同。
 除了第一个参数外，call 可以接收一个参数列表，apply 只接受一个参数数组。
 
-bind 的作用与 call 和 apply 相同，区别是 call 和 apply 是立即调用函数，而 bind 是返回了一个函数，需要调用的时候再执行.
-并且我们可以通过 bind 实现柯里化。
+bind 的作用与 call 和 apply 相同，区别是 call 和 apply 是立即调用函数，而 bind
+是返回了一个函数，需要调用的时候再执行. 并且我们可以通过 bind 实现柯里化。
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200608144739无标题-2020-04-26-1620.jpg' alt='20200608144739无标题-2020-04-26-1620'/>
 

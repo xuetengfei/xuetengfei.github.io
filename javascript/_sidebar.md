@@ -90,6 +90,7 @@
 
   - [call-apply-bind](javascript/call-apply-bind.md)
   - [OOP、Inherit](javascript/js-Object-oriented-part.md)
+  - [原型继承](javascript/prototype-inheritance.md)
   - [原型链](javascript/js-prototype-chain.md)
   - [new 操作符](javascript/new-Operator.md)
   - [ES6 Class 静态方法](javascript/Class-Static-methods.md.md)

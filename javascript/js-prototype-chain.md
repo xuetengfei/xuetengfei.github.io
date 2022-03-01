@@ -2,15 +2,24 @@
 
 > 基于原型的语言？
 
-JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。
+JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有
+一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，
+并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype
+chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。
 
-准确地说，这些属性和方法定义在 Object 的构造器函数(constructor functions)之上的 prototype 属性上，而非对象实例本身。
+准确地说，这些属性和方法定义在 Object 的构造器函数(constructor functions)之上的
+prototype 属性上，而非对象实例本身。
 
-在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是`_proto_` 属性，是从构造函数的 prototype 属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。
+在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被
+复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一
+个链接（它是`_proto_` 属性，是从构造函数的 prototype 属性派生的），之后通过上溯
+原型链，在构造器中找到这些属性和方法。
 
 ## prototype
 
-!> 每个「函数」都有 prototype 属性。 在规范里，prototype 被定义为给其它对象提供共享属性的对象。也就是说，prototype 自己也是**对象**，只是被用以承担某个职能罢了。
+!> 每个「函数」都有 prototype 属性。 在规范里，prototype 被定义为给其它对象提供
+共享属性的对象。也就是说，prototype 自己也是**对象**，只是被用以承担某个职能罢了
+。
 
 ```javascript
 function func() {}
@@ -110,16 +119,27 @@ console.log(a.name); // sven
 console.log(Person.prototype);
 ```
 
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/person.prototype.jpg"/ width="500px">
+<img
+src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/person.prototype.jpg"/
+width="500px">
 
 ## \_\_proto\_\_
 
-!> javascript 给对象（`object` ）提供了一个隐藏属性（称为`__proto__`） 默认指向它的`构造函数`的`原型对象`（prototype）
-\_\_proto\_\_属性没有写入 ES6 的正文，而是写入了附录。原因是它本质上是一个内部属性，而不是一个正式的对外的 API，只是由于浏览器广泛支持，才被加入了 ES6。标准明确规定，只有浏览器必须部署这个属性，其他运行环境不一定需要部署，而且新的代码最好认为这个属性是不存在的。所以无论从语义的角度，还是从兼容性的角度，都不要使用这个属性，应该使用：**Object.getPrototypeOf(target)（读操作）、Object.setPrototypeOf(target)（写操作）、Object.create(target)（生成操作）**代替
+!> javascript 给对象（`object` ）提供了一个隐藏属性（称为`__proto__`） 默认指向
+它的`构造函数`的`原型对象`（prototype） \_\_proto\_\_属性没有写入 ES6 的正文，而
+是写入了附录。原因是它本质上是一个内部属性，而不是一个正式的对外的 API，只是由于
+浏览器广泛支持，才被加入了 ES6。标准明确规定，只有浏览器必须部署这个属性，其他运
+行环境不一定需要部署，而且新的代码最好认为这个属性是不存在的。所以无论从语义的角
+度，还是从兼容性的角度，都不要使用这个属性，应该使用
+：**Object.getPrototypeOf(target)（读操作）、Object.setPrototypeOf(target)（写操
+作）、Object.create(target)（生成操作）**代替
 
-每个对象都有 **\_\_proto\_\_** 属性，指向了创建该对象的构造函数的原型。其实这个属性指向了 [[prototype]]，但是 [[prototype]] 是内部属性，我们并不能访问到，所以使用 _proto_ 来访问。
+每个对象都有 **\_\_proto\_\_** 属性，指向了创建该对象的构造函数的原型。其实这个
+属性指向了 [[prototype]]，但是 [[prototype]] 是内部属性，我们并不能访问到，所以
+使用 _proto_ 来访问。
 
-对象可以通过 **\_\_proto\_\_** 来寻找不属于该对象的属性，**\_\_proto\_\_** 将对象连接起来组成了原型链。
+对象可以通过 **\_\_proto\_\_** 来寻找不属于该对象的属性，**\_\_proto\_\_** 将对
+象连接起来组成了原型链。
 
 ```javascript
 const a = { a: '1' };
@@ -128,7 +148,9 @@ Object.getPrototypeOf(a) === a.__proto__; // true
 
 #### 内置的构造函数是什么、它做了什么
 
-所有函数，都有 prototype 属性，它默认是以 Object.prototype 为原型的对象。普通函数创建时，自带了 prototype 属性，该属性是一个对象，包含 constructor 一个字段，指向构造函数。
+所有函数，都有 prototype 属性，它默认是以 Object.prototype 为原型的对象。普通函
+数创建时，自带了 prototype 属性，该属性是一个对象，包含 constructor 一个字段，指
+向构造函数。
 
 ```javascript
 obj.__proto__ = Constructor.prototype;
@@ -137,7 +159,8 @@ const obj = {};
 console.log(obj.__proto__);
 ```
 
-这里 obj 是一个对象,obj 的构造函数是 Object，Object 的 prototype 如下面的图片所示。
+这里 obj 是一个对象,obj 的构造函数是 Object，Object 的 prototype 如下面的图片所
+示。
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Object.prototype.jpg"/>
 
@@ -160,7 +183,9 @@ var a = new Person('sven');
 console.log(a.__proto__);
 ```
 
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/person.prototype.jpg"/ width="500px">
+<img
+src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/person.prototype.jpg"/
+width="500px">
 
 ```javascript
 console.log(a.__proto__ === Person.prototype); // true
@@ -250,7 +275,9 @@ console.log(Object.prototype.__proto__ == null); // true
 
 ### 继承属性
 
-JavaScript 对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。
+JavaScript 对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅
+在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，
+直到找到一个名字匹配的属性或到达原型链的末尾。
 
 ```javascript
 function F() {
@@ -277,8 +304,9 @@ console.log(o.c); //  4
 
 ### 继承方法
 
-在 JavaScript 里，任何函数都可以添加到对象上作为对象的属性。函数的继承与其他的属性继承没有差别，包括上面的“属性遮蔽”（这种情况相当于其他语言的方法重写）。
-当继承的函数被调用时，this 指向的是当前继承的对象，而不是继承的函数所在的原型对象。
+在 JavaScript 里，任何函数都可以添加到对象上作为对象的属性。函数的继承与其他的属
+性继承没有差别，包括上面的“属性遮蔽”（这种情况相当于其他语言的方法重写）。当继承
+的函数被调用时，this 指向的是当前继承的对象，而不是继承的函数所在的原型对象。
 
 #### 显式原型继承-1. Object.create();
 
@@ -340,7 +368,8 @@ console.log(me.getJob()); // React Developer
 
 #### JS 原型其实是一个隐式的单向链表。
 
-在某些场景下，我们甚至可以直接把 Prototype 当作 JS 里内置的单向链表来用，而不必手动实现。
+在某些场景下，我们甚至可以直接把 Prototype 当作 JS 里内置的单向链表来用，而不必
+手动实现。
 
 ```javascript
 Object.defineProperty(Object.prototype, 'previous', {

@@ -35,12 +35,18 @@ let user = {
 let admin = {
   isAdmin: true,
 };
-let guest = {
-  isGuest: true,
-};
-
+// let guest = {
+//   isGuest: true,
+// };
 admin.__proto__ = user; // 设置 admin 的 Prototype = user
-guest.__proto__ = user; // 设置 guest 的 Prototype = user
+
+// 设置 guest 的 Prototype = user
+let guest = Object.create(user, {
+  isGuest: {
+    value: true,
+  },
+});
+//  替换旧语法 guest.__proto__ = user;
 
 // 现在,从 admin 中读取一个它没有的属性 access，JavaScript 会自动从 user 中获取。
 console.log(admin.access); // true
@@ -116,9 +122,9 @@ superAdmin.buy(); // buy something
 getter/setter。稍后，将看到在什么情况下理解它们很重要，在建立对 JavaScript 语言
 的理解时，让我们牢记这一点。
 
-\_\_proto\_\_ 属性有点过时了。它的存在是出于历史的原因，现代编程语言建议我们应该
-使用函数 Object.getPrototypeOf/Object.setPrototypeOf 来取代 \_\_proto\_\_ 去
-get/set 原型。稍后将介绍这些函数。
+\_\_proto\_\_ 被认为是过时且不推荐使用的（deprecated)。它的存在是出于历史的原因
+，现代编程语言建议我们应该使用函数 Object.getPrototypeOf/Object.setPrototypeOf
+来取代 \_\_proto\_\_ 去 get/set 原型。稍后将介绍这些函数。
 
 根据规范，\_\_proto\_\_ 必须仅受浏览器环境的支持。但实际上，包括服务端在内的所有
 环境都支持它，因此使用它是非常安全的。

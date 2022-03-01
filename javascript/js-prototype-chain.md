@@ -1,8 +1,9 @@
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-cover-1552709232.png'/>
+<img
+src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220301-hOxzvT-384_22601012512_.jpg"
+width="500px" />
 
-> 基于原型的语言？
-
-JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有
+<!-- ## 基于原型的语言 -->
+<!-- JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有
 一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，
 并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype
 chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。
@@ -13,19 +14,59 @@ prototype 属性上，而非对象实例本身。
 在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被
 复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一
 个链接（它是`_proto_` 属性，是从构造函数的 prototype 属性派生的），之后通过上溯
-原型链，在构造器中找到这些属性和方法。
+原型链，在构造器中找到这些属性和方法。 -->
+
+在[原型继承](javascript/prototype-inheritance.md)文章中我们讲到了对象的
+[[Prototype]] 。 Function 在 ECMAScript 规范里，被定义为对象的一种。也就是说，函
+数也是对象，也有自己的隐式引用（原型）。但函数的 `prototype` 属性，却不是该函数
+对象的原型。
+
+## 只有函数有 prototype 属性
+
+```js
+let a = {};
+let b = function () {};
+console.log(a.prototype); // undefined
+console.log(b.prototype); // { constructor: function(){...} }
+```
+
+## Object.prototype 怎么解释？
+
+其实 Object 是一个全局对象，也是一个构造函数，以及其他基本类型的全局对象也都是构
+造函数
+
+## 为什么只有函数有 prototype 属性
+
+JS 通过 new 来生成对象，但是仅靠构造函数，每次生成的对象都不一样。
+
+有时候需要在两个对象之间共享属性，由于 JS 在设计之初没有类的概念，所以 JS 使用函
+数的 prototype 来处理这部分需要被共享的属性，通过函数的 prototype 来模拟类：
+
+当创建一个函数时，JS 会自动为函数添加 prototype 属性，值是一个有 constructor 的
+对象。以下是共享属性 prototype 的例子：
+
+```javascript
+function People(name) {
+  this.name = name;
+}
+People.prototype.age = 23; // 岁数
+// 创建两个实例
+let People1 = new People('Tom');
+let People2 = new People('Bob');
+People.prototype.age = 24; // 长大了一岁
+console.log(People1.age, People2.age); // 24 24
+```
 
 ## prototype
 
-!> 每个「函数」都有 prototype 属性。 在规范里，prototype 被定义为给其它对象提供
-共享属性的对象。也就是说，prototype 自己也是**对象**，只是被用以承担某个职能罢了
-。
+> 每个「函数」都有 prototype 属性。 在规范里，prototype 被定义为给其它对象提供共
+> 享属性的对象。也就是说，prototype 自己也是**对象**，只是被用以承担某个职能罢了
+> 。
 
 ```javascript
 function func() {}
 
 console.log(func.prototype);
-
 /* 
 
 {
@@ -42,8 +83,13 @@ console.log(func.prototype);
 }
 
 */
+console.log(typeof func.prototype); // object
 // func.prototype 就是个 对象
 ```
+
+默认的 F.prototype，构造器属性每个函数都有 "prototype" 属性，即使我们没有提供它
+。默认的 "prototype" 是一个只有属性 constructor 的对象，属性 constructor 指向函
+数自身。
 
 所以,func.prototype.\_\_proto\_\_ 等于 constructor: ƒ Object()
 
@@ -85,7 +131,10 @@ var a = new Person('sven');
 console.log(a.name); // sven
 ```
 
-### 内置构造函数 Object
+## 内置构造函数 Object
+
+Object.prototype 是原型链的终点，所有对象都是从它继承了方法和属性
+。Object.prototype 没有原型对象(是 null)
 
 ```javascript
 console.log(typeof Object); // function
@@ -94,13 +143,11 @@ console.log(Object.prototype);
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Object.prototype.jpg"/>
 
-<!-- Bl-2018-07-24_151253.jpg -->
-
 ```javascript
 console.log(Object === Object.prototype.constructor); // true
 ```
 
-### 自定义的构造函数 Person
+## 自定义的构造函数 Person
 
 ```javascript
 function Person(name) {
@@ -120,8 +167,8 @@ console.log(Person.prototype);
 ```
 
 <img
-src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/person.prototype.jpg"/
-width="500px">
+src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/person.prototype.jpg"
+width="500px" />
 
 ## \_\_proto\_\_
 
@@ -134,10 +181,6 @@ width="500px">
 ：**Object.getPrototypeOf(target)（读操作）、Object.setPrototypeOf(target)（写操
 作）、Object.create(target)（生成操作）**代替
 
-每个对象都有 **\_\_proto\_\_** 属性，指向了创建该对象的构造函数的原型。其实这个
-属性指向了 [[prototype]]，但是 [[prototype]] 是内部属性，我们并不能访问到，所以
-使用 _proto_ 来访问。
-
 对象可以通过 **\_\_proto\_\_** 来寻找不属于该对象的属性，**\_\_proto\_\_** 将对
 象连接起来组成了原型链。
 
@@ -146,13 +189,13 @@ const a = { a: '1' };
 Object.getPrototypeOf(a) === a.__proto__; // true
 ```
 
-#### 内置的构造函数是什么、它做了什么
+## 内置的构造函数是什么、它做了什么
 
 所有函数，都有 prototype 属性，它默认是以 Object.prototype 为原型的对象。普通函
 数创建时，自带了 prototype 属性，该属性是一个对象，包含 constructor 一个字段，指
 向构造函数。
 
-```javascript
+<!-- ```javascript
 obj.__proto__ = Constructor.prototype;
 
 const obj = {};
@@ -160,15 +203,14 @@ console.log(obj.__proto__);
 ```
 
 这里 obj 是一个对象,obj 的构造函数是 Object，Object 的 prototype 如下面的图片所
-示。
+示。 -->
 
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Object.prototype.jpg"/>
+<!-- <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Object.prototype.jpg"> -->
 
 ```javascript
+const obj = {};
 console.log(obj.__proto__ === Object.prototype); // true
 ```
-
----
 
 ```javascript
 function Person(name) {
@@ -184,8 +226,8 @@ console.log(a.__proto__);
 ```
 
 <img
-src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/person.prototype.jpg"/
-width="500px">
+src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/person.prototype.jpg"
+width="500px" />
 
 ```javascript
 console.log(a.__proto__ === Person.prototype); // true
@@ -215,8 +257,6 @@ console.log(Object.prototype.__proto__ === null); // true
 // 那么，这根原型链条就是如下这样
 console.log(p1.__proto__.__proto__.__proto__ === null); // true
 ```
-
-其余部分
 
 ```javascript
 // Person是一个函数，其构造器是Function
@@ -337,7 +377,7 @@ console.log(p.m()); // 5
 const obj_a = { a: '1' };
 const obj_b = { b: '2' };
 Object.setPrototypeOf(obj_b, obj_a);
-
+// or   obj_b.__proto__ = obj_a;
 console.log(obj_b.a); // 1
 ```
 

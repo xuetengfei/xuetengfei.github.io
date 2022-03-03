@@ -178,8 +178,8 @@ getNumber()
 
 ## catch 作用
 
-catch 它还有另外一个作用：在执行 resolve 的回调时，如果抛出异常了（代码出错了）
-，那么并不会报错卡死 js，而是会进到这个 catch 方法中
+catch 它还有另外一个作用:在执行 resolve 的回调时，如果抛出异常了（代码出错了），
+那么并不会报错卡死 js，而是会进到这个 catch 方法中
 
 ```javascript
 getNumber()
@@ -198,7 +198,7 @@ getNumber()
 果不用 Promise，代码运行到这里就直接在控制台报错了，不往下运行了。但是在这里, 即
 便是有错误的代码也不会报错了，这和 `try/catch`语句有相同的功能。
 
-当一个 error 没有被处理会发生什么？例如，我们忘了在链的尾端附加 .catch，像这样：
+当一个 error 没有被处理会发生什么？例如，我们忘了在链的尾端附加 .catch，像这样:
 
 ```javascript
 new Promise(function () {
@@ -218,7 +218,7 @@ unhandledrejection 事件是 HTML 标准 的一部分。unhandledrejection 处�
 
 ```javascript
 window.addEventListener('unhandledrejection', function (event) {
-  // 这个事件对象有两个特殊的属性：
+  // 这个事件对象有两个特殊的属性:
   alert(event.promise); // [object Promise] - 生成该全局 error 的 promise
   alert(event.reason); // Error: ops! - 未处理的 error 对象
 });
@@ -235,12 +235,12 @@ new Promise(function () {
 就像常规 try {...} catch {...} 中的 finally 子句一样，promise 中也有 finally。
 
 .finally(f) 调用与 .then(f, f) 类似，在某种意义上，f 总是在 promise 被 settled
-时运行：即 promise 被 resolve 或 reject。
+时运行:即 promise 被 resolve 或 reject。
 
 finally 是执行清理（cleanup）的很好的处理程序（handler），例如无论结果如何，都停
 止使用不再需要的加载指示符（indicator）。
 
-像这样：
+像这样:
 
 ```javascript
 new Promise((resolve, reject) => {
@@ -252,14 +252,14 @@ new Promise((resolve, reject) => {
   .then(result => show result, err => show error)
 ```
 
-也就是说，finally(f) 其实并不是 then(f,f) 的别名。它们之间有一些细微的区别：
+也就是说，finally(f) 其实并不是 then(f,f) 的别名。它们之间有一些细微的区别:
 
 finally 处理程序（handler）没有参数。在 finally 中，我们不知道 promise 是否成功
 。没关系，因为我们的任务通常是执行“常规”的定稿程序（finalizing procedures）。
 
 finally 处理程序将结果和 error 传递给下一个处理程序。
 
-例如，在这儿结果被从 finally 传递给了 then：
+例如，在这儿结果被从 finally 传递给了 then:
 
 ```javascript
 new Promise((resolve, reject) => {
@@ -367,17 +367,77 @@ Promise.all(tasks).then(values => {
 // 那么需要 等待1ms → 等待32ms → 等待64ms → 等待128ms ，全部执行完毕需要225ms的时间。
 ```
 
+贴近真实的代码
+
+```javascript
+let names = ['iliakan', 'remy', 'jeresig'];
+let requests = names.map(name => fetch(`https://api.github.com/users/${name}`));
+
+Promise.all(requests)
+  .then(responses => {
+    // 所有响应都被成功 resolved
+    for (let response of responses) {
+      console.log(`${response.url}: ${response.status}`); // 对应每个 url 都显示 200
+    }
+    return responses;
+  })
+  // 将响应数组映射（map）到 response.json() 数组中以读取它们的内容
+  .then(responses => Promise.all(responses.map(r => r.json())))
+  // 所有 JSON 结果都被解析:"users" 是它们的数组
+  .then(users => users.forEach(user => console.log(user.name)));
+```
+
+## Promise.allSettled
+
+最近添加的 Promise.allSettled 等待所有的 promise 都被 settle，无论结果如何。结果
+数组:对于成功的响应 {status:"fulfilled", value:result}，对于 error
+{status:"rejected", reason:error}。
+
+所以，对于每个 promise，我们都得到了其状态（status）和 value/reason。
+
+```javascript
+let urls = [
+  'https://api.github.com/users/iliakan',
+  'https://api.github.com/users/remy',
+  'https://no-such-url',
+];
+
+Promise.allSettled(urls.map(url => fetch(url))).then(results => {
+  console.log('results', results);
+  // [
+  //   {status: 'fulfilled', value: ...response...},
+  //   {status: 'fulfilled', value: ...response...},
+  //   {status: 'rejected', reason: ...error object...}
+  // ]
+});
+```
+
+### Promise.allSettled Polyfill
+
+```javascript
+if (!Promise.allSettled) {
+  const rejectHandler = reason => ({ status: 'rejected', reason });
+  const resolveHandler = value => ({ status: 'fulfilled', value });
+  Promise.allSettled = function (promises) {
+    const convertedPromises = promises.map(p =>
+      Promise.resolve(p).then(resolveHandler, rejectHandler),
+    );
+    return Promise.all(convertedPromises);
+  };
+}
+```
+
 ## Promise.race
 
-Promise.race 方法,它的使用方法和 Promise.all 一样，接收一个 promise 实例数组为参
-数。
+与 Promise.all 类似，接收一个 promise 实例数组为参数,`但只等待第一个` settled 的
+promise 并获取其结果（或 error）。
 
 Promise.all 在`所有的promise实例` 都变为 FulFilled 或者 Rejected 状态之后才会继
 续进行后面的处理.  
 Promise.race 只要有`一个 promise实例`进入 FulFilled 或者 Rejected 状态的话，就会
 继续进行后面的处理。
 
-像 Promise.all 时的例子一样，我们来看一个带计时器的 Promise.race 的使用例子。
+一个带计时器的 Promise.race 的使用例子:
 
 ```js
 const delay = timeout =>
@@ -410,6 +470,40 @@ setTimeout 128
 ```
 
 <img src='http://loremxuetengfei.oss-cn-beijing.aliyuncs.com/explain-promise.png'/>
+
+## Promise.any
+
+Promise.any 是 Promise 的 race 的一种情况。
+
+与 Promise.race 类似，区别在于 Promise.any 只等待第一个 fulfilled 的 promise，并
+将这个 fulfilled 的 promise 返回。如果给出的 promise 都 rejected，那么则返回
+rejected 的 promise 和 AggregateError 错误类型的 error 实例—— 一个特殊的 error
+对象，在其 errors 属性中存储着所有 promise error。
+
+```javascript
+Promise.any([
+  new Promise((resolve, reject) =>
+    setTimeout(() => reject(new Error('ops!')), 1000),
+  ),
+  new Promise((resolve, reject) => setTimeout(() => resolve(1), 2000)),
+  new Promise((resolve, reject) => setTimeout(() => resolve(3), 3000)),
+]).then(console.log(value)); // 1
+```
+
+```javascript
+Promise.any([
+  new Promise((resolve, reject) =>
+    setTimeout(() => reject(new Error('Ouch!')), 1000),
+  ),
+  new Promise((resolve, reject) =>
+    setTimeout(() => reject(new Error('Error!')), 2000),
+  ),
+]).catch(error => {
+  console.log(error.constructor.name); // AggregateError
+  console.log(error.errors[0]); // Error: Ouch!
+  console.log(error.errors[1]); // Error: Error
+});
+```
 
 ## 题目
 

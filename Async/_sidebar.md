@@ -4,6 +4,7 @@
   - [Event Loop](Async/EventLoop.md)
   - [Callback](Async/callback.md)
   - [Promise](Async/promise-Syntax.md)
+  - [Promisify](Async/convert-callbacks-to-promises.md)
   - [Generator](Async/Generator.md)
   - [Async](Async/Async-Await.md)
   - [异步编程的演变](Async/Evolution-process.md)
@@ -11,7 +12,6 @@
   - [并行(并发)请求](Async/concurrency.md)
   - [并发限制器](Async/concurrency-limit.md)
   - [错误处理](Async/error-handling.md)
-  - [promisify](Async/convert-callbacks-to-promises.md)
 
 - 前端请求
 

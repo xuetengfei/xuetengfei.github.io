@@ -1,11 +1,13 @@
-总结一下前端异常错误: 1.JS 语法错误、代码异常 2.AJAX 请求异常 3.静态资源加载异常 4.Promise 异常 5.Iframe 异常 6.跨域 Script error7.崩溃和卡顿
+总结一下前端异常错误: 1.JS 语法错误、代码异常 2.AJAX 请求异常 3.静态资源加载异常
+4.Promise 异常 5.Iframe 异常 6.跨域 Script error7.崩溃和卡顿
 
 ### window.onerror
 
-onerror 可以捕获到运行时的同步/异步错误,语法错误，静态资源异常，接口异常错误都无法捕获到。
+onerror 可以捕获到运行时的同步/异步错误,语法错误，静态资源异常，接口异常错误都无
+法捕获到。
 
 ```javascript
-window.onerror = function(message, source, lineno, colno, error) {
+window.onerror = function (message, source, lineno, colno, error) {
   // message：错误信息（字符串）。
   // source：发生错误的脚本URL（字符串）
   // lineno：发生错误的行号（数字）
@@ -33,7 +35,9 @@ window.addEventListener(
 );
 ```
 
-当一项资源加载失败，加载资源的元素会触发一个 Event 接口的 error 事件，并执行该元素上的 onerror() 处理函数。这些 error 事件不会向上冒泡到 window ，能被单一的 window.addEventListener 捕获。
+当一项资源加载失败，加载资源的元素会触发一个 Event 接口的 error 事件，并执行该元
+素上的 onerror() 处理函数。这些 error 事件不会向上冒泡到 window ，能被单一的
+window.addEventListener 捕获。
 
 ### Try-Catch
 
@@ -49,8 +53,10 @@ try {
 
 ### Promise Catch
 
-在 promise 中使用 catch 可以非常方便的捕获到异步 error 。
-没有写 catch 的 Promise 中抛出的错误无法被 onerror 或 try-catch 捕获到，所以我们务必要在 Promise 中不要忘记写 catch 处理抛出的异常。为了防止有漏掉的 Promise 异常，建议在全局增加一个对 `unhandledrejection` 的监听，用来全局监听 `Uncaught Promise Error`。
+在 promise 中使用 catch 可以非常方便的捕获到异步 error 。没有写 catch 的 Promise
+中抛出的错误无法被 onerror 或 try-catch 捕获到，所以我们务必要在 Promise 中不要
+忘记写 catch 处理抛出的异常。为了防止有漏掉的 Promise 异常，建议在全局增加一个对
+`unhandledrejection` 的监听，用来全局监听 `Uncaught Promise Error`。
 
 ```javascript
 window.addEventListener('unhandledrejection', event => {
@@ -107,9 +113,11 @@ class ErrorBoundary extends React.Component {
 </ErrorBoundary>;
 ```
 
-`componentDidCatch()`方法像 JS 的 `catch{}`模块一样工作，但是对于组件，只有 class 类型的组件(class component )可以成为一个 error boundaries 。
+`componentDidCatch()`方法像 JS 的 `catch{}`模块一样工作，但是对于组件，只有
+class 类型的组件(class component )可以成为一个 error boundaries 。
 
-实际上，大多数情况下我们可以在整个程序中定义一个 error boundary 组件，之后就可以一直使用它了！
+实际上，大多数情况下我们可以在整个程序中定义一个 error boundary 组件，之后就可以
+一直使用它了！
 
 ## 采用组合方案
 

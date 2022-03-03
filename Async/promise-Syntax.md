@@ -195,10 +195,40 @@ getNumber()
 ```
 
 在 resolve 的回调中，`console.log(somedata)的somedata`这个变量是没有被定义的。如
-果不用 Promise，代码运行到这里就直接在控制台报错了，不往下运行了。但是在这里，会
-得到这样的结果：
+果不用 Promise，代码运行到这里就直接在控制台报错了，不往下运行了。但是在这里, 即
+便是有错误的代码也不会报错了，这和 `try/catch`语句有相同的功能。
 
-即便是有错误的代码也不会报错了，这和 `try/catch`语句有相同的功能。
+当一个 error 没有被处理会发生什么？例如，我们忘了在链的尾端附加 .catch，像这样：
+
+```javascript
+new Promise(function () {
+  noSuchFunction(); // 这里出现 error（没有这个函数）
+}).then(() => {
+  // 一个或多个成功的 promise 处理程序（handler）
+}); // 尾端没有 .catch！
+```
+
+JavaScript 引擎会跟踪此类 rejection，在这种情况下会生成一个全局的 error。如果你
+运行上面这个代码，你可以在控制台（console）中看到。在浏览器中，可以使用
+unhandledrejection 事件来捕获这类 error。
+
+unhandledrejection 事件是 HTML 标准 的一部分。unhandledrejection 处理程序
+（handler）就被触发，并获取具有 error 相关信息的 event 对象，所以就能做一些后续
+处理了。
+
+```javascript
+window.addEventListener('unhandledrejection', function (event) {
+  // 这个事件对象有两个特殊的属性：
+  alert(event.promise); // [object Promise] - 生成该全局 error 的 promise
+  alert(event.reason); // Error: ops! - 未处理的 error 对象
+});
+
+new Promise(function () {
+  throw new Error('ops!');
+}); // 没有用来处理 error 的 catch
+```
+
+见[全局捕获错误](Progress/handle-error.md)这篇博客
 
 ## finally
 

@@ -29,6 +29,44 @@ promise.then(
 );
 ```
 
+## Promise 是啥？
+
+打印 console.dir(Promise) 有个直观感受。 Promise 是一个`构造函数`，自己身上有
+all、reject、resolve 这几个静态方法，原型上有 then、catch 等方法。
+
+<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/what-is-promise.png"/>
+
+### Instance Method
+
+```js
+promise.then(onFulfilled, onRejected);
+promise.catch(onRejected);
+```
+
+### Static Method
+
+```js
+Promise.all();
+Promise.resolve();
+```
+
+> Promise 是一个对象，用作延迟计算的最终结果的占位符。Promise
+> 是`抽象异步处理对象`以及对其进行`各种操作`的组件,Promise 是异步编程的一种解决
+> 方案，比传统的解决方案`回调函数和事件`更合理和更强大。它由社区最早提出和实现
+> ，ES6 将其写进了语言标准，统一了用法。
+
+简单来说，一个 Promise 是一个装有未来值的容器。比如，你预定一张机票，预订后，你
+会得到一张机票。这张机票是航空公司的一个承诺，意味着你在出发当天可以获得相应的座
+位。实质上，票证是未来值的占位符，即座位。
+
+如果说到基于 JavaScript 的异步处理，大多数都会想到利
+用[回调函数](javascript/callback.md),回调函数依然有用，现在可以使用
+Promise,Promise 提供了更清晰的链式异步命令语法，因此可以串联运行。
+
+## Promise APIs
+
+![20220302-XPac0T-393_22611012049_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220302-XPac0T-393_22611012049_.jpg)
+
 ## Demo
 
 ```javascript
@@ -49,7 +87,7 @@ new Promise((resolve, reject) => {
 > promise 的状态改为 rejected。如果在 executor 函数中抛出一个错误，那么该
 > promise 状态为 rejected。executor 函数的返回值被忽略。
 
-## executor 执行的时机
+## executor
 
 直接**new Promise**实例化的 Promise 对象会**立即执行**。  
 注意！只是实例化了一个 Promise 对象，并没有调用它，我们传进去的函数就已经执行了
@@ -162,43 +200,52 @@ getNumber()
 
 即便是有错误的代码也不会报错了，这和 `try/catch`语句有相同的功能。
 
-## Promise 是啥？
+## finally
 
-打印 console.dir(Promise) 有个直观感受。 Promise 是一个`构造函数`，自己身上有
-all、reject、resolve 这几个静态方法，原型上有 then、catch 等方法。
+就像常规 try {...} catch {...} 中的 finally 子句一样，promise 中也有 finally。
 
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/what-is-promise.png"/>
+.finally(f) 调用与 .then(f, f) 类似，在某种意义上，f 总是在 promise 被 settled
+时运行：即 promise 被 resolve 或 reject。
 
-### Instance Method
+finally 是执行清理（cleanup）的很好的处理程序（handler），例如无论结果如何，都停
+止使用不再需要的加载指示符（indicator）。
 
-```js
-promise.then(onFulfilled, onRejected);
-promise.catch(onRejected);
+像这样：
+
+```javascript
+new Promise((resolve, reject) => {
+  /* 做一些需要时间的事儿，然后调用 resolve/reject */
+})
+  // 在 promise 为 settled 时运行，无论成功与否
+  .finally(() => stop loading indicator)
+  // 所以，加载指示器（loading indicator）始终会在我们处理结果/错误之前停止
+  .then(result => show result, err => show error)
 ```
 
-### Static Method
+也就是说，finally(f) 其实并不是 then(f,f) 的别名。它们之间有一些细微的区别：
 
-```js
-Promise.all();
-Promise.resolve();
+finally 处理程序（handler）没有参数。在 finally 中，我们不知道 promise 是否成功
+。没关系，因为我们的任务通常是执行“常规”的定稿程序（finalizing procedures）。
+
+finally 处理程序将结果和 error 传递给下一个处理程序。
+
+例如，在这儿结果被从 finally 传递给了 then：
+
+```javascript
+new Promise((resolve, reject) => {
+  setTimeout(() => resolve('result'), 2000);
+})
+  .finally(() => alert('Promise ready'))
+  .then(result => alert(result)); // <-- .then 对结果进行处理
 ```
 
-> Promise 是一个对象，用作延迟计算的最终结果的占位符。Promise
-> 是`抽象异步处理对象`以及对其进行`各种操作`的组件,Promise 是异步编程的一种解决
-> 方案，比传统的解决方案`回调函数和事件`更合理和更强大。它由社区最早提出和实现
-> ，ES6 将其写进了语言标准，统一了用法。
-
-简单来说，一个 Promise 是一个装有未来值的容器。比如，你预定一张机票，预订后，你
-会得到一张机票。这张机票是航空公司的一个承诺，意味着你在出发当天可以获得相应的座
-位。实质上，票证是未来值的占位符，即座位。
-
-如果说到基于 JavaScript 的异步处理，大多数都会想到利
-用[回调函数](javascript/callback.md),回调函数依然有用，现在可以使用
-Promise,Promise 提供了更清晰的链式异步命令语法，因此可以串联运行。
-
-## Promise APIs
-
-![20220302-XPac0T-393_22611012049_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220302-XPac0T-393_22611012049_.jpg)
+```javascript
+new Promise((resolve, reject) => {
+  throw new Error('error');
+})
+  .finally(() => alert('Promise ready'))
+  .catch(err => alert(err)); // <-- .catch 对 error 对象进行处理
+```
 
 ## Promise 链
 
@@ -227,6 +274,12 @@ promise.then(taskA).then(taskB).catch(onRejected).then(finalTask);
 > `promiseInstance.then(...).catch(...)`像是针对最初的 promiseInstance 对象进行
 > 了一连串的方法链调用。然而实际上不管是 then 还是 catch 方法调用，都返回了一个
 > 新的 promise 对象。
+
+如果 .then（或 catch/finally 都可以）处理程序（handler）返回一个 promise，那么链
+的其余部分将会等待，直到它状态变为 settled。当它被 settled 后，其 result（或
+error）将被进一步传递下去。
+
+![20220303-o6H184-397_22621014212_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220303-o6H184-397_22621014212_.jpg)
 
 ```js
 const aPromise = new Promise(function (resolve) {

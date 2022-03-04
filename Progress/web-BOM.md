@@ -1,4 +1,4 @@
-web-BOM.md
+![20220304-s0GTDZ-439_22631014519_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220304-s0GTDZ-439_22631014519_.jpg)
 
 | 属性名    | 描述             |
 | --------- | ---------------- |

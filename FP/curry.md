@@ -2,6 +2,8 @@
 。JavaScript 实现通常都保持该函数可以被正常调用，并且如果参数数量不足，则返回偏
 函数。
 
+## 小试牛刀
+
 ```javascript
 function sum(x, y, z) {
   return x + y + z;
@@ -21,7 +23,7 @@ function currySum(x) {
 }
 ```
 
-## 实现 curry
+## 通用的 curry
 
 柯里化一个函数。使用递归。 如果提供的参数(args)数量足够，调用传递函数 fn 。否则
 返回一个柯里化后的函数 fn ，期望剩下的参数。如果你想柯里化一个接受可变参数数量的

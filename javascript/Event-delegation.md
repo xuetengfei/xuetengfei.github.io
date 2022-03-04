@@ -142,35 +142,36 @@ event.stopPropagation()。
 ## menu
 
 ```html
-  <div id="menu">
-      <button data-action="save">Save</button>
-      <button data-action="load">Load</button>
-      <button data-action="search">Search</button>
-    </div>
-    <script>
-      class Menu {
-        constructor(elem) {
-          this._elem = elem;
-          elem.onclick = this.onClick.bind(this); // (*)
-        }
-        save() {
-          alert('saving');
-        }
-        load() {
-          alert('loading');
-        }
-        search() {
-          alert('searching');
-        }
-        onClick(event) {
-          let action = event.target.dataset.action;
-          if (action) {
-            this[action]();
-          }
-        }
+<div id="menu">
+  <button data-action="save">Save</button>
+  <button data-action="load">Load</button>
+  <button data-action="search">Search</button>
+</div>
+<script>
+  class Menu {
+    constructor(elem) {
+      this._elem = elem;
+      elem.onclick = this.onClick.bind(this); // (*)
+    }
+    save() {
+      alert('saving');
+    }
+    load() {
+      alert('loading');
+    }
+    search() {
+      alert('searching');
+    }
+    onClick(event) {
+      let action = event.target.dataset.action;
+      if (action) {
+        this[action]();
       }
-      new Menu(menu);
-      console.log(document.getElementById('menu') === menu); // true
+    }
+  }
+  new Menu(menu);
+  console.log(document.getElementById('menu') === menu); // true.
+</script>
 ```
 
 [event-delegation-menu-usage-live-demo](https://xuetengfei.github.io/html/event-delegation-usage-demo.html)

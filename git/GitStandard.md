@@ -4,7 +4,7 @@
 #  注意冒号后面有个空格
 ```
 
-```
+```bash
 type (必选)
 用于说明 commit 的类别，只允许使用下面7个标识。
 feat：新功能（feature）
@@ -33,3 +33,4 @@ subject （必选）
 
 1. [commitizen/cz-cli: The commitizen command line utility.](https://github.com/commitizen/cz-cli)
 2. [可能会忽略的 Git 提交规范](http://jartto.wang/2018/07/08/git-commit/?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com)
+3. [Git 提交代码的时候，必须给出一段文字说明。有时候，会想要一个模板，提交时自动跳出来，只要填写一下就可以了。本文给出实现方法。](https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733)

@@ -36,16 +36,13 @@ setTimeout(() => user.sayHi(), 1000); // Hello, John!
 ## bind
 
 ```javascript
-let user = {
-  firstName: 'John',
+const logger = function () {
+  console.log(this.name);
 };
 
-function func() {
-  console.log(this.firstName);
-}
+const fun = logger.bind({ name: 'Order' });
 
-let funcUser = func.bind(user);
-funcUser(); // John
+fun();
 ```
 
 [Lodash bindAll Documentation](https://lodash.com/docs/4.17.15#bindAll)
@@ -119,4 +116,23 @@ Function.prototype.myBind = function (context) {
     return _this.apply(context, args.concat(...arguments));
   };
 };
+```
+
+## console.error.bind(console)
+
+[console.error.bind(console) 到底是做什么的？](https://www.tjvantoll.com/2015/12/29/console-error-bind/)
+
+```javascript
+function someAsyncTask() {
+  return new Promise(function (resolve, reject) {
+    reject(a);
+  });
+}
+someAsyncTask().then(
+  function () {},
+  function () {
+    console.log('this', this); // 我尝试后，发现现在的this的确指向window
+    console.error; // 不在需要 console.error.bind(console) bind操作了
+  },
+);
 ```

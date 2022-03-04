@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event-delegation-usage-demo</title>
+  </head>
+  <body>
+    <div id="menu">
+      <button data-action="save">Save</button>
+      <button data-action="load">Load</button>
+      <button data-action="search">Search</button>
+    </div>
+    <script>
+      class Menu {
+        constructor(elem) {
+          this._elem = elem;
+          elem.onclick = this.onClick.bind(this); // (*)
+        }
+        save() {
+          alert('saving');
+        }
+        load() {
+          alert('loading');
+        }
+        search() {
+          alert('searching');
+        }
+        onClick(event) {
+          let action = event.target.dataset.action;
+          if (action) {
+            this[action]();
+          }
+        }
+      }
+      new Menu(menu);
+      console.log(document.getElementById('menu') === menu); // true
+    </script>
+  </body>
+</html>

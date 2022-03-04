@@ -139,7 +139,7 @@ event.stopPropagation()。
 制，所以无法委托；mousemove、mouseout 这样的事件，虽然有事件冒泡，但是只能不断通
 过位置去计算定位，对性能消耗高，因此也是不适合于事件委托的；
 
-## menu
+## 委托示例:menu
 
 ```html
 <div id="menu">

@@ -68,10 +68,10 @@ function curry(func, needArgsLength = func.length) {
   };
 }
 
-const result1 = curry2(Math.min, 4)(10)(50)(2)(4);
+const result1 = curry(Math.min, 4)(10)(50)(2)(4);
 console.log('result1', result1); // 2
 
-const passfnc = curry2(Math.min, 4)(10)(50);
+const passfnc = curry(Math.min, 4)(10)(50);
 const result2 = passfnc(2, 4);
 console.log('result2', result2); // 2
 

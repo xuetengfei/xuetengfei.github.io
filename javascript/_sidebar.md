@@ -14,7 +14,6 @@
   - [优化if-else](javascript/optimize-the-if-else.md)
   - [一些好用的AOP](javascript/useful-aop-method.md)
 
-
 - 条件和判断
 
   - [判断](javascript/all-kinds-of-judgment.md)
@@ -54,7 +53,6 @@
   - [动态属性名称](javascript/variable-key-value.md)
   - [裸对象](javascript/Object.create-null.md)
 
-
 - Array
 
   - [Array 对象 API](javascript/Array.md)
@@ -72,7 +70,7 @@
   - [ES6 解构](javascript/destructuring-nested-objects.md)
   - [...运算符](javascript/the-three-dots.md)
   - [Function](javascript/sao-Function.md)
-  - [ResizeObserver、MutationObserver、IntersectionObserver](javascript/some-observer.md)
+  - [几个观察器API](javascript/some-observer.md)
 
 - 常用代码
 

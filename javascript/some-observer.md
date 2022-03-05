@@ -54,10 +54,10 @@ observer.observe(targetNode, config);
 observer.disconnect();
 ```
 
-## Intersection Observer
+## IntersectionObserver
 
-[Intersection Observer](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)接
-口 (从属于 Intersection Observer API) 提供了一种异步观察目标元素与其祖先元素或顶
+[IntersectionObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)接
+口 (从属于 IntersectionObserver API) 提供了一种异步观察目标元素与其祖先元素或顶
 级文档视窗(viewport)交叉状态的方法。祖先元素与视窗 (viewport)被称为根(root)。
 
 当一个 IntersectionObserver 对象被创建时，其被配置为监听根中一段给定比例的可见区

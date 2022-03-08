@@ -27,41 +27,6 @@ const data = [
     name: '九寨沟',
   },
 ];
-
-const transObject = (tableData, keys) => {
-  const hashTable = {};
-  const res = [];
-  for (let i = 0; i < tableData.length; i += 1) {
-    let arr = res;
-    let cur = hashTable;
-    for (let j = 0; j < keys.length; j += 1) {
-      const key = keys[j];
-      const filed = tableData[i][key];
-      if (!cur[filed]) {
-        const pusher = {
-          value: filed,
-          title: filed,
-        };
-        let tmp = null;
-        if (j !== keys.length - 1) {
-          tmp = [];
-          pusher.children = tmp;
-        }
-        cur[filed] = { $$pos: arr.push(pusher) - 1 };
-        cur = cur[filed];
-        arr = tmp;
-      } else {
-        cur = cur[filed];
-        arr = arr[cur.$$pos].children;
-      }
-    }
-  }
-  return res;
-};
-
-const keys = ['province', 'city', 'name'];
-
-console.log(JSON.stringify(transObject(data, keys), null, 2));
 ```
 
 #### 结果
@@ -117,8 +82,7 @@ console.log(JSON.stringify(transObject(data, keys), null, 2));
 ]
 ```
 
-<!--
-### O(n)算法(from:庄广团)
+<!-- ### O(n)算法(from:庄广团) -->
 
 ```javascript
 const { data } = require('./data.js');
@@ -127,7 +91,6 @@ const fn = list => {
   const PRO_LOOK_UP = {};
   const CITY_LOOK_UP = {};
   const result = [];
-
   for (let { province, city, name } of list) {
     if (PRO_LOOK_UP[province]) {
       if (CITY_LOOK_UP[city]) {
@@ -159,10 +122,141 @@ const fn = list => {
       result.push(provinceObj);
     }
   }
-
-  console.log(JSON.stringify(result, null, 2));
   return result;
 };
+```
 
-fn(data);
-``` -->
+```javascript
+function toTree(data) {
+  const provinceSet = data.filter(v => v.province);
+  function findByC(key, value) {
+    const arr = [
+      ...new Set(data.filter(a => a[key] == value).map(v => v.name)),
+    ];
+    return arr.map(v => ({
+      name: v,
+    }));
+  }
+  function findByP(key, value) {
+    const arr = [
+      ...new Set(data.filter(a => a[key] == value).map(v => v.city)),
+    ];
+    return arr.map(v => ({
+      name: v,
+      children: findByC('city', v),
+    }));
+  }
+  return provinceSet.map(provinceName => {
+    return {
+      name: provinceName,
+      children: findByP('province', provinceName),
+    };
+  });
+}
+```
+
+```json
+// console.log(JSON.stringify(toTree(data), null, 2));
+[
+  {
+    "name": "浙江",
+    "children": [
+      {
+        "name": "杭州",
+        "children": [
+          {
+            "name": "西湖"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "四川",
+    "children": [
+      {
+        "name": "成都",
+        "children": [
+          {
+            "name": "锦里"
+          },
+          {
+            "name": "方所"
+          }
+        ]
+      },
+      {
+        "name": "阿坝",
+        "children": [
+          {
+            "name": "九寨沟"
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+## 第二题
+
+```javascript
+const arr = [
+  { id: 1, pid: 0, name: '中国' },
+  { id: 2, pid: 1, name: '广州' },
+  { id: 3, pid: 1, name: '湖北' },
+  { id: 4, pid: 3, name: '武汉' },
+  { id: 5, pid: 2, name: '深圳' },
+  { id: 6, pid: 2, name: '东莞' },
+];
+
+const nest = (items, id = 0, link = 'pid') =>
+  items
+    .filter(item => item[link] === id)
+    .map(item => ({ ...item, children: nest(items, item.id) }));
+```
+
+```json
+// console.log(JSON.stringify(nest(arr), null, 2));
+[
+  {
+    "id": 1,
+    "pid": 0,
+    "name": "中国",
+    "children": [
+      {
+        "id": 2,
+        "pid": 1,
+        "name": "广州",
+        "children": [
+          {
+            "id": 5,
+            "pid": 2,
+            "name": "深圳",
+            "children": []
+          },
+          {
+            "id": 6,
+            "pid": 2,
+            "name": "东莞",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "pid": 1,
+        "name": "湖北",
+        "children": [
+          {
+            "id": 4,
+            "pid": 3,
+            "name": "武汉",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]
+```

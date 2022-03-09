@@ -119,7 +119,7 @@ const c = getType({}); // ==> object
 // javascript设计模式和开发实践
 var isType = function (type) {
   return function (obj) {
-    return Object.prototype.toString.call(obj).slice(8, -1) === type;
+    return Object.prototype.toString.call(obj) === `[object ${type}]`;
   };
 };
 

@@ -8,7 +8,8 @@
 4. push：向数组末尾添加元素，并返回新的长度
 5. reverse：颠倒数组顺序
 6. sort：对数组排序
-7. splice:splice(start,length,item)删，增，替换数组元素，返回被删除数组，无删除则不返回
+7. splice:splice(start,length,item)删，增，替换数组元素，返回被删除数组，无删除
+   则不返回
 
 ## 不改变原数组的：
 
@@ -27,6 +28,7 @@ Array.isArray(arg); // false or true
 
 // 不支持此方法的IE9-等浏览器可以这样处理：
 Object.prototype.toString.call(obj) === '[object Array]';
+// Object.prototype.toString.call(obj) === `[object ${type}]`;
 ```
 
 ## 转换方法 toString || toLocaleString
@@ -119,7 +121,8 @@ Array(10).fill(0); // [0,0,0,0,0,0,0,0,0,0]
 
 ## filter
 
-filter 方法可以筛除数组和类似结构中不满足条件的元素，并返回满足条件的元素组成的数组。
+filter 方法可以筛除数组和类似结构中不满足条件的元素，并返回满足条件的元素组成的
+数组。
 
 ```javascript
 const integers = [1, 2, 3, 4, 6, 7];
@@ -142,11 +145,10 @@ log(
 
 ## some
 
-some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。
-some() 方法会依次执行数组的每个元素：
-如果**有一个**元素满足条件，则表达式返回 true , 剩余的元素不会再执行检测。
-如果没有满足条件的元素，则返回 false。
-注意： some() 不会对空数组进行检测。some() 不会改变原始数组
+some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。 some() 方法会依次
+执行数组的每个元素：如果**有一个**元素满足条件，则表达式返回 true , 剩余的元素不
+会再执行检测。如果没有满足条件的元素，则返回 false。注意： some() 不会对空数组进
+行检测。some() 不会改变原始数组
 
 ```javascript
 const integers = [1, 2, 3, 4, 6, 7];
@@ -168,7 +170,10 @@ console.log(
 ```
 
 ```javascript
-const posts = [{ id: 1, title: 'Title 1' }, { id: 2, title: 'Title 2' }];
+const posts = [
+  { id: 1, title: 'Title 1' },
+  { id: 2, title: 'Title 2' },
+];
 // 找出id为1的posts
 const title = posts.find(p => p.id === 1).title;
 console.log(title); // Title 1
@@ -278,7 +283,7 @@ log(dd); //341223
 const items = ['item1', 'item2', 'item3'];
 const copy = [];
 
-items.forEach(function(item) {
+items.forEach(function (item) {
   copy.push(item);
 });
 
@@ -329,6 +334,7 @@ console.log(rest); //  {c:'ccc'}
 ```
 
 ```javascript
+
 ```
 
 ## indexOf
@@ -365,11 +371,15 @@ arr/srt.includes(searchElement, fromIndex)
 
 ## reduce
 
-**array.reduce(\*function(accumulator, value, index, arr), initialValue)**
-数组累计为一个单值
+**array.reduce(\*function(accumulator, value, index, arr), initialValue)** 数组
+累计为一个单值
 
 ```javascript
-const posts = [{ id: 1, upVotes: 2 }, { id: 2, upVotes: 89 }, { id: 3, upVotes: 1 }];
+const posts = [
+  { id: 1, upVotes: 2 },
+  { id: 2, upVotes: 89 },
+  { id: 3, upVotes: 1 },
+];
 const totalUpvotes = posts.reduce(
   (totalUpvotes, currentPost) => totalUpvotes + currentPost.upVotes, //reducer函数
   0, // 初始化投票数为0
@@ -389,10 +399,11 @@ console.log(totalUpvotes); //输出投票总数：92
 }, 10);
 // 1200
 
-[[0, 1], [2, 3], [4, 5]].reduce(
-  (accumulator, currentValue) => accumulator.concat(currentValue),
-  [],
-);
+[
+  [0, 1],
+  [2, 3],
+  [4, 5],
+].reduce((accumulator, currentValue) => accumulator.concat(currentValue), []);
 // [0,1,2,3,4,5]
 ```
 

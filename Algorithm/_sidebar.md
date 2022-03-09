@@ -19,6 +19,7 @@
   - [快速排序](Algorithm/QuickSort.md)
   - [list convert tree](Algorithm/list-to-tree.md)
   - [list -> tree](Algorithm/list-2-tree.md)
+  - [两数相加](Algorithm/add-two-numbers.md)
   
 - leetCode
 
@@ -32,7 +33,6 @@
   - [reduce](Algorithm/recursion.md)
 
 -  数学概念
-
   - [马尔可夫链 - wikipedia](Algorithm/Markov-chain.md)
 
 

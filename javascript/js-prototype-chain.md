@@ -442,6 +442,8 @@ console.log(a);
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-04-1552708761.jpg'/>
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-05-1552708761.jpg'/>
 
+![20220309-B7cRqR-8627d87624750](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220309-B7cRqR-8627d87624750.jpg)
+
 <!-- ---
 
 1. [继承与原型链 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)

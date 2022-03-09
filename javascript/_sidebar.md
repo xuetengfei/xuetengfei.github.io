@@ -7,6 +7,7 @@
 - 设计模式
 
   <!-- - [IIFE](javascript/js-iife.md) -->
+  - [单例模式](javascript/SingleTon-mode.md)
   - [命令模式](javascript/DesignPattern/Command-mode.md)
   - [惰性模式](javascript/DesignPattern/inertia-mode.md)
   - [惰性载入函数](javascript/lazy-load-func.md)

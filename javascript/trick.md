@@ -1,12 +1,3 @@
-### 前言
-
-2. [30 秒就能理解的 JavaScript 代码片段（30 seconds of code）](http://www.css88.com/30-seconds-of-code/)
-3. [Eustia: A Tool for Generating JavaScript Utility Libraries:)](http://eustia.liriliri.io/)
-4. [打造自己的 JavaScript 武器库 - 前端进阶者 - SegmentFault 思否](https://segmentfault.com/a/1190000011966867)
-5. [You-Dont-Need-Lodash/Underscore](https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore)
-
-[damonare/Sorts: The algorithm of sort.Personal site //damonare.cn](https://github.com/damonare/Sorts)
-
 ### RGB 转 hex
 
 ```javascript
@@ -110,15 +101,16 @@ const isSymbol = val => typeof val === 'symbol';
 
 ```javascript
 // javascript设计模式和开发实践
-var isType = function (type) {
+const isType = function (type) {
   return function (obj) {
-    return Object.prototype.toString.call(obj) === '[object ' + type + ']';
+    // return Object.prototype.toString.call(obj) === '[object ' + type + ']';
+    return Object.prototype.toString.call(obj) === `[object ${type}]`;
   };
 };
 
-var isString = isType('String');
-var isArray = isType('Array');
-var isNumber = isType('Number');
+const isString = isType('String');
+const isArray = isType('Array');
+const isNumber = isType('Number');
 
 console.log(isArray([1, 2, 3])); // true
 ```
@@ -1438,3 +1430,10 @@ differenceWith(
 ); // [1, 1.2]
 ```
 
+---
+
+1. [30 秒就能理解的 JavaScript 代码片段（30 seconds of code）](http://www.css88.com/30-seconds-of-code/)
+2. [Eustia: A Tool for Generating JavaScript Utility Libraries:)](http://eustia.liriliri.io/)
+3. [打造自己的 JavaScript 武器库 - 前端进阶者 - SegmentFault 思否](https://segmentfault.com/a/1190000011966867)
+4. [You-Dont-Need-Lodash/Underscore](https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore)
+   [damonare/Sorts: The algorithm of sort.Personal site //damonare.cn](https://github.com/damonare/Sorts)

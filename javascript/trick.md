@@ -1,3 +1,34 @@
+### 基本数据类型判断
+
+```javascript
+const getType = v =>
+  v === undefined
+    ? 'undefined'
+    : v === null
+    ? 'null'
+    : v.constructor.name.toLowerCase();
+
+console.log(getType([])); // array
+console.log(getType({})); // object
+console.log(getType('')); // string
+console.log(getType(null)); // null
+console.log(getType(undefined)); // undefined
+console.log(getType(NaN)); // number
+```
+
+```javascript
+const isType = function (type) {
+  return function (obj) {
+    return Object.prototype.toString.call(obj) === `[object ${type}]`;
+  };
+};
+const isString = isType('String');
+const isArray = isType('Array');
+const isNumber = isType('Number');
+
+console.log('isArray', isArray([1])); // true
+```
+
 ### RGB 转 hex
 
 ```javascript
@@ -44,75 +75,6 @@ const b = shallowClone(a);
 console.log(a === b); //false
 console.log(a); //  { x: true, y: 1, c: [1, 2] }
 console.log(b); //  { x: true, y: 1, c: [1, 2] }
-```
-
-### 基本数据类型判断
-
-1.检查一个值是否为一个`数组`
-
-```javascript
-const isArray = val => !!val && Array.isArray(val);
-
-console.log(isArray(null)); // false
-console.log(isArray([1, 2])); // true
-```
-
-2.检查一个值是否为一个`布尔值`
-
-```javascript
-const isBoolean = val => typeof val === 'boolean';
-
-console.log(isBoolean(null)); // false
-console.log(isBoolean(false)); // true
-```
-
-3.检查一个值是否为一个`函数`
-
-```javascript
-const isFunction = val => val && typeof val === 'function';
-
-// isFunction('x') -> false
-// isFunction(x => x) -> true
-```
-
-4.检查一个值是否为一个`数字`
-
-```javascript
-const isNumber = val => typeof val === 'number';
-// isNumber('1') -> false
-// isNumber(1) -> true
-```
-
-5.检查一个值是否为一个`字符串`
-
-```javascript
-const isString = val => typeof val === 'string';
-// isString(10) -> false
-// isString('10') -> true
-```
-
-6.检查一个值是否为一个`Symbol`
-
-```javascript
-const isSymbol = val => typeof val === 'symbol';
-// isSymbol('x') -> false
-// isSymbol(Symbol('x')) -> true
-```
-
-```javascript
-// javascript设计模式和开发实践
-const isType = function (type) {
-  return function (obj) {
-    // return Object.prototype.toString.call(obj) === '[object ' + type + ']';
-    return Object.prototype.toString.call(obj) === `[object ${type}]`;
-  };
-};
-
-const isString = isType('String');
-const isArray = isType('Array');
-const isNumber = isType('Number');
-
-console.log(isArray([1, 2, 3])); // true
 ```
 
 ### instanceof

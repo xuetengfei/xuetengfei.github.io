@@ -75,9 +75,9 @@
 
 - 常用代码
 
+  - [技巧](javascript/trick.md)
   - [表单验证](javascript/verify-user-info.md)
   - [常用的JS正则校验表达式](javascript/Regular-expression.md)
-  - [函数计算集合](javascript/trick.md)
   - [正则表达式](javascript/Regex.md)
   - [哈希碰撞](javascript/Hash-collision.md)
   - [命令行通配符教程](javascript/wildcards.md)

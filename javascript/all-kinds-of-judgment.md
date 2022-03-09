@@ -106,11 +106,12 @@ const getType = v =>
     ? 'null'
     : v.constructor.name.toLowerCase();
 
-const a = getType(new Set([1, 2, 3])); // ==> set
-
-const b = getType([1, 2, 3]); // ==> array
-
-const c = getType({}); // ==> object
+console.log(getType([])); // array
+console.log(getType({})); // object
+console.log(getType('')); // string
+console.log(getType(null)); // null
+console.log(getType(undefined)); // undefined
+console.log(getType(NaN)); // number
 ```
 
 ### 方法二

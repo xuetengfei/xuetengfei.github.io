@@ -333,8 +333,9 @@ console.log(thenPromise !== catchPromise); // => true
 
 ## Promise.all
 
-Promise.all 接收一个 promise 实例数组作为参数，当这个数组里的所有 promise 对象全
-部变为 resolve 或 reject 状态的时候，它才会去调用 then 方法。
+[Promise.all](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)接
+收一个 promise 实例数组作为参数，当这个数组里的所有 promise 对象全部变为 resolve
+或 reject 状态的时候，它才会去调用 then 方法。
 
 Promise.all 是用来做并发执行
 
@@ -365,6 +366,19 @@ Promise.all(tasks).then(values => {
 
 // 如果这些promise全部 串行 处理的话，
 // 那么需要 等待1ms → 等待32ms → 等待64ms → 等待128ms ，全部执行完毕需要225ms的时间。
+```
+
+```javascript
+// Promise.all 在任意一个传入的 promise 失败时返回失败。
+// 例如，如果你传入的 promise中，有四个 promise 在一定的时间之后调用成功函数，
+// 有一个立即调用失败函数，那么 Promise.all 将立即变为失败。
+
+const tasks = [delay(1), Promise.reject('reject'), delay(64), delay(128)];
+Promise.all(tasks)
+  .then(values => {
+    console.log(values);
+  })
+  .catch(err => console.log('err', err)); // reject
 ```
 
 贴近真实的代码

@@ -565,7 +565,8 @@ step();
 
 ---
 
-1. [使用 Promise - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises)
-2. [JavaScript Promise 迷你书（中文版）](http://liubin.org/promises-book/#what-is-promise)
-3. [JavaScript Visualized: Promises & Async/Await - DEV Community ](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
-4. [JavaScript Promises - 众成翻译](https://zcfy.cc/article/javascript-promises-101)
+1. [Promise - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+2. [使用 Promise - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises)
+3. [JavaScript Promise 迷你书（中文版）](http://liubin.org/promises-book/#what-is-promise)
+4. [JavaScript Visualized: Promises Async/Await DEV Community ](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
+5. [JavaScript Promises - 众成翻译](https://zcfy.cc/article/javascript-promises-101)

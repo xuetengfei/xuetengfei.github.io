@@ -1,17 +1,3 @@
-function reverseLink(head) {
-  let currentNode = null;
-  let headNode = head;
-  while (head && head.next) {
-    console.log('headNode1', headNode);
-    currentNode = head.next;
-    head.next = currentNode.next;
-    currentNode.next = headNode;
-    headNode = currentNode;
-    console.log('headNode2', headNode);
-  }
-  return headNode;
-}
-
 const links = {
   value: 1,
   next: {
@@ -19,6 +5,16 @@ const links = {
     next: { value: 2, next: null },
   },
 };
-
+function reverseLink(link) {
+  let head = link;
+  let cur = null;
+  while (link && link.next) {
+    cur = link.next;
+    link.next = cur.next;
+    cur.next = head;
+    head = cur;
+  }
+  return head;
+}
 const r = reverseLink(links);
 console.log('r', r);

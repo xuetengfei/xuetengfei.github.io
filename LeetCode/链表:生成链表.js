@@ -18,10 +18,47 @@ function generateLinklist(arr) {
   for (let i = 1; i < arr.length; i++) {
     curr.next = new ListNode(arr[i]); // 创建next节点
     curr = curr.next; // curr后移一位
+    console.log('head', head);
   }
   return head; // 返回头节点
 }
 
 // 调用
-const head = generateLinklist([1, 2, 3, 4]);
-console.log(JSON.stringify(head, null, 2)); // 1 -> 2 -> 3 -> 4
+// const head = generateLinklist([1, 2, 3, 4]);
+// console.log(JSON.stringify(head, null, 2)); // 1 -> 2 -> 3 -> 4
+
+const list = {
+  head: {
+    value: 6,
+    next: {
+      value: 10,
+      next: {
+        value: 12,
+        next: {
+          value: 3,
+          next: null,
+        },
+      },
+    },
+  },
+};
+
+function fn(arr) {
+  const array = arr.map(v => new ListNode(v));
+  let head = array[0];
+  const len = array.length;
+  for (let index = 1; index < len; index++) {
+    const element = array[index];
+    if (index === 1) {
+      head.next = element;
+    }
+    if (index === len - 1) {
+      element.next = null;
+    } else {
+      element.next = array[index + 1];
+    }
+  }
+  return head;
+}
+
+console.log(JSON.stringify(fn([1, 2, 3, 4]), null, 2));

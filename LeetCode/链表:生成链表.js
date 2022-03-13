@@ -1,7 +1,7 @@
 // ListNode构造器，用于创建链表的每个节点
 class ListNode {
-  constructor(val, next) {
-    this.val = val == undefined ? 0 : val;
+  constructor(value, next) {
+    this.value = value == undefined ? 0 : value;
     this.next = next == undefined ? null : next;
   }
 }

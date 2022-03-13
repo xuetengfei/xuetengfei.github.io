@@ -8,7 +8,6 @@ const SingleTon = (() => {
       this.getName();
       return (instance = this);
     }
-
     getName() {
       return this.name;
     }

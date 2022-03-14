@@ -1,1 +1,1 @@
-minList
+arr

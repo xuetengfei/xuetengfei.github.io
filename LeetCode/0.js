@@ -5,3 +5,4 @@ function fn(arr) {
 }
 
 const r = fn(nums);
+console.log('r', r);

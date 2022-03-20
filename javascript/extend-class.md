@@ -92,3 +92,7 @@ console.log(SArray.constructor === SuperArray); // true
 console.log(SArray2.constructor === SuperArray); // false  注意这个
 console.log(SArray2.constructor === Array); // true
 ```
+
+---
+
+<!-- https://zh.javascript.info/extend-natives -->

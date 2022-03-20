@@ -94,7 +94,7 @@
   - [new 操作符](javascript/new-Operator.md)
   - [ES6 Class 静态方法](javascript/Class-Static-methods.md.md)
   - [JavaScript 中的私有变量](javascript/private-variable.md)
-  - [extend-Class](javascript/extend-class.md)
+  - [扩展类](javascript/extend-class.md)
   - [Class EnhanceArray](javascript/class-EnhanceArray.md)
   - [使用方法链](javascript/method-chain.md)
 

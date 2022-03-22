@@ -74,7 +74,24 @@ function Width() {
 }
 ```
 
-## Case：跳过效果优化
+## Case:网络请求竞态
+
+我先请求 {id: 10}，然后更新到{id: 20}，但{id: 20}的请求更先返回。请求更早但返回
+更晚的情况会错误地覆盖状态值。
+
+这被叫做竞态，这在混合了 async / await（假设在等待结果返回）和自顶向下数据流的代
+码中非常典型（props 和 state 可能会在 async 函数调用过程中发生改变）。
+
+Effects 并没有神奇地解决这个问题，尽管它会警告你如果你直接传了一个 async 函数给
+effect。（我们会改善这个警告来更好地解释你可能会遇到的这些问题。）
+
+如果你使用的异步方式支持取消，那太棒了。你可以直接在清除函数中取消异步请求。
+
+或者，最简单的权宜之计是用一个布尔值来跟踪它：
+
+![20220322-1eUn1D-Xnip2022-03-22_17-37-51](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220322-1eUn1D-Xnip2022-03-22_17-37-51.jpg)
+
+## Case:跳过效果优化
 
 ```javascript
 import React, { useState } from 'react';
@@ -229,4 +246,4 @@ function MyComponent() {
 
 ---
 
-1. [Demo](http://106.12.98.175/#/useEffect)
+1. [How to fetch data with React Hooks](https://www.robinwieruch.de/react-hooks-fetch-data/)

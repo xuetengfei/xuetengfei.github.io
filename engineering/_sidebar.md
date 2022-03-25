@@ -17,6 +17,7 @@
 
 - 浏览器
 
+  - [Event Loop](Async/EventLoop.md)
   - [浏览器 - 渲染原理](engineering/Browser-Rendering-Principle.md)
   - [浏览器 - 缓存机制](engineering/Cache-mechanism.md)
   - [浏览器 - 缓存机制补充](engineering/Cache-mechanism-supplement.md)

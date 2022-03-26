@@ -158,8 +158,4 @@ mc.addEventListener('message', event => {
 
 1. [跨源资源共享（CORS） - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 2. [Fetch：跨源请求](https://zh.javascript.info/fetch-crossorigin#wei-shi-mo-xu-yao-cors-kua-yuan-qing-qiu-jian-shi)
-
-<!--
-[web 开发中跨域解决方案 | Poetry's Blog](http://blog.poetries.top/2017/09/17/cross-domain/)
-[不要再问我跨域的问题了 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000015597029)
--->
+3. [不要再问我跨域的问题了 - SegmentFault](https://segmentfault.com/a/1190000015597029)

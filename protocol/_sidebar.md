@@ -9,7 +9,7 @@
 - [MIME、Accept、Content-Type](protocol/Accept-ContentType.md)
 - [RESTful](protocol/RESTful.md)
 - [对称、非对称加密](protocol/Asymmetric-encryption.md)
-
+- [跨源资源共享CORS](Async/CORS.md)
 
 <!-- 
 

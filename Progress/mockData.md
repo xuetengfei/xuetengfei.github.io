@@ -1,10 +1,5 @@
 # 使用 express mock data
 
-<!--
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/mock-1555260711.jpg' width='700px'/>
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/mockdata-1555260122.jpg'/>
- -->
-
 mockjs 是用来生产随机的数据(姓名、地址、字符串、url、省份、颜色、文字、段落、时
 间戳等)。
 

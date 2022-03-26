@@ -21,7 +21,7 @@
   - [axios 的拦截器](Async/axios-interceptors.md)
   - [开源 API 接口](Async/open-api.md)
   - [浏览器的同源策略](Async/Same-origin_policy.md)
-  - [前端跨域](Async/Cross-Domain.md)
+  - [跨源资源共享CORS](Async/CORS.md)
 
 - Fetch
 

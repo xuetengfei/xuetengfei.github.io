@@ -1,3 +1,10 @@
+## Wireshark 抓包 TCP 流
+
+http 协议
+![20220327-d5nl7d-1575991122_5defb7522c89f](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220327-d5nl7d-1575991122_5defb7522c89f.jpg)
+https 协议
+![20220327-74HkaP-1575991561_5defb90954dd8](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220327-74HkaP-1575991561_5defb90954dd8.jpg)
+
 ## 私钥算法
 
 私钥加密算法，又称对称加密算法
@@ -74,6 +81,16 @@
 ?> 简单明了地说,利用非对称加密把浏览器私钥给服务器，保证安全后，之后的通信就用私
 钥做对称加密传输，这样就可以保证效率。
 
+## 数字证书
+
+网站在使用 HTTPS 前，需要向 CA 机构申领一份数字证书，数字证书里含有证书持有者信
+息、公钥信息等。服务器把证书传输给浏览器，浏览器从证书里获取公钥就行了，证书就如
+身份证，证明“该公钥对应该网站”。而这里又有一个显而易见的问题，“证书本身的传输过
+程中，如何防止被篡改”？即如何证明证书本身的真实性？身份证运用了一些防伪技术，而
+数字证书怎么防伪呢？数字签名。
+
+![20220327-LYeLVu-Xnip2022-03-27_19-58-55](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220327-LYeLVu-Xnip2022-03-27_19-58-55.jpg)
+
 <!--
 HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。
 HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。
@@ -85,3 +102,8 @@ HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题
 ---
 
 1. [What happens in a TLS handshake? | SSL handshake | Cloudflare](https://www.cloudflare.com/zh-cn/learning/ssl/what-happens-in-a-tls-handshake/)
+2. [由 HTTPS 抓包引发的一系列思考 - FreeBuf 网络安全行业门户](https://www.freebuf.com/articles/web/222564.html)
+
+<!--
+[【第2560期】彻底搞懂HTTPS的加密原理](https://mp.weixin.qq.com/s/I5yezHTrObblrBGAoAEGkQ)
+ -->

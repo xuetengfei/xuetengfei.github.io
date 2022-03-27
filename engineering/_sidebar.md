@@ -14,7 +14,8 @@
 - 安全
 
   - [CORS](Async/CORS.md)
-  - [CSRF](engineering/anti-CSRF.md)
+  - [CSRF攻击和防御](engineering/anti-CSRF.md)
+  - [XSS攻击和防御](engineering/XSS.md)
 
 - 浏览器
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSONP</title>
+  </head>
+  <body>
+    <h1>JSONP</h1>
+    <h3>打开控制台-重新加载</h3>
+    <script>
+      function jsonp({ url, params, callback }) {
+        let script = document.createElement('script');
+        params = { ...params, callback };
+        let arrs = [];
+        for (let key in params) {
+          arrs.push(`${key}=${params[key]}`);
+        }
+        script.src = `${url}?${arrs.join('&')}`;
+        script.type = 'text/javascript';
+        script.async = true;
+        // 当需要通讯时 创建一个`<script>`元素，地址指向第三方的 API 网址
+        var head = document.head;
+        head.appendChild(script);
+        // head.removeChild(script);
+      }
+
+      function jsonpCallback(data) {
+        console.log('data: ', data);
+      }
+      jsonp({
+        url: 'https://getbible.net/json',
+        params: { passage: '1John1:1' },
+        callback: 'jsonpCallback',
+      });
+    </script>
+  </body>
+</html>

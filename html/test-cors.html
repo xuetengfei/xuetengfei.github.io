@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跨域请求</title>
+  </head>
+  <body>
+    <h1>跨域请求</h1>
+    <h3>打开控制台-重新加载</h3>
+    <script>
+      const api = 'http://httpbin.org/get';
+      const getUser = () =>
+        fetch(`${api}?id=1`)
+          .then(r => r.json())
+          .then(json => json?.args?.id);
+      const getPost = userId =>
+        fetch(`${api}?id=${userId}&post=2`)
+          .then(r => r.json())
+          .then(json => ({
+            id: json?.args?.id,
+            post: json?.args?.post,
+          }));
+      const fn = async function () {
+        const userId = await getUser();
+        return await getPost(userId);
+      };
+      fn()
+        .then(res => console.log('res', res))
+        .catch(err => console.error(err.stack));
+    </script>
+  </body>
+</html>

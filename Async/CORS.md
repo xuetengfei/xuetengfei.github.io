@@ -1,5 +1,6 @@
 [跨域请求脑图](./CORS-mm.html ':include')
-<a href="../Async/CORS-mm.html"  target="_blank">脑图(大)</a>
+<a href="../Async/CORS-mm.html"  target="_blank">脑图(大)</a>  
+<a href="../html/test-cors.html"  target="_blank">test-cors</a>
 
 ## why
 
@@ -11,6 +12,12 @@
 的媒介。
 
 [浏览器的同源策略 - Web 安全 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)
+
+同源策略会让三种行为受限:
+
+1. Cookie、LocalStorage 和 IndexDB 访问受限
+2. 无法操作跨域 DOM（常见于 iframe）
+3. Javascript 发起的 XHR 和 Fetch 请求受限
 
 ## 跨域请求
 
@@ -52,43 +59,34 @@ jsonp 就是利用`<script>`标签没有跨域限制的“漏洞”,可以让网
 当需要通讯时，本站脚本创建一个`<script>`元素，地址指向第三方的 API 网址,并提供一
 个回调函数来接收数据。
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>jsonp callback</title>
-  </head>
-  <body>
-    <script>
-      function jsonp({ url, params, callback }) {
-        let script = document.createElement('script');
-        params = { ...params, callback };
-        let arrs = [];
-        for (let key in params) {
-          arrs.push(`${key}=${params[key]}`);
-        }
-        script.src = `${url}?${arrs.join('&')}`;
-        script.type = 'text/javascript';
-        script.async = true;
-        // 当需要通讯时，本站脚本创建一个`<script>`元素，地址指向第三方的 API 网址
-        var head = document.head;
-        head.appendChild(script);
-        // head.removeChild(script);
-      }
+<a href="../html/JSONP.html"  target="_blank">test-JSONP</a>
 
-      function jsonpCallback(data) {
-        console.log('data: ', data);
-      }
+```js
+function jsonp({ url, params, callback }) {
+  let script = document.createElement('script');
+  params = { ...params, callback };
+  let arrs = [];
+  for (let key in params) {
+    arrs.push(`${key}=${params[key]}`);
+  }
+  script.src = `${url}?${arrs.join('&')}`;
+  script.type = 'text/javascript';
+  script.async = true;
+  // 当需要通讯时，本站脚本创建一个`<script>`元素，地址指向第三方的 API 网址
+  var head = document.head;
+  head.appendChild(script);
+  // head.removeChild(script);
+}
 
-      jsonp({
-        url: 'https://getbible.net/json',
-        params: { passage: '1John1:1' },
-        callback: 'jsonpCallback',
-      });
-    </script>
-  </body>
-</html>
+function jsonpCallback(data) {
+  console.log('data: ', data);
+}
+
+jsonp({
+  url: 'https://getbible.net/json',
+  params: { passage: '1John1:1' },
+  callback: 'jsonpCallback',
+});
 ```
 
 js 生成的头部的标签
@@ -112,10 +110,10 @@ js 生成的头部的标签
 `Access-Control-Allow-Origin`就可以开启 CORS。 该属性表示哪些域名可以访问资源，
 如果设置通配符则表示所有网站都可以访问资源。
 
+![20220327-NkHZoq-add-header-Access-Control-Allow-Origin](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220327-NkHZoq-add-header-Access-Control-Allow-Origin.gif)
+
 但是通过 CORS 这种方式解决跨域问题的话，会在发送请求时出现两种情况，分别为简单请
 求和复杂请求。
-
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/CORS-1558523420.png'/>
 
 ## 有两种类型的跨源请求
 
@@ -160,6 +158,8 @@ Origin: https://A.info
 Access-Control-Allow-Origin，如果存在，则允许 JavaScript 访问响应，否则将失败并
 报错。
 
+![20220327-rRLSYj-cors-简单请求](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220327-rRLSYj-cors-简单请求.gif)
+
 ```bash
 # 一个响应示例：
 200 OK
@@ -195,10 +195,12 @@ Access-Control-Max-Age 可以指定缓存此权限的秒数。因此，浏览器
 
 ![20220327-wmjydp-Xnip2022-03-27_14-34-19](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220327-wmjydp-Xnip2022-03-27_14-34-19.jpg)
 
-#### 预检请求
+### 预检请求
 
 预检请求发生在“幕后”，它对 JavaScript 不可见。 JavaScript 仅获取对主请求的响应，
 如果没有服务器许可，则获得一个 error。
+
+![20220327-cO3ZoM-预检请求](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220327-cO3ZoM-预检请求.gif)
 
 ```bash
 OPTIONS /service.json
@@ -282,7 +284,7 @@ Access-Control-Allow-Origin: https://javascript.info
 Access-Control-Expose-Headers: Content-Length,API-Key   # Expose-Headers
 ```
 
-## Origin
+## Referer VS Origin
 
 HTTP-header Referer，它通常包含发起网络请求的页面的 url。例如，当从
 http://javascript.info/some/url fetch http://google.com 时，header 看起来如下：
@@ -316,8 +318,20 @@ Referer。正如我们将看到的，fetch 也具有阻止发送 Referer 的选�
 
 -->
 
+## 总结
+
+CORS 就是通过由一堆的 response header 来跟浏览器讲说某些东西是前端有权限访问的
+
 ---
 
 1. [跨源资源共享（CORS） - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 2. [Fetch：跨源请求](https://zh.javascript.info/fetch-crossorigin#wei-shi-mo-xu-yao-cors-kua-yuan-qing-qiu-jian-shi)
 3. [不要再问我跨域的问题了 - SegmentFault](https://segmentfault.com/a/1190000015597029)
+
+<!--
+[惊艳！15 张精美动图全面演示 CORS 过程！](https://mp.weixin.qq.com/s/Re1fvKKzi-rPpu6SmpqTJA)
+
+业务场景
+1. 去业务中台拉去一些数据的时候
+2. API市场
+ -->

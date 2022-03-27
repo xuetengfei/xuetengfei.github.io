@@ -1,4 +1,6 @@
-?> render prop: 是指一种在 React 组件之间使用一个值为函数的 prop 在 React 组件间共享代码的简单技术。带有 render prop 的组件带有一个返回一个 React 元素的函数并调用该函数而不是实现自己的渲染逻辑。
+?> render prop: 是指一种在 React 组件之间使用一个值为函数的 prop 在 React 组件间
+共享代码的简单技术。带有 render prop 的组件带有一个返回一个 React 元素的函数并调
+用该函数而不是实现自己的渲染逻辑。
 
 ```javascript
 import React, { PureComponent } from 'react';
@@ -18,8 +20,9 @@ export default class Origanizational extends PureComponent {
 }
 ```
 
-分析一下 SearchTree 组件.这个组件有很多自定义的 props,诸如`onSelect,tree,dataList`等.
-工作中,我们使用自定义 props 大多数传递的都是字符串、数字、对象等，传递的其实是数据，我们能不能传递函数、组件呢？
+分析一下 SearchTree 组件.这个组件有很多自定义的 props,诸
+如`onSelect,tree,dataList`等. 工作中,我们使用自定义 props 大多数传递的都是字符串
+、数字、对象等，传递的其实是数据，我们能不能传递函数、组件呢？
 
 ## render props
 
@@ -98,11 +101,15 @@ export default class App extends React.Component {
 </div>
 ```
 
-在(传递函数)例子中，给`Foo 组件`传递了一个 `render` 参数它是一个函数这个函数返回一个 `Bar 组件`，这个函数接受一个参数 `title` 他来自于 `Foo 组件`调用时传递并且我们又将`title 属性`传递给了 `Bar 组件`。经过上述的调用过程我们的 `Bar 组件`就可以共享到 `Foo 组件内部的 state 属性`。
+在(传递函数)例子中，给`Foo 组件`传递了一个 `render` 参数它是一个函数这个函数返回
+一个 `Bar 组件`，这个函数接受一个参数 `title` 他来自于 `Foo 组件`调用时传递并且
+我们又将`title 属性`传递给了 `Bar 组件`。经过上述的调用过程我们的 `Bar 组件`就可
+以共享到 `Foo 组件内部的 state 属性`。
 
 #### 3. 通过 children 传递
 
-在(传递函数)例子中,这个 render 要写在标签内部,如果是个复杂函数,必然会给书写和阅读造成困难,我们可以换个写法,使用 react 本身的 `children props`
+在(传递函数)例子中,这个 render 要写在标签内部,如果是个复杂函数,必然会给书写和阅
+读造成困难,我们可以换个写法,使用 react 本身的 `children props`
 
 ```javascript
 // 书写和阅读都困难
@@ -166,7 +173,9 @@ render() {
   }
 ```
 
-当我们的 Foo 组件继承于 React.PureComponent 的时候，Foo 组件中 render props 是一个函数，所以在每次渲染的时候 render prop 将会是一个新的值，那么每次将会重新渲染 Bar 组件,对于 React.PureComponent 有很大的性能问题.
+当我们的 Foo 组件继承于 React.PureComponent 的时候，Foo 组件中 render props 是一
+个函数，所以在每次渲染的时候 render prop 将会是一个新的值，那么每次将会重新渲染
+Bar 组件,对于 React.PureComponent 有很大的性能问题.
 
 ### 正确的书写方式
 

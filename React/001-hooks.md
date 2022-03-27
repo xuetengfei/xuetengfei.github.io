@@ -3,9 +3,10 @@
 ## Hook 简介
 
 react 在新的 16.8.1 release 推出了新的 `hooks 函数`。其作用就是可以不用 class 组
-件就可以使用 react 的 state 、lifecycle 和其他功能。Hooks 只能在函数组件
-(FunctionComponent) 中使用，赋予无实例无生命周期的函数组件以 class 组件的表达力
-并且更合理地拆分/组织代码，解决复用问题。
+件就可以使用 react 的 state 、lifecycle 和其他功能。
+
+Hooks 只能在函数组件 (FunctionComponent) 中使用，赋予无实例无生命周期的函数组件
+以 class 组件的表达力并且更合理地拆分/组织代码，解决复用问题。
 
 有了 hooks，再也不需要写 `Class` 了，所有组件都将是`Function`,不再需要面
 对`this`,生命周期钩子函数可以先丢一边了。 React Hooks 带来的好处不仅是 “更 FP，
@@ -27,7 +28,7 @@ react 在新的 16.8.1 release 推出了新的 `hooks 函数`。其作用就是�
 
 ## 底层原理
 
-### React 是如何把对 Hook 的调用和组件联系起来的
+> React 是如何把对 Hook 的调用和组件联系起来的
 
 React 保持对当前渲染中的组件的追踪。多亏了 Hook 规范，我们得知 Hook 只会在 React
 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。

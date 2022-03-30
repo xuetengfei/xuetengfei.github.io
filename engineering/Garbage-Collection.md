@@ -219,5 +219,7 @@ $on，$off 处理；
 ---
 
 1. [Fix memory problems - Chrome Developers](https://developer.chrome.com/docs/devtools/memory-problems/)
-2. [了解浏览器的垃圾回收](https://mp.weixin.qq.com/s/G02qgYGbAxvUeQeQzMBjnA)
-3. [浏览器垃圾回收机制与内存泄漏分析](https://github.com/LuckyWinty/blog/blob/master/markdown/Q%26A/Chrome%20%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E4%B8%8E%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90.md)
+2. [内存管理 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management)
+3. [了解浏览器的垃圾回收](https://mp.weixin.qq.com/s/G02qgYGbAxvUeQeQzMBjnA)
+4. [浏览器垃圾回收机制与内存泄漏分析](https://github.com/LuckyWinty/blog/blob/master/markdown/Q%26A/Chrome%20%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E4%B8%8E%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90.md)
+5. [深入理解 Chrome V8 垃圾回收机制 · Issue #33 · yacan8/blog](https://github.com/yacan8/blog/issues/33)

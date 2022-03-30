@@ -72,6 +72,7 @@
   - [...运算符](javascript/the-three-dots.md)
   - [Function](javascript/sao-Function.md)
   - [几个观察器API](javascript/some-observer.md)
+  - [WeakMap](javascript/WeakMap.md)
 
 - 常用代码
 

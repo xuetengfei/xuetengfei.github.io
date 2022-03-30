@@ -114,29 +114,6 @@ STP 能在 HTML 下运作顺利，但会导致服务端的复杂度升高，复�
 通过 token 方式进行 CSRF 防护，在服务器端对比 POST 提交参数的 token 与 Session
 中绑定的 token 是否一致。
 
-`Samesite 属性`
-
-最新的谷歌浏览器支持了最新的 HTTP 协议，那就是为 Set-Cookie 响应头新增 Samesite
-属性，从源头上解决这个问题。它用来标明这个 Cookie 是个“同站 Cookie”，同站 Cookie
-只能作为第一方 Cookie，不能作为第三方 Cookie，Samesite 有两个属性值，分别是
-Strict 和 Lax。 实际上，这意味着只有当 cookie 的站点与浏览器的 URL 栏中当前显示
-的站点相匹配时，cookie 才会被发送。
-
-```md
-Set-Cookie: \_\_Auth=USER123ABCD; SameSite=Strict; secure; httponly;
-```
-
-```md
-假如，淘宝网站用来识别用户登录与否的 Cookie 被设置成了 Samesite=Strict。
-
-那么用户从 百度搜索页面 甚至 天猫页面 的链接点击进入淘宝后，淘宝都不会是登录状态
-，因为淘宝的服务器不会接受到那个 Cookie，其它网站发起的对淘宝的任意请求`都不会带
-上那个 Cookie。
-```
-
-其他的还有，Token 验证、双重 Cookie 验证、CSRF token 验证 、自定义请求头、验证码
-、短信 OTP(一次性密码)。
-
 ### 验证码
 
 重要业务上功能点使用动态验证码进行 CSRF 防护原密码: 对于修改密码操作 ，推荐附加
@@ -147,9 +124,53 @@ Set-Cookie: \_\_Auth=USER123ABCD; SameSite=Strict; secure; httponly;
 
 校验请求严格区分好 POST 与 GET 的数据请求
 
+### Samesite 属性
+
+最新的谷歌浏览器支持了最新的 HTTP 协议，那就是为 Set-Cookie 响应头新增 Samesite
+属性，从源头上解决这个问题。它用来标明这个 Cookie 是个“同站 Cookie”，同站 Cookie
+只能作为第一方 Cookie，不能作为第三方 Cookie，Samesite 有两个属性值，分别是
+Strict 和 Lax。 实际上，这意味着只有当 cookie 的站点与浏览器的 URL 栏中当前显示
+的站点相匹配时，cookie 才会被发送。
+
+```shell
+Set-Cookie: Auth=USER123ABCD; SameSite=Strict; secure; httponly;
+```
+
+假如，淘宝网站用来识别用户登录与否的 Cookie 被设置成了 Samesite=Strict。
+
+那么用户从 百度搜索页面 甚至 天猫页面 的链接点击进入淘宝后，淘宝都不会是登录状态
+，因为淘宝的服务器不会接受到那个 Cookie，其它网站发起的对淘宝的任意请求`都不会带
+上那个 Cookie。
+
+### 双重 Cookie
+
+显然单纯的 csrf 只能让请求中带有 cookie 但是并不能读取 cookie 加入到 POST 或 URL
+中。在提交前先用 js 读取用于验证的 cookie 值加入到提交字段。这样就形成了双提交（
+验证字段有两份，一份在 cookie 中，一份在 POST 或 URL 中）。
+
+相较于与 token，双重 cookie 不需要服务器做额外扩容。只需要在请求中加一个额外的字
+段，其值和 cookie 一致。因为上文提到过，攻击者没法获取到 cookie，只是在发起请求
+时会携带。在服务端收到请求时，如果没有和 cookie 值一样的额外字段，就可以认为是来
+自恶意网站。
+
+### LocalStorage
+
+在 LocalStorage 里存放登录凭证 CSRF 的关键是：cookie 是自动附在请求里的，那如果
+登录凭证不是放在 cookie 而是 LocalStorage 里的话，比如使用 jwt 方案，那就从根本
+上破解了 CSRF 攻击了，不过这样的话，就需要防止 XSS 攻击了。
+
+### 其他
+
+其他的还有，Token 验证、CSRF token 验证 、自定义请求头、验证码、短信 OTP(一次性
+密码)。 在 LocalStorage 里存放登录凭证
+
 <!--
 
 1. 自定义请求头。比如:"X-CSRF-Token"，然后在服务器端进行检查。 这是可行的，因为只有 JavaScript 可以用于在 Ajax 请求上添加自定义头，而且只能在其原始内部
 1. [为什么cookie会有sameSite属性?-真实案例解释CSRF的三种攻击方式 - 掘金](https://juejin.cn/post/6859276462504017927#heading-3)
 
 -->
+
+---
+
+1. [Cross-Site Request Forgery (CSRF) Explained - YouTube](https://www.youtube.com/watch?v=eWEgUcHPle0)

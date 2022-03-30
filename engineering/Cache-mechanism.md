@@ -2,9 +2,6 @@
 
 [知识点脑图](./Cache-mechanism.mm.html ':include')
 
-<!-- <a href="../engineering/Cache-mechanism.mm.html"  target="_blank">知识点脑图(大
-图)</a> -->
-
 ## HTTP 缓存
 
 如何避免不必要的网络请求？浏览器的 HTTP 缓存是您的第一道防线。虽然它并非是最强大

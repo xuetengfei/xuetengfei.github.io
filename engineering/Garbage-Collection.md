@@ -7,15 +7,15 @@ let dog = {};
 dog.a = [];
 ```
 
-<image src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220329-jLBcSD-GC-1.png' width='600px'/>
+<image src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220329-IHbHaF-GC-2.png' width='600px'/>
 
 ```javascript
 let dog = {};
-// dog.a = [];
+dog.a = [];
 dog.a = {};
 ```
 
-<image src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220329-IHbHaF-GC-2.png' width='600px'/>
+<image src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220329-jLBcSD-GC-1.png' width='600px'/>
 
 a 的指向改变了， 此时堆中的数组对象就成为了不被使用的数据，专业名词叫「不可达」
 的数据。这就是需要回收的垃圾数据。
@@ -198,7 +198,8 @@ $on，$off 处理；
 
 > weakMap weakSet 和 Map Set 的区别？
 
-在 ES6 中新增了两个数据结构 WeakMap、WeakSet，就是为了解决内存泄漏的问题。
+在 ES6 中新增了两个数据结构 [WeakMap](javascript/WeakMap.md)、WeakSet，就是为了
+解决内存泄漏的问题。
 
 它的键名所引用的对象都是弱引用，就是垃圾回收机制遍历的时候不考虑该引用。只要所引
 用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。
@@ -208,8 +209,8 @@ $on，$off 处理；
 
 > 弱引用
 
-它的键名所引用的对象都是弱引用，就是垃圾回收机制遍历的时候不考虑该引用。只要所引
-用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。
+弱引用，就是垃圾回收机制遍历的时候不考虑该引用。只要所引用的对象的其他引用都被清
+除，垃圾回收机制就会释放该对象所占用的内存。
 
 > 内存泄漏
 

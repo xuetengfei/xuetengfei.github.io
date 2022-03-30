@@ -25,6 +25,7 @@
   - [浏览器 - 缓存机制补充](engineering/Cache-mechanism-supplement.md)
   - [HTTPS的加密原理](protocol/Asymmetric-encryption.md)
   - [垃圾回收机制](engineering/Garbage-Collection.md)
+  - [堆和栈](engineering/heap-and-stack.md)
 
 - 其他
 

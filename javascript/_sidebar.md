@@ -1,7 +1,7 @@
 - 概念
 
-  - [Javascript Proxy](javascript/javascript-Proxy.md)
   - [事件委托](javascript/Event-delegation.md)
+  - [作用域链](javascript/scope-chain.md)
   - [浅拷贝和深拷贝](javascript/Shallow-and-deep-copy.md)
 
 - 设计模式
@@ -73,6 +73,7 @@
   - [Function](javascript/sao-Function.md)
   - [几个观察器API](javascript/some-observer.md)
   - [WeakMap](javascript/WeakMap.md)
+  - [Javascript Proxy](javascript/javascript-Proxy.md)
 
 - 常用代码
 

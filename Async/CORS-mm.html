@@ -1,42 +1,246 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Markmap</title>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-}
-#mindmap {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.2.0/dist/style.css">
-</head>
-<body>
-<svg id="mindmap"></svg>
-<script src="https://cdn.jsdelivr.net/npm/d3@6.7.0"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.2.7"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.2.0/dist/index.umd.min.js"></script><script>(r => {
-                setTimeout(r);
-              })(() => {
-  const {
-    markmap,
-    mm
-  } = window;
-  const toolbar = new markmap.Toolbar();
-  toolbar.attach(mm);
-  const el = toolbar.render();
-  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
-  document.body.append(el);
-})</script><script>((getMarkmap, getOptions, data) => {
-        const {
-          Markmap
-        } = getMarkmap();
-        window.mm = Markmap.create('svg#mindmap', getOptions == null ? void 0 : getOptions(), data);
-      })(() => window.markmap,null,{"t":"heading","d":1,"p":{"lines":[0,1]},"v":"跨源请求","c":[{"t":"heading","d":2,"p":{"lines":[2,3]},"v":"同源策略","c":[{"t":"fence","d":3,"v":"<pre class=\"language-md\"><code class=\"language-md\">域、协议、端口三者相同为同源\n</code></pre>\n"},{"t":"fence","d":3,"v":"<pre class=\"language-md\"><code class=\"language-md\">一个网站的脚本无法访问另一个网站的内容。这个简单有力的规则是互联网安全的基础\n</code></pre>\n"}]},{"t":"heading","d":2,"p":{"lines":[12,13]},"v":"跨源请求解决方案","c":[{"t":"heading","d":3,"p":{"lines":[14,15]},"v":"CORS","c":[{"t":"fence","d":4,"v":"<pre class=\"language-md\"><code class=\"language-md\">一个请求是跨源的，浏览器始终会向其添加 Origin header\n</code></pre>\n"},{"t":"heading","d":4,"p":{"lines":[20,21]},"v":"分类","c":[{"t":"heading","d":5,"p":{"lines":[22,23]},"v":"简单请求","c":[{"t":"heading","d":6,"p":{"lines":[24,25]},"v":"简单方法","c":[{"t":"fence","d":7,"v":"<pre class=\"language-md\"><code class=\"language-md\">GET，POST 或 HEAD\n</code></pre>\n"}]},{"t":"heading","d":6,"p":{"lines":[30,31]},"v":"简单 header","c":[{"t":"fence","d":7,"v":"<pre class=\"language-md\"><code class=\"language-md\">Accept、Accept-Language、Content-Language、Content-Type\n(Content-Type:application/x-www-form-urlencoded、multipart/form-data\n、text/plain)\n</code></pre>\n"}]}]},{"t":"heading","d":5,"p":{"lines":[38,39]},"v":"非简单请求","c":[{"t":"fence","d":6,"v":"<pre class=\"language-md\"><code class=\"language-md\">其他非简单方法的请求\n</code></pre>\n"}]}]},{"t":"heading","d":4,"p":{"lines":[44,45]},"v":"详情","c":[{"t":"heading","d":5,"p":{"lines":[46,47]},"v":"简单的 CORS","c":[{"t":"fence","d":6,"v":"<pre class=\"language-shell\"><code class=\"language-shell\"><span class=\"token number\">1</span>.浏览器request。header带上<span class=\"token variable\"><span class=\"token variable\">`</span>Origin<span class=\"token variable\">`</span></span>\n<span class=\"token number\">2</span>.服务器respond。header带上<span class=\"token variable\"><span class=\"token variable\">`</span>Access-Control-Allow-Origin<span class=\"token variable\">`</span></span>\n<span class=\"token number\">3</span>.浏览器对比两个header\n</code></pre>\n"}]},{"t":"heading","d":5,"p":{"lines":[54,55]},"v":"非简单的 CORS","c":[{"t":"fence","d":6,"v":"<pre class=\"language-shell\"><code class=\"language-shell\"><span class=\"token number\">1</span>.预检请求（preflight request） OPTIONS请求\n<span class=\"token number\">2</span>.预检响应（preflight response）\n<span class=\"token number\">3</span>.实际请求（actual request）\n<span class=\"token number\">4</span>.实际响应（actual response）\n</code></pre>\n"}]}]},{"t":"heading","d":4,"p":{"lines":[63,64]},"v":"其他细节","c":[{"t":"heading","d":5,"p":{"lines":[65,66]},"v":"凭据（Credentials）","c":[{"t":"fence","d":6,"v":"<pre class=\"language-markdown\"><code class=\"language-markdown\">默认情况下，由 JavaScript 代码发起的跨源请求不会带来任何凭据（cookies 或者 HTTP\n认证（HTTP authentication））。\n</code></pre>\n"},{"t":"fence","d":6,"v":"<pre class=\"language-markdown\"><code class=\"language-markdown\">要在 fetch 中发送凭据，我们需要添加 credentials: \"include\" 选项，像这样：\nfetch('http://another.com', { credentials: \"include\" });\n</code></pre>\n"},{"t":"fence","d":6,"v":"<pre class=\"language-bash\"><code class=\"language-bash\"><span class=\"token number\">200</span> OK\nAccess-Control-Allow-Origin: https://javascript.info\nAccess-Control-Allow-Credentials: <span class=\"token boolean\">true</span>\n</code></pre>\n"},{"t":"fence","d":6,"v":"<pre class=\"language-bash\"><code class=\"language-bash\">对于具有凭据的请求，禁止 Access-Control-Allow-Origin 使用星号 *。\n如上所示，它必须有一个确切的源。这是另一项安全措施，以确保服务器真的知道它信任的发出此请求的是谁。\n</code></pre>\n"}]},{"t":"heading","d":5,"p":{"lines":[88,89]},"v":"Response header","c":[{"t":"fence","d":6,"v":"<pre class=\"language-markdown\"><code class=\"language-markdown\">对于跨源请求，默认情况下，JavaScript 只能访问“简单” response\nheader：Cache-Control Content-Language Content-Type Expires Last-Modified Pragma\n</code></pre>\n"},{"t":"fence","d":6,"v":"<pre class=\"language-bash\"><code class=\"language-bash\">要授予 JavaScript 对任何其他 response header 的访问权限，\n\n服务器必须发送 Access-Control-Expose-Headers header。\n它包含一个以逗号分隔的应该被设置为可访问的非简单 header 名称列表。\n\n<span class=\"token number\">200</span> OK\nContent-Type:text/html<span class=\"token punctuation\">;</span> <span class=\"token assign-left variable\">charset</span><span class=\"token operator\">=</span>UTF-8\nContent-Length: <span class=\"token number\">12345</span>\nAPI-Key: 2c9de507f2c54aa1\nAccess-Control-Allow-Origin: https://A.info\nAccess-Control-Expose-Headers: Content-Length,API-Key\n</code></pre>\n"}]}]}]},{"t":"heading","d":3,"p":{"lines":[109,110]},"v":"JSONP"}]}]})</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>跨源资源共享CORS-Markmap</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #mindmap {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.2.0/dist/style.css"
+    />
+  </head>
+  <body>
+    <svg id="mindmap"></svg>
+    <script src="https://cdn.jsdelivr.net/npm/d3@6.7.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.2.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.2.0/dist/index.umd.min.js"></script>
+    <script>
+      (r => {
+        setTimeout(r);
+      })(() => {
+        const { markmap, mm } = window;
+        const toolbar = new markmap.Toolbar();
+        toolbar.attach(mm);
+        const el = toolbar.render();
+        el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+        document.body.append(el);
+      });
+    </script>
+    <script>
+      ((getMarkmap, getOptions, data) => {
+        const { Markmap } = getMarkmap();
+        window.mm = Markmap.create(
+          'svg#mindmap',
+          getOptions == null ? void 0 : getOptions(),
+          data,
+        );
+      })(() => window.markmap, null, {
+        t: 'heading',
+        d: 1,
+        p: { lines: [0, 1] },
+        v: '跨源请求',
+        c: [
+          {
+            t: 'heading',
+            d: 2,
+            p: { lines: [2, 3] },
+            v: '同源策略',
+            c: [
+              {
+                t: 'fence',
+                d: 3,
+                v: '<pre class="language-md"><code class="language-md">域、协议、端口三者相同为同源\n</code></pre>\n',
+              },
+              {
+                t: 'fence',
+                d: 3,
+                v: '<pre class="language-md"><code class="language-md">一个网站的脚本无法访问另一个网站的内容。这个简单有力的规则是互联网安全的基础\n</code></pre>\n',
+              },
+            ],
+          },
+          {
+            t: 'heading',
+            d: 2,
+            p: { lines: [12, 13] },
+            v: '跨源请求解决方案',
+            c: [
+              {
+                t: 'heading',
+                d: 3,
+                p: { lines: [14, 15] },
+                v: 'CORS',
+                c: [
+                  {
+                    t: 'fence',
+                    d: 4,
+                    v: '<pre class="language-md"><code class="language-md">一个请求是跨源的，浏览器始终会向其添加 Origin header\n</code></pre>\n',
+                  },
+                  {
+                    t: 'heading',
+                    d: 4,
+                    p: { lines: [20, 21] },
+                    v: '分类',
+                    c: [
+                      {
+                        t: 'heading',
+                        d: 5,
+                        p: { lines: [22, 23] },
+                        v: '简单请求',
+                        c: [
+                          {
+                            t: 'heading',
+                            d: 6,
+                            p: { lines: [24, 25] },
+                            v: '简单方法',
+                            c: [
+                              {
+                                t: 'fence',
+                                d: 7,
+                                v: '<pre class="language-md"><code class="language-md">GET，POST 或 HEAD\n</code></pre>\n',
+                              },
+                            ],
+                          },
+                          {
+                            t: 'heading',
+                            d: 6,
+                            p: { lines: [30, 31] },
+                            v: '简单 header',
+                            c: [
+                              {
+                                t: 'fence',
+                                d: 7,
+                                v: '<pre class="language-md"><code class="language-md">Accept、Accept-Language、Content-Language、Content-Type\n(Content-Type:application/x-www-form-urlencoded、multipart/form-data\n、text/plain)\n</code></pre>\n',
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        t: 'heading',
+                        d: 5,
+                        p: { lines: [38, 39] },
+                        v: '非简单请求',
+                        c: [
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-md"><code class="language-md">其他非简单方法的请求\n</code></pre>\n',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    t: 'heading',
+                    d: 4,
+                    p: { lines: [44, 45] },
+                    v: '详情',
+                    c: [
+                      {
+                        t: 'heading',
+                        d: 5,
+                        p: { lines: [46, 47] },
+                        v: '简单的 CORS',
+                        c: [
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-shell"><code class="language-shell"><span class="token number">1</span>.浏览器request。header带上<span class="token variable"><span class="token variable">`</span>Origin<span class="token variable">`</span></span>\n<span class="token number">2</span>.服务器respond。header带上<span class="token variable"><span class="token variable">`</span>Access-Control-Allow-Origin<span class="token variable">`</span></span>\n<span class="token number">3</span>.浏览器对比两个header\n</code></pre>\n',
+                          },
+                        ],
+                      },
+                      {
+                        t: 'heading',
+                        d: 5,
+                        p: { lines: [54, 55] },
+                        v: '非简单的 CORS',
+                        c: [
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-shell"><code class="language-shell"><span class="token number">1</span>.预检请求（preflight request） OPTIONS请求\n<span class="token number">2</span>.预检响应（preflight response）\n<span class="token number">3</span>.实际请求（actual request）\n<span class="token number">4</span>.实际响应（actual response）\n</code></pre>\n',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    t: 'heading',
+                    d: 4,
+                    p: { lines: [63, 64] },
+                    v: '其他细节',
+                    c: [
+                      {
+                        t: 'heading',
+                        d: 5,
+                        p: { lines: [65, 66] },
+                        v: '凭据（Credentials）',
+                        c: [
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-markdown"><code class="language-markdown">默认情况下，由 JavaScript 代码发起的跨源请求不会带来任何凭据（cookies 或者 HTTP\n认证（HTTP authentication））。\n</code></pre>\n',
+                          },
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-markdown"><code class="language-markdown">要在 fetch 中发送凭据，我们需要添加 credentials: "include" 选项，像这样：\nfetch(\'http://another.com\', { credentials: "include" });\n</code></pre>\n',
+                          },
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-bash"><code class="language-bash"><span class="token number">200</span> OK\nAccess-Control-Allow-Origin: https://javascript.info\nAccess-Control-Allow-Credentials: <span class="token boolean">true</span>\n</code></pre>\n',
+                          },
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-bash"><code class="language-bash">对于具有凭据的请求，禁止 Access-Control-Allow-Origin 使用星号 *。\n如上所示，它必须有一个确切的源。这是另一项安全措施，以确保服务器真的知道它信任的发出此请求的是谁。\n</code></pre>\n',
+                          },
+                        ],
+                      },
+                      {
+                        t: 'heading',
+                        d: 5,
+                        p: { lines: [88, 89] },
+                        v: 'Response header',
+                        c: [
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-markdown"><code class="language-markdown">对于跨源请求，默认情况下，JavaScript 只能访问“简单” response\nheader：Cache-Control Content-Language Content-Type Expires Last-Modified Pragma\n</code></pre>\n',
+                          },
+                          {
+                            t: 'fence',
+                            d: 6,
+                            v: '<pre class="language-bash"><code class="language-bash">要授予 JavaScript 对任何其他 response header 的访问权限，\n\n服务器必须发送 Access-Control-Expose-Headers header。\n它包含一个以逗号分隔的应该被设置为可访问的非简单 header 名称列表。\n\n<span class="token number">200</span> OK\nContent-Type:text/html<span class="token punctuation">;</span> <span class="token assign-left variable">charset</span><span class="token operator">=</span>UTF-8\nContent-Length: <span class="token number">12345</span>\nAPI-Key: 2c9de507f2c54aa1\nAccess-Control-Allow-Origin: https://A.info\nAccess-Control-Expose-Headers: Content-Length,API-Key\n</code></pre>\n',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              { t: 'heading', d: 3, p: { lines: [109, 110] }, v: 'JSONP' },
+            ],
+          },
+        ],
+      });
+    </script>
+  </body>
 </html>

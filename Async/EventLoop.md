@@ -48,7 +48,7 @@ baz();
 
 ```code
 宏任务 === macrotask === task   (宿主环境具有的能力)
-script ,setTimeout ,setInterval ,setImmediate ,I/O ,UI rendering
+script ,setTimeout ,setInterval ,setImmediate ,I/O
 
 微任务 === microtask === jobs (js具有的能力,微任务仅来自于我们的代码)
 process.nextTick ,promise ,Object.observe ,MutationObserver
@@ -120,6 +120,40 @@ console.log(5);
 // 打印顺序为：1 5 3 4 2
 ```
 
+```javascript
+async function async1() {
+  console.log('async1 start'); // 2
+  await async2();
+  console.log('async1 end'); // 6
+}
+async function async2() {
+  console.log('async2'); // 3
+}
+console.log('script start'); // 1
+setTimeout(function () {
+  console.log('setTimeout'); //8
+}, 0);
+async1();
+new Promise(function (resolve) {
+  console.log('promise1'); // 4
+  resolve();
+}).then(function () {
+  console.log('promise2'); // 7
+});
+console.log('script end'); // 5
+
+/* 
+script start
+async1 start
+async2
+promise1
+script end
+async1 end
+promise2
+setTimeout
+*/
+```
+
 ---
 
 1. [事件循环：微任务和宏任务](https://zh.javascript.info/event-loop)
@@ -128,4 +162,4 @@ console.log(5);
 4. [✨♻️ JavaScript Visualized: Event Loop - DEV Community 👩‍💻👨‍💻](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)
 5. [⭐️🎀 JavaScript Visualized: Promises & Async/Await - DEV Community 👩‍💻👨‍💻](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
 6. [JavaScript 事件循环和调用堆栈解释](https://felixgerschau.com/javascript-event-loop-call-stack/?ref=morioh.com&utm_source=morioh.com)
-7. [第 10 题：常见异步笔试题，请写出代码的运行结果 · Issue #7 · Advanced-Frontend/Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7)
+7. <!-- 7. [第 10 题：常见异步笔试题，请写出代码的运行结果 · Issue #7 · Advanced-Frontend/Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7) -->

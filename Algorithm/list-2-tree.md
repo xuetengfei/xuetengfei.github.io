@@ -1,7 +1,3 @@
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/list-2-tree-1559407892.jpg' width='500px'/> -->
-
-<!-- 备注:配图疏忽大意，'成都'的 children 为【 '锦里', '方所'】两个。懒得改图了。   -->
-
 [From GitHub issue](https://github.com/LeuisKen/leuisken.github.io/issues/2)
 
 ```javascript
@@ -81,8 +77,6 @@ const data = [
   }
 ]
 ```
-
-<!-- ### O(n)算法(from:庄广团) -->
 
 ```javascript
 const { data } = require('./data.js');

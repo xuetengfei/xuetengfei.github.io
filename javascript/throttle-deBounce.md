@@ -82,7 +82,7 @@ this 与原本的事件回调函数绑定的 this 保持一致。
 
 rAF
 
-节流替代品，当函数重新计算和渲染元素在屏幕上，想保证平滑的变化或动画。
+<!-- 节流替代品，当函数重新计算和渲染元素在屏幕上，想保证平滑的变化或动画。 -->
 
 window.requestAnimationFrame() 告诉浏览器——你希望执行一个动画，并且要求浏览器在
 `下次重绘之前`调用指定的回调函数更新动画。该方法需要传入一个回调函数作为参数，该
@@ -90,7 +90,7 @@ window.requestAnimationFrame() 告诉浏览器——你希望执行一个动画�
 
 ![20220404-iA65D2-9f86c81e18fd5bc4](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220404-iA65D2-9f86c81e18fd5bc4.png)
 
-### Simplest Possible Example
+### Simplest Example
 
 ```javascript
 function repeatOften() {

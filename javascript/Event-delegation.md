@@ -5,51 +5,37 @@
 是外层元素，当事件响应到需要绑定的元素上时，会通过事件冒泡机制从而触发它的外层元
 素的绑定事件上，然后在外层元素上去执行函数。
 
-举个例子，比如一个宿舍的同学同时快递到了，一种方法就是他们都傻傻地一个个去领取，
-还有一种方法就是把这件事情委托给宿舍长，让一个人出去拿好所有快递，然后再根据收件
-人一一分发给每个宿舍同学；
+## 举例
 
-## 实操
+假设我们有一个允许用户选择单元格的表格，我们需要向用户高亮所选单元格。
 
-之前写过一个[五子棋](http://localhost:3000/html/Gobang/index.html)的小游戏。如下
-图。每个交叉点上是一个 `span` 的元素，根结点是一个 Id 等于 root 的 Div 父元素。
-如下图。
+![20220404-xWKxa8-202109122345682](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220404-xWKxa8-202109122345682.gif)
 
-<div class='lightbox'>
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Event-delegation-1.jpg" width='300px' />
-<div></div>
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Event-delegation-2.jpg" width='300px' />
-</div>
-
-下棋子的过程肯定是一个点击事件。怎么去写这个绑定事件呢？
-
-### 第一种办法:低效的循环绑定事件
+作为一个解决方案，可以使用一个单独的事件监听器，并利用事件冒泡和捕获来处理这些事
+件。因此，为 table 创建了一个单独的事件监听器，它将被用来改变单元格的样式。
 
 ```javascript
-document.querySelectorAll('span').forEach(el =>
-  el.addEventListener('click', e => {
-    target.setAttribute('data-available', 'false');
-    target.classList.add(currentSide == BLACK ? 'black' : 'white');
-  }),
-);
+document.querySelector('table').addEventListener('click', event => {
+  if (event.target.nodeName == 'TD') {
+    event.target.style.background = 'rgb(230, 226, 40)';
+  }
+});
 ```
 
-### 第二种办法:使用事件委托代码
+此代码不会关心在表格中有多少个单元格。可以随时动态添加/移除 `<td>`，高亮显示仍然
+有效。
 
-部分代码
+尽管如此，但还是存在缺陷。  
+点击可能不是发生在 `<td>` 上，而是发生在其内部。假设`<td>` 内还有嵌套的标签存在
+一个`<strong>`标签，怎么办？
 
 ```javascript
-const root = document.getElementById('root');
-root.onclick = function (ev) {
-  var ev = ev || window.event;
-  var target = ev.target || ev.srcElement;
-  if (target.nodeName.toLowerCase() == 'span') {
-    if (target.dataset.available == 'true') {
-      target.setAttribute('data-available', 'false');
-      target.classList.add(currentSide == BLACK ? 'black' : 'white');
-    }
-  }
-};
+document.querySelector('table').addEventListener('click', event => {
+  let td = event.target.closest('td');
+  if (!td) return;
+  if (!table.contains(td)) return;
+  event.target.style.background = 'rgb(230, 226, 40)';
+});
 ```
 
 ## 使用 event.target 匹配
@@ -123,10 +109,10 @@ event.stopPropagation()。
 在 document.addEventListener 的时候我们可以设置事件模型：事件冒泡、事件捕获，一
 般来说都是用事件冒泡的模型；
 
-1. 捕获阶段：在事件冒泡的模型中，捕获阶段不会响应任何事件；
-2. 目标阶段：目标阶段就是指事件响应到触发事件的最底层元素上；
-3. 冒泡阶段：冒泡阶段就是事件的触发响应会从最底层目标一层层地向外到最外层（根节
-   点），事件代理即是利用事件冒泡的机制把里层所需要响应的事件绑定到外层
+1. 捕获阶段(1)：在事件冒泡的模型中，捕获阶段不会响应任何事件；
+2. 目标阶段(2)：目标阶段就是指事件响应到触发事件的最底层元素上；
+3. 冒泡阶段(3)：冒泡阶段就是事件的触发响应会从最底层目标一层层地向外到最外层（根
+   节点），事件代理即是利用事件冒泡的机制把里层所需要响应的事件绑定到外层
 
 ## 事件委托的优点
 
@@ -174,4 +160,8 @@ event.stopPropagation()。
 </script>
 ```
 
-[event-delegation-menu-usage-live-demo](https://xuetengfei.github.io/html/event-delegation-usage-demo.html)
+---
+
+1. [事件委托](https://zh.javascript.info/event-delegation)
+2. [event-delegation-menu-usage-live-demo](https://xuetengfei.github.io/html/event-delegation-usage-demo.html)
+3. [简述 JavaScript 的事件捕获和事件冒泡-掘金翻译](https://github.com/xitu/gold-miner/blob/master/article/2021/event-bubbling-and-capturing-in-javascript.md)

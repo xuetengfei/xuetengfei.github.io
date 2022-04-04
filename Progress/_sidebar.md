@@ -2,7 +2,6 @@
 - [express mock data](Progress/mockData.md)
 <!-- - [Javascript Proxy](Progress/javascript-Proxy.md) -->
 - [无卡顿的滚动列表](Progress/make-infinite-scroll.md)
-- [函数节流和防抖](Progress/throttle-deBounce.md)
 - [图片优化](Progress/Picture-optimization.md)
 - [初、中、高级开发差异](Progress/junior-mid-senior.md)
 <!-- - [按需加载 @babel/polyfill](Progress/babel-polyfill.md) -->

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>requestAnimationFrame</title>
+    <style>
+      body {
+        background: #444444;
+        color: white;
+        font: 20px/1.51 Helvetica, sans-serif;
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 20px;
+        min-height: 1000vh;
+      }
+      .item {
+        position: fixed;
+        border: 4px solid #9bffbb;
+        height: 60px;
+        width: 100px;
+        background: #333;
+        padding: 20px;
+        top: 20px;
+      }
+      .second {
+        top: 140px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item">Scroll with rAF</div>
+    <!-- <div class="item second">Scroll with _.throttle</div> -->
+    <script>
+      // Based on https://www.html5rocks.com/en/tutorials/speed/animations/#debouncing-scroll-events
+      var latestKnownScrollY = 0,
+        ticking = false,
+        item = document.querySelectorAll('.item');
+
+      function update() {
+        // reset the tick so we can
+        // capture the next onScroll
+        ticking = false;
+        item[0].style.height = latestKnownScrollY + 100 + 'px';
+        item[0].style.width = latestKnownScrollY + 100 + 'px';
+      }
+
+      function onScroll() {
+        latestKnownScrollY = window.scrollY; //No IE8
+        requestTick();
+      }
+
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(update);
+        }
+        ticking = true;
+      }
+      window.addEventListener('scroll', onScroll, false);
+    </script>
+  </body>
+</html>

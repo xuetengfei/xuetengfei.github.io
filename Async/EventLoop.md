@@ -2,7 +2,7 @@
 宿主中的运行时环境。 JavaScript 如何在浏览器中工作？答案是事件循环。浏览器中
 JavaScript 的执行流程和 Node.js 中的流程都是基于事件循环的。
 
-![20220325-Vjv1cg-383530353663372e706e67](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220325-Vjv1cg-383530353663372e706e67.png)
+![20220404-2BL3Xn-1_PiFyb7IV8vTDCGEeUOWLVQ](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220404-2BL3Xn-1_PiFyb7IV8vTDCGEeUOWLVQ.jpg)
 
 图中的大部分内容并不是 JavaScript 语言本身的一部分。Web API、回调队列和事件循环
 都是浏览器提供的功能。
@@ -162,4 +162,5 @@ setTimeout
 4. [✨♻️ JavaScript Visualized: Event Loop - DEV Community 👩‍💻👨‍💻](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)
 5. [⭐️🎀 JavaScript Visualized: Promises & Async/Await - DEV Community 👩‍💻👨‍💻](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
 6. [JavaScript 事件循环和调用堆栈解释](https://felixgerschau.com/javascript-event-loop-call-stack/?ref=morioh.com&utm_source=morioh.com)
-7. <!-- 7. [第 10 题：常见异步笔试题，请写出代码的运行结果 · Issue #7 · Advanced-Frontend/Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7) -->
+7. [JavaScript main thread. Dissected. 🔬 | by Francesco | Medium](https://medium.com/@francesco_rizzi/javascript-main-thread-dissected-43c85fce7e23)
+<!-- 7. [第 10 题：常见异步笔试题，请写出代码的运行结果 · Issue #7 · Advanced-Frontend/Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7) -->

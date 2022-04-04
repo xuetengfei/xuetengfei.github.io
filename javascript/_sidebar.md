@@ -74,6 +74,7 @@
   - [几个观察器API](javascript/some-observer.md)
   - [WeakMap](javascript/WeakMap.md)
   - [Javascript Proxy](javascript/javascript-Proxy.md)
+  - [函数节流和防抖](javascript/throttle-deBounce.md)
 
 - 常用代码
 

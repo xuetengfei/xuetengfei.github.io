@@ -1,5 +1,6 @@
 - 性能优化
 
+  - [预加载技术](engineering/prefetching-preloading-prebrowsing.md)
   - [performance](engineering/web-performance-optimization.md)
   - [Tree Shaking:代码剪枝](engineering/tree-sharking.md)
   - [图片懒加载](engineering/Picture-Lazy-Loading.md)

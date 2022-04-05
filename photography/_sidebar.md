@@ -1,2 +1,0 @@
-- [Photography](photography/index.md)
-- [1](photography/1.md)

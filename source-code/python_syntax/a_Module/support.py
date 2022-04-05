@@ -1,2 +1,0 @@
-def number():
-    print('asd')

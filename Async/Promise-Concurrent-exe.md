@@ -1,4 +1,7 @@
-?> **Promise.all** 是 Promise 构造函数本身的方法，而不是 Promise.prototype 上面的函数。promise.then 方法一个接一个地运行异步函数。如果顺序无关紧要,可以通过 **Promise.all**来实现。它接受一组函数并返回另一个 Promise。如果任何一个异步函数调用拒绝，则 Promise.all 立即终止。
+?> **Promise.all** 是 Promise 构造函数本身的方法，而不是 Promise.prototype 上面
+的函数。promise.then 方法一个接一个地运行异步函数。如果顺序无关紧要,可以通过
+**Promise.all**来实现。它接受一组函数并返回另一个 Promise。如果任何一个异步函数
+调用拒绝，则 Promise.all 立即终止。
 
 ### 并发语法
 

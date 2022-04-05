@@ -22,8 +22,6 @@
 
 ?> 怕什么真理无穷，进一寸有一寸的欢喜。
 
-<!-- <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/think-1566222930.jpeg'/> -->
-
 <img src='./_assets/xtf.svg' style='width:'>
 
 <!-- 之前不小心，把隐私信息暴露到 GitHub 了， -->

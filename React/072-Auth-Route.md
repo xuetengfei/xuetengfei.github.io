@@ -1,14 +1,18 @@
 # 权限控制分类
 
-- 登录授权，用户没有登录只能访问登录页面，如果处于登录状态则跳转到当前用户的默认首页；
-- 路由授权，当前登录用户的角色，如果对一个 URL 没有权限访问，则重定向到 403 页面；
+- 登录授权，用户没有登录只能访问登录页面，如果处于登录状态则跳转到当前用户的默认
+  首页；
+- 路由授权，当前登录用户的角色，如果对一个 URL 没有权限访问，则重定向到 403 页面
+  ；
 - 数据授权，当访问一个没有权限的 API，则重定向到 403 页面；
 - 操作授权，当页面中某个按钮或者区域没有权限访问则在页面中隐藏。
 
 ### react-router 升级到 v.4.x
 
-在 `react-router-4`中移除了[onEnter、onUpdate、onLeave](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/migrating.md#on-properties)  
-那么就需要开发者自己去定义`<Route render={ ... } />`,下面是一个最简单的路由重定向。
+在 `react-router-4`中移除
+了[onEnter、onUpdate、onLeave](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/migrating.md#on-properties)  
+那么就需要开发者自己去定义`<Route render={ ... } />`,下面是一个最简单的路由重定
+向。
 
 ```javascript
 <Route
@@ -22,9 +26,13 @@
 
 #### 1.1 创建权限控制组件 AuthRouter 组件
 
-在未登录的状态下，不仅需要对请求进行拦截，还需要对一些页面进行拦截，如果未登录用户请求访问一些需要登录的页面，就需要自动跳转到指定页面。这个工作当然可以再每个页面组件的 `constructor()`或 `ComponentWillMount()`状态下进行，但是为了简便可以直接将他们封装成一个组件。
+在未登录的状态下，不仅需要对请求进行拦截，还需要对一些页面进行拦截，如果未登录用
+户请求访问一些需要登录的页面，就需要自动跳转到指定页面。这个工作当然可以再每个页
+面组件的 `constructor()`或 `ComponentWillMount()`状态下进行，但是为了简便可以直
+接将他们封装成一个组件。
 
-注意： 要使用 withRouter 强制更新路由信息，否则可能会出现路由地址改变但页面没有相应改变的 bug 。
+注意： 要使用 withRouter 强制更新路由信息，否则可能会出现路由地址改变但页面没有
+相应改变的 bug 。
 
 ```javascript
 import React, { Component } from 'react';
@@ -34,7 +42,9 @@ import { Route, Redirect } from 'react-router-dom';
 const AuthRequireRouter = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props => (authState ? <Component {...props} /> : <Redirect to={'/login'} />)}
+    render={props =>
+      authState ? <Component {...props} /> : <Redirect to={'/login'} />
+    }
   />
 );
 
@@ -80,7 +90,8 @@ render(){
 
 ### 2、组件权限控制(细粒度)
 
-当然，不只有 Router 组件需要进行一些权限控制，还要对更小粒度的一些组件进行权限控制。页面操作按钮的显示和隐藏等。
+当然，不只有 Router 组件需要进行一些权限控制，还要对更小粒度的一些组件进行权限控
+制。页面操作按钮的显示和隐藏等。
 
 管理员的菜单中比普通用户的菜单要多。封装成一个组件出来：
 

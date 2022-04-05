@@ -20,7 +20,8 @@ $ npm start
 ###### 3.connect 与 @connect
 
 1. [react dva 的 connect 与 @connect ](http://www.cnblogs.com/CyLee/p/9308604.html)
-1. [connect 方法](https://dvajs.com/guide/introduce-class.html#connect-%E6%96%B9%E6%B3%95)返回的也是一个 React 组件,最后导出。
+1. [connect 方法](https://dvajs.com/guide/introduce-class.html#connect-%E6%96%B9%E6%B3%95)返
+   回的也是一个 React 组件,最后导出。
 
 ```javascript
 // connect
@@ -29,7 +30,9 @@ export default connect()(BasicLayout);
 
 <img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/Bl-2018-07-24_163218.png"  data-action="zoom" style="margin:0 auto;" width="550px">
 
-@connect 其实只是 connect 的装饰器、语法糖罢了。改为这样（export 的不再是 connect，而是 class 组件本身。）也是可以执行的，但要注意@connect 必须放在 export default class 前面.
+@connect 其实只是 connect 的装饰器、语法糖罢了。改为这样（export 的不再是
+connect，而是 class 组件本身。）也是可以执行的，但要注意@connect 必须放在 export
+default class 前面.
 
 ```javascript
 //  @connect
@@ -54,7 +57,9 @@ dispatch({
 
 ###### 6.Route Components
 
-在 dva 中，通常需要 connect Model 的组件都是 Route Components，组织在**/routes/**目录下，而**/components/**目录下则是纯组件（Presentational Components）。
+在 dva 中，通常需要 connect Model 的组件都是 Route Components，组织
+在**/routes/**目录下，而**/components/**目录下则是纯组件（Presentational
+Components）。
 
 1. [DvaJS 官网](https://dvajs.com/)
 2. [知识地图 | DvaJS](https://dvajs.com/knowledgemap/#javascript-%E8%AF%AD%E8%A8%80)

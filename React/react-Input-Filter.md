@@ -1,5 +1,3 @@
-<!-- react-Input-Filter.md -->
-
 <iframe
      src="https://codesandbox.io/embed/keen-voice-u4c3l?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"

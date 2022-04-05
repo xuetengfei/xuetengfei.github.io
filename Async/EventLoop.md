@@ -163,4 +163,6 @@ setTimeout
 5. [⭐️🎀 JavaScript Visualized: Promises & Async/Await - DEV Community 👩‍💻👨‍💻](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
 6. [JavaScript 事件循环和调用堆栈解释](https://felixgerschau.com/javascript-event-loop-call-stack/?ref=morioh.com&utm_source=morioh.com)
 7. [JavaScript main thread. Dissected. 🔬 | by Francesco | Medium](https://medium.com/@francesco_rizzi/javascript-main-thread-dissected-43c85fce7e23)
+8. [Philip Roberts: Help, I’m stuck in an event-loop. on Vimeo](https://vimeo.com/96425312)
+9. [JavaScript 运行机制详解：再谈 Event Loop - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2014/10/event-loop.html)
 <!-- 7. [第 10 题：常见异步笔试题，请写出代码的运行结果 · Issue #7 · Advanced-Frontend/Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7) -->

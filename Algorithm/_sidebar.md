@@ -1,5 +1,3 @@
-
-
 - 顺序数据类型
 
   - [Stack](Algorithm/stack.md)
@@ -32,16 +30,16 @@
   - [Group by attribute](Algorithm/Group-by-attribute.md)
   - [reduce](Algorithm/recursion.md)
 
--  数学概念
+- 数学概念
+
   - [马尔可夫链 - wikipedia](Algorithm/Markov-chain.md)
 
 
 
 <!-- 
 
-  Max Consecutive Ones
+Max Consecutive Ones
 算法框架
-
 
 https://stackoverflow.com/questions/18017869/
 

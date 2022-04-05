@@ -17,6 +17,4 @@
 - [eggjs 演示set get cookies](protocol/cookies.md) 
 - [eggjs 演示 jwt](protocol/json-web-token.md) 
 - [csrf-attacks](protocol/csrf-attacks.md) 
-- [补充知识点](protocol/add-knowledge.md) 
-
 -->

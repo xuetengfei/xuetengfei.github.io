@@ -15,6 +15,7 @@
   - [codeSandbox](React/codesandbox.md)
   - [The Hooks of React Router](React/the-hooks-of-react-router.md)
   - [use-react-hooks-make-responsive-layout](React/use-react-hooks-make-responsive-layout.md)
+  - [How do React hooks really work](React/how_do_react_hooks_really_work.md)
 
 - 性能优化
 
@@ -57,21 +58,13 @@
   - [controlled、uncontrolled](React/controlled-vs-uncontrolled.md)
   - [keys](React/react-key-value.md)
   - [权限设计](React/072-Auth-Route.md)
-  - [Use Axios with React (1)](React/fetch-in-react.md)
   - [clear-react-components-and-jsx](React/clear-react-components-and-jsx.md)
-  - [How do React hooks really work](React/how_do_react_hooks_really_work.md)
 
-  <!-- - [just run react demo not project](React/Instant-Prototyping.md) -->
   <!-- - [propTypes and defaultProps](React/defaultProps.md) -->
   <!-- - [axios 请求拦截(权限、登陆状态等)](Asynchronous/axios-interceptors.md) -->
   <!-- - [极简定时器](React/timer.md) -->
-  <!-- - [dva scaffold](React/dva-scaffold.md) -->
-  <!-- - [create-react-app scaffold](React/create-react-app.md) -->
-  <!-- - [React-Router-1](React/070-React-Router-1.md) -->
-  <!-- - [组件切换](React/component-switch.md) -->
-  <!-- - [render List](React/react-array-render.md) -->
   <!-- - [react-feather-icon](React/react-feather-icon.md) -->
-  <!-- - [2.1、useEffectQuestion](React/hooks-Question-useEffect.md) -->
-  <!-- - [2.2、useEffect](React/Frequent-calls-useEffect.md) -->
   <!-- - [Render Props](React/Design-patterns-mixin.md) -->
-<!-- [Getting Started with React - An Overview and Walkthrough Tutorial – Tania Rascia](https://www.taniarascia.com/getting-started-with-react/) -->
+<!-- [Getting Started with React - An Overview and Walkthrough Tutorial – Tania Rascia](https://www.taniarascia.com/getting-started-with-react/) 
+[Proxying API Requests in Development | Create React App](https://create-react-app.dev/docs/proxying-api-requests-in-development/) 
+-->

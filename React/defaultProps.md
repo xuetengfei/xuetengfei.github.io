@@ -3,9 +3,6 @@
 一个组件默认激活的 tabs 的第二个。点击的时候切换 tabs。  
 初始化的时候，由`props`来条件渲染，渲染完成后，由内部`state`接替条件渲染
 
-<!--
-<img src="https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/2018-08-28 00_53_22.gif"  width="550px"> -->
-
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/defaultProps-1554742482.jpg' width="350px">
 
 ```javascript
@@ -25,7 +22,8 @@ export default class index extends Component {
   render() {
     const { currentNavIndex } = this.state;
     const { TabIndex } = this.props;
-    const activedTableIndex = currentNavIndex === '' ? TabIndex : currentNavIndex;
+    const activedTableIndex =
+      currentNavIndex === '' ? TabIndex : currentNavIndex;
     return (
       <>
         <nav>
@@ -36,8 +34,7 @@ export default class index extends Component {
                 key={v.id}
                 onClick={() => {
                   this.handleNavTab(v.id);
-                }}
-              >
+                }}>
                 {v.name}
               </div>
             );

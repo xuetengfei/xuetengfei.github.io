@@ -31,17 +31,27 @@ react 路由
 
 ## virtual dom
 
-react 并不直接对 DOM 进行操作，引入了一个叫做 virtual dom 的概念，安插在 javascript 逻辑和实际的 DOM 之间，好处是减少 DOM 操作，减少 DOM 操作的目的是提高浏览器的渲染性能，因为它解决的是底层的 dom 渲染，IO 开销问题。
+react 并不直接对 DOM 进行操作，引入了一个叫做 virtual dom 的概念，安插在
+javascript 逻辑和实际的 DOM 之间，好处是减少 DOM 操作，减少 DOM 操作的目的是提高
+浏览器的渲染性能，因为它解决的是底层的 dom 渲染，IO 开销问题。
 
-实际上 React 和 Vue 其实也在操作 DOM，只是比较高效地在操作 DOM 而已，虚拟 DOM 其实最终也会映射到真实 DOM，虽然虚拟 DOM 只会将变化的部分更新到真实 DOM.
+实际上 React 和 Vue 其实也在操作 DOM，只是比较高效地在操作 DOM 而已，虚拟 DOM 其
+实最终也会映射到真实 DOM，虽然虚拟 DOM 只会将变化的部分更新到真实 DOM.
 
 ## JSX
 
-学会了 react 以及这个 JSX 语法，你不光可以通过 react 写 web；也可以通过 react-native 写 ios 或者 android 的应用；可以通过 react-blessed 写 terminal 可视化应用；当然也可以通过 react-native-desktop 写桌面应用。因为 JSX 这种声明式语法实际是在构建一个抽象的视图层，这种抽象可以通过不同适配器适配到各种显示终端.
+学会了 react 以及这个 JSX 语法，你不光可以通过 react 写 web；也可以通过
+react-native 写 ios 或者 android 的应用；可以通过 react-blessed 写 terminal 可视
+化应用；当然也可以通过 react-native-desktop 写桌面应用。因为 JSX 这种声明式语法
+实际是在构建一个抽象的视图层，这种抽象可以通过不同适配器适配到各种显示终端.
 
 ## unidirectional data flow 单向数据流
 
-React 倡导使用 Flux 模式来进行组件间数据传输，这种做法叫 unidirectional data flow (单向数据流)，单向数据流的好处是与之前 angularJS / Vue 提出的 two way data binding 相比较而言，因为单向，所以各种变化都是可预计、可控制的。不像 two way data binding 那样，变化一但复杂起来，大家都互相触发变化，到最后一个地方变了，根本猜不出来她还会导致其他什么地方跟着一起变。这个需要大量实践才能有所感受。
+React 倡导使用 Flux 模式来进行组件间数据传输，这种做法叫 unidirectional data
+flow (单向数据流)，单向数据流的好处是与之前 angularJS / Vue 提出的 two way data
+binding 相比较而言，因为单向，所以各种变化都是可预计、可控制的。不像 two way
+data binding 那样，变化一但复杂起来，大家都互相触发变化，到最后一个地方变了，根
+本猜不出来她还会导致其他什么地方跟着一起变。这个需要大量实践才能有所感受。
 
 ## react 项目结构更加清晰：
 
@@ -124,4 +134,7 @@ React 的很大一部分是这样的想法，即组件负责控制和管理自�
 
 <!--
 [重谈react优势——react技术栈回顾 - 云+社区 - 腾讯云](https://cloud.tencent.com/developer/article/1177447)
+
+[21个React性能优化技巧_语言 & 开发_Mayank Gupta_InfoQ精选文章](https://www.infoq.cn/article/KVE8xtRs-uPphptq5LUz)
+[浅谈React性能优化的方向 - 掘金](https://juejin.cn/post/6844903865926549511)
  -->

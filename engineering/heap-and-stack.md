@@ -32,6 +32,24 @@ Heap: Dynamic memory allocation
 | 大小在编译时就知道了 | 大小在运行时是才知道的 |
 | 分配固定数量的内存   | 每个对象没有限制       |
 
+## 出个题目
+
+```js
+// 连续赋值
+let a = { x: 1 };
+let b = a;
+a.x = a = { n: 1 };
+console.log(a);
+console.log(b);
+```
+
+打印出什么
+
+```js
+console.log(a); // { n: 1 }
+console.log(b); // { x: { n: 1 } }
+```
+
 ---
 
 1. [内存管理 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management)

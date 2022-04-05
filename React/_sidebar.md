@@ -17,11 +17,8 @@
 
 - 性能优化
 
-  - [按路由加载](React/code-splitting-in-create-react-app.md)
-  - [react-loadable](React/use-react-loadable.md)
-  - [lazy, Suspense](React/React-lazy-Suspense.md)
-  - [按需加载](React/Load-on-demand.md)
-  - [分割 Redux 模块](React/redux-modules-and-code-splitting.md)
+  - [代码切割](React/code-splitting.md)
+  - [Redux切割](React/redux-modules-and-code-splitting.md)
   - [Analyzing Bundle Size](React/analyze-source-map.md)
 
 - 最佳实践
@@ -82,7 +79,5 @@
   <!-- - [2.1、useEffectQuestion](React/hooks-Question-useEffect.md) -->
   <!-- - [2.2、useEffect](React/Frequent-calls-useEffect.md) -->
   <!-- - [Render Props](React/Design-patterns-mixin.md) -->
-  <!-- - [11、react-use-useMap](React/react-use-useMap.md) -->
-  <!-- - [用高阶组件去实现功能开关](React/HOC-feature-toggles.md) -->
 
 <!-- [Getting Started with React - An Overview and Walkthrough Tutorial – Tania Rascia](https://www.taniarascia.com/getting-started-with-react/) -->

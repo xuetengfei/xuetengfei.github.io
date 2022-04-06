@@ -144,6 +144,18 @@ script 标签放在 body 标签底部的原因。当然在当下，并不是说 
 ### async 和 defer 的作用是什么？有什么区别?
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/async-defer-1555565496.png' width='700px'/>
+async 模式下，JS 不会阻塞浏览器做任何其它的事情。它的加载是异步的，当它加载结束，JS 脚本会立即执行。
+
+defer 模式下，JS 的加载是异步的，执行是被推迟的。等整个文档解析完成
+、DOMContentLoaded 事件即将被触发时，被标记了 defer 的 JS 文件才会开始依次执行。
+
+从应用的角度来说，一般当我们的脚本与 DOM 元素和其它脚本之间的依赖关系不强时，会
+选用 async;当脚本依赖于 DOM 元素和其它脚本的执行结果时，我们会选用 defer。
+
+通过审时度势地向 script 标签添加 async/defer，我们就可以告诉浏览器在等待脚本可用
+期间不阻止其它的工作，这样可以显著提升性能。
+
+比如，埋点 SDK 加载可以使用 async
 
 ### 回流和重绘
 

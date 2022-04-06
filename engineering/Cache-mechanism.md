@@ -69,7 +69,7 @@ cache-control 设置的 max-age，则没有过期，命中强缓存，不发请�
 
 ### 浏览器缓存过程(总流程图)
 
-![20220222-oPVMSI-310_2253943748_](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220222-oPVMSI-310_2253943748_.svg)
+![20220406-9XHiln-modified.e4f6e79a](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220406-9XHiln-modified.e4f6e79a.png)
 
 #### 浏览器判定是否有缓存
 

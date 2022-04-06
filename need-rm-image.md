@@ -20,4 +20,6 @@ uPic/WechatIMG12-K1L8Wb.jpeg
 uPic/WechatIMG1-P8ozIh.jpeg
 20200610140723react-lazy.jpg
 20200610125807react-lazy-dync-load.jpg
+20220406-CXXBDq-20EE0968-8FE5-45D8-BD27-508C4356AE1C.png
+https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220222-oPVMSI-310_2253943748_.svg
 -->

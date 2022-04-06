@@ -23,7 +23,7 @@
 
 
   <!-- - [Provider](Redux/Provider.md) -->
-  <!-- - [React API : Context](Redux/react-context-api.md) -->
   <!-- - [Connect](Redux/connect.md) -->
+  <!-- - [React API : Context](Redux/react-context-api.md) -->
   <!-- - [参考网址](Redux/Reference.md) -->
  

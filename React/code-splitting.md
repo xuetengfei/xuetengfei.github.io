@@ -112,7 +112,6 @@ export default App;
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/code-splitting-1-1556194218.jpg'/>
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/code-splitting-2-1556194218.jpg'/>
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/lodar-1559496417.gif'/>
 
 ## react-loadable
 
@@ -184,6 +183,8 @@ function MyComponent() {
 ```
 
 ### 1.用来拆分路由组件
+
+<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/lodar-1559496417.gif'/>
 
 ```js
 import React, { lazy, Suspense, useState, useEffect } from 'react';

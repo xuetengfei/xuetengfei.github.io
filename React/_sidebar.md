@@ -31,7 +31,6 @@
   - [样式模块](React/styles-module.md)
   - [布局组件](React/layout-component.md)
   - [avoid props -> state in constructor](React/props-in-initial-state.md)
-  - [avoid use setState in CWM](React/do-not-use-setState-in-componentWillMount.md)
   - [css-in-js](React/me-css-in-js.md)
   - [使用高阶组件做 props 代理](React/HOC-props-proxy.md)
   - [避免渲染浪费](React/Avoid-waste-of-component-rendering.md)
@@ -59,6 +58,7 @@
   - [keys](React/react-key-value.md)
   - [权限设计](React/072-Auth-Route.md)
   - [clear-react-components-and-jsx](React/clear-react-components-and-jsx.md)
+  - [setState](React/setState.md)
 
   <!-- - [propTypes and defaultProps](React/defaultProps.md) -->
   <!-- - [axios 请求拦截(权限、登陆状态等)](Asynchronous/axios-interceptors.md) -->

@@ -153,14 +153,20 @@ const MyLoadingComponent = ({ isLoading, error }) => {
 
 这个组件代码非常简单，从代码里可以看到在这个组件里处理了各种边缘情况。
 
-## Suspense-Lazy
+## React.lazy 和 Suspense
 
 React v16.6 提供了 lazy 方法和配套的 Suspense 组件，来实现模块的懒加载,用来处理
 异步渲染场景。通过 lazy 方法，加载对应的模块，lazy 方法接收一个函数作为参数，这
 个函数返回一个 Promise 对象。Suspense 组件用来在加载对应的模块过程中，展示用户友
 好的提示信息，这个组件有一个属性，fallback，这个属性可以是一个 React 的组件。
 
-### 1.用来拆分路由组件
+> 如果不确定从哪里开始对 React 应用程序进行代码拆分，请按照以下步骤操作：
+
+1.从路由级别开始。路由是识别应用程序拆分点的最简单方法。  
+2.确定网站页面上仅在特定用户交互（例如点击按钮）时呈现的大型组件。  
+3.考虑拆分不在屏幕内并且对用户不重要的任何其他组件。
+
+用法如下。
 
 ```js
 import React, { lazy, Suspense } from 'react';
@@ -177,6 +183,8 @@ function MyComponent() {
   );
 }
 ```
+
+### 1.用来拆分路由组件
 
 ```js
 import React, { lazy, Suspense, useState, useEffect } from 'react';
@@ -214,71 +222,18 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 ### 2.用来拆分 react 小组件
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200610140723react-lazy.jpg' alt='20200610140723react-lazy'/>
+例如 Tab 组件、较大体检的脚本，不一定使用的脚本代码。
 
-如图, 当前路由组件中，只有当 点击`Edit、Delete`时候才会去加载对于的组件。
+下图是一个生成 pdf 的功能组件，使用 npm 包 react-pdf，只有当点击按钮的时候采取下
+载对应的脚本。
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200610125807react-lazy-dync-load.jpg' alt='20200610125807react-lazy-dync-load'/>
-
-```js
-import React, { lazy, Suspense, useState, useEffect } from 'react';
-const CreateModule = lazy(() => import('./com-module-edit.jsx'));
-const DeleteModule = lazy(() => import('./com-module-delete.jsx'));
-
-export default function index() {
-  const [CreateModuleStatus, setModuleAStatus] = useState(false);
-  const [DeleteModuleStatus, setModuleBStatus] = useState(false);
-
-  const handleDyncImportModuleA = () => setModuleAStatus(true);
-  const handleDyncImportModuleB = () => setModuleBStatus(true);
-
-  return (
-    <>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>name</th>
-            <th>id</th>
-            <th>more</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="active">
-            <td>xuetengfei</td>
-            <td>001</td>
-            <td>
-              <button className="btn" onClick={handleDyncImportModuleA}>
-                Edit
-              </button>
-              <button
-                className="btn"
-                style={{ marginLeft: '10px' }}
-                onClick={handleDyncImportModuleB}>
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <Suspense fallback={<div className="loading loading-lg"></div>}>
-        {CreateModuleStatus && <CreateModule />}
-        {DeleteModuleStatus && <DeleteModule />}
-      </Suspense>
-    </>
-  );
-}
-```
+![20220406-wjGCQW-1_HzJpB-2aFBdlYflup1d5PA](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220406-wjGCQW-1_HzJpB-2aFBdlYflup1d5PA.gif)
 
 ---
 
 1. [Code-Splitting – React document](https://zh-hans.reactjs.org/docs/code-splitting.html#reactlazy)
-2. [web.dev:Code splitting with React.lazy and Suspense](https://web.dev/code-splitting-suspense/)
-3. [react-loadable](https://github.com/jamiebuilds/react-loadable)
-4. [Introducing React Loadable – @thejameskyle](https://jamie.build/react-loadable.html)
-5. [webpack 中文文档-lazy-loading](https://webpack.docschina.org/guides/lazy-loading)
-6. [SplitChunksPlugin | webpack](https://webpack.js.org/plugins/split-chunks-plugin/)
-7. [通过代码拆分减少 JavaScript 负载](https://web.dev/reduce-javascript-payloads-with-code-splitting/)
-8. [Reduce JavaScript payloads with code splitting](https://web.dev/reduce-javascript-payloads-with-code-splitting/)
-9. [Dynamic import() · V8](https://v8.dev/features/dynamic-import)
-
-<!-- 5. [React Router: Declarative Routing for React.js](https://reacttraining.com/react-router/web/example/route-config) -->
+2. [使用 React.lazy 和 Suspense 进行代码拆分](https://web.dev/code-splitting-suspense/)
+3. [通过代码拆分减少 JavaScript 负载](https://web.dev/reduce-javascript-payloads-with-code-splitting/)
+4. [webpack 中文文档-lazy-loading](https://webpack.docschina.org/guides/lazy-loading)
+5. [SplitChunksPlugin | webpack](https://webpack.js.org/plugins/split-chunks-plugin/)
+6. [Dynamic import() · V8](https://v8.dev/features/dynamic-import)

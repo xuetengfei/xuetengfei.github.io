@@ -22,11 +22,11 @@
   - [代码切割](React/code-splitting.md)
   - [Redux切割](React/redux-modules-and-code-splitting.md)
   - [Analyzing Bundle Size](React/analyze-source-map.md)
+  - [性能优化点](React/optimizing-performance.md)
 
 - 最佳实践
 
   - [简化 React 类组件书写](React/Simplified-react-syntax.md)
-  - [使用 ES6 更好的书写](React/Better-writing-with-ES6.md)
   - [conditional render](React/conditional-render.md)
   - [样式模块](React/styles-module.md)
   - [布局组件](React/layout-component.md)

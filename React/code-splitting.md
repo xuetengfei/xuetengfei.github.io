@@ -229,6 +229,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 ![20220406-wjGCQW-1_HzJpB-2aFBdlYflup1d5PA](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220406-wjGCQW-1_HzJpB-2aFBdlYflup1d5PA.gif)
 
+![20220406-MH9ePc-90261588f0222215b2b81aa9e86b3943](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220406-MH9ePc-90261588f0222215b2b81aa9e86b3943.jpg)
+![20220406-BfMABf-69517fe67d3277b67005877916a74afc](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220406-BfMABf-69517fe67d3277b67005877916a74afc.jpg)
+
 ---
 
 1. [Code-Splitting – React document](https://zh-hans.reactjs.org/docs/code-splitting.html#reactlazy)
@@ -237,3 +240,4 @@ ReactDOM.render(<App />, document.getElementById('root'));
 4. [webpack 中文文档-lazy-loading](https://webpack.docschina.org/guides/lazy-loading)
 5. [SplitChunksPlugin | webpack](https://webpack.js.org/plugins/split-chunks-plugin/)
 6. [Dynamic import() · V8](https://v8.dev/features/dynamic-import)
+7. [模块方法(module methods) | webpack 中文网](https://www.webpackjs.com/api/module-methods/#import-)

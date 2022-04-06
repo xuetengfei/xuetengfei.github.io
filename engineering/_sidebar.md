@@ -4,6 +4,8 @@
   - [performance](engineering/web-performance-optimization.md)
   - [Tree Shaking:代码剪枝](engineering/tree-sharking.md)
   - [图片懒加载](engineering/Picture-Lazy-Loading.md)
+  - [无卡顿的滚动列表](engineering/make-infinite-scroll.md)
+  - [图片优化](engineering/Picture-optimization.md)
 
 - 鉴权
 
@@ -48,3 +50,4 @@
   - [Gulp.js -2](engineering/gulp-new.md)
   - [Mocha 单元测试](engineering/Mocha.md)
   - [渐进增强 && 优雅降级](engineering/Enhancement-Degradation.md)
+  - [前端开发的历史和演进](engineering/FE-evolution.md)

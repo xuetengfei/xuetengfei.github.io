@@ -22,4 +22,4 @@
 - [Vw-Vw:Unit](CSS/vhvw.md)
 - [让浏览器自动切换 1X/2X/3X 图像](CSS/css-device-pixel-ratio.md)
 - [snap.svg](CSS/snap.md)
-- [移动端适配:REM 布局](CSS/use-rem-adaptate-mobile.md) 
+- [移动端适配:REM 布局](CSS/use-rem-adaptate-mobile.md)

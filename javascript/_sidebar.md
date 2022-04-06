@@ -86,6 +86,10 @@
   - [命令行通配符教程](javascript/wildcards.md)
 
 - 模块化
+
+  - [javascript 模块化历史](javascript/Modularization.md)
+  - [Javascript 模块化之 CommonJS](javascript/CommonJS-Standard.md)
+  - [ES 模块和导入导出规则](javascript/es-module.md)
   - [不同的导出方法和相应的导入方法](javascript/Module-Cheatsheet.md)
 
 - OOP
@@ -104,6 +108,7 @@
 - window
 
   - [页面的骚操作](javascript/trick-of-window.md)
+  - [BOM](javascript/web-BOM.md)
 
 - Tips
 

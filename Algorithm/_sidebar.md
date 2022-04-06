@@ -1,3 +1,4 @@
+- [时间复杂度](Algorithm/Time-Complexity.md)
 - 顺序数据类型
 
   - [Stack](Algorithm/stack.md)
@@ -33,6 +34,8 @@
 - 数学概念
 
   - [马尔可夫链 - wikipedia](Algorithm/Markov-chain.md)
+
+
 
 
 

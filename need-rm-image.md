@@ -10,8 +10,8 @@ Event-delegation-2.jpg
 async-import-module-1557852480.png
 20200522154020dynamic-import.jpg
 2018-08-28 00_53_22.gif
-uPic/concept-porta的副本-b1aWEi.png
 think-1566222930.jpeg
+uPic/concept-porta的副本-b1aWEi.png
 uPic/WechatIMG7的副本-rq6FVN.jpeg
 uPic/WechatIMG9的副本-ygZ64v.jpeg
 uPic/WechatIMG10的副本-OGtwhS.jpeg
@@ -21,5 +21,12 @@ uPic/WechatIMG1-P8ozIh.jpeg
 20200610140723react-lazy.jpg
 20200610125807react-lazy-dync-load.jpg
 20220406-CXXBDq-20EE0968-8FE5-45D8-BD27-508C4356AE1C.png
-https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220222-oPVMSI-310_2253943748_.svg
+20220222-oPVMSI-310_2253943748_.svg
+20220406-lrtl9T-Xnip2022-04-06_23-08-30.jpg
+20220309-B7cRqR-8627d87624750.jpg
+prototype-01-1552708761.jpg
+prototype-02-1552708761.jpg
+prototype-03-1552708761.jpg
+prototype-04-1552708761.jpg
+prototype-05-1552708761.jpg
 -->

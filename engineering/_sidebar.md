@@ -34,7 +34,6 @@
 - 其他
 
   - [TypeScript](engineering/TypeScript.md)
-  <!-- - [API-design](engineering/API-design.md) -->
   - [哈希一致性](engineering/Hash-consistency.md)
   - [用 eslint 检查代码](engineering/eslint.md)
   - [用 Prettier 美化代码](engineering/prettier.md)
@@ -47,7 +46,6 @@
   - [配置好看且好用的字体](engineering/Code-Typeface.md)
   - [vscode 插件和技巧](engineering/vscode.md)
   - [Gulp.js](engineering/gulp.md)
-  - [Gulp.js -2](engineering/gulp-new.md)
   - [Mocha 单元测试](engineering/Mocha.md)
   - [渐进增强 && 优雅降级](engineering/Enhancement-Degradation.md)
   - [前端开发的历史和演进](engineering/FE-evolution.md)

@@ -2,10 +2,15 @@
 
 Gulp 是什么？
 
-gulp 是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。
+gulp 是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网
+站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她
+，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。
 
 gulp 是基于 Nodejs 的自动任务运行器， 她能自动化地完成
-javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。在实现上，她借鉴了 Unix 操作系统的管道（pipe）思想，前一级的输出，直接变成后一级的输入，使得在操作上非常简单。
+javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格
+式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。在实现
+上，她借鉴了 Unix 操作系统的管道（pipe）思想，前一级的输出，直接变成后一级的输入
+，使得在操作上非常简单。
 
 ---
 
@@ -15,13 +20,15 @@ javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合�
 
 ### 选装 cnpm
 
-因为 npm 安装插件是从国外服务器下载，受网络影响大，可能出现异常，淘宝团队施仁布恩做了`cnpm`镜像官方 npm。[cnpm 官网链接](http://npm.taobao.org)
+因为 npm 安装插件是从国外服务器下载，受网络影响大，可能出现异常，淘宝团队施仁布
+恩做了`cnpm`镜像官方 npm。[cnpm 官网链接](http://npm.taobao.org)
 
 ```
 $ npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
-注：cnpm 跟 npm 用法完全一致，只是在执行命令时将`npm`改为`cnpm`（以下操作将以 cnpm 代替 npm）。
+注：cnpm 跟 npm 用法完全一致，只是在执行命令时将`npm`改为`cnpm`（以下操作将以
+cnpm 代替 npm）。
 
 ### 全局安装 gulp
 
@@ -55,7 +62,7 @@ cnpm install gulp-sass --save-dev
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 // 2.定义一个任务（任务的名称是自己定义的）
-gulp.task('sass2css', function() {
+gulp.task('sass2css', function () {
   // 指明该任务的处理的文件来源
   gulp
     .src('./sass/*.scss')
@@ -105,8 +112,8 @@ gulp sass2css
 
 ```javascript
 /*
- * @Author: xuetengfei 
- * @Date: 2017-12-28 21:19:20 
+ * @Author: xuetengfei
+ * @Date: 2017-12-28 21:19:20
  * @Last Modified by: xuetengfei
  * @Last Modified time: 2018-09-02 02:48:53
  * 本文件是编译单独文件夹的sass文件
@@ -145,7 +152,7 @@ var paths = {
   baseSass: './work/' + files + '/css/' + baseSass + '.scss',
 };
 
-gulp.task('base', function() {
+gulp.task('base', function () {
   console.log(Success('基础css生产完毕！'));
   return (
     gulp
@@ -160,10 +167,16 @@ gulp.task('base', function() {
   );
 });
 
-gulp.task('sass2css', function() {
+gulp.task('sass2css', function () {
   num++;
   console.log(
-    Success(paths.info_1 + num + paths.info_2 + '----' + new Date().toLocaleTimeString()),
+    Success(
+      paths.info_1 +
+        num +
+        paths.info_2 +
+        '----' +
+        new Date().toLocaleTimeString(),
+    ),
   );
   return (
     gulp
@@ -181,11 +194,101 @@ gulp.task('sass2css', function() {
   );
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch(paths.watch, ['sass2css']);
 });
 
-gulp.task('default', ['sass2css', 'watch'], function() {
-  console.log(Success('编译成功且监视中......' + new Date().toLocaleTimeString()));
+gulp.task('default', ['sass2css', 'watch'], function () {
+  console.log(
+    Success('编译成功且监视中......' + new Date().toLocaleTimeString()),
+  );
 });
+```
+
+很久没有使用 Gulp 了，今天写一个小的项目使用一下。Gulp-sass 最新版本目前是 v4.0+
+的版本，之前我用的时候还是 v3.0+
+
+## Initialize
+
+```
+cnpm init -y
+cnpm install gulp gulp-sass gulp-watch gulp-sourcemaps gulp-autoprefixer node-sass -D
+```
+
+`-D` 等同于`--save-dev`
+
+## package.json
+
+```json
+{
+  "name": "lorem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^4.10.0"
+  }
+}
+```
+
+## gulpfile.js
+
+```javascript
+'use strict';
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+sass.compiler = require('node-sass');
+
+gulp.task('sass', function () {
+  return (
+    gulp
+      .src('./sass/**/*.scss')
+      .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+      // .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
+      .pipe(autoprefixer('> 1%', 'IE 7'))
+      .pipe(gulp.dest('./style'))
+  );
+});
+
+gulp.task('sass:watch', function () {
+  gulp.watch('./sass/**/*.scss', ['sass']);
+});
+
+gulp.task('default', ['sass', 'sass:watch'], function () {
+  console.log('编译成功且监视中......');
+});
+```
+
+## Useage
+
+```bash
+$ gulp
+```
+
+## Stdout
+
+标准输出
+
+```bash
+C:\Users\Administrator\Desktop\lorem>gulp
+[18:08:50] Using gulpfile ~\Desktop\lorem\gulpfile.js
+[18:08:50] Starting 'sass:watch'...
+[18:08:50] Finished 'sass:watch' after 8.82 ms
+[18:08:50] Starting 'default'...
+编译成功且监视中......
+[18:08:50] Finished 'default' after 178 μs
+|
 ```

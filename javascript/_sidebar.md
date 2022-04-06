@@ -6,10 +6,9 @@
 
 - 设计模式
 
-  <!-- - [IIFE](javascript/js-iife.md) -->
   - [单例模式](javascript/SingleTon-mode.md)
-  - [命令模式](javascript/DesignPattern/Command-mode.md)
-  - [惰性模式](javascript/DesignPattern/inertia-mode.md)
+  - [命令模式](javascript/Command-mode.md)
+  - [惰性模式](javascript/inertia-mode.md)
   - [惰性载入函数](javascript/lazy-load-func.md)
   - [策略模式](javascript/strategy-pattern.md)
   - [优化if-else](javascript/optimize-the-if-else.md)
@@ -65,7 +64,7 @@
   - [Order whih Attribute](javascript/Order-By-Condition.md)
   - [数组骚操作](javascript/sao-array.md)
 
-- Function / ES6+
+- ES6+
 
   - [ES6 Syntax and Feature](javascript/ES6-Syntax.md)
   - [ES6 解构](javascript/destructuring-nested-objects.md)
@@ -74,16 +73,15 @@
   - [几个观察器API](javascript/some-observer.md)
   - [WeakMap](javascript/WeakMap.md)
   - [Javascript Proxy](javascript/javascript-Proxy.md)
-  - [函数节流和防抖](javascript/throttle-deBounce.md)
 
 - 常用代码
 
   - [技巧](javascript/trick.md)
   - [表单验证](javascript/verify-user-info.md)
-  - [常用的JS正则校验表达式](javascript/Regular-expression.md)
-  - [正则表达式](javascript/Regex.md)
+  - [常用正则校验](javascript/Regular-expression.md)
   - [哈希碰撞](javascript/Hash-collision.md)
   - [命令行通配符教程](javascript/wildcards.md)
+  - [函数节流和防抖](javascript/throttle-deBounce.md)
 
 - 模块化
 
@@ -102,7 +100,6 @@
   - [ES6 Class 静态方法](javascript/Class-Static-methods.md.md)
   - [JavaScript 中的私有变量](javascript/private-variable.md)
   - [扩展类](javascript/extend-class.md)
-  - [Class EnhanceArray](javascript/class-EnhanceArray.md)
   - [使用方法链](javascript/method-chain.md)
 
 - window

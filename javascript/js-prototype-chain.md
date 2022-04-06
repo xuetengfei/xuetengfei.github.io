@@ -406,7 +406,9 @@ console.log(me.getName()); // Robin Wieruch
 console.log(me.getJob()); // React Developer
 ```
 
-#### JS 原型其实是一个隐式的单向链表。
+![20220406-8ptyg7-2022-04-06_23-08-30](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220406-8ptyg7-2022-04-06_23-08-30.jpg)
+
+## JS 原型其实是一个隐式的单向链表
 
 在某些场景下，我们甚至可以直接把 Prototype 当作 JS 里内置的单向链表来用，而不必
 手动实现。
@@ -433,16 +435,39 @@ console.log(a);
 ```
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200608101410js-object.jpg' alt='20200608101410js-object'/>
+## prototype.chain
 
----
+```javascript
+function _instanceOf(left) {
+  let ans = [];
+  let proto = Object.getPrototypeOf(left);
+  while (true) {
+    if (proto === null) {
+      ans.push(null);
+      return ans;
+    }
+    ans.push(proto.constructor.name);
+    proto = Object.getPrototypeOf(proto);
+  }
+}
 
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-01-1552708761.jpg'/>
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-02-1552708761.jpg'/>
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-03-1552708761.jpg'/>
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-04-1552708761.jpg'/>
-<img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/prototype-05-1552708761.jpg'/>
+function Person(name) {
+  this.name = name;
+}
+const person1 = new Person('abc');
 
-![20220309-B7cRqR-8627d87624750](https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20220309-B7cRqR-8627d87624750.jpg)
+console.log(JSON.stringify(_instanceOf(person1)));
+console.log(JSON.stringify(_instanceOf([])));
+console.log(JSON.stringify(_instanceOf(function () {})));
+console.log(JSON.stringify(_instanceOf(new Date())));
+```
+
+```javascript
+// ["Person","Object",null]
+// ["Array","Object",null]
+// ["Function","Object",null]
+// ["Date","Object",null]
+```
 
 <!-- ---
 

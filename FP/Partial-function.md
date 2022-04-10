@@ -18,9 +18,9 @@ const partial =
     f(...args, ...moreArgs);
 
 // or
-function partial(func, ...argsBound) {
-  return function (...args) {
-    return func.call(this, ...argsBound, ...args);
+function partial(func, ...args) {
+  return function (...arg) {
+    return func.call(this, ...args, ...arg);
   };
 }
 ```

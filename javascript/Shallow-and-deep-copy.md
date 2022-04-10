@@ -1,6 +1,9 @@
-`浅复制` ：浅复制是`复制引用`，复制后的 引用类型数据 都是指向同一个对象的实例，彼此之间的操作会互相影响
+`浅复制` ：浅复制是`复制引用`，复制后的 引用类型数据 都是指向同一个对象的实例，
+彼此之间的操作会互相影响
 
-`深复制`：深复制是`复制实例`深复制不是简单的复制引用，而是在堆中重新分配内存，并且把源对象实例的所有属性都进行新建复制，以保证深复制的对象的引用图不包含任何原有对象或对象图上的任何对象，复制后的对象与原来的对象是完全隔离的
+`深复制`：深复制是`复制实例`深复制不是简单的复制引用，而是在堆中重新分配内存，并
+且把源对象实例的所有属性都进行新建复制，以保证深复制的对象的引用图不包含任何原有
+对象或对象图上的任何对象，复制后的对象与原来的对象是完全隔离的
 
 ### 浅拷贝可遍历属性
 
@@ -168,8 +171,33 @@ const arr = [1, 3, 5, 7];
 console.log(deepClone(arr));
 ```
 
-[比较两个对象-utils-(路由跳转)](Calculate/object-utils-func?id=比较对象)
+```javascript
+const isObject = target =>
+  (typeof target === 'object' || typeof target === 'function') &&
+  target !== null;
 
----
-
-[Copying objects in Javascript](https://smalldata.tech/blog/2018/11/01/copying-objects-in-javascript)
+function deepClone(target, map = new WeakMap()) {
+  if (map.get(target)) {
+    return target;
+  }
+  // 获取当前值的构造函数：获取它的类型
+  let constructor = target.constructor;
+  // 检测当前对象target是否与正则、日期格式对象匹配
+  if (/^(RegExp|Date)$/i.test(constructor.name)) {
+    // 创建一个新的特殊对象(正则类/日期类)的实例
+    return new constructor(target);
+  }
+  if (isObject(target)) {
+    map.set(target, true); // 为循环引用的对象做标记
+    const cloneTarget = Array.isArray(target) ? [] : {};
+    for (let prop in target) {
+      if (target.hasOwnProperty(prop)) {
+        cloneTarget[prop] = deepClone(target[prop], map);
+      }
+    }
+    return cloneTarget;
+  } else {
+    return target;
+  }
+}
+```

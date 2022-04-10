@@ -52,8 +52,41 @@
 
 `<`转化为 html 实体`&lt;`
 
+### Escape HTML
+
+```javascript
+const escapeHTML = str =>
+  str.replace(
+    /[&<>'"]/g,
+    tag =>
+      ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;',
+      }[tag] || tag),
+  );
+```
+
+```javascript
+const unescapeHTML = str =>
+  str.replace(
+    /&amp;|&lt;|&gt;|&#39;|&quot;/g,
+    tag =>
+      ({
+        '&amp;': '&',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&#39;': "'",
+        '&quot;': '"',
+      }[tag] || tag),
+  );
+```
+
 ---
 
 1. [Cross-site scripting（跨站脚本攻击） - 术语表 | MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting)
 2. [XSS 原理和攻防 - Web 安全常识 - YouTube](https://www.youtube.com/watch?v=QJzkifQ-Cuk)
 3. [node npm js-xss](https://github.com/leizongmin/js-xss/blob/master/README.zh.md)
+4. [Escape HTML - 30 seconds of code](https://www.30secondsofcode.org/js/s/escape-html)

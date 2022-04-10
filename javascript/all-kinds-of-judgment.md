@@ -2,6 +2,43 @@
 
 ## 数据类型判断
 
+### 方法一
+
+```javascript
+const getType = v =>
+  v === undefined
+    ? 'undefined'
+    : v === null
+    ? 'null'
+    : v.constructor.name.toLowerCase();
+
+console.log(getType([])); // array
+console.log(getType({})); // object
+console.log(getType('')); // string
+console.log(getType(null)); // null
+console.log(getType(undefined)); // undefined
+console.log(getType(NaN)); // number
+```
+
+### 方法二
+
+```javascript
+// javascript设计模式和开发实践
+var isType = function (type) {
+  return function (obj) {
+    return Object.prototype.toString.call(obj) === `[object ${type}]`;
+  };
+};
+
+var isString = isType('String');
+var isArray = isType('Array');
+var isNumber = isType('Number');
+
+console.log(isArray([1, 2, 3])); // true
+```
+
+### 方法三
+
 ```js
 const isOfType = (() => {
   // create a plain object with no prototype
@@ -94,41 +131,6 @@ s.add(10);
 s.add(100);
 console.log(lastItem([1, 2, 3]));
 console.log(lastItem(s));
-```
-
-### 方法一
-
-```javascript
-const getType = v =>
-  v === undefined
-    ? 'undefined'
-    : v === null
-    ? 'null'
-    : v.constructor.name.toLowerCase();
-
-console.log(getType([])); // array
-console.log(getType({})); // object
-console.log(getType('')); // string
-console.log(getType(null)); // null
-console.log(getType(undefined)); // undefined
-console.log(getType(NaN)); // number
-```
-
-### 方法二
-
-```javascript
-// javascript设计模式和开发实践
-var isType = function (type) {
-  return function (obj) {
-    return Object.prototype.toString.call(obj) === `[object ${type}]`;
-  };
-};
-
-var isString = isType('String');
-var isArray = isType('Array');
-var isNumber = isType('Number');
-
-console.log(isArray([1, 2, 3])); // true
 ```
 
 ## 判断空对象

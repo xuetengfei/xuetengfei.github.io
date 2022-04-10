@@ -24,6 +24,22 @@ const curry = (fn, need = fn.length, ...args) =>
 
 ## 实现二
 
+```javascript
+function curry(fn) {
+  let judge = (...args) => {
+    if (args.length == fn.length) return fn(...args);
+    return (...arg) => judge(...args, ...arg);
+  };
+  return judge;
+}
+
+console.log(curry(sum)(1)(2)(3)); // 6
+console.log(curry(sum)(1, 2)(3)); // 6
+console.log(curry(sum)(1)(2, 3)); // 6
+```
+
+## 实现三
+
 ```js
 function curry(fn, need = fn.length) {
   if (typeof fn !== 'function') {

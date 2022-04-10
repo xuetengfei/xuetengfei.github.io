@@ -32,3 +32,4 @@
 - [node-js-horizontal-scaling](node/node-js-horizontal-scaling.md)
 
 - [Node内存泄漏](node/Node-Memory-Leak.md)
+- [Node性能监控](node/Node-Performance-monitor.md)

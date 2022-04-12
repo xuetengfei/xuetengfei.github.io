@@ -2,7 +2,6 @@
 
   - [事件委托](javascript/Event-delegation.md)
   - [作用域链](javascript/scope-chain.md)
-  - [浅拷贝和深拷贝](javascript/Shallow-and-deep-copy.md)
 
 - 设计模式
 
@@ -64,7 +63,7 @@
   - [Order whih Attribute](javascript/Order-By-Condition.md)
   - [数组骚操作](javascript/sao-array.md)
 
-- ES6+
+- Function
 
   - [ES6 Syntax and Feature](javascript/ES6-Syntax.md)
   - [ES6 解构](javascript/destructuring-nested-objects.md)
@@ -73,6 +72,8 @@
   - [几个观察器API](javascript/some-observer.md)
   - [WeakMap](javascript/WeakMap.md)
   - [Javascript Proxy](javascript/javascript-Proxy.md)
+  - [浅拷贝和深拷贝](javascript/shallow-and-deep-copy.md)
+  - [函数节流和防抖](javascript/throttle-deBounce.md)
 
 - 常用代码
 
@@ -81,7 +82,6 @@
   - [常用正则校验](javascript/Regular-expression.md)
   - [哈希碰撞](javascript/Hash-collision.md)
   - [命令行通配符教程](javascript/wildcards.md)
-  - [函数节流和防抖](javascript/throttle-deBounce.md)
 
 - 模块化
 

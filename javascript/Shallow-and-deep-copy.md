@@ -72,7 +72,7 @@ target.target = target;
 如果有直接返回，如果没有继续拷贝
 
 ```javascript
-function deepClone(target, map = new Map()) {
+function deepClone(target, map = new WeakMap()) {
   // typeof操作符 数组、null 都是 'object'
   // Object只能用基本类型作为key值,不存在null数据类型的情况
   if (typeof target === 'object') {
@@ -103,6 +103,11 @@ console.log(ans);
   }
   */
 ```
+
+WeakMap 比 Map 有两个不同  
+1、【特殊点】WeakMap 只接受引用类型（对象）作为键名  
+2、【优点】WeakMap 的键名所指向的对象都是弱引用，不计入垃圾回收机制，不用考虑内
+存泄漏。 当引用对象被清除，其所对应的 WeakMap 记录就会自动被移除
 
 <!--
 
@@ -236,3 +241,7 @@ function deepClone(target, map = new WeakMap()) {
 }
 ```
  -->
+
+---
+
+1. [【每日一题】深拷贝时有循环引用怎么解决？-技术圈](https://jishuin.proginn.com/p/763bfbd65bed)

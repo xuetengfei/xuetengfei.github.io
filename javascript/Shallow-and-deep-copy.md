@@ -1,34 +1,22 @@
-`浅复制` ：浅复制是`复制引用`，复制后的 引用类型数据 都是指向同一个对象的实例，
-彼此之间的操作会互相影响
+`浅拷贝` ：浅拷贝是`拷贝引用`，拷贝后的引用类型数据 都是指向同一个对象的实例，彼
+此之间的操作会互相影响
 
-`深复制`：深复制是`复制实例`深复制不是简单的复制引用，而是在堆中重新分配内存，并
-且把源对象实例的所有属性都进行新建复制，以保证深复制的对象的引用图不包含任何原有
-对象或对象图上的任何对象，复制后的对象与原来的对象是完全隔离的
+`深拷贝`：深拷贝是`拷贝实例`深不是简单的拷贝引用，而是在堆中重新分配内存，并且把
+源对象实例的所有属性都进行新建拷贝，以保证深的对象的引用图不包含任何原有对象或对
+象图上的任何对象，拷贝后的对象与原来的对象是完全隔离的
 
-### 浅拷贝可遍历属性
+### 浅拷贝
+
+类型判断 + 遍历赋值
 
 ```javascript
-function ShallowCopy(target, source) {
-  for (var key in source) {
-    target[key] = source[key];
+function clone(target) {
+  let cloneTarget = {};
+  for (const key in target) {
+    cloneTarget[key] = target[key];
   }
+  return cloneTarget;
 }
-ShallowCopy(target, source);
-
-const Boy1 = {
-  Motherland: 'China',
-  Nation: 'Han',
-  Profile: {
-    Gender: 'Male',
-    Age: 25,
-    Education: 'Undergraduate',
-  },
-};
-
-const Boy2 = {};
-ShallowCopy(Boy2, Boy1);
-
-console.log(Boy1.Profile.Age === Boy2.Profile.Age); // true
 
 // ---- 分割线 ---
 
@@ -38,41 +26,87 @@ let n = { ...z };
 n; // { a: 3, b: 4 }
 ```
 
-### 深复制
+## 深拷贝:基础版本
+
+深拷贝,考虑到要拷贝的对象是不知道有多少层深度的  
+可以用递归来解决问题，稍微改写上面的代码
+
+递归 + 类型判断 + 遍历赋值
 
 ```javascript
-function deepClone(source) {
-  // 创建一个空的对象或者数值
-  var copy = source instanceof Array ? [] : {};
-
-  for (attr in source) {
-    // 判断是否是对象实例本身的属性
-    if (!source.hasOwnProperty(attr)) {
-      continue; // 判断是否是对象实例本身的属性,跳过原型链上的属性，
+function deepClone(target) {
+  if (typeof target === 'object') {
+    let cloneTarget = Array.isArray(target) ? [] : {};
+    for (const key in target) {
+      cloneTarget[key] = clone(target[key], map);
     }
-    // 这个属性如果是对象，调用该函数递归
-    copy[attr] =
-      typeof source[attr] == 'object' ? deepClone(source[attr]) : source[attr];
+    return cloneTarget;
+  } else {
+    return target;
   }
-
-  return copy;
 }
-
-const Boy1 = {
-  Motherland: 'China',
-  Nation: 'Han',
-  Profile: {
-    Gender: 'Male',
-    Age: 25,
-    Education: 'Undergraduate',
-  },
-};
-
-const Boy2 = deepClone(Boy1);
-console.log(Boy1.Profile.Age == Boy2.Profile.Age); //false
 ```
 
-#### 拓展对象原型
+## 深拷贝:解决循环引用
+
+```javascript
+const target = {
+  key1: 1,
+  key2: undefined,
+  key3: [2, 4, 8],
+  key4: {
+    child: 'child',
+  },
+  key5: function () {
+    console.log('this key5 func');
+  },
+  null: 'x',
+};
+target.target = target;
+```
+
+解决循环引用导致的栈溢出问题，就需要判断要拷贝的对象，是不是已经拷贝过.  
+如果已经拷过了，而不去循环拷贝。  
+可以额外开辟一个存储空间，来存储当前对象和拷贝对象的对应关系  
+当需要拷贝当前对象时，先去存储空间中找，有没有拷贝过这个对象  
+如果有直接返回，如果没有继续拷贝
+
+```javascript
+function deepClone(target, map = new Map()) {
+  // typeof操作符 数组、null 都是 'object'
+  // Object只能用基本类型作为key值,不存在null数据类型的情况
+  if (typeof target === 'object') {
+    let cloneTarget = Array.isArray(target) ? [] : {};
+    if (map.get(target)) {
+      return map.get(target);
+    }
+    map.set(target, cloneTarget);
+    for (const key in target) {
+      cloneTarget[key] = deepClone(target[key], map);
+    }
+    return cloneTarget;
+  } else {
+    return target;
+  }
+}
+const ans = deepClone(target);
+console.log(ans);
+/* 
+  <ref *1> {
+    key1: 1,
+    key2: undefined,
+    key3: [ 2, 4, 8 ],
+    key4: { child: 'child' },
+    key5: [Function: key5],
+    null: 'x',
+    target: [Circular *1]
+  }
+  */
+```
+
+<!--
+
+## 拓展对象原型
 
 ```javascript
 Object.prototype.clone = function () {
@@ -104,7 +138,7 @@ Boy2.Profile.Age = 18;
 console.log(Boy1.Profile.Age == Boy2.Profile.Age); // false
 ```
 
-### 可以复制一切的深复制
+## 可以拷贝一切的深拷贝
 
 ```javascript
 function deepClone(obj) {
@@ -201,3 +235,4 @@ function deepClone(target, map = new WeakMap()) {
   }
 }
 ```
+ -->

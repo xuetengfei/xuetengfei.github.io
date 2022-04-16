@@ -1,4 +1,5 @@
 - [时间复杂度](Algorithm/Time-Complexity.md)
+
 - 顺序数据类型
 
   - [Stack](Algorithm/stack.md)
@@ -11,6 +12,8 @@
   - [字典](Algorithm/Dictionary.md)
   - [散列函数](Algorithm/hashMap.md)
   - [树、二叉树](Algorithm/tree-data-structures.md)
+  - [字符串题目](Algorithm/string-topic.md)
+  - [链表题目](Algorithm/linked-topic.md)
 
 - 排序和搜索算法
 
@@ -35,7 +38,6 @@
 
   - [马尔可夫链 - wikipedia](Algorithm/Markov-chain.md)
 
-- [题目](Algorithm/leetcode.md)
 
 
 <!-- 

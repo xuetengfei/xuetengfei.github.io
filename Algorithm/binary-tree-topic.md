@@ -1,1 +1,1 @@
-binary-tree-topic.md
+binary-tree-topic

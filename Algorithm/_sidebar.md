@@ -14,6 +14,7 @@
   - [树、二叉树](Algorithm/tree-data-structures.md)
   - [字符串题目](Algorithm/string-topic.md)
   - [链表题目](Algorithm/linked-topic.md)
+  - [二叉树题目](Algorithm/binary-tree-topic.md)
 
 - 排序和搜索算法
 

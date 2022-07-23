@@ -11,7 +11,7 @@
   - [sass编写媒体查询](CSS/sass-media-queries.md)
 
 - Less
-  - [less loop](CSS/less-for-loop.md)
+  - [less](CSS/less.md)
 
 - [html-tags-and-attributes](CSS/html-tags-and-attributes.md)
 - [Dark-Mode](CSS/dark-mode.md)

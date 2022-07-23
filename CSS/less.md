@@ -250,4 +250,5 @@ each(range(1px, 10px, 1), {
 
 ---
 
-1. [Less Preview (online playground)](https://lesscss.org/less-preview/#eyJjb2RlIjoiZWFjaChyYW5nZSgxcHgsIDEwcHgsIDEpLCB7XG4gIC5tYkB7aW5kZXh9IHtcblx0XHRtYXJnaW4tYm90dG9tOkB2YWx1ZTtcbiAgfVxufSk7IiwiYWN0aXZlVmVyc2lvbiI6IjQuMS4zIn0=)
+1. [Less 快速入门 | Less.js 中文文档 - Less 中文网](https://less.bootcss.com/)
+2. [Less Preview (online playground)](https://lesscss.org/less-preview/#eyJjb2RlIjoiZWFjaChyYW5nZSgxcHgsIDEwcHgsIDEpLCB7XG4gIC5tYkB7aW5kZXh9IHtcblx0XHRtYXJnaW4tYm90dG9tOkB2YWx1ZTtcbiAgfVxufSk7IiwiYWN0aXZlVmVyc2lvbiI6IjQuMS4zIn0=)

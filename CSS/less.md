@@ -1,41 +1,4 @@
-# less
-
-```css
-.mixin() {
-  @unique: 45;
-}
-
-#call-mixin {
-  variable-value: @unique;
-  .mixin();
-}
-
-.mixin() {
-  @clash: 45;
-  @unique: 45;
-}
-
-#call-mixin2 {
-  @clash: 0;
-  unique: @unique;
-  clash: @clash;
-  .mixin();
-}
-```
-
-```css
-#call-mixin {
-  variable-value: 45;
-}
-#call-mixin2 {
-  unique: 45;
-  clash: 0;
-}
-```
-
----
-
-> +\_ 代表的是 空格；+ 代表的是 逗号。
+> "+" 代表的是 逗号。
 
 ```css
 .boxShadow() {
@@ -45,13 +8,13 @@
   .boxShadow();
   box-shadow+: 0 0 20px black;
 }
-```
-
-```css
+/* css */
 .main {
   box-shadow: inset 0 0 10px #555, 0 0 20px black;
 }
 ```
+
+> "+\_" 代表的是 空格
 
 ```css
 .Animation() {
@@ -61,9 +24,7 @@
   .Animation();
   transform+_: rotate(15deg);
 }
-```
-
-```css
+/* css */
 .main {
   transform: scale(2) rotate(15deg);
 }

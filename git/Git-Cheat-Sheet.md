@@ -1,4 +1,24 @@
-# Git Cheat Sheet
+# 三个很有用的 git 命令
+
+- git grep <关键词> ：搜索含有关键词的文件。
+- git blame <文件名>：查看指定文件每一行的提交人和提交时间。
+- git log -p <文件名>：查看指定文件的每一次提交和改动。
+
+[三个很有用的 git 命令](https://twitter.com/ruanyf/status/1520627357832613888?s=20&t=DioiF_qI9rWeGl48AuAWfw)
+
+# 查看配置
+
+```
+git config --list
+```
+
+# commit
+
+修改文件内容并合并到上一次的 commit 变更当中
+
+```
+git commit --amend --no-edit
+```
 
 # 新建
 
@@ -236,7 +256,10 @@ git push -f
 
 <img src='https://loremxuetengfei.oss-cn-beijing.aliyuncs.com/20200418160919%201715463f6fd43f67.gif' alt='202004181609191715463f6fd43f67'/>
 
-如图所示：**dev** 分支上的 **76d12** 提交添加了 index.js 文件，我们需要将本次提交更改加入到 master 分支，那么就可以使用 **git cherry-pick 76d12** 单独检出这条记录修改。现在 **master** 分支包含了 **76d12** 中引入的修改，并添加了一条提交记录 **9e78i**。
+如图所示：**dev** 分支上的 **76d12** 提交添加了 index.js 文件，我们需要将本次提
+交更改加入到 master 分支，那么就可以使用 **git cherry-pick 76d12** 单独检出这条
+记录修改。现在 **master** 分支包含了 **76d12** 中引入的修改，并添加了一条提交记
+录 **9e78i**。
 
 # 获取（git fetch）
 
@@ -245,7 +268,8 @@ git push -f
 
 # 拉取（git pull）
 
-除了 git fetch，我们还能使用 git pull 获取远程分支数据。有什么不同呢？git pull 指令实际做了两件事：git fetch 和 git merge。
+除了 git fetch，我们还能使用 git pull 获取远程分支数据。有什么不同呢？git pull
+指令实际做了两件事：git fetch 和 git merge。
 
 # 回流 （git reflog）
 

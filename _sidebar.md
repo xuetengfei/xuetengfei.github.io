@@ -6,7 +6,7 @@
 - [异步编程](Async/index.md)
 - [函数式编程](FP/index.md)
 - [Database](Database/index.md)
-- [TypeScript](TypeScript/001-basic.md)
+- [TypeScript](TypeScript/index.md)
 - [Node](node/index.md)
 - [前端工程](engineering/index.md)
 - [Redux](Redux/index.md)

@@ -158,7 +158,9 @@ OPTIONS:
 
 ag --list-file-types    // list file types
 ag --js foo             // 在js文件中查询
-ag 'pattern1|pattern2'  // multiple search expressions
+ag 'pattern1|pattern2'  // OR: multiple search expressions
+ag -l pattern1 | xargs ag -l pattern2 | xargs ag 'pattern1|pattern2'  // AND
+ag -v 'pattern' // NOT        
 ```
 
 ## ack

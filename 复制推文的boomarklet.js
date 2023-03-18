@@ -10,8 +10,13 @@ javascript: (() => {
     document.body.removeChild(input);
   }
   var content = [...document.querySelectorAll('[data-testid="tweetText"]')]
-    .map(v => v.querySelector('span').textContent)
+    .map(v =>
+      [...v.querySelectorAll('span')]
+        .map(v => v.textContent)
+        .reduce((acc, cur) => acc + cur, ''),
+    )
     .map(v => '-'.repeat(4) + v)
     .reduce((acc, cur) => acc + cur, '');
-  copyToClipboard(content);
+  const x = '[推文地址](' + window.location.href + ')';
+  copyToClipboard(content + x);
 })();

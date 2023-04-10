@@ -18,6 +18,7 @@
 - [shell-tips](Linux/show-shell-info.md)
 - [linux-deploy-jar](Linux/under-linux-deploy-jar.md)
 - [get nohup PID](Linux/get-nohup-pid.md)
+- [shell set -ex](Linux/set-ex.md)
 - [linux-command-note](Linux/linux-command-note.md)
 
 <!-- 

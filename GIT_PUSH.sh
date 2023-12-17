@@ -8,7 +8,7 @@ git pull
 git add .
 now="$(date +"%Y-%m-%d %H:%M")"
 git commit -m "${now}"
-# git commit -m "$(date | md5 )"
+git commit -m "$(date | md5 )"
 echo "****************** commit is:$1 ${now} ***********"
-# git push origin master
+git push origin master
 echo "--------End--------"

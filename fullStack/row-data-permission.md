@@ -200,3 +200,7 @@ module.exports = app => {
 
 以上是一个基本的行数据权限设计和 Egg.js 行数据鉴权实现的描述。具体的实现细节可能
 会根据你的应用需求、数据库结构和业务逻辑进行调整。
+
+---
+
+1. [项目中心 - 权限管理 - 《有数 BI 用户手册》](https://bi.qiyukf.com/index/manual/p/data_role.html)

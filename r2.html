@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download Progress</title>
+    <style>
+      .task {
+        margin-bottom: 10px;
+      }
+      .progress-bar {
+        width: 100%;
+        background-color: #e0e0e0;
+      }
+      .progress {
+        width: 0;
+        height: 20px;
+        background-color: #76c7c0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tasks"></div>
+    <button id="pauseButton">Pause</button>
+    <script>
+      let isPaused = false;
+
+      const pauseButton = document.getElementById('pauseButton');
+      pauseButton.addEventListener('click', () => {
+        isPaused = !isPaused;
+        pauseButton.textContent = isPaused ? 'Resume' : 'Pause';
+        if (!isPaused) {
+          requestAnimationFrame(animate);
+        }
+      });
+
+      // 假设这是你的下载任务数组
+      const downloadTasks = [
+        { id: 1, progress: 0 },
+        { id: 2, progress: 0 },
+        { id: 3, progress: 0 },
+      ];
+
+      // 模拟下载任务进度更新
+      function updateDownloadProgress() {
+        downloadTasks.forEach(task => {
+          if (task.progress < 100) {
+            task.progress += Math.random() * 2; // 随机增加进度
+            if (task.progress > 100) {
+              task.progress = 100;
+            }
+          }
+        });
+      }
+
+      // 创建下载任务的HTML元素
+      const tasksContainer = document.getElementById('tasks');
+      downloadTasks.forEach(task => {
+        const taskElement = document.createElement('div');
+        taskElement.className = 'task';
+        taskElement.id = `task-${task.id}`;
+        taskElement.innerHTML = `
+        <div>Task ${task.id}</div>
+        <div class="progress-bar">
+          <div class="progress" id="progress-${task.id}"></div>
+        </div>
+      `;
+        tasksContainer.appendChild(taskElement);
+      });
+
+      // 更新进度条的显示
+      function updateProgressBars() {
+        downloadTasks.forEach(task => {
+          const progressBar = document.getElementById(`progress-${task.id}`);
+          progressBar.style.width = task.progress + '%';
+        });
+      }
+
+      // 检查所有下载任务是否完成
+      function allTasksCompleted() {
+        return downloadTasks.every(task => task.progress >= 100);
+      }
+
+      // 动画帧循环
+      function animate() {
+        console.log('animate:');
+        if (!isPaused && !allTasksCompleted()) {
+          updateDownloadProgress();
+          updateProgressBars();
+          requestAnimationFrame(animate);
+        }
+      }
+
+      // 开始动画循环
+      requestAnimationFrame(animate);
+    </script>
+  </body>
+</html>

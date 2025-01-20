@@ -33,7 +33,6 @@ self.addEventListener('activate', event => {
 /**
  *  @Functional Fetch
  *  All network requests are being intercepted here.
- *
  *  void respondWith(Promise<Response> r)
  */
 self.addEventListener('fetch', event => {
